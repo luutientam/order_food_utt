@@ -18,6 +18,8 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.utt.foodorderapp.activity.AdminMainActivity
 import com.utt.foodorderapp.activity.MainActivity
+import com.utt.foodorderapp.activity.ShipperMainActivity
+import com.utt.foodorderapp.model.User
 import com.utt.foodorderapp.listener.IGetDateListener
 import com.utt.foodorderapp.prefs.DataStoreManager.Companion.user
 import com.utt.foodorderapp.utils.StringUtil.getDoubleNumber
@@ -44,8 +46,12 @@ object GlobalFunction {
 
     @JvmStatic
     fun gotoMainActivity(context: Context) {
-        if (user!!.isAdmin) {
+        val profile = user ?: User()
+        profile.resolveRole()
+        if (profile.role == User.ROLE_ADMIN) {
             startActivity(context, AdminMainActivity::class.java)
+        } else if (profile.role == User.ROLE_SHIPPER) {
+            startActivity(context, ShipperMainActivity::class.java)
         } else {
             startActivity(context, MainActivity::class.java)
         }
