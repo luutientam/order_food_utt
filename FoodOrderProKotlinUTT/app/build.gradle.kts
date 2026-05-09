@@ -3,14 +3,15 @@ plugins {
     alias(libs.plugins.google.services)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.google.firebase.crashlytics)
 }
 
 android {
-    namespace = "com.pro.foodorder"
+    namespace = "com.utt.foodorderapp"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.pro.foodorder"
+        applicationId = "com.utt.foodorderapp"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -59,6 +60,9 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.room)
     implementation(libs.core.ktx)
+    implementation(libs.firebase.analytics)
+    implementation(libs.firebase.crashlytics)
+    implementation(libs.firebase.config)
     kapt(libs.room.compiler)
     implementation(libs.eventbus)
 

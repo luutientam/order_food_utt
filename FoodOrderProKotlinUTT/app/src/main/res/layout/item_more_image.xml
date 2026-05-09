@@ -8,7 +8,7 @@
     android:layout_marginEnd="@dimen/define_dimen_10"
     app:cardCornerRadius="@dimen/define_dimen_6">
 
-    <com.pro.foodorder.widget.AspectRatioNoRadiusImageView
+    <com.utt.foodorderapp.widget.AspectRatioNoRadiusImageView
         android:id="@+id/image_food"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

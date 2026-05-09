@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Food Order Pro Kotlin</string>
+
+
+    <string name="config_generic_error">General error, please try again later</string>
+    <string name="config_currency"> 000 VNĐ</string>
+    <integer name="config_type_payment_cash">1</integer>
+    <string name="config_payment_method_cash">Tiền mặt</string>
+    <string name="config_admin_email_format">@admin.com</string>
+
+    <string name="config_about_us_title">TinCoder</string>
+    <string name="config_about_us_content">Provides Android, iOS, Web Source Codes and Development Services. Highly Committed to Quality Products and Excellent Services.</string>
+    <string name="config_about_us_slogan">Highly committed to quality products &amp; excellent services</string>
+    <string name="config_about_us_website_title">Website TinCoder</string>
+    <string name="config_page_facebook">fb://page/tincoder</string>
+    <string name="config_link_facebook">https://www.facebook.com/tincoder</string>
+    <string name="config_link_youtube">https://www.youtube.com/channel/UCu3DXfXYgygIYXN8TduNcNQ</string>
+    <string name="config_phone_number">+84392229676</string>
+    <string name="config_gmail">mixproduction29932@gmail.com</string>
+    <string name="config_skype_id">dangtin29932</string>
+    <string name="config_zalo_link">https://zalo.me/0392229676</string>
+    <string name="config_website">https://alabaster-drop-b52.notion.site/TinCoder-Full-Source-Code-Android-c1f9d9d224004932823b6d5061c80dbc</string>
+    <string name="config_firebase_url">https://order-food-utt-default-rtdb.asia-southeast1.firebasedatabase.app</string>
+</resources>

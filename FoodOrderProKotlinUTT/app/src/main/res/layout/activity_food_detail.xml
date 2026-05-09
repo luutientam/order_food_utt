@@ -24,7 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.pro.foodorder.widget.AspectRatioNoRadiusImageView
+                <com.utt.foodorderapp.widget.AspectRatioNoRadiusImageView
                     android:id="@+id/image_food"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

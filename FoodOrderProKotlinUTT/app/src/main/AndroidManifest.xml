@@ -28,7 +28,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="31">
-        <activity android:name="com.pro.foodorder.activity.SplashActivity"
+        <activity android:name="com.utt.foodorderapp.activity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,34 +37,34 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.pro.foodorder.activity.MainActivity"
+            android:name="com.utt.foodorderapp.activity.MainActivity"
             android:exported="false"/>
         <activity
-            android:name="com.pro.foodorder.activity.FoodDetailActivity"
+            android:name="com.utt.foodorderapp.activity.FoodDetailActivity"
             android:exported="false"/>
         <activity
-            android:name="com.pro.foodorder.activity.SignUpActivity"
+            android:name="com.utt.foodorderapp.activity.SignUpActivity"
             android:exported="false"/>
         <activity
-            android:name="com.pro.foodorder.activity.SignInActivity"
+            android:name="com.utt.foodorderapp.activity.SignInActivity"
             android:exported="false"/>
         <activity
-            android:name="com.pro.foodorder.activity.ForgotPasswordActivity"
+            android:name="com.utt.foodorderapp.activity.ForgotPasswordActivity"
             android:exported="false"/>
         <activity
-            android:name="com.pro.foodorder.activity.ChangePasswordActivity"
+            android:name="com.utt.foodorderapp.activity.ChangePasswordActivity"
             android:exported="false"/>
         <activity
-            android:name="com.pro.foodorder.activity.AdminMainActivity"
+            android:name="com.utt.foodorderapp.activity.AdminMainActivity"
             android:exported="false"/>
         <activity
-            android:name="com.pro.foodorder.activity.OrderHistoryActivity"
+            android:name="com.utt.foodorderapp.activity.OrderHistoryActivity"
             android:exported="false"/>
         <activity
-            android:name="com.pro.foodorder.activity.AddFoodActivity"
+            android:name="com.utt.foodorderapp.activity.AddFoodActivity"
             android:exported="false"/>
         <activity
-            android:name="com.pro.foodorder.activity.AdminReportActivity"
+            android:name="com.utt.foodorderapp.activity.AdminReportActivity"
             android:exported="false"/>
     </application>
 
