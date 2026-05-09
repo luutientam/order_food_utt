@@ -13,7 +13,20 @@
           "package_name": "com.utt.foodorderapp"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "632436126877-laqe1e6hkinoke9daihf6ol61hiscger.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.utt.foodorderapp",
+            "certificate_hash": "983bce889df32a6f11cc987eb5e52fa32b655407"
+          }
+        },
+        {
+          "client_id": "632436126877-8c0q7lb0i6jp3rvm800vtn8dffcmlvu7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyB0ccdqy8AUecgbKMdrvjVHyTuhavNWr8w"
@@ -21,7 +34,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "632436126877-81ermdaapo82j1sc1ss1j09o5t06mai6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

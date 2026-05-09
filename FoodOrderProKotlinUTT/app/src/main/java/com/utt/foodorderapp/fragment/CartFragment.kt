@@ -81,24 +81,29 @@ class CartFragment : BaseFragment() {
     }
 
     private fun initDataFoodCart() {
-        mListFoodCart = ArrayList()
-        mListFoodCart = (cartViewModel.cartState.value as? UiState.Success<List<Food>>)?.data?.toMutableList() ?: ArrayList()
-        if (mListFoodCart == null || mListFoodCart!!.isEmpty()) {
-            return
+        val latestItems = (cartViewModel.cartState.value as? UiState.Success<List<Food>>)?.data ?: emptyList()
+        if (mListFoodCart == null) {
+            mListFoodCart = ArrayList()
         }
-        mCartAdapter = CartAdapter(mListFoodCart, object : IClickListener {
-            override fun clickDeteteFood(food: Food?, position: Int) {
-                deleteFoodFromCart(food, position)
-            }
+        mListFoodCart!!.clear()
+        mListFoodCart!!.addAll(latestItems)
+        if (mCartAdapter == null) {
+            mCartAdapter = CartAdapter(mListFoodCart, object : IClickListener {
+                override fun clickDeteteFood(food: Food?, position: Int) {
+                    deleteFoodFromCart(food, position)
+                }
 
-            override fun updateItemFood(food: Food?, position: Int) {
-                val selectedFood = food ?: return
-                cartViewModel.updateCartItem(selectedFood)
-                mCartAdapter!!.notifyItemChanged(position)
-                calculateTotalPrice()
-            }
-        })
-        mFragmentCartBinding!!.rcvFoodCart.adapter = mCartAdapter
+                override fun updateItemFood(food: Food?, position: Int) {
+                    val selectedFood = food ?: return
+                    cartViewModel.updateCartItem(selectedFood)
+                    mCartAdapter!!.notifyItemChanged(position)
+                    calculateTotalPrice()
+                }
+            })
+            mFragmentCartBinding!!.rcvFoodCart.adapter = mCartAdapter
+        } else {
+            mCartAdapter!!.notifyDataSetChanged()
+        }
         calculateTotalPrice()
     }
 
@@ -133,8 +138,10 @@ class CartFragment : BaseFragment() {
                 .setPositiveButton(getString(R.string.delete)) { _: DialogInterface?, _: Int ->
                     val selectedFood = food ?: return@setPositiveButton
                     cartViewModel.removeCartItem(selectedFood)
-                    mListFoodCart?.removeAt(position)
-                    mCartAdapter!!.notifyItemRemoved(position)
+                    if (position >= 0 && mListFoodCart != null && position < mListFoodCart!!.size) {
+                        mListFoodCart!!.removeAt(position)
+                        mCartAdapter!!.notifyItemRemoved(position)
+                    }
                     calculateTotalPrice()
                 }
                 .setNegativeButton(getString(R.string.dialog_cancel)) { dialog: DialogInterface, _: Int -> dialog.dismiss() }
@@ -473,13 +480,7 @@ class CartFragment : BaseFragment() {
     private fun observeViewModel() {
         cartViewModel.cartState.observe(viewLifecycleOwner) { state ->
             if (state is UiState.Success) {
-                mListFoodCart = state.data.toMutableList()
-                if (mCartAdapter == null) {
-                    displayListFoodInCart()
-                } else {
-                    mCartAdapter!!.notifyDataSetChanged()
-                    calculateTotalPrice()
-                }
+                initDataFoodCart()
             }
         }
         cartViewModel.orderState.observe(viewLifecycleOwner) { state ->
@@ -488,6 +489,7 @@ class CartFragment : BaseFragment() {
                 UiState.Loading -> Unit
                 is UiState.Success -> {
                     clearCart()
+                    cartViewModel.loadCart()
                     showToastMessage(activity, getString(R.string.msg_order_success))
                 }
                 is UiState.Error -> {

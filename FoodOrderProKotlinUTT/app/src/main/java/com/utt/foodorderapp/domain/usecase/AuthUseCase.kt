@@ -71,7 +71,12 @@ class AuthUseCase(
             }
             userRepository.getUserProfile(userId) { profile ->
                 if (profile != null) {
-                    callback(false, null, "google-account-exists")
+                    profile.resolveRole()
+                    if (!profile.isActive) {
+                        callback(false, null, "locked-account")
+                        return@getUserProfile
+                    }
+                    callback(true, profile, null)
                     return@getUserProfile
                 }
                 val user = User(userEmail)

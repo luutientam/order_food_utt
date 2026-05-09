@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.utt.foodorderapp.R
 import com.utt.foodorderapp.activity.ChangePasswordActivity
@@ -23,10 +25,14 @@ class ShipperAccountFragment : BaseFragment() {
         binding.layoutUpdateProfile.setOnClickListener { startActivity(requireActivity(), UpdateProfileActivity::class.java) }
         binding.layoutChangePassword.setOnClickListener { startActivity(requireActivity(), ChangePasswordActivity::class.java) }
         binding.layoutSignOut.setOnClickListener {
+            val currentActivity = requireActivity()
             FirebaseAuth.getInstance().signOut()
-            DataStoreManager.user = null
-            startActivity(requireActivity(), SignInActivity::class.java)
-            requireActivity().finishAffinity()
+            val googleClient = GoogleSignIn.getClient(currentActivity, GoogleSignInOptions.DEFAULT_SIGN_IN)
+            googleClient.signOut().addOnCompleteListener {
+                DataStoreManager.user = null
+                startActivity(currentActivity, SignInActivity::class.java)
+                currentActivity.finishAffinity()
+            }
         }
         return binding.root
     }

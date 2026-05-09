@@ -4,10 +4,12 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import com.google.firebase.auth.FirebaseAuth
 import com.utt.foodorderapp.constant.AppConfig
 import com.utt.foodorderapp.constant.GlobalFunction.gotoMainActivity
 import com.utt.foodorderapp.constant.GlobalFunction.startActivity
 import com.utt.foodorderapp.databinding.ActivitySplashBinding
+import com.utt.foodorderapp.prefs.DataStoreManager
 import com.utt.foodorderapp.prefs.DataStoreManager.Companion.user
 import com.utt.foodorderapp.utils.StringUtil.isEmpty
 
@@ -32,9 +34,11 @@ class SplashActivity : BaseActivity() {
     }
 
     private fun goToNextActivity() {
-        if (user != null && !isEmpty(user!!.email)) {
+        val hasFirebaseSession = FirebaseAuth.getInstance().currentUser != null
+        if (hasFirebaseSession && user != null && !isEmpty(user!!.email)) {
             gotoMainActivity(this)
         } else {
+            DataStoreManager.user = null
             startActivity(this, SignInActivity::class.java)
         }
         finish()

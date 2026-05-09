@@ -8,10 +8,13 @@ import androidx.activity.viewModels
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.CommonStatusCodes
 import com.google.android.gms.common.api.ApiException
+import com.google.firebase.auth.FirebaseAuth
 import com.utt.foodorderapp.R
 import com.utt.foodorderapp.constant.GlobalFunction.gotoMainActivity
 import com.utt.foodorderapp.constant.GlobalFunction.startActivity
+import com.utt.foodorderapp.data.repository.AuthRepository
 import com.utt.foodorderapp.databinding.ActivitySignInBinding
 import com.utt.foodorderapp.prefs.DataStoreManager
 import com.utt.foodorderapp.presentation.auth.AuthViewModel
@@ -41,7 +44,7 @@ class SignInActivity : BaseActivity() {
             googleSelectedRole = getSelectedRole()
             authViewModel.signInWithGoogle(idToken)
         } catch (exception: ApiException) {
-            showGoogleError()
+            showGoogleError(exception)
         }
     }
 
@@ -93,15 +96,34 @@ class SignInActivity : BaseActivity() {
     }
 
     private fun setupGoogleSignIn() {
-        if (GOOGLE_WEB_CLIENT_ID.isEmpty() || GOOGLE_WEB_CLIENT_ID.contains("YOUR_GOOGLE_WEB_CLIENT_ID")) {
+        val webClientId = resolveGoogleWebClientId()
+        if (webClientId.isEmpty()) {
             googleSignInClient = null
             return
         }
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(GOOGLE_WEB_CLIENT_ID)
+                .requestIdToken(webClientId)
                 .requestEmail()
                 .build()
         googleSignInClient = GoogleSignIn.getClient(this, gso)
+    }
+
+    private fun resolveGoogleWebClientId(): String {
+        val defaultWebClientId = resolveStringByName("default_web_client_id")
+        if (defaultWebClientId.isNotEmpty()) {
+            return defaultWebClientId
+        }
+        val manualWebClientId = resolveStringByName("google_web_client_id")
+        if (manualWebClientId.isNotEmpty() && !manualWebClientId.contains("YOUR_GOOGLE_WEB_CLIENT_ID")) {
+            return manualWebClientId
+        }
+        return ""
+    }
+
+    private fun resolveStringByName(name: String): String {
+        val stringResId = resources.getIdentifier(name, "string", packageName)
+        if (stringResId == 0) return ""
+        return getString(stringResId).trim()
     }
 
     private fun onClickGoogleSignIn() {
@@ -110,7 +132,7 @@ class SignInActivity : BaseActivity() {
             showGoogleNotConfigured()
             return
         }
-        googleSignInLauncher.launch(client.signInIntent)
+        launchGoogleChooser(client)
     }
 
     private fun observeSignInState() {
@@ -123,13 +145,14 @@ class SignInActivity : BaseActivity() {
                     if (state.message == "locked-account") {
                         Toast.makeText(this@SignInActivity, getString(R.string.msg_account_locked), Toast.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(this@SignInActivity, getString(R.string.msg_sign_in_error), Toast.LENGTH_SHORT).show()
+                        showAuthError(state.message, isSignUp = false)
                     }
                 }
                 is UiState.Success -> {
                     showProgressDialog(false)
                     val selectedRole = mActivitySignInBinding!!.btnSignIn.tag as? String ?: com.utt.foodorderapp.model.User.ROLE_CUSTOMER
                     if (state.data.role != selectedRole) {
+                        clearCurrentSession()
                         Toast.makeText(this@SignInActivity, getString(R.string.msg_sign_in_wrong_role), Toast.LENGTH_SHORT).show()
                         return@observe
                     }
@@ -151,13 +174,14 @@ class SignInActivity : BaseActivity() {
                     if (state.message == "locked-account") {
                         Toast.makeText(this@SignInActivity, getString(R.string.msg_account_locked), Toast.LENGTH_SHORT).show()
                     } else {
-                        showGoogleError()
+                        showAuthError(state.message, isSignUp = false)
                     }
                 }
                 is UiState.Success -> {
                     showProgressDialog(false)
                     val selectedRole = googleSelectedRole
                     if (state.data.role != selectedRole) {
+                        clearCurrentSession()
                         Toast.makeText(this@SignInActivity, getString(R.string.msg_sign_in_wrong_role), Toast.LENGTH_SHORT).show()
                         return@observe
                     }
@@ -170,16 +194,65 @@ class SignInActivity : BaseActivity() {
     }
 
     private fun showGoogleNotConfigured() {
-        Toast.makeText(this@SignInActivity, GOOGLE_NOT_CONFIGURED_MESSAGE, Toast.LENGTH_SHORT).show()
+        val message = resolveStringByName("msg_google_not_configured").ifEmpty { GOOGLE_NOT_CONFIGURED_MESSAGE }
+        Toast.makeText(this@SignInActivity, message, Toast.LENGTH_SHORT).show()
     }
 
-    private fun showGoogleError() {
-        Toast.makeText(this@SignInActivity, GOOGLE_SIGN_IN_ERROR_MESSAGE, Toast.LENGTH_SHORT).show()
+    private fun showGoogleError(exception: ApiException? = null) {
+        val message = when (exception?.statusCode) {
+            CommonStatusCodes.DEVELOPER_ERROR -> GOOGLE_DEVELOPER_ERROR_MESSAGE
+            12500 -> GOOGLE_OAUTH_CONFIG_ERROR_MESSAGE
+            12501 -> GOOGLE_SIGN_IN_CANCELLED_MESSAGE
+            else -> resolveStringByName("msg_google_sign_in_error").ifEmpty { GOOGLE_SIGN_IN_ERROR_MESSAGE }
+        }
+        Toast.makeText(this@SignInActivity, message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun showAuthError(error: String, isSignUp: Boolean) {
+        val message = when (error) {
+            AuthRepository.ERROR_INVALID_EMAIL -> getString(R.string.msg_email_invalid)
+            AuthRepository.ERROR_EMAIL_ALREADY_IN_USE -> resolveStringByName("msg_sign_up_email_exists")
+                    .ifEmpty { getString(R.string.msg_sign_up_error) }
+            AuthRepository.ERROR_INVALID_CREDENTIALS -> if (isSignUp) {
+                getString(R.string.msg_sign_up_error)
+            } else {
+                resolveStringByName("msg_sign_in_invalid_credentials").ifEmpty { getString(R.string.msg_sign_in_error) }
+            }
+            AuthRepository.ERROR_USER_DISABLED -> getString(R.string.msg_account_locked)
+            AuthRepository.ERROR_TOO_MANY_REQUESTS -> resolveStringByName("msg_auth_too_many_requests")
+                    .ifEmpty { getString(R.string.msg_sign_in_error) }
+            AuthRepository.ERROR_NETWORK -> resolveStringByName("msg_auth_network_error")
+                    .ifEmpty { getString(R.string.msg_sign_in_error) }
+            else -> ""
+        }
+        if (message.isNotEmpty()) {
+            Toast.makeText(this@SignInActivity, message, Toast.LENGTH_SHORT).show()
+            return
+        }
+        if (error.length < 120) {
+            Toast.makeText(this@SignInActivity, error, Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this@SignInActivity, getString(R.string.msg_sign_in_error), Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun launchGoogleChooser(client: GoogleSignInClient) {
+        clearCurrentSession()
+        client.signOut().addOnCompleteListener {
+            googleSignInLauncher.launch(client.signInIntent)
+        }
+    }
+
+    private fun clearCurrentSession() {
+        FirebaseAuth.getInstance().signOut()
+        DataStoreManager.user = null
     }
 
     companion object {
-        private const val GOOGLE_WEB_CLIENT_ID = "YOUR_GOOGLE_WEB_CLIENT_ID"
         private const val GOOGLE_NOT_CONFIGURED_MESSAGE = "Google Sign-In chua cau hinh"
         private const val GOOGLE_SIGN_IN_ERROR_MESSAGE = "Dang nhap Google that bai"
+        private const val GOOGLE_DEVELOPER_ERROR_MESSAGE = "Google Sign-In loi cau hinh SHA-1/SHA-256 hoac client ID"
+        private const val GOOGLE_OAUTH_CONFIG_ERROR_MESSAGE = "Google Sign-In loi OAuth. Hay kiem tra Firebase Auth + google-services.json"
+        private const val GOOGLE_SIGN_IN_CANCELLED_MESSAGE = "Ban da huy dang nhap Google"
     }
 }

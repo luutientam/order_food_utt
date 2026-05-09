@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.utt.foodorderapp.R
 import com.utt.foodorderapp.activity.ChangePasswordActivity
@@ -49,9 +51,13 @@ class AccountFragment : BaseFragment() {
         if (activity == null) {
             return
         }
+        val currentActivity = activity ?: return
         FirebaseAuth.getInstance().signOut()
-        user = null
-        startActivity(activity!!, SignInActivity::class.java)
-        activity!!.finishAffinity()
+        val googleClient = GoogleSignIn.getClient(currentActivity, GoogleSignInOptions.DEFAULT_SIGN_IN)
+        googleClient.signOut().addOnCompleteListener {
+            user = null
+            startActivity(currentActivity, SignInActivity::class.java)
+            currentActivity.finishAffinity()
+        }
     }
 }

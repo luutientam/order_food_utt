@@ -164,8 +164,13 @@
     <string name="msg_email_invalid">Email không hợp lệ, vui lòng nhập lại</string>
     <string name="msg_email_invalid_admin">Email dành cho quản trị viên cần có định dạng …@admin.com</string>
     <string name="msg_email_invalid_user">Email sai định dạng dành cho người dùng</string>
+    <string name="msg_password_too_short">Mật khẩu phải có ít nhất 6 ký tự</string>
     <string name="msg_sign_up_error">Đăng ký không thành công, vui lòng thử lại</string>
     <string name="msg_sign_in_error">Đăng nhập không thành công, vui lòng thử lại</string>
+    <string name="msg_sign_in_invalid_credentials">Sai email hoặc mật khẩu</string>
+    <string name="msg_sign_up_email_exists">Email đã được đăng ký, vui lòng đăng nhập</string>
+    <string name="msg_auth_too_many_requests">Bạn thao tác quá nhanh, vui lòng thử lại sau</string>
+    <string name="msg_auth_network_error">Lỗi kết nối mạng, vui lòng thử lại</string>
     <string name="msg_account_locked">Tài khoản đã bị khóa</string>
     <string name="msg_sign_in_wrong_role">Vai trò đăng nhập không đúng với tài khoản</string>
 
@@ -249,5 +254,6 @@
     <string name="msg_google_sign_up_error">Đăng ký Google thất bại</string>
     <string name="msg_google_account_exists">Tài khoản Google đã tồn tại, vui lòng đăng nhập</string>
     <string name="msg_google_not_configured">Google Sign-In chưa cấu hình. Hãy thêm Web client ID trong strings.xml</string>
+    <string name="msg_google_admin_not_supported">Không hỗ trợ đăng ký Google cho tài khoản quản trị</string>
     <string name="google_web_client_id">YOUR_GOOGLE_WEB_CLIENT_ID</string>
 </resources>

@@ -114,6 +114,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/define_dimen_10"
             android:background="@drawable/bg_white_corner_6_border_gray"
+            android:drawableStart="@drawable/ic_google"
+            android:drawablePadding="@dimen/define_dimen_10"
+            android:gravity="center"
             android:text="@string/sign_up_google"
             android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/text_size_small" />
