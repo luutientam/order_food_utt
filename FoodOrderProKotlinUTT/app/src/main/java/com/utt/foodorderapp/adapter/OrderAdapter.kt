@@ -2,7 +2,9 @@ package com.utt.foodorderapp.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.utt.foodorderapp.R
 import com.utt.foodorderapp.adapter.OrderAdapter.OrderViewHolder
@@ -12,7 +14,12 @@ import com.utt.foodorderapp.model.Order
 import com.utt.foodorderapp.utils.DateTimeUtils.convertTimeStampToDate
 
 class OrderAdapter(private var mContext: Context?,
-                   private val mListOrder: List<Order>?) : RecyclerView.Adapter<OrderViewHolder>() {
+                   private val mListOrder: List<Order>?,
+                   private val mICancelOrderListener: ICancelOrderListener) : RecyclerView.Adapter<OrderViewHolder>() {
+
+    interface ICancelOrderListener {
+        fun cancelOrder(order: Order)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderViewHolder {
         val itemOrderBinding = ItemOrderBinding.inflate(LayoutInflater.from(parent.context),
@@ -22,11 +29,7 @@ class OrderAdapter(private var mContext: Context?,
 
     override fun onBindViewHolder(holder: OrderViewHolder, position: Int) {
         val order = mListOrder!![position]
-        if (order.isCompleted) {
-            holder.mItemOrderBinding.layoutItem.setBackgroundColor(mContext!!.resources.getColor(R.color.black_overlay))
-        } else {
-            holder.mItemOrderBinding.layoutItem.setBackgroundColor(mContext!!.resources.getColor(R.color.white))
-        }
+        holder.mItemOrderBinding.layoutItem.setBackgroundColor(holder.itemView.context.resources.getColor(R.color.white))
         holder.mItemOrderBinding.tvId.text = order.id.toString()
         holder.mItemOrderBinding.tvName.text = order.name
         holder.mItemOrderBinding.tvPhone.text = order.phone
@@ -34,12 +37,44 @@ class OrderAdapter(private var mContext: Context?,
         holder.mItemOrderBinding.tvMenu.text = order.foods
         holder.mItemOrderBinding.tvDate.text = convertTimeStampToDate(order.id)
         val strAmount: String = "" + order.amount + AppConfig.CURRENCY
-        holder.mItemOrderBinding.tvTotalAmount.text = strAmount
-        var paymentMethod = ""
-        if (AppConfig.TYPE_PAYMENT_CASH == order.payment) {
-            paymentMethod = AppConfig.PAYMENT_METHOD_CASH
+        val amountDisplay = if (order.discountAmount > 0) {
+            "$strAmount (giam ${order.discountAmount}${AppConfig.CURRENCY})"
+        } else {
+            strAmount
         }
-        holder.mItemOrderBinding.tvPayment.text = paymentMethod
+        holder.mItemOrderBinding.tvTotalAmount.text = amountDisplay
+        val paymentMethod = if (AppConfig.TYPE_PAYMENT_ONLINE == order.payment) {
+            AppConfig.PAYMENT_METHOD_ONLINE
+        } else {
+            AppConfig.PAYMENT_METHOD_CASH
+        }
+        val paymentStatus = if (order.paymentStatus == Order.PAYMENT_STATUS_PAID) {
+            holder.itemView.context.getString(R.string.payment_status_paid)
+        } else {
+            holder.itemView.context.getString(R.string.payment_status_unpaid)
+        }
+        holder.mItemOrderBinding.tvPayment.text = "$paymentMethod - $paymentStatus"
+        val tvStatus = holder.mItemOrderBinding.root.findViewById<TextView>(R.id.tv_status)
+        val layoutTransaction = holder.mItemOrderBinding.root.findViewById<View>(R.id.layout_transaction)
+        val tvTransaction = holder.mItemOrderBinding.root.findViewById<TextView>(R.id.tv_transaction)
+        val tvShipperLocation = holder.mItemOrderBinding.root.findViewById<TextView>(R.id.tv_shipper_location)
+        val tvCancelOrder = holder.mItemOrderBinding.root.findViewById<TextView>(R.id.tv_cancel_order)
+        tvStatus.text = buildStatusText(order)
+        if (AppConfig.TYPE_PAYMENT_ONLINE == order.payment && !order.paymentTransactionId.isNullOrEmpty()) {
+            layoutTransaction.visibility = View.VISIBLE
+            tvTransaction.text = order.paymentTransactionId
+        } else {
+            layoutTransaction.visibility = View.GONE
+            tvTransaction.text = ""
+        }
+        tvShipperLocation.text = getShipperLocationText(order)
+        if (order.isCancelableByUser()) {
+            tvCancelOrder.visibility = View.VISIBLE
+            tvCancelOrder.setOnClickListener { mICancelOrderListener.cancelOrder(order) }
+        } else {
+            tvCancelOrder.visibility = View.GONE
+            tvCancelOrder.setOnClickListener(null)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -48,6 +83,35 @@ class OrderAdapter(private var mContext: Context?,
 
     fun release() {
         mContext = null
+    }
+
+    private fun getStatusText(order: Order): String {
+        val context = mContext ?: return Order.STATUS_NEW.toString()
+        return when (order.getStatusValue()) {
+            Order.STATUS_NEW -> context.getString(R.string.status_new)
+            Order.STATUS_PREPARING -> context.getString(R.string.status_preparing)
+            Order.STATUS_DELIVERING -> context.getString(R.string.status_process)
+            Order.STATUS_SUCCESS -> context.getString(R.string.status_success)
+            Order.STATUS_CANCEL -> context.getString(R.string.status_cancel)
+            Order.STATUS_FAIL -> context.getString(R.string.status_fail)
+            else -> context.getString(R.string.status_new)
+        }
+    }
+
+    private fun buildStatusText(order: Order): String {
+        val baseStatus = getStatusText(order)
+        if (order.getStatusValue() != Order.STATUS_FAIL || order.issueNote.isNullOrBlank()) {
+            return baseStatus
+        }
+        return "$baseStatus\nSự cố: ${order.issueNote}"
+    }
+
+    private fun getShipperLocationText(order: Order): String {
+        val context = mContext ?: return "${order.shipperLat}, ${order.shipperLng}"
+        if (order.shipperLat == 0.0 && order.shipperLng == 0.0) {
+            return context.getString(R.string.shipper_location_unknown)
+        }
+        return "${order.shipperLat}, ${order.shipperLng}"
     }
 
     class OrderViewHolder(val mItemOrderBinding: ItemOrderBinding) : RecyclerView.ViewHolder(mItemOrderBinding.root)

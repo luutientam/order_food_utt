@@ -39,6 +39,7 @@ class AdminHomeFragment : BaseFragment() {
     private var mFragmentAdminHomeBinding: FragmentAdminHomeBinding? = null
     private var mListFood: MutableList<Food>? = null
     private var mAdminFoodAdapter: AdminFoodAdapter? = null
+    private var mFoodChildEventListener: ChildEventListener? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         mFragmentAdminHomeBinding = FragmentAdminHomeBinding.inflate(inflater, container, false)
@@ -96,13 +97,15 @@ class AdminHomeFragment : BaseFragment() {
     }
 
     private fun onClickAddFood() {
-        startActivity(activity!!, AddFoodActivity::class.java)
+        val currentActivity = activity ?: return
+        startActivity(currentActivity, AddFoodActivity::class.java)
     }
 
     private fun onClickEditFood(food: Food?) {
+        val currentActivity = activity ?: return
         val bundle = Bundle()
         bundle.putSerializable(AppConfig.KEY_INTENT_FOOD_OBJECT, food)
-        startActivity(activity!!, AddFoodActivity::class.java, bundle)
+        startActivity(currentActivity, AddFoodActivity::class.java, bundle)
     }
 
     private fun deleteFoodItem(food: Food?) {
@@ -124,22 +127,24 @@ class AdminHomeFragment : BaseFragment() {
     }
 
     private fun searchFood() {
-        val strKey = mFragmentAdminHomeBinding!!.edtSearchName.text.toString().trim { it <= ' ' }
+        val binding = mFragmentAdminHomeBinding ?: return
+        val strKey = binding.edtSearchName.text.toString().trim { it <= ' ' }
         if (mListFood != null) {
             mListFood!!.clear()
         } else {
             mListFood = ArrayList()
         }
         getListFood(strKey)
-        hideSoftKeyboard(activity!!)
+        activity?.let { hideSoftKeyboard(it) }
     }
 
     private fun getListFood(keyword: String?) {
-        if (activity == null) {
-            return
+        val currentActivity = activity ?: return
+        val foodReference = ControllerApplication[currentActivity].foodDatabaseReference
+        mFoodChildEventListener?.let { listener ->
+            foodReference.removeEventListener(listener)
         }
-        ControllerApplication[activity!!].foodDatabaseReference
-                .addChildEventListener(object : ChildEventListener {
+        mFoodChildEventListener = object : ChildEventListener {
                     @SuppressLint("NotifyDataSetChanged")
                     override fun onChildAdded(dataSnapshot: DataSnapshot, s: String?) {
                         val food = dataSnapshot.getValue(Food::class.java)
@@ -149,8 +154,11 @@ class AdminHomeFragment : BaseFragment() {
                         if (isEmpty(keyword)) {
                             mListFood!!.add(0, food)
                         } else {
-                            if (getTextSearch(food.name).toLowerCase(Locale.getDefault()).trim { it <= ' ' }
-                                            .contains(getTextSearch(keyword).toLowerCase(Locale.getDefault()).trim { it <= ' ' })) {
+                            val searchKey = getTextSearch(keyword).lowercase(Locale.getDefault()).trim { it <= ' ' }
+                            val foodName = getTextSearch(food.name).lowercase(Locale.getDefault()).trim { it <= ' ' }
+                            val categoryName = getTextSearch(food.categoryName).lowercase(Locale.getDefault()).trim { it <= ' ' }
+                            val restaurantName = getTextSearch(food.restaurantName).lowercase(Locale.getDefault()).trim { it <= ' ' }
+                            if (foodName.contains(searchKey) || categoryName.contains(searchKey) || restaurantName.contains(searchKey)) {
                                 mListFood!!.add(0, food)
                             }
                         }
@@ -189,6 +197,18 @@ class AdminHomeFragment : BaseFragment() {
 
                     override fun onChildMoved(dataSnapshot: DataSnapshot, s: String?) {}
                     override fun onCancelled(databaseError: DatabaseError) {}
-                })
+                }
+        foodReference.addChildEventListener(mFoodChildEventListener!!)
+    }
+
+    override fun onDestroyView() {
+        val currentActivity = activity
+        if (currentActivity != null && mFoodChildEventListener != null) {
+            ControllerApplication[currentActivity].foodDatabaseReference.removeEventListener(mFoodChildEventListener!!)
+        }
+        mFoodChildEventListener = null
+        mFragmentAdminHomeBinding = null
+        mAdminFoodAdapter = null
+        super.onDestroyView()
     }
 }

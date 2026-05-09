@@ -1,0 +1,42 @@
+{
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null",
+    "food": {
+      ".read": "auth != null",
+      ".write": "auth != null && root.child('users/' + auth.uid + '/role').val() === 'admin'"
+    },
+    "feedback": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "reviews": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "restaurants": {
+      ".read": "auth != null",
+      ".write": "auth != null && root.child('users/' + auth.uid + '/role').val() === 'admin'"
+    },
+    "categories": {
+      ".read": "auth != null",
+      ".write": "auth != null && root.child('users/' + auth.uid + '/role').val() === 'admin'"
+    },
+    "promotions": {
+      ".read": "auth != null",
+      ".write": "auth != null && root.child('users/' + auth.uid + '/role').val() === 'admin'"
+    },
+    "users": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('users/' + auth.uid + '/role').val() === 'admin')",
+        ".write": "auth != null && (auth.uid === $uid || root.child('users/' + auth.uid + '/role').val() === 'admin')"
+      }
+    },
+    "booking": {
+      "$orderId": {
+        ".read": "auth != null && (root.child('users/' + auth.uid + '/role').val() === 'admin' || data.child('customerId').val() === auth.uid || data.child('email').val() === auth.token.email || data.child('shipperId').val() === auth.uid)",
+        ".write": "auth != null && ((!data.exists() && newData.child('customerId').val() === auth.uid && newData.child('status').val() === 0) || (root.child('users/' + auth.uid + '/role').val() === 'admin') || ((data.child('customerId').val() === auth.uid || data.child('email').val() === auth.token.email) && data.child('status').val() === 0 && newData.child('status').val() === 4) || (root.child('users/' + auth.uid + '/role').val() === 'shipper' && data.child('status').val() === 1 && data.child('shipperId').val() === null && newData.child('shipperId').val() === auth.uid && newData.child('status').val() === 2) || (root.child('users/' + auth.uid + '/role').val() === 'shipper' && data.child('shipperId').val() === auth.uid && data.child('status').val() === 2 && newData.child('shipperId').val() === null && newData.child('status').val() === 1) || (root.child('users/' + auth.uid + '/role').val() === 'shipper' && data.child('shipperId').val() === auth.uid && data.child('status').val() === 2 && (newData.child('status').val() === 3 || newData.child('status').val() === 5)) || (root.child('users/' + auth.uid + '/role').val() === 'shipper' && data.child('shipperId').val() === auth.uid && data.child('status').val() === 2 && newData.child('shipperId').val() === auth.uid && newData.child('status').val() === 2))"
+      }
+    }
+  }
+}

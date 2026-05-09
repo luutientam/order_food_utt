@@ -1,0 +1,37 @@
+package com.utt.foodorderapp.fragment.shipper
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import com.google.firebase.auth.FirebaseAuth
+import com.utt.foodorderapp.R
+import com.utt.foodorderapp.activity.ChangePasswordActivity
+import com.utt.foodorderapp.activity.ShipperMainActivity
+import com.utt.foodorderapp.activity.SignInActivity
+import com.utt.foodorderapp.activity.UpdateProfileActivity
+import com.utt.foodorderapp.constant.GlobalFunction.startActivity
+import com.utt.foodorderapp.databinding.FragmentAccountBinding
+import com.utt.foodorderapp.fragment.BaseFragment
+import com.utt.foodorderapp.prefs.DataStoreManager
+
+class ShipperAccountFragment : BaseFragment() {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        val binding = FragmentAccountBinding.inflate(inflater, container, false)
+        binding.tvEmail.text = DataStoreManager.user?.email
+        binding.layoutOrderHistory.visibility = View.GONE
+        binding.layoutUpdateProfile.setOnClickListener { startActivity(requireActivity(), UpdateProfileActivity::class.java) }
+        binding.layoutChangePassword.setOnClickListener { startActivity(requireActivity(), ChangePasswordActivity::class.java) }
+        binding.layoutSignOut.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            DataStoreManager.user = null
+            startActivity(requireActivity(), SignInActivity::class.java)
+            requireActivity().finishAffinity()
+        }
+        return binding.root
+    }
+
+    override fun initToolbar() {
+        (activity as? ShipperMainActivity)?.setToolBar(getString(R.string.account))
+    }
+}

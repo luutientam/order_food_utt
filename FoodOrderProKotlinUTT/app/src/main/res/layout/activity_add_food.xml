@@ -66,6 +66,48 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/define_dimen_10"
+                android:text="@string/catalog_restaurant_name"
+                android:textColor="@color/textColorSecondary"
+                android:textSize="@dimen/text_size_small" />
+
+            <EditText
+                android:id="@+id/edt_restaurant_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/define_dimen_4"
+                android:background="@drawable/bg_white_corner_6_border_gray"
+                android:hint="@string/hint_restaurant_name"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:padding="@dimen/define_dimen_12"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/text_size_small" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/define_dimen_10"
+                android:text="@string/catalog_category_name"
+                android:textColor="@color/textColorSecondary"
+                android:textSize="@dimen/text_size_small" />
+
+            <EditText
+                android:id="@+id/edt_category_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/define_dimen_4"
+                android:background="@drawable/bg_white_corner_6_border_gray"
+                android:hint="@string/hint_category_name"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:padding="@dimen/define_dimen_12"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/text_size_small" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_small"
                 android:textColor="@color/textColorSecondary"
                 android:layout_marginTop="@dimen/define_dimen_10"

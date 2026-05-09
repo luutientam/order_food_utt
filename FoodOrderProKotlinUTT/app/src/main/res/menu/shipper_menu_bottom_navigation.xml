@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_pick_order"
+        android:icon="@drawable/ic_nav_order"
+        android:title="@string/assign_shipper" />
+
+    <item
+        android:id="@+id/nav_my_order"
+        android:icon="@drawable/ic_nav_home"
+        android:title="@string/my_delivery_orders" />
+
+    <item
+        android:id="@+id/nav_account"
+        android:icon="@drawable/ic_nav_account"
+        android:title="@string/account" />
+
+</menu>

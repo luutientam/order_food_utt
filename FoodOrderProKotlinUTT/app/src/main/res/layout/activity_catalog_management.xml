@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/layout_toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/define_dimen_12">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_restaurant"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/edt_restaurant_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/define_dimen_8"
+                android:hint="@string/hint_restaurant_name" />
+
+            <TextView
+                android:id="@+id/tv_add_restaurant"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/define_dimen_36"
+                android:layout_marginTop="@dimen/define_dimen_8"
+                android:background="@drawable/bg_main_corner_8"
+                android:gravity="center"
+                android:text="@string/add_restaurant"
+                android:textColor="@color/white" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcv_restaurants"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/define_dimen_220"
+                android:layout_marginTop="@dimen/define_dimen_10" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/define_dimen_16"
+                android:background="@color/dividerColor" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/define_dimen_12"
+                android:text="@string/add_category"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/edt_category_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/define_dimen_8"
+                android:hint="@string/hint_category_name" />
+
+            <TextView
+                android:id="@+id/tv_add_category"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/define_dimen_36"
+                android:layout_marginTop="@dimen/define_dimen_8"
+                android:background="@drawable/bg_main_corner_8"
+                android:gravity="center"
+                android:text="@string/add_category"
+                android:textColor="@color/white" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcv_categories"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/define_dimen_220"
+                android:layout_marginTop="@dimen/define_dimen_10" />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

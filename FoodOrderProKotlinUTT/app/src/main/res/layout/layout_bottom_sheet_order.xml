@@ -51,15 +51,37 @@
         android:text="@string/payment_method"
         android:textSize="@dimen/text_size_small" />
 
-    <TextView
+    <RadioGroup
+        android:id="@+id/rg_payment_method"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:text="@string/payment_method_cash"
-        android:background="@drawable/bg_white_shape_border_gray"
-        android:padding="@dimen/define_dimen_12"
         android:layout_marginTop="@dimen/define_dimen_5"
-        android:textSize="@dimen/text_size_small" />
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/rdb_payment_cash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_white_shape_border_gray"
+            android:buttonTint="@color/colorPrimary"
+            android:checked="true"
+            android:padding="@dimen/define_dimen_12"
+            android:text="@string/payment_method_cash"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_small" />
+
+        <RadioButton
+            android:id="@+id/rdb_payment_online"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/define_dimen_8"
+            android:background="@drawable/bg_white_shape_border_gray"
+            android:buttonTint="@color/colorPrimary"
+            android:padding="@dimen/define_dimen_12"
+            android:text="@string/payment_method_online"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_small" />
+    </RadioGroup>
 
     <TextView
         android:layout_width="wrap_content"
@@ -117,6 +139,75 @@
         android:layout_marginTop="@dimen/define_dimen_5"
         android:imeOptions="actionDone"
         android:textSize="@dimen/text_size_small" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/define_dimen_16"
+        android:text="@string/promotion_code"
+        android:textSize="@dimen/text_size_small" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/define_dimen_6"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edt_promotion_code"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_white_shape_border_gray"
+            android:hint="@string/hint_promotion_code"
+            android:padding="@dimen/define_dimen_10"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_small" />
+
+        <TextView
+            android:id="@+id/tv_apply_promotion"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/define_dimen_8"
+            android:background="@drawable/bg_main_corner_8"
+            android:gravity="center"
+            android:paddingStart="@dimen/define_dimen_14"
+            android:paddingEnd="@dimen/define_dimen_14"
+            android:text="@string/action_apply"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_small"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_discount_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/define_dimen_6"
+        android:text="@string/promotion_not_applied"
+        android:textColor="@color/textColorSecondary"
+        android:textSize="@dimen/text_size_small" />
+
+    <TextView
+        android:id="@+id/tv_best_promotion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/define_dimen_6"
+        android:text="@string/promotion_best_hint_default"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/text_size_small" />
+
+    <TextView
+        android:id="@+id/tv_select_promotion"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/define_dimen_40"
+        android:layout_marginTop="@dimen/define_dimen_8"
+        android:background="@drawable/bg_main_corner_8"
+        android:gravity="center"
+        android:text="@string/action_select_voucher"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_small"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"

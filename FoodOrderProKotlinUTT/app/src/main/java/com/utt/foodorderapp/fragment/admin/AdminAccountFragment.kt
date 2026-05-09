@@ -7,9 +7,13 @@ import android.view.ViewGroup
 import com.google.firebase.auth.FirebaseAuth
 import com.utt.foodorderapp.R
 import com.utt.foodorderapp.activity.AdminMainActivity
+import com.utt.foodorderapp.activity.AdminPromotionManagementActivity
 import com.utt.foodorderapp.activity.AdminReportActivity
+import com.utt.foodorderapp.activity.AdminUserManagementActivity
+import com.utt.foodorderapp.activity.CatalogManagementActivity
 import com.utt.foodorderapp.activity.ChangePasswordActivity
 import com.utt.foodorderapp.activity.SignInActivity
+import com.utt.foodorderapp.activity.UpdateProfileActivity
 import com.utt.foodorderapp.constant.GlobalFunction.startActivity
 import com.utt.foodorderapp.databinding.FragmentAdminAccountBinding
 import com.utt.foodorderapp.fragment.BaseFragment
@@ -20,6 +24,10 @@ class AdminAccountFragment : BaseFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val fragmentAdminAccountBinding = FragmentAdminAccountBinding.inflate(inflater, container, false)
         fragmentAdminAccountBinding.tvEmail.text = user!!.email
+        fragmentAdminAccountBinding.layoutUpdateProfile.setOnClickListener { onClickUpdateProfile() }
+        fragmentAdminAccountBinding.layoutManageAccounts.setOnClickListener { onClickManageAccounts() }
+        fragmentAdminAccountBinding.layoutManageCatalog.setOnClickListener { onClickManageCatalog() }
+        fragmentAdminAccountBinding.layoutManagePromotion.setOnClickListener { onClickManagePromotion() }
         fragmentAdminAccountBinding.layoutReport.setOnClickListener { onClickReport() }
         fragmentAdminAccountBinding.layoutSignOut.setOnClickListener { onClickSignOut() }
         fragmentAdminAccountBinding.layoutChangePassword.setOnClickListener { onClickChangePassword() }
@@ -34,6 +42,22 @@ class AdminAccountFragment : BaseFragment() {
 
     private fun onClickReport() {
         startActivity(activity!!, AdminReportActivity::class.java)
+    }
+
+    private fun onClickUpdateProfile() {
+        startActivity(activity!!, UpdateProfileActivity::class.java)
+    }
+
+    private fun onClickManageAccounts() {
+        startActivity(activity!!, AdminUserManagementActivity::class.java)
+    }
+
+    private fun onClickManageCatalog() {
+        startActivity(activity!!, CatalogManagementActivity::class.java)
+    }
+
+    private fun onClickManagePromotion() {
+        startActivity(activity!!, AdminPromotionManagementActivity::class.java)
     }
 
     private fun onClickChangePassword() {

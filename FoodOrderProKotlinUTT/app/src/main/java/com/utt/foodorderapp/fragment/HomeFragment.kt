@@ -11,12 +11,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
-import com.utt.foodorderapp.ControllerApplication
 import com.utt.foodorderapp.R
 import com.utt.foodorderapp.activity.FoodDetailActivity
 import com.utt.foodorderapp.activity.MainActivity
@@ -30,6 +27,8 @@ import com.utt.foodorderapp.constant.GlobalFunction.startActivity
 import com.utt.foodorderapp.databinding.FragmentHomeBinding
 import com.utt.foodorderapp.listener.IOnClickFoodItemListener
 import com.utt.foodorderapp.model.Food
+import com.utt.foodorderapp.presentation.common.UiState
+import com.utt.foodorderapp.presentation.home.HomeViewModel
 import com.utt.foodorderapp.utils.StringUtil.isEmpty
 import java.util.*
 
@@ -38,33 +37,36 @@ class HomeFragment : BaseFragment() {
     private var mFragmentHomeBinding: FragmentHomeBinding? = null
     private var mListFood: MutableList<Food>? = null
     private var mListFoodPopular: MutableList<Food>? = null
+    private val homeViewModel: HomeViewModel by viewModels()
     private val mHandlerBanner = Handler(Looper.getMainLooper())
+    private var pageChangeCallback: OnPageChangeCallback? = null
     private val mRunnableBanner = Runnable {
-        if (mListFoodPopular == null || mListFoodPopular!!.isEmpty()) {
+        val binding = mFragmentHomeBinding ?: return@Runnable
+        if (mListFoodPopular.isNullOrEmpty()) {
             return@Runnable
         }
-        if (mFragmentHomeBinding!!.viewpager2.currentItem == mListFoodPopular!!.size - 1) {
-            mFragmentHomeBinding!!.viewpager2.currentItem = 0
+        if (binding.viewpager2.currentItem == mListFoodPopular!!.size - 1) {
+            binding.viewpager2.currentItem = 0
             return@Runnable
         }
-        mFragmentHomeBinding!!.viewpager2.currentItem = mFragmentHomeBinding!!.viewpager2.currentItem + 1
+        binding.viewpager2.currentItem = binding.viewpager2.currentItem + 1
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         mFragmentHomeBinding = FragmentHomeBinding.inflate(inflater, container, false)
-        getListFoodFromFirebase("")
+        observeViewModel()
+        homeViewModel.loadFoods("")
         initListener()
         return mFragmentHomeBinding!!.root
     }
 
     override fun initToolbar() {
-        if (activity != null) {
-            (activity as MainActivity?)!!.setToolBar(true, getString(R.string.home))
-        }
+        (activity as? MainActivity)?.setToolBar(true, getString(R.string.home))
     }
 
     private fun initListener() {
-        mFragmentHomeBinding!!.edtSearchName.addTextChangedListener(object : TextWatcher {
+        val binding = mFragmentHomeBinding ?: return
+        binding.edtSearchName.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
                 // Do nothing
             }
@@ -81,8 +83,8 @@ class HomeFragment : BaseFragment() {
                 }
             }
         })
-        mFragmentHomeBinding!!.imgSearch.setOnClickListener { searchFood() }
-        mFragmentHomeBinding!!.edtSearchName.setOnEditorActionListener { _: TextView?, actionId: Int, _: KeyEvent? ->
+        binding.imgSearch.setOnClickListener { searchFood() }
+        binding.edtSearchName.setOnEditorActionListener { _: TextView?, actionId: Int, _: KeyEvent? ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 searchFood()
                 return@setOnEditorActionListener true
@@ -92,31 +94,35 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun displayListFoodPopular() {
+        val binding = mFragmentHomeBinding ?: return
         val mFoodPopularAdapter = FoodPopularAdapter(getListFoodPopular(), object : IOnClickFoodItemListener {
             override fun onClickItemFood(food: Food) {
                 goToFoodDetail(food)
             }
         })
-        mFragmentHomeBinding!!.viewpager2.adapter = mFoodPopularAdapter
-        mFragmentHomeBinding!!.indicator3.setViewPager(mFragmentHomeBinding!!.viewpager2)
-        mFragmentHomeBinding!!.viewpager2.registerOnPageChangeCallback(object : OnPageChangeCallback() {
+        binding.viewpager2.adapter = mFoodPopularAdapter
+        binding.indicator3.setViewPager(binding.viewpager2)
+        pageChangeCallback?.let { binding.viewpager2.unregisterOnPageChangeCallback(it) }
+        pageChangeCallback = object : OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 mHandlerBanner.removeCallbacks(mRunnableBanner)
                 mHandlerBanner.postDelayed(mRunnableBanner, 3000)
             }
-        })
+        }
+        binding.viewpager2.registerOnPageChangeCallback(pageChangeCallback!!)
     }
 
     private fun displayListFoodSuggest() {
+        val binding = mFragmentHomeBinding ?: return
         val gridLayoutManager = GridLayoutManager(activity, 2)
-        mFragmentHomeBinding!!.rcvFood.layoutManager = gridLayoutManager
+        binding.rcvFood.layoutManager = gridLayoutManager
         val mFoodGridAdapter = FoodGridAdapter(mListFood, object : IOnClickFoodItemListener {
             override fun onClickItemFood(food: Food) {
                 goToFoodDetail(food)
             }
         })
-        mFragmentHomeBinding!!.rcvFood.adapter = mFoodGridAdapter
+        binding.rcvFood.adapter = mFoodGridAdapter
     }
 
     private fun getListFoodPopular(): MutableList<Food>? {
@@ -133,45 +139,22 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun getListFoodFromFirebase(key: String) {
-        if (activity == null) {
-            return
-        }
-        ControllerApplication[activity!!].foodDatabaseReference.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                mFragmentHomeBinding!!.layoutContent.visibility = View.VISIBLE
-                mListFood = ArrayList()
-                for (dataSnapshot in snapshot.children) {
-                    val food = dataSnapshot.getValue(Food::class.java) ?: return
-                    if (isEmpty(key)) {
-                        mListFood?.add(0, food)
-                    } else {
-                        if (getTextSearch(food.name).toLowerCase(Locale.getDefault()).trim { it <= ' ' }
-                                        .contains(getTextSearch(key).toLowerCase(Locale.getDefault()).trim { it <= ' ' })) {
-                            mListFood?.add(0, food)
-                        }
-                    }
-                }
-                displayListFoodPopular()
-                displayListFoodSuggest()
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                showToastMessage(activity, getString(R.string.msg_get_date_error))
-            }
-        })
+        homeViewModel.loadFoods(key)
     }
 
     private fun searchFood() {
-        val strKey = mFragmentHomeBinding!!.edtSearchName.text.toString().trim { it <= ' ' }
+        val binding = mFragmentHomeBinding ?: return
+        val strKey = binding.edtSearchName.text.toString().trim { it <= ' ' }
         if (mListFood != null) mListFood!!.clear()
         getListFoodFromFirebase(strKey)
-        hideSoftKeyboard(activity!!)
+        activity?.let { hideSoftKeyboard(it) }
     }
 
     private fun goToFoodDetail(food: Food) {
+        val currentActivity = activity ?: return
         val bundle = Bundle()
         bundle.putSerializable(AppConfig.KEY_INTENT_FOOD_OBJECT, food)
-        startActivity(activity!!, FoodDetailActivity::class.java, bundle)
+        startActivity(currentActivity, FoodDetailActivity::class.java, bundle)
     }
 
     override fun onPause() {
@@ -181,6 +164,35 @@ class HomeFragment : BaseFragment() {
 
     override fun onResume() {
         super.onResume()
-        mHandlerBanner.postDelayed(mRunnableBanner, 3000)
+        if (mFragmentHomeBinding != null) {
+            mHandlerBanner.postDelayed(mRunnableBanner, 3000)
+        }
+    }
+
+    override fun onDestroyView() {
+        mHandlerBanner.removeCallbacks(mRunnableBanner)
+        val binding = mFragmentHomeBinding
+        if (binding != null && pageChangeCallback != null) {
+            binding.viewpager2.unregisterOnPageChangeCallback(pageChangeCallback!!)
+        }
+        pageChangeCallback = null
+        mFragmentHomeBinding = null
+        super.onDestroyView()
+    }
+
+    private fun observeViewModel() {
+        homeViewModel.foodsState.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                UiState.Idle -> Unit
+                UiState.Loading -> Unit
+                is UiState.Error -> showToastMessage(activity, getString(R.string.msg_get_date_error))
+                is UiState.Success -> {
+                    mFragmentHomeBinding?.layoutContent?.visibility = View.VISIBLE
+                    mListFood = state.data.toMutableList()
+                    displayListFoodPopular()
+                    displayListFoodSuggest()
+                }
+            }
+        }
     }
 }

@@ -23,8 +23,12 @@ object AppConfig {
         get() = getString(R.string.config_currency)
     val TYPE_PAYMENT_CASH: Int
         get() = requireContext().resources.getInteger(R.integer.config_type_payment_cash)
+    val TYPE_PAYMENT_ONLINE: Int
+        get() = requireContext().resources.getInteger(R.integer.config_type_payment_online)
     val PAYMENT_METHOD_CASH: String
         get() = getString(R.string.config_payment_method_cash)
+    val PAYMENT_METHOD_ONLINE: String
+        get() = getString(R.string.config_payment_method_online)
     val ADMIN_EMAIL_FORMAT: String
         get() = getString(R.string.config_admin_email_format)
 

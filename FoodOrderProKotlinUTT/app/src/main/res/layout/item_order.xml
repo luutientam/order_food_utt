@@ -207,5 +207,93 @@
                 android:textSize="@dimen/text_size_small"
                 android:textStyle="bold" />
         </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_transaction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/define_dimen_5">
+
+            <TextView
+                android:id="@+id/label_transaction"
+                android:layout_width="@dimen/define_dimen_100"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/label_transaction"
+                android:textSize="@dimen/text_size_small" />
+
+            <TextView
+                android:id="@+id/tv_transaction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/define_dimen_5"
+                android:layout_toEndOf="@+id/label_transaction"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/text_size_small"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/define_dimen_5">
+
+            <TextView
+                android:id="@+id/label_status"
+                android:layout_width="@dimen/define_dimen_100"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/label_status"
+                android:textSize="@dimen/text_size_small" />
+
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/define_dimen_5"
+                android:layout_toEndOf="@+id/label_status"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/text_size_small"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/define_dimen_5">
+
+            <TextView
+                android:id="@+id/label_shipper_location"
+                android:layout_width="@dimen/define_dimen_100"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/shipper_location"
+                android:textSize="@dimen/text_size_small" />
+
+            <TextView
+                android:id="@+id/tv_shipper_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/define_dimen_5"
+                android:layout_toEndOf="@+id/label_shipper_location"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/text_size_small"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_cancel_order"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/define_dimen_40"
+            android:layout_marginTop="@dimen/define_dimen_10"
+            android:background="@drawable/bg_red_shape_corner_6"
+            android:gravity="center"
+            android:text="@string/action_cancel_order"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_normal"
+            android:textStyle="bold" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

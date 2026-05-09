@@ -2,7 +2,7 @@
 <resources>
 
 
-    // Tab Menu
+    <!-- Tab Menu -->
     <string name="home">Đồ ăn</string>
     <string name="cart">Giỏ hàng</string>
     <string name="feedback">Phản hồi</string>
@@ -10,16 +10,16 @@
     <string name="account">Tài khoản</string>
     <string name="order">Đơn hàng</string>
 
-    // action
+    <!-- action -->
     <string name="action_ok">Đồng ý</string>
     <string name="action_cancel">Hủy bỏ</string>
     <string name="action_add">Thêm</string>
     <string name="action_edit">Chỉnh sửa</string>
 
-    // dialog
+    <!-- dialog -->
     <string name="waiting_message">Vui lòng đợi…</string>
 
-    // msg
+    <!-- msg -->
     <string name="error_not_connect_to_internet">Vui lòng kiểm tra kết nối mạng của bạn</string>
     <string name="msg_exit_app">Bạn có muốn thoát ứng dụng?</string>
 
@@ -47,6 +47,7 @@
     <string name="more_image_label">Một số hình ảnh khác</string>
     <string name="payment_method">Phương thức thanh toán</string>
     <string name="payment_method_cash">Tiền mặt</string>
+    <string name="payment_method_online">Thanh toán online</string>
     <string name="label_sub">-</string>
     <string name="label_add">+</string>
     <string name="label_quantity_1">1</string>
@@ -66,10 +67,13 @@
     <string name="label_price">Tổng tiền:</string>
     <string name="label_date">Ngày đặt hàng:</string>
     <string name="label_payment">Thanh toán:</string>
+    <string name="label_transaction">Mã giao dịch:</string>
     <string name="label_menu">Thực đơn:</string>
+    <string name="label_status">Trạng thái:</string>
     <string name="label_popular">Phổ biến:</string>
 
     <string name="status_new">Chờ xử lý</string>
+    <string name="status_preparing">Đang chuẩn bị</string>
     <string name="status_cancel">Hủy đơn hàng</string>
     <string name="status_process">Đang giao hàng</string>
     <string name="status_success">Thành công</string>
@@ -89,6 +93,8 @@
     <string name="sign_in_user">Đăng Nhập Tài Khoản</string>
     <string name="admin">Quản trị viên</string>
     <string name="user">Người dùng</string>
+    <string name="restaurant">Nhà hàng</string>
+    <string name="shipper">Shipper</string>
     <string name="have_account">Đã có tài khoản?</string>
     <string name="have_not_account">Chưa có tài khoản?</string>
     <string name="sign_in">Đăng Nhập</string>
@@ -137,6 +143,12 @@
 
     <string name="msg_get_date_error">Lỗi đã xảy ra, vui lòng thử lại sau</string>
     <string name="msg_order_success">Đặt hàng thành công, vui lòng check đơn hàng trong phần Lịch sử</string>
+    <string name="msg_online_payment_success">Thanh toán online thành công</string>
+    <string name="msg_online_payment_cancelled">Đã hủy thanh toán online</string>
+    <string name="msg_online_payment_failed">Thanh toán online thất bại: %1$s</string>
+    <string name="confirm_online_payment">Xác nhận thanh toán online cho đơn này?</string>
+    <string name="payment_status_paid">Đã thanh toán</string>
+    <string name="payment_status_unpaid">Chưa thanh toán</string>
 
     <string name="msg_confirm_login_another_device">Bạn có chắc chắn muốn thoát ứng dụng?</string>
     <string name="msg_email_require">Vui lòng nhập địa chỉ email</string>
@@ -154,11 +166,15 @@
     <string name="msg_email_invalid_user">Email sai định dạng dành cho người dùng</string>
     <string name="msg_sign_up_error">Đăng ký không thành công, vui lòng thử lại</string>
     <string name="msg_sign_in_error">Đăng nhập không thành công, vui lòng thử lại</string>
+    <string name="msg_account_locked">Tài khoản đã bị khóa</string>
+    <string name="msg_sign_in_wrong_role">Vai trò đăng nhập không đúng với tài khoản</string>
 
     <string name="msg_name_food_require">Vui lòng nhập tên món ăn</string>
     <string name="msg_description_food_require">Vui lòng nhập mô tả món ăn</string>
     <string name="msg_price_food_require">Vui lòng nhập giá món ăn</string>
+    <string name="msg_price_food_invalid">Giá món ăn phải lớn hơn 0</string>
     <string name="msg_discount_food_require">Vui lòng nhập phần trăm khuyến mại</string>
+    <string name="msg_discount_food_invalid">Phần trăm khuyến mại phải từ 0 đến 100</string>
     <string name="msg_image_food_require">Vui lòng nhập link ảnh món ăn</string>
     <string name="msg_image_banner_food_require">Vui lòng nhập link ảnh banner</string>
     <string name="msg_add_food_success">Thêm món ăn thành công !!!</string>
@@ -166,4 +182,72 @@
     <string name="msg_delete_title">Xác nhận xóa</string>
     <string name="msg_confirm_delete">Bạn có chắc chắn muốn xóa mục này không?</string>
     <string name="msg_delete_movie_successfully">Xoá món ăn thành công !!!</string>
+    <string name="action_next_status">Cập nhật trạng thái</string>
+    <string name="action_cancel_order">Hủy đơn hàng</string>
+    <string name="msg_confirm_cancel_order">Bạn có chắc chắn muốn hủy đơn hàng này không?</string>
+    <string name="msg_order_cancel_success">Đơn hàng đã được hủy</string>
+    <string name="msg_order_cannot_cancel">Đơn hàng này không thể hủy</string>
+    <string name="msg_order_update_status_success">Cập nhật trạng thái đơn hàng thành công</string>
+    <string name="msg_order_cannot_update_status">Không thể cập nhật trạng thái đơn hàng này</string>
+    <string name="manage_accounts">Quản lý tài khoản</string>
+    <string name="manage_catalog">Quản lý danh mục</string>
+    <string name="manage_reviews">Quản lý đánh giá</string>
+    <string name="assign_shipper">Nhận đơn giao</string>
+    <string name="my_delivery_orders">Đơn đang giao</string>
+    <string name="action_lock">Khóa</string>
+    <string name="action_unlock">Mở khóa</string>
+    <string name="status_locked">Đã khóa</string>
+    <string name="status_active">Đang hoạt động</string>
+    <string name="user_role">Vai trò</string>
+    <string name="catalog_restaurant_name">Nhà hàng</string>
+    <string name="catalog_category_name">Danh mục</string>
+    <string name="hint_restaurant_name">Tên nhà hàng</string>
+    <string name="hint_category_name">Tên danh mục</string>
+    <string name="add_restaurant">Thêm nhà hàng</string>
+    <string name="add_category">Thêm danh mục</string>
+    <string name="review_rating">Đánh giá sao</string>
+    <string name="hint_review_food_id">Mã món (0 nếu đánh giá nhà hàng)</string>
+    <string name="hint_review_restaurant_id">Mã nhà hàng</string>
+    <string name="submit_review">Gửi đánh giá</string>
+    <string name="report_total_users">Tổng người dùng</string>
+    <string name="report_total_orders">Tổng đơn hàng</string>
+    <string name="report_total_restaurants">Tổng nhà hàng</string>
+    <string name="report_total_shippers">Tổng shipper</string>
+    <string name="google_maps_key">YOUR_GOOGLE_MAPS_API_KEY</string>
+    <string name="pick_location_on_map">Chọn vị trí trên bản đồ</string>
+    <string name="confirm_location">Xác nhận vị trí</string>
+    <string name="selected_location">Vị trí đã chọn</string>
+    <string name="msg_select_location_required">Vui lòng chọn vị trí giao hàng trên bản đồ</string>
+    <string name="map_pick_hint">Nhấn giữ trên bản đồ để chọn vị trí giao hàng</string>
+    <string name="manage_promotion">Quản lý khuyến mại</string>
+    <string name="promotion_code">Mã khuyến mại</string>
+    <string name="hint_promotion_code">Nhập mã khuyến mại</string>
+    <string name="promotion_title">Tiêu đề khuyến mại</string>
+    <string name="promotion_discount_percent">Phần trăm giảm (%)</string>
+    <string name="promotion_min_order">Đơn tối thiểu</string>
+    <string name="promotion_max_discount">Giảm tối đa</string>
+    <string name="add_promotion">Thêm khuyến mại</string>
+    <string name="promotion_not_applied">Chưa áp dụng khuyến mại</string>
+    <string name="discount_amount">Giảm giá</string>
+    <string name="action_apply">Áp dụng</string>
+    <string name="action_enable">Bật</string>
+    <string name="action_disable">Tắt</string>
+    <string name="msg_promotion_code_required">Vui lòng nhập mã khuyến mại</string>
+    <string name="msg_promotion_invalid">Mã khuyến mại không hợp lệ hoặc đã tắt</string>
+    <string name="msg_promotion_not_meet_condition">Đơn hàng chưa đạt mức tối thiểu để áp mã</string>
+    <string name="msg_promotion_applied">Áp dụng mã khuyến mại thành công</string>
+    <string name="msg_promotion_invalid_percent">Phần trăm giảm phải từ 1 đến 100</string>
+    <string name="msg_no_promotion_available">Hiện chưa có voucher phù hợp cho đơn này</string>
+    <string name="action_select_voucher">Chọn voucher</string>
+    <string name="promotion_best_hint_default">Gợi ý voucher tốt nhất sẽ hiển thị tại đây</string>
+    <string name="promotion_best_hint">Voucher tốt nhất: %1$s - giảm %2$s%% tối đa %3$s</string>
+    <string name="shipper_location">Vị trí shipper:</string>
+    <string name="shipper_location_unknown">Chưa cập nhật</string>
+    <string name="sign_in_google">Đăng nhập với Google</string>
+    <string name="sign_up_google">Đăng ký với Google</string>
+    <string name="msg_google_sign_in_error">Đăng nhập Google thất bại</string>
+    <string name="msg_google_sign_up_error">Đăng ký Google thất bại</string>
+    <string name="msg_google_account_exists">Tài khoản Google đã tồn tại, vui lòng đăng nhập</string>
+    <string name="msg_google_not_configured">Google Sign-In chưa cấu hình. Hãy thêm Web client ID trong strings.xml</string>
+    <string name="google_web_client_id">YOUR_GOOGLE_WEB_CLIENT_ID</string>
 </resources>

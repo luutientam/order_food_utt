@@ -14,6 +14,10 @@ class Food : Serializable {
     var image: String? = null
     var banner: String? = null
     var description: String? = null
+    var restaurantId: Long = 0
+    var restaurantName: String? = null
+    var categoryId: Long = 0
+    var categoryName: String? = null
     var price = 0
     var sale = 0
     var count = 0

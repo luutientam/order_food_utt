@@ -53,6 +53,8 @@ class AddFoodActivity : BaseActivity() {
             mActivityAddFoodBinding!!.btnAddOrEdit.text = getString(R.string.action_edit)
             mActivityAddFoodBinding!!.edtName.setText(mFood!!.name)
             mActivityAddFoodBinding!!.edtDescription.setText(mFood!!.description)
+            mActivityAddFoodBinding!!.edtRestaurantName.setText(mFood!!.restaurantName)
+            mActivityAddFoodBinding!!.edtCategoryName.setText(mFood!!.categoryName)
             mActivityAddFoodBinding!!.edtPrice.setText(java.lang.String.valueOf(mFood!!.price))
             mActivityAddFoodBinding!!.edtDiscount.setText(java.lang.String.valueOf(mFood!!.sale))
             mActivityAddFoodBinding!!.edtImage.setText(mFood!!.image)
@@ -83,18 +85,25 @@ class AddFoodActivity : BaseActivity() {
     private fun addOrEditFood() {
         val strName = mActivityAddFoodBinding!!.edtName.text.toString().trim { it <= ' ' }
         val strDescription = mActivityAddFoodBinding!!.edtDescription.text.toString().trim { it <= ' ' }
+        val strRestaurantName = mActivityAddFoodBinding!!.edtRestaurantName.text.toString().trim { it <= ' ' }
+        val strCategoryName = mActivityAddFoodBinding!!.edtCategoryName.text.toString().trim { it <= ' ' }
         val strPrice = mActivityAddFoodBinding!!.edtPrice.text.toString().trim { it <= ' ' }
         val strDiscount = mActivityAddFoodBinding!!.edtDiscount.text.toString().trim { it <= ' ' }
         val strImage = mActivityAddFoodBinding!!.edtImage.text.toString().trim { it <= ' ' }
         val strImageBanner = mActivityAddFoodBinding!!.edtImageBanner.text.toString().trim { it <= ' ' }
         val isPopular = mActivityAddFoodBinding!!.chbPopular.isChecked
         val strOtherImages = mActivityAddFoodBinding!!.edtOtherImage.text.toString().trim { it <= ' ' }
+        val priceValue = strPrice.toIntOrNull()
+        val discountValue = strDiscount.toIntOrNull()
         val listImages: MutableList<Image> = ArrayList()
         if (!isEmpty(strOtherImages)) {
             val temp = strOtherImages.split(";".toRegex()).toTypedArray()
             for (strUrl in temp) {
-                val image = Image(strUrl)
-                listImages.add(image)
+                val url = strUrl.trim()
+                if (!isEmpty(url)) {
+                    val image = Image(url)
+                    listImages.add(image)
+                }
             }
         }
         if (isEmpty(strName)) {
@@ -105,12 +114,28 @@ class AddFoodActivity : BaseActivity() {
             Toast.makeText(this, getString(R.string.msg_description_food_require), Toast.LENGTH_SHORT).show()
             return
         }
+        if (isEmpty(strRestaurantName)) {
+            Toast.makeText(this, getString(R.string.hint_restaurant_name), Toast.LENGTH_SHORT).show()
+            return
+        }
+        if (isEmpty(strCategoryName)) {
+            Toast.makeText(this, getString(R.string.hint_category_name), Toast.LENGTH_SHORT).show()
+            return
+        }
         if (isEmpty(strPrice)) {
             Toast.makeText(this, getString(R.string.msg_price_food_require), Toast.LENGTH_SHORT).show()
             return
         }
+        if (priceValue == null || priceValue <= 0) {
+            Toast.makeText(this, getString(R.string.msg_price_food_invalid), Toast.LENGTH_SHORT).show()
+            return
+        }
         if (isEmpty(strDiscount)) {
             Toast.makeText(this, getString(R.string.msg_discount_food_require), Toast.LENGTH_SHORT).show()
+            return
+        }
+        if (discountValue == null || discountValue < 0 || discountValue > 100) {
+            Toast.makeText(this, getString(R.string.msg_discount_food_invalid), Toast.LENGTH_SHORT).show()
             return
         }
         if (isEmpty(strImage)) {
@@ -128,8 +153,12 @@ class AddFoodActivity : BaseActivity() {
             val map: MutableMap<String, Any> = HashMap()
             map["name"] = strName
             map["description"] = strDescription
-            map["price"] = strPrice.toInt()
-            map["sale"] = strDiscount.toInt()
+            map["restaurantName"] = strRestaurantName
+            map["categoryName"] = strCategoryName
+            map["restaurantId"] = strRestaurantName.hashCode().toLong()
+            map["categoryId"] = strCategoryName.hashCode().toLong()
+            map["price"] = priceValue!!
+            map["sale"] = discountValue!!
             map["image"] = strImage
             map["banner"] = strImageBanner
             map["popular"] = isPopular
@@ -149,7 +178,20 @@ class AddFoodActivity : BaseActivity() {
         // Add food
         showProgressDialog(true)
         val foodId = System.currentTimeMillis()
-        val food = FoodObject(foodId, strName, strDescription, strPrice.toInt(), strDiscount.toInt(), strImage, strImageBanner, isPopular)
+        val food = FoodObject(
+                foodId,
+                strName,
+                strDescription,
+                strRestaurantName.hashCode().toLong(),
+                strRestaurantName,
+                strCategoryName.hashCode().toLong(),
+                strCategoryName,
+                priceValue!!,
+                discountValue!!,
+                strImage,
+                strImageBanner,
+                isPopular
+        )
         if (listImages.isNotEmpty()) {
             food.images = listImages
         }

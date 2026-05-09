@@ -6,7 +6,9 @@
     <string name="config_generic_error">General error, please try again later</string>
     <string name="config_currency"> 000 VNĐ</string>
     <integer name="config_type_payment_cash">1</integer>
+    <integer name="config_type_payment_online">2</integer>
     <string name="config_payment_method_cash">Tiền mặt</string>
+    <string name="config_payment_method_online">Thanh toán online</string>
     <string name="config_admin_email_format">@admin.com</string>
 
     <string name="config_about_us_title">TinCoder</string>

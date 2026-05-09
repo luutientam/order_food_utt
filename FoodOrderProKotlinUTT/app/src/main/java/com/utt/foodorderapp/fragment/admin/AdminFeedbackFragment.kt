@@ -4,29 +4,27 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
-import com.utt.foodorderapp.ControllerApplication
 import com.utt.foodorderapp.R
 import com.utt.foodorderapp.activity.AdminMainActivity
 import com.utt.foodorderapp.adapter.FeedbackAdapter
 import com.utt.foodorderapp.databinding.FragmentAdminFeedbackBinding
 import com.utt.foodorderapp.fragment.BaseFragment
 import com.utt.foodorderapp.model.Feedback
-import java.util.*
+import com.utt.foodorderapp.presentation.common.UiState
+import com.utt.foodorderapp.presentation.feedback.FeedbackViewModel
 
 class AdminFeedbackFragment : BaseFragment() {
 
     private var mFragmentAdminFeedbackBinding: FragmentAdminFeedbackBinding? = null
-    private var mListFeedback: MutableList<Feedback>? = null
-    private var mFeedbackAdapter: FeedbackAdapter? = null
+    private val feedbackViewModel: FeedbackViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         mFragmentAdminFeedbackBinding = FragmentAdminFeedbackBinding.inflate(inflater, container, false)
         initView()
-        getListFeedback()
+        observeViewModel()
+        feedbackViewModel.loadFeedbacks()
         return mFragmentAdminFeedbackBinding!!.root
     }
 
@@ -44,29 +42,29 @@ class AdminFeedbackFragment : BaseFragment() {
         mFragmentAdminFeedbackBinding!!.rcvFeedback.layoutManager = linearLayoutManager
     }
 
-    fun getListFeedback() {
-        if (activity == null) {
-            return
-        }
-        ControllerApplication[activity!!].feedbackDatabaseReference
-                .addValueEventListener(object : ValueEventListener {
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        if (mListFeedback != null) {
-                            mListFeedback!!.clear()
-                        } else {
-                            mListFeedback = ArrayList()
-                        }
-                        for (dataSnapshot in snapshot.children) {
-                            val feedback = dataSnapshot.getValue(Feedback::class.java)
-                            if (feedback != null) {
-                                mListFeedback!!.add(0, feedback)
-                            }
-                        }
-                        mFeedbackAdapter = FeedbackAdapter(mListFeedback)
-                        mFragmentAdminFeedbackBinding!!.rcvFeedback.adapter = mFeedbackAdapter
-                    }
+    override fun onDestroyView() {
+        mFragmentAdminFeedbackBinding = null
+        super.onDestroyView()
+    }
 
-                    override fun onCancelled(error: DatabaseError) {}
-                })
+    private fun deleteFeedback(feedback: Feedback) {
+        feedbackViewModel.deleteFeedback(feedback)
+    }
+
+    private fun observeViewModel() {
+        feedbackViewModel.feedbacksState.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                UiState.Idle -> Unit
+                UiState.Loading -> Unit
+                is UiState.Error -> Unit
+                is UiState.Success -> {
+                    mFragmentAdminFeedbackBinding?.rcvFeedback?.adapter = FeedbackAdapter(state.data, object : FeedbackAdapter.IDeleteFeedbackListener {
+                        override fun onDelete(feedback: Feedback) {
+                            deleteFeedback(feedback)
+                        }
+                    })
+                }
+            }
+        }
     }
 }

@@ -8,6 +8,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <queries>
         <intent>
@@ -28,6 +30,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="31">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
         <activity android:name="com.utt.foodorderapp.activity.SplashActivity"
             android:exported="true">
             <intent-filter>
@@ -65,6 +70,24 @@
             android:exported="false"/>
         <activity
             android:name="com.utt.foodorderapp.activity.AdminReportActivity"
+            android:exported="false"/>
+        <activity
+            android:name="com.utt.foodorderapp.activity.ShipperMainActivity"
+            android:exported="false"/>
+        <activity
+            android:name="com.utt.foodorderapp.activity.AdminUserManagementActivity"
+            android:exported="false"/>
+        <activity
+            android:name="com.utt.foodorderapp.activity.CatalogManagementActivity"
+            android:exported="false"/>
+        <activity
+            android:name="com.utt.foodorderapp.activity.UpdateProfileActivity"
+            android:exported="false"/>
+        <activity
+            android:name="com.utt.foodorderapp.activity.MapPickerActivity"
+            android:exported="false"/>
+        <activity
+            android:name="com.utt.foodorderapp.activity.AdminPromotionManagementActivity"
             android:exported="false"/>
     </application>
 

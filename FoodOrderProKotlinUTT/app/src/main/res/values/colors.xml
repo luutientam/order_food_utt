@@ -25,4 +25,7 @@
     <color name="bottomTabActive">#F24040</color>
     <color name="bottomTabInActive">#171717</color>
     <color name="black_overlay">#667C7474</color>
+    <color name="screenBackground">#F7F8FA</color>
+    <color name="surfaceBackground">#FFFFFF</color>
+    <color name="inputBorder">#E5E7EB</color>
 </resources>

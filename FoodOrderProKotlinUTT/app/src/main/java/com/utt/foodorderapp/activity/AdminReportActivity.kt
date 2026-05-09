@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.utt.foodorderapp.ControllerApplication
 import com.utt.foodorderapp.R
@@ -16,6 +17,7 @@ import com.utt.foodorderapp.databinding.ActivityAdminReportBinding
 import com.utt.foodorderapp.listener.IGetDateListener
 import com.utt.foodorderapp.listener.IOnSingleClickListener
 import com.utt.foodorderapp.model.Order
+import com.utt.foodorderapp.model.User
 import com.utt.foodorderapp.utils.DateTimeUtils.convertDate2ToTimeStamp
 import com.utt.foodorderapp.utils.DateTimeUtils.convertTimeStampToDate_2
 import com.utt.foodorderapp.utils.StringUtil.isEmpty
@@ -24,6 +26,8 @@ import java.util.*
 class AdminReportActivity : AppCompatActivity() {
 
     private var mActivityAdminReportBinding: ActivityAdminReportBinding? = null
+    private var mRevenueValueEventListener: ValueEventListener? = null
+    private var mBookingDatabaseReference: DatabaseReference? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +35,7 @@ class AdminReportActivity : AppCompatActivity() {
         setContentView(mActivityAdminReportBinding!!.root)
         initToolbar()
         initListener()
+        loadSummary()
         getListRevenue()
     }
 
@@ -67,7 +72,11 @@ class AdminReportActivity : AppCompatActivity() {
     }
 
     private fun getListRevenue() {
-        ControllerApplication[this].bookingDatabaseReference.addValueEventListener(object : ValueEventListener {
+        mBookingDatabaseReference = ControllerApplication[this].bookingDatabaseReference
+        mRevenueValueEventListener?.let { listener ->
+            mBookingDatabaseReference?.removeEventListener(listener)
+        }
+        mRevenueValueEventListener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val list: MutableList<Order> = ArrayList()
                 for (dataSnapshot in snapshot.children) {
@@ -80,14 +89,15 @@ class AdminReportActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {}
-        })
+        }
+        mBookingDatabaseReference?.addValueEventListener(mRevenueValueEventListener!!)
     }
 
     private fun canAddOrder(order: Order?): Boolean {
         if (order == null) {
             return false
         }
-        if (!order.isCompleted) {
+        if (order.getStatusValue() != Order.STATUS_SUCCESS) {
             return false
         }
         val strDateFrom = mActivityAdminReportBinding!!.tvDateFrom.text.toString()
@@ -133,5 +143,37 @@ class AdminReportActivity : AppCompatActivity() {
             total += order.amount
         }
         return total
+    }
+
+    private fun loadSummary() {
+        val app = ControllerApplication[this]
+        app.userDatabaseReference.get().addOnSuccessListener { snapshot ->
+            var totalUsers = 0
+            var totalShippers = 0
+            for (child in snapshot.children) {
+                val user = child.getValue(User::class.java) ?: continue
+                totalUsers++
+                if (user.role == User.ROLE_SHIPPER) {
+                    totalShippers++
+                }
+            }
+            mActivityAdminReportBinding!!.tvTotalUsers.text = "${getString(R.string.report_total_users)}: $totalUsers"
+            mActivityAdminReportBinding!!.tvTotalShippers.text = "${getString(R.string.report_total_shippers)}: $totalShippers"
+        }
+        app.bookingDatabaseReference.get().addOnSuccessListener { snapshot ->
+            mActivityAdminReportBinding!!.tvTotalOrders.text = "${getString(R.string.report_total_orders)}: ${snapshot.childrenCount}"
+        }
+        app.restaurantDatabaseReference.get().addOnSuccessListener { snapshot ->
+            mActivityAdminReportBinding!!.tvTotalRestaurants.text = "${getString(R.string.report_total_restaurants)}: ${snapshot.childrenCount}"
+        }
+    }
+
+    override fun onDestroy() {
+        mRevenueValueEventListener?.let { listener ->
+            mBookingDatabaseReference?.removeEventListener(listener)
+        }
+        mRevenueValueEventListener = null
+        mBookingDatabaseReference = null
+        super.onDestroy()
     }
 }

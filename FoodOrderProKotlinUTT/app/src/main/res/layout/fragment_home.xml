@@ -5,7 +5,7 @@
     android:id="@+id/layout_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/screenBackground"
     android:visibility="gone"
     android:orientation="vertical">
 
@@ -13,7 +13,7 @@
         android:id="@+id/layout_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@color/screenBackground"
         android:layout_marginTop="@dimen/define_dimen_20"
         android:layout_marginStart="@dimen/define_dimen_10"
         android:layout_marginEnd="@dimen/define_dimen_10">
@@ -28,7 +28,7 @@
             android:inputType="text"
             android:padding="@dimen/define_dimen_10"
             android:textColor="@color/textColorPrimary"
-            android:textSize="@dimen/text_size_xsmall"
+            android:textSize="@dimen/text_size_small"
             tools:ignore="Autofill" />
 
         <View
@@ -52,7 +52,7 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="@dimen/define_dimen_20">
 
         <LinearLayout
@@ -99,10 +99,11 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rcv_food"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:nestedScrollingEnabled="false"
                     android:focusable="false"
                     android:layout_marginStart="@dimen/define_dimen_10"
+                    android:layout_marginEnd="@dimen/define_dimen_10"
                     android:layout_marginBottom="@dimen/define_dimen_10" />
             </LinearLayout>
 

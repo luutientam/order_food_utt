@@ -222,5 +222,23 @@
       "price": 250,
       "sale": 15
     }
+  },
+  "promotions": {
+    "FREESHIP10": {
+      "isActive": true,
+      "code": "FREESHIP10",
+      "discountPercent": 10,
+      "maxDiscountAmount": 30,
+      "minOrderAmount": 120,
+      "title": "Giảm 10% tối đa 30k"
+    },
+    "WELCOME20": {
+      "isActive": true,
+      "code": "WELCOME20",
+      "discountPercent": 20,
+      "maxDiscountAmount": 40,
+      "minOrderAmount": 180,
+      "title": "Giảm 20% cho đơn đầu"
+    }
   }
 }

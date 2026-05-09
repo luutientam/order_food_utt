@@ -7,7 +7,14 @@ import com.utt.foodorderapp.adapter.FeedbackAdapter.FeedbackViewHolder
 import com.utt.foodorderapp.databinding.ItemFeedbackBinding
 import com.utt.foodorderapp.model.Feedback
 
-class FeedbackAdapter(private val mListFeedback: List<Feedback>?) : RecyclerView.Adapter<FeedbackViewHolder>() {
+class FeedbackAdapter(
+        private val mListFeedback: List<Feedback>?,
+        private val mDeleteListener: IDeleteFeedbackListener? = null
+) : RecyclerView.Adapter<FeedbackViewHolder>() {
+
+    interface IDeleteFeedbackListener {
+        fun onDelete(feedback: Feedback)
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedbackViewHolder {
         val itemFeedbackBinding = ItemFeedbackBinding.inflate(LayoutInflater.from(parent.context),
                 parent, false)
@@ -17,7 +24,11 @@ class FeedbackAdapter(private val mListFeedback: List<Feedback>?) : RecyclerView
     override fun onBindViewHolder(holder: FeedbackViewHolder, position: Int) {
         val feedback = mListFeedback!![position]
         holder.mItemFeedbackBinding.tvEmail.text = feedback.email
-        holder.mItemFeedbackBinding.tvFeedback.text = feedback.comment
+        holder.mItemFeedbackBinding.tvFeedback.text = "[${feedback.rating}/5] ${feedback.comment}"
+        holder.mItemFeedbackBinding.tvDeleteReview.setOnClickListener {
+            mDeleteListener?.onDelete(feedback)
+        }
+        holder.mItemFeedbackBinding.tvDeleteReview.visibility = if (mDeleteListener != null) android.view.View.VISIBLE else android.view.View.GONE
     }
 
     override fun getItemCount(): Int {
