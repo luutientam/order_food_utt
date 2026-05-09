@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1049117468330",
+    "firebase_url": "https://food-order-pro-default-rtdb.firebaseio.com",
+    "project_id": "food-order-pro",
+    "storage_bucket": "food-order-pro.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1049117468330:android:623eda2b153a903d5a52d3",
+        "android_client_info": {
+          "package_name": "com.pro.foodorder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1049117468330-r3o9feels309sf0l31ss1tp46nhidpc9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDD6Ne-_1CYOd9Bj3GdI-_kXdpNQY0cCvE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1049117468330-r3o9feels309sf0l31ss1tp46nhidpc9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
