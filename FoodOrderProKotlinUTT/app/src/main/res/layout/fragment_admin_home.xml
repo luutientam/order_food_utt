@@ -5,10 +5,105 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/screenBackground">
 
+    <LinearLayout
+        android:id="@+id/layout_metrics"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/define_dimen_10"
+        android:layout_marginTop="@dimen/define_dimen_10"
+        android:layout_marginEnd="@dimen/define_dimen_10"
+        android:orientation="horizontal"
+        android:padding="@dimen/define_dimen_12"
+        android:background="@drawable/bg_card_surface">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_today_orders"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/brandOrange"
+                android:textStyle="bold"
+                android:text="0"
+                android:textSize="@dimen/text_size_xnormal" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/define_dimen_2"
+                android:text="@string/dashboard_today_orders"
+                android:textColor="@color/textColorSecondary"
+                android:textSize="@dimen/text_size_xsmall" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/dividerColor" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_today_revenue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/brandOrange"
+                android:textStyle="bold"
+                android:text="0"
+                android:textSize="@dimen/text_size_xnormal" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/define_dimen_2"
+                android:text="@string/dashboard_today_revenue"
+                android:textColor="@color/textColorSecondary"
+                android:textSize="@dimen/text_size_xsmall" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/dividerColor" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_pending_orders"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/brandOrange"
+                android:textStyle="bold"
+                android:text="0"
+                android:textSize="@dimen/text_size_xnormal" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/define_dimen_2"
+                android:text="@string/dashboard_pending_orders"
+                android:textColor="@color/textColorSecondary"
+                android:textSize="@dimen/text_size_xsmall" />
+        </LinearLayout>
+    </LinearLayout>
+
     <RelativeLayout
         android:id="@+id/layout_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_metrics"
         android:layout_marginStart="@dimen/define_dimen_10"
         android:layout_marginTop="@dimen/define_dimen_10"
         android:layout_marginEnd="@dimen/define_dimen_10"

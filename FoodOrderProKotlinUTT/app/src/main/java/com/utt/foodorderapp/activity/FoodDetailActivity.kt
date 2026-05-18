@@ -1,21 +1,30 @@
 package com.utt.foodorderapp.activity
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.content.Intent
 import android.graphics.Paint
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.EditText
 import android.widget.ImageView
+import android.widget.RatingBar
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.os.BundleCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.utt.foodorderapp.R
 import com.utt.foodorderapp.adapter.MoreImageAdapter
 import com.utt.foodorderapp.constant.AppConfig
+import com.utt.foodorderapp.constant.GlobalFunction.showToastMessage
+import com.utt.foodorderapp.data.repository.ReviewRepository
 import com.utt.foodorderapp.database.FoodDatabase.Companion.getInstance
 import com.utt.foodorderapp.databinding.ActivityFoodDetailBinding
 import com.utt.foodorderapp.event.ReloadListCartEvent
 import com.utt.foodorderapp.model.Food
+import com.utt.foodorderapp.prefs.DataStoreManager
 import com.utt.foodorderapp.utils.GlideUtils.loadUrl
 import com.utt.foodorderapp.utils.GlideUtils.loadUrlBanner
 import org.greenrobot.eventbus.EventBus
@@ -24,6 +33,7 @@ class FoodDetailActivity : BaseActivity() {
 
     private var mActivityFoodDetailBinding: ActivityFoodDetailBinding? = null
     private var mFood: Food? = null
+    private val reviewRepository = ReviewRepository()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +48,7 @@ class FoodDetailActivity : BaseActivity() {
     private fun getDataIntent() {
         val bundle = intent.extras
         if (bundle != null) {
-            mFood = bundle[AppConfig.KEY_INTENT_FOOD_OBJECT] as Food?
+            mFood = BundleCompat.getSerializable(bundle, AppConfig.KEY_INTENT_FOOD_OBJECT, Food::class.java)
         }
     }
 
@@ -46,7 +56,7 @@ class FoodDetailActivity : BaseActivity() {
         mActivityFoodDetailBinding!!.toolbar.imgBack.visibility = View.VISIBLE
         mActivityFoodDetailBinding!!.toolbar.imgCart.visibility = View.VISIBLE
         mActivityFoodDetailBinding!!.toolbar.tvTitle.text = getString(R.string.food_detail_title)
-        mActivityFoodDetailBinding!!.toolbar.imgBack.setOnClickListener { onBackPressed() }
+        mActivityFoodDetailBinding!!.toolbar.imgBack.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
     }
 
     private fun setDataFoodDetail() {
@@ -110,6 +120,59 @@ class FoodDetailActivity : BaseActivity() {
     private fun initListener() {
         mActivityFoodDetailBinding!!.tvAddToCart.setOnClickListener { onClickAddToCart() }
         mActivityFoodDetailBinding!!.toolbar.imgCart.setOnClickListener { onClickAddToCart() }
+        mActivityFoodDetailBinding!!.tvRateFood.setOnClickListener { showRatingDialog(forFood = true) }
+        mActivityFoodDetailBinding!!.tvRateRestaurant.setOnClickListener { showRatingDialog(forFood = false) }
+        mActivityFoodDetailBinding!!.tvViewFoodReviews.setOnClickListener {
+            val food = mFood ?: return@setOnClickListener
+            val i = Intent(this, ReviewsListActivity::class.java)
+            i.putExtra(ReviewsListActivity.EXTRA_FOOD_ID, food.id)
+            startActivity(i)
+        }
+        mActivityFoodDetailBinding!!.tvViewRestaurantReviews.setOnClickListener {
+            val food = mFood ?: return@setOnClickListener
+            if (food.restaurantId == 0L) {
+                showToastMessage(this, getString(R.string.msg_no_restaurant_linked))
+                return@setOnClickListener
+            }
+            val i = Intent(this, ReviewsListActivity::class.java)
+            i.putExtra(ReviewsListActivity.EXTRA_RESTAURANT_ID, food.restaurantId)
+            startActivity(i)
+        }
+    }
+
+    private fun showRatingDialog(forFood: Boolean) {
+        val food = mFood ?: return
+        if (!forFood && food.restaurantId == 0L) {
+            showToastMessage(this, getString(R.string.msg_no_restaurant_linked))
+            return
+        }
+        val view = LayoutInflater.from(this).inflate(R.layout.dialog_rate_order, null, false)
+        val ratingBar = view.findViewById<RatingBar>(R.id.rating_bar)
+        val edtComment = view.findViewById<EditText>(R.id.edt_review_comment)
+        val titleRes = if (forFood) R.string.action_rate_food else R.string.action_rate_restaurant
+
+        AlertDialog.Builder(this)
+                .setTitle(titleRes)
+                .setView(view)
+                .setPositiveButton(R.string.action_submit_rating) { _, _ ->
+                    val rating = ratingBar.rating.toInt().coerceIn(1, 5)
+                    val comment = edtComment.text.toString().trim()
+                    val email = DataStoreManager.user?.email
+                    val cb: (com.google.firebase.database.DatabaseError?) -> Unit = { error ->
+                        if (error == null) {
+                            showToastMessage(this, getString(R.string.msg_rating_success))
+                        } else {
+                            showToastMessage(this, getString(R.string.msg_rating_failed))
+                        }
+                    }
+                    if (forFood) {
+                        reviewRepository.submitFoodReview(food.id, email, rating, comment, cb)
+                    } else {
+                        reviewRepository.submitRestaurantReview(food.restaurantId, email, rating, comment, cb)
+                    }
+                }
+                .setNegativeButton(R.string.action_cancel, null)
+                .show()
     }
 
     private fun onClickAddToCart() {

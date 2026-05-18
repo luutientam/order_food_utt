@@ -1,8 +1,8 @@
 package com.utt.foodorderapp.fragment.shipper
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
-import android.os.Handler
 import android.os.Looper
 import android.content.Intent
 import android.net.Uri
@@ -12,7 +12,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.Priority
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -33,11 +38,11 @@ class ShipperOrderFragment : BaseFragment() {
     private var adapter: ShipperOrderAdapter? = null
     private var listener: ChildEventListener? = null
     private var isPickupMode = true
-    private val locationHandler = Handler(Looper.getMainLooper())
-    private val locationRunnable = object : Runnable {
-        override fun run() {
-            publishCurrentLocationForDeliveringOrders()
-            locationHandler.postDelayed(this, LOCATION_UPDATE_INTERVAL_MS)
+    private var locationClient: FusedLocationProviderClient? = null
+    private val locationCallback = object : LocationCallback() {
+        override fun onLocationResult(result: LocationResult) {
+            val last = result.lastLocation ?: return
+            publishLocationToDeliveringOrders(last.latitude, last.longitude)
         }
     }
 
@@ -141,7 +146,6 @@ class ShipperOrderFragment : BaseFragment() {
         map["shipperLat"] = 0.0
         map["shipperLng"] = 0.0
         ControllerApplication[currentActivity].bookingDatabaseReference.child(order.id.toString()).updateChildren(map)
-        publishCurrentLocationForDeliveringOrders()
     }
 
     private fun rejectOrder(order: Order) {
@@ -223,14 +227,21 @@ class ShipperOrderFragment : BaseFragment() {
         return order.isAssignedToShipper(userId) && order.getStatusValue() == Order.STATUS_DELIVERING
     }
 
+    @SuppressLint("MissingPermission")
     private fun startLocationUpdates() {
+        val ctx = activity ?: return
         if (!hasLocationPermission()) return
-        locationHandler.removeCallbacks(locationRunnable)
-        locationHandler.post(locationRunnable)
+        if (locationClient == null) {
+            locationClient = LocationServices.getFusedLocationProviderClient(ctx)
+        }
+        val request = LocationRequest.Builder(Priority.PRIORITY_BALANCED_POWER_ACCURACY, LOCATION_UPDATE_INTERVAL_MS)
+                .setMinUpdateDistanceMeters(50f)
+                .build()
+        locationClient?.requestLocationUpdates(request, locationCallback, Looper.getMainLooper())
     }
 
     private fun stopLocationUpdates() {
-        locationHandler.removeCallbacks(locationRunnable)
+        locationClient?.removeLocationUpdates(locationCallback)
     }
 
     private fun hasLocationPermission(): Boolean {
@@ -246,23 +257,19 @@ class ShipperOrderFragment : BaseFragment() {
         return fineGranted || coarseGranted
     }
 
-    private fun publishCurrentLocationForDeliveringOrders() {
+    private fun publishLocationToDeliveringOrders(lat: Double, lng: Double) {
         val currentActivity = activity ?: return
-        if (isPickupMode || !hasLocationPermission()) return
+        if (isPickupMode) return
         val userId = DataStoreManager.user?.uid ?: return
         val deliveringOrders = listOrder.filter { it.isAssignedToShipper(userId) && it.getStatusValue() == Order.STATUS_DELIVERING }
         if (deliveringOrders.isEmpty()) return
-        val locationClient = LocationServices.getFusedLocationProviderClient(currentActivity)
-        locationClient.lastLocation.addOnSuccessListener { location ->
-            if (location == null) return@addOnSuccessListener
-            for (order in deliveringOrders) {
-                val payload: MutableMap<String, Any> = HashMap()
-                payload["shipperLat"] = location.latitude
-                payload["shipperLng"] = location.longitude
-                ControllerApplication[currentActivity].bookingDatabaseReference
-                        .child(order.id.toString())
-                        .updateChildren(payload)
-            }
+        val payload: MutableMap<String, Any> = HashMap()
+        payload["shipperLat"] = lat
+        payload["shipperLng"] = lng
+        for (order in deliveringOrders) {
+            ControllerApplication[currentActivity].bookingDatabaseReference
+                    .child(order.id.toString())
+                    .updateChildren(payload)
         }
     }
 

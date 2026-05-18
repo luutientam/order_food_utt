@@ -43,7 +43,7 @@ class AdminReportActivity : AppCompatActivity() {
         mActivityAdminReportBinding!!.toolbar.imgBack.visibility = View.VISIBLE
         mActivityAdminReportBinding!!.toolbar.imgCart.visibility = View.GONE
         mActivityAdminReportBinding!!.toolbar.tvTitle.text = getString(R.string.revenue)
-        mActivityAdminReportBinding!!.toolbar.imgBack.setOnClickListener { onBackPressed() }
+        mActivityAdminReportBinding!!.toolbar.imgBack.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
     }
 
     private fun initListener() {

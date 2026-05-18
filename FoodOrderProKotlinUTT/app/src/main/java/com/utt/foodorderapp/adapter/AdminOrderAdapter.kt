@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.utt.foodorderapp.R
 import com.utt.foodorderapp.adapter.AdminOrderAdapter.AdminOrderViewHolder
@@ -29,7 +30,7 @@ class AdminOrderAdapter(private var mContext: Context?, private val mListOrder: 
 
     override fun onBindViewHolder(holder: AdminOrderViewHolder, position: Int) {
         val order = mListOrder!![position]
-        holder.mItemAdminOrderBinding.layoutItem.setBackgroundColor(holder.itemView.context.resources.getColor(R.color.white))
+        holder.mItemAdminOrderBinding.layoutItem.setBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.white))
         holder.mItemAdminOrderBinding.tvId.text = order.id.toString()
         holder.mItemAdminOrderBinding.tvEmail.text = order.email
         holder.mItemAdminOrderBinding.tvName.text = order.name

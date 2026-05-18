@@ -89,6 +89,33 @@
         <activity
             android:name="com.utt.foodorderapp.activity.AdminPromotionManagementActivity"
             android:exported="false"/>
+        <activity
+            android:name="com.utt.foodorderapp.activity.OrderTrackingActivity"
+            android:exported="false"/>
+        <activity
+            android:name="com.utt.foodorderapp.activity.AddressBookActivity"
+            android:exported="false"/>
+        <activity
+            android:name="com.utt.foodorderapp.activity.VoucherHubActivity"
+            android:exported="false"/>
+        <activity
+            android:name="com.utt.foodorderapp.activity.ShipperEarningsActivity"
+            android:exported="false"/>
+        <activity
+            android:name="com.utt.foodorderapp.activity.RestaurantListActivity"
+            android:exported="false"/>
+        <activity
+            android:name="com.utt.foodorderapp.activity.RestaurantFoodsActivity"
+            android:exported="false"/>
+        <activity
+            android:name="com.utt.foodorderapp.activity.ReviewsListActivity"
+            android:exported="false"/>
+        <activity
+            android:name="com.utt.foodorderapp.activity.AdminUserStatsActivity"
+            android:exported="false"/>
+        <activity
+            android:name="com.utt.foodorderapp.activity.AdminSystemReportActivity"
+            android:exported="false"/>
     </application>
 
 </manifest>

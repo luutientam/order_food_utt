@@ -1,31 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FC5353</color>
-    <color name="colorPrimaryDark">#FC5353</color>
-    <color name="colorAccent">#FC5353</color>
+    <!-- Shopee-Food orange palette -->
+    <color name="colorPrimary">#EE4D2D</color>
+    <color name="colorPrimaryDark">#D73211</color>
+    <color name="colorAccent">#FF7A47</color>
 
-    <color name="textColorPrimary">#121315</color>
+    <color name="brandOrange">#EE4D2D</color>
+    <color name="brandOrangeLight">#FFF1EC</color>
+    <color name="brandOrangeDark">#D73211</color>
+    <color name="brandYellow">#FFB400</color>
+
+    <color name="textColorPrimary">#222222</color>
     <color name="textColorSecondary">#6D6E70</color>
     <color name="textColorAccent">#A7A9AB</color>
 
-    <color name="dividerColor">#BDBDBD</color>
+    <color name="dividerColor">#EDEDED</color>
     <color name="transparent">#00000000</color>
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
     <color name="purple">#9C27B0</color>
-    <color name="green">#4CAF50</color>
-    <color name="redAccent">#ffebee</color>
+    <color name="green">#26A65B</color>
+    <color name="redAccent">#FFE8E2</color>
     <color name="red">#EF9A9A</color>
     <color name="pink">#F06292</color>
-    <color name="orange">#FF5722</color>
+    <color name="orange">#EE4D2D</color>
     <color name="tran_parent">#66000000</color>
-    <color name="yellow">#FF9800</color>
+    <color name="yellow">#FFB400</color>
     <color name="blue">#2196F3</color>
 
-    <color name="bottomTabActive">#F24040</color>
-    <color name="bottomTabInActive">#171717</color>
+    <color name="bottomTabActive">#EE4D2D</color>
+    <color name="bottomTabInActive">#9E9E9E</color>
     <color name="black_overlay">#667C7474</color>
-    <color name="screenBackground">#F7F8FA</color>
+    <color name="screenBackground">#F5F5F5</color>
     <color name="surfaceBackground">#FFFFFF</color>
     <color name="inputBorder">#E5E7EB</color>
+
+    <color name="statusNew">#FFB400</color>
+    <color name="statusPreparing">#2196F3</color>
+    <color name="statusDelivering">#26A65B</color>
+    <color name="statusSuccess">#26A65B</color>
+    <color name="statusCancel">#9E9E9E</color>
+    <color name="statusFail">#E53935</color>
 </resources>

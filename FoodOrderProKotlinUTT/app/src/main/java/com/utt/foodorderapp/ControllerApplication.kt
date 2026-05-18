@@ -37,6 +37,8 @@ class ControllerApplication : Application() {
         get() = mFirebaseDatabase!!.getReference("/reviews")
     val promotionDatabaseReference: DatabaseReference
         get() = mFirebaseDatabase!!.getReference("/promotions")
+    val addressDatabaseReference: DatabaseReference
+        get() = mFirebaseDatabase!!.getReference("/addresses")
 
     companion object {
         private var instance: ControllerApplication? = null

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/define_dimen_20">
+
+        <EditText
+            android:id="@+id/edt_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_white_corner_6_border_gray"
+            android:hint="@string/hint_address_label"
+            android:inputType="text"
+            android:padding="@dimen/define_dimen_10"
+            android:textSize="@dimen/text_size_small" />
+
+        <EditText
+            android:id="@+id/edt_recipient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/define_dimen_10"
+            android:background="@drawable/bg_white_corner_6_border_gray"
+            android:hint="@string/hint_recipient_name"
+            android:inputType="textPersonName"
+            android:padding="@dimen/define_dimen_10"
+            android:textSize="@dimen/text_size_small" />
+
+        <EditText
+            android:id="@+id/edt_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/define_dimen_10"
+            android:background="@drawable/bg_white_corner_6_border_gray"
+            android:hint="@string/feedback_phone"
+            android:inputType="phone"
+            android:padding="@dimen/define_dimen_10"
+            android:textSize="@dimen/text_size_small" />
+
+        <EditText
+            android:id="@+id/edt_full_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/define_dimen_10"
+            android:background="@drawable/bg_white_corner_6_border_gray"
+            android:hint="@string/address_delivery"
+            android:inputType="textMultiLine"
+            android:minHeight="60dp"
+            android:padding="@dimen/define_dimen_10"
+            android:textSize="@dimen/text_size_small" />
+
+        <CheckBox
+            android:id="@+id/chk_default"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/define_dimen_10"
+            android:text="@string/address_set_default"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/text_size_small" />
+    </LinearLayout>
+</ScrollView>

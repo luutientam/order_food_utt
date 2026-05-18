@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.utt.foodorderapp.fragment.admin
 
 import android.os.Bundle
@@ -11,7 +13,9 @@ import com.utt.foodorderapp.R
 import com.utt.foodorderapp.activity.AdminMainActivity
 import com.utt.foodorderapp.activity.AdminPromotionManagementActivity
 import com.utt.foodorderapp.activity.AdminReportActivity
+import com.utt.foodorderapp.activity.AdminSystemReportActivity
 import com.utt.foodorderapp.activity.AdminUserManagementActivity
+import com.utt.foodorderapp.activity.AdminUserStatsActivity
 import com.utt.foodorderapp.activity.CatalogManagementActivity
 import com.utt.foodorderapp.activity.ChangePasswordActivity
 import com.utt.foodorderapp.activity.SignInActivity
@@ -31,6 +35,12 @@ class AdminAccountFragment : BaseFragment() {
         fragmentAdminAccountBinding.layoutManageCatalog.setOnClickListener { onClickManageCatalog() }
         fragmentAdminAccountBinding.layoutManagePromotion.setOnClickListener { onClickManagePromotion() }
         fragmentAdminAccountBinding.layoutReport.setOnClickListener { onClickReport() }
+        fragmentAdminAccountBinding.layoutUserStats.setOnClickListener {
+            startActivity(activity!!, AdminUserStatsActivity::class.java)
+        }
+        fragmentAdminAccountBinding.layoutSystemReport.setOnClickListener {
+            startActivity(activity!!, AdminSystemReportActivity::class.java)
+        }
         fragmentAdminAccountBinding.layoutSignOut.setOnClickListener { onClickSignOut() }
         fragmentAdminAccountBinding.layoutChangePassword.setOnClickListener { onClickChangePassword() }
         return fragmentAdminAccountBinding.root

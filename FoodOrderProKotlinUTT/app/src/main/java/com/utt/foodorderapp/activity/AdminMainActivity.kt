@@ -3,11 +3,13 @@ package com.utt.foodorderapp.activity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.afollestad.materialdialogs.DialogAction
 import com.afollestad.materialdialogs.MaterialDialog
 import com.utt.foodorderapp.R
 import com.utt.foodorderapp.adapter.AdminViewPagerAdapter
+import com.utt.foodorderapp.data.repository.SessionManager
 import com.utt.foodorderapp.databinding.ActivityAdminMainBinding
 
 class AdminMainActivity : BaseActivity() {
@@ -32,7 +34,7 @@ class AdminMainActivity : BaseActivity() {
                 }
             }
         })
-        mActivityAdminMainBinding!!.bottomNavigation.setOnNavigationItemSelectedListener { item: MenuItem ->
+        mActivityAdminMainBinding!!.bottomNavigation.setOnItemSelectedListener { item: MenuItem ->
             when (item.itemId) {
                 R.id.nav_home -> {
                     mActivityAdminMainBinding!!.viewpager2.currentItem = 0
@@ -49,10 +51,16 @@ class AdminMainActivity : BaseActivity() {
             }
             true
         }
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                showConfirmExitApp()
+            }
+        })
     }
 
-    override fun onBackPressed() {
-        showConfirmExitApp()
+    override fun onResume() {
+        super.onResume()
+        SessionManager.refreshAndRouteIfNeeded(this)
     }
 
     private fun showConfirmExitApp() {

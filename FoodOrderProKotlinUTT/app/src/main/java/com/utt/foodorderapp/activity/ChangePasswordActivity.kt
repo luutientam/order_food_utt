@@ -17,7 +17,7 @@ class ChangePasswordActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         mActivityChangePasswordBinding = ActivityChangePasswordBinding.inflate(layoutInflater)
         setContentView(mActivityChangePasswordBinding!!.root)
-        mActivityChangePasswordBinding!!.imgBack.setOnClickListener { onBackPressed() }
+        mActivityChangePasswordBinding!!.imgBack.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
         mActivityChangePasswordBinding!!.btnChangePassword.setOnClickListener { onClickValidateChangePassword() }
     }
 

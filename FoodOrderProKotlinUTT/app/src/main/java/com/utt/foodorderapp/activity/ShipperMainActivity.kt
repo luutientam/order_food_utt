@@ -6,6 +6,7 @@ import android.view.View
 import androidx.viewpager2.widget.ViewPager2
 import com.utt.foodorderapp.R
 import com.utt.foodorderapp.adapter.ShipperViewPagerAdapter
+import com.utt.foodorderapp.data.repository.SessionManager
 import com.utt.foodorderapp.databinding.ActivityShipperMainBinding
 
 class ShipperMainActivity : BaseActivity() {
@@ -27,7 +28,7 @@ class ShipperMainActivity : BaseActivity() {
                 }
             }
         })
-        binding!!.bottomNavigation.setOnNavigationItemSelectedListener { item: MenuItem ->
+        binding!!.bottomNavigation.setOnItemSelectedListener { item: MenuItem ->
             when (item.itemId) {
                 R.id.nav_pick_order -> binding!!.viewpager2.currentItem = 0
                 R.id.nav_my_order -> binding!!.viewpager2.currentItem = 1
@@ -35,6 +36,11 @@ class ShipperMainActivity : BaseActivity() {
             }
             true
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        SessionManager.refreshAndRouteIfNeeded(this)
     }
 
     fun setToolBar(title: String?) {

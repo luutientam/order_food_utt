@@ -77,9 +77,7 @@ class Order : Serializable {
         if (currentUserId.isNullOrEmpty()) {
             return false
         }
-        val currentStatus = getStatusValue()
-        return (currentStatus == STATUS_PREPARING || currentStatus == STATUS_NEW)
-                && shipperId.isNullOrEmpty()
+        return getStatusValue() == STATUS_PREPARING && shipperId.isNullOrEmpty()
     }
 
     fun isAssignedToShipper(currentUserId: String?): Boolean {

@@ -13,31 +13,48 @@ import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.utt.foodorderapp.ControllerApplication
 import com.utt.foodorderapp.R
 import com.utt.foodorderapp.activity.FoodDetailActivity
 import com.utt.foodorderapp.activity.MainActivity
+import com.utt.foodorderapp.adapter.CategoryChipAdapter
 import com.utt.foodorderapp.adapter.FoodGridAdapter
 import com.utt.foodorderapp.adapter.FoodPopularAdapter
 import com.utt.foodorderapp.constant.AppConfig
-import com.utt.foodorderapp.constant.GlobalFunction.getTextSearch
 import com.utt.foodorderapp.constant.GlobalFunction.hideSoftKeyboard
 import com.utt.foodorderapp.constant.GlobalFunction.showToastMessage
 import com.utt.foodorderapp.constant.GlobalFunction.startActivity
 import com.utt.foodorderapp.databinding.FragmentHomeBinding
 import com.utt.foodorderapp.listener.IOnClickFoodItemListener
+import com.utt.foodorderapp.model.Category
 import com.utt.foodorderapp.model.Food
 import com.utt.foodorderapp.presentation.common.UiState
 import com.utt.foodorderapp.presentation.home.HomeViewModel
-import com.utt.foodorderapp.utils.StringUtil.isEmpty
-import java.util.*
 
 class HomeFragment : BaseFragment() {
 
     private var mFragmentHomeBinding: FragmentHomeBinding? = null
     private var mListFood: MutableList<Food>? = null
+    private var mAllFoods: List<Food> = emptyList()
     private var mListFoodPopular: MutableList<Food>? = null
     private val homeViewModel: HomeViewModel by viewModels()
+    private val categories: MutableList<Category> = mutableListOf()
+    private var categoryAdapter: CategoryChipAdapter? = null
+    private var selectedCategoryId: Long = 0L
+    private var categoryListener: ValueEventListener? = null
+    private var selectedPriceBucket: Int = PRICE_ALL
+
+    companion object {
+        private const val PRICE_ALL = 0
+        private const val PRICE_LOW = 1   // < 50 (k)
+        private const val PRICE_MID = 2   // 50..100
+        private const val PRICE_HIGH = 3  // > 100
+    }
     private val mHandlerBanner = Handler(Looper.getMainLooper())
     private var pageChangeCallback: OnPageChangeCallback? = null
     private val mRunnableBanner = Runnable {
@@ -55,9 +72,90 @@ class HomeFragment : BaseFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         mFragmentHomeBinding = FragmentHomeBinding.inflate(inflater, container, false)
         observeViewModel()
+        setupCategoryChips()
+        setupPriceChips()
+        loadCategoriesFromFirebase()
         homeViewModel.loadFoods("")
         initListener()
         return mFragmentHomeBinding!!.root
+    }
+
+    private fun setupPriceChips() {
+        val binding = mFragmentHomeBinding ?: return
+        val all = binding.chipPriceAll
+        val low = binding.chipPriceLow
+        val mid = binding.chipPriceMid
+        val high = binding.chipPriceHigh
+        val chips = listOf(all to PRICE_ALL, low to PRICE_LOW, mid to PRICE_MID, high to PRICE_HIGH)
+        chips.forEach { (chip, bucket) ->
+            chip.setOnClickListener {
+                if (selectedPriceBucket == bucket) return@setOnClickListener
+                selectedPriceBucket = bucket
+                renderPriceChips()
+                applyFilters()
+            }
+        }
+        renderPriceChips()
+    }
+
+    private fun renderPriceChips() {
+        val binding = mFragmentHomeBinding ?: return
+        val ctx = activity ?: return
+        val chips = mapOf(
+                PRICE_ALL to binding.chipPriceAll,
+                PRICE_LOW to binding.chipPriceLow,
+                PRICE_MID to binding.chipPriceMid,
+                PRICE_HIGH to binding.chipPriceHigh
+        )
+        chips.forEach { (bucket, chip) ->
+            val isSelected = bucket == selectedPriceBucket
+            chip.setBackgroundResource(if (isSelected) R.drawable.bg_chip_selected else R.drawable.bg_chip_unselected)
+            chip.setTextColor(androidx.core.content.ContextCompat.getColor(ctx,
+                    if (isSelected) R.color.white else R.color.textColorPrimary))
+        }
+    }
+
+    private fun setupCategoryChips() {
+        val binding = mFragmentHomeBinding ?: return
+        categoryAdapter = CategoryChipAdapter(categories) { selected ->
+            selectedCategoryId = selected.id
+            applyFilters()
+        }
+        binding.rcvCategories.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        binding.rcvCategories.adapter = categoryAdapter
+    }
+
+    private fun loadCategoriesFromFirebase() {
+        val ctx = activity ?: return
+        val ref = ControllerApplication[ctx].categoryDatabaseReference
+        categoryListener?.let { ref.removeEventListener(it) }
+        categoryListener = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                categories.clear()
+                val all = Category(0L, getString(R.string.category_all), true)
+                categories.add(all)
+                for (child in snapshot.children) {
+                    val item = child.getValue(Category::class.java) ?: continue
+                    if (item.isActive) categories.add(item)
+                }
+                categoryAdapter?.setSelected(selectedCategoryId)
+            }
+            override fun onCancelled(error: DatabaseError) {}
+        }
+        ref.addValueEventListener(categoryListener!!)
+    }
+
+    private fun applyFilters() {
+        var filtered = if (selectedCategoryId == 0L) mAllFoods
+        else mAllFoods.filter { it.categoryId == selectedCategoryId }
+        filtered = when (selectedPriceBucket) {
+            PRICE_LOW -> filtered.filter { it.realPrice in 0..49 }
+            PRICE_MID -> filtered.filter { it.realPrice in 50..100 }
+            PRICE_HIGH -> filtered.filter { it.realPrice > 100 }
+            else -> filtered
+        }
+        mListFood = filtered.toMutableList()
+        displayListFoodSuggest()
     }
 
     override fun initToolbar() {
@@ -175,6 +273,13 @@ class HomeFragment : BaseFragment() {
         if (binding != null && pageChangeCallback != null) {
             binding.viewpager2.unregisterOnPageChangeCallback(pageChangeCallback!!)
         }
+        categoryListener?.let { listener ->
+            val ctx = activity
+            if (ctx != null) {
+                ControllerApplication[ctx].categoryDatabaseReference.removeEventListener(listener)
+            }
+        }
+        categoryListener = null
         pageChangeCallback = null
         mFragmentHomeBinding = null
         super.onDestroyView()
@@ -188,9 +293,9 @@ class HomeFragment : BaseFragment() {
                 is UiState.Error -> showToastMessage(activity, getString(R.string.msg_get_date_error))
                 is UiState.Success -> {
                     mFragmentHomeBinding?.layoutContent?.visibility = View.VISIBLE
-                    mListFood = state.data.toMutableList()
+                    mAllFoods = state.data
+                    applyFilters()
                     displayListFoodPopular()
-                    displayListFoodSuggest()
                 }
             }
         }

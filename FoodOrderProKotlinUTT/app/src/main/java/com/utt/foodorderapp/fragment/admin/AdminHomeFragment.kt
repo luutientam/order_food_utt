@@ -18,6 +18,7 @@ import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
 import com.utt.foodorderapp.ControllerApplication
 import com.utt.foodorderapp.R
 import com.utt.foodorderapp.activity.AddFoodActivity
@@ -31,6 +32,7 @@ import com.utt.foodorderapp.databinding.FragmentAdminHomeBinding
 import com.utt.foodorderapp.fragment.BaseFragment
 import com.utt.foodorderapp.listener.IOnManagerFoodListener
 import com.utt.foodorderapp.model.Food
+import com.utt.foodorderapp.model.Order
 import com.utt.foodorderapp.utils.StringUtil.isEmpty
 import java.util.*
 
@@ -40,13 +42,51 @@ class AdminHomeFragment : BaseFragment() {
     private var mListFood: MutableList<Food>? = null
     private var mAdminFoodAdapter: AdminFoodAdapter? = null
     private var mFoodChildEventListener: ChildEventListener? = null
+    private var mMetricsListener: ValueEventListener? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         mFragmentAdminHomeBinding = FragmentAdminHomeBinding.inflate(inflater, container, false)
         initView()
         initListener()
         getListFood("")
+        observeMetrics()
         return mFragmentAdminHomeBinding!!.root
+    }
+
+    private fun observeMetrics() {
+        val ctx = activity ?: return
+        val ref = ControllerApplication[ctx].bookingDatabaseReference
+        mMetricsListener = object : com.google.firebase.database.ValueEventListener {
+            override fun onDataChange(snapshot: com.google.firebase.database.DataSnapshot) {
+                val binding = mFragmentAdminHomeBinding ?: return
+                val now = Calendar.getInstance()
+                val startOfToday = startOfToday(now)
+                var todayCount = 0
+                var todayRevenue = 0L
+                var pending = 0
+                for (child in snapshot.children) {
+                    val order = child.getValue(Order::class.java) ?: continue
+                    if (order.id >= startOfToday) {
+                        todayCount++
+                        if (order.getStatusValue() == Order.STATUS_SUCCESS) {
+                            todayRevenue += order.amount
+                        }
+                    }
+                    if (order.getStatusValue() == Order.STATUS_NEW) pending++
+                }
+                binding.tvTodayOrders.text = todayCount.toString()
+                binding.tvTodayRevenue.text = "$todayRevenue${AppConfig.CURRENCY}"
+                binding.tvPendingOrders.text = pending.toString()
+            }
+            override fun onCancelled(error: com.google.firebase.database.DatabaseError) {}
+        }
+        ref.addValueEventListener(mMetricsListener!!)
+    }
+
+    private fun startOfToday(cal: Calendar): Long {
+        val c = cal.clone() as Calendar
+        c.set(Calendar.HOUR_OF_DAY, 0); c.set(Calendar.MINUTE, 0); c.set(Calendar.SECOND, 0); c.set(Calendar.MILLISECOND, 0)
+        return c.timeInMillis
     }
 
     override fun initToolbar() {
@@ -206,7 +246,11 @@ class AdminHomeFragment : BaseFragment() {
         if (currentActivity != null && mFoodChildEventListener != null) {
             ControllerApplication[currentActivity].foodDatabaseReference.removeEventListener(mFoodChildEventListener!!)
         }
+        if (currentActivity != null && mMetricsListener != null) {
+            ControllerApplication[currentActivity].bookingDatabaseReference.removeEventListener(mMetricsListener!!)
+        }
         mFoodChildEventListener = null
+        mMetricsListener = null
         mFragmentAdminHomeBinding = null
         mAdminFoodAdapter = null
         super.onDestroyView()

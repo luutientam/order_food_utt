@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.utt.foodorderapp.R
 import com.utt.foodorderapp.adapter.OrderAdapter.OrderViewHolder
@@ -15,10 +16,12 @@ import com.utt.foodorderapp.utils.DateTimeUtils.convertTimeStampToDate
 
 class OrderAdapter(private var mContext: Context?,
                    private val mListOrder: List<Order>?,
-                   private val mICancelOrderListener: ICancelOrderListener) : RecyclerView.Adapter<OrderViewHolder>() {
+                   private val mActionListener: IOrderActionListener) : RecyclerView.Adapter<OrderViewHolder>() {
 
-    interface ICancelOrderListener {
+    interface IOrderActionListener {
         fun cancelOrder(order: Order)
+        fun trackOrder(order: Order)
+        fun rateOrder(order: Order)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderViewHolder {
@@ -29,7 +32,7 @@ class OrderAdapter(private var mContext: Context?,
 
     override fun onBindViewHolder(holder: OrderViewHolder, position: Int) {
         val order = mListOrder!![position]
-        holder.mItemOrderBinding.layoutItem.setBackgroundColor(holder.itemView.context.resources.getColor(R.color.white))
+        holder.mItemOrderBinding.layoutItem.setBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.white))
         holder.mItemOrderBinding.tvId.text = order.id.toString()
         holder.mItemOrderBinding.tvName.text = order.name
         holder.mItemOrderBinding.tvPhone.text = order.phone
@@ -54,11 +57,16 @@ class OrderAdapter(private var mContext: Context?,
             holder.itemView.context.getString(R.string.payment_status_unpaid)
         }
         holder.mItemOrderBinding.tvPayment.text = "$paymentMethod - $paymentStatus"
-        val tvStatus = holder.mItemOrderBinding.root.findViewById<TextView>(R.id.tv_status)
-        val layoutTransaction = holder.mItemOrderBinding.root.findViewById<View>(R.id.layout_transaction)
-        val tvTransaction = holder.mItemOrderBinding.root.findViewById<TextView>(R.id.tv_transaction)
-        val tvShipperLocation = holder.mItemOrderBinding.root.findViewById<TextView>(R.id.tv_shipper_location)
-        val tvCancelOrder = holder.mItemOrderBinding.root.findViewById<TextView>(R.id.tv_cancel_order)
+
+        val root = holder.mItemOrderBinding.root
+        val tvStatus = root.findViewById<TextView>(R.id.tv_status)
+        val layoutTransaction = root.findViewById<View>(R.id.layout_transaction)
+        val tvTransaction = root.findViewById<TextView>(R.id.tv_transaction)
+        val tvShipperLocation = root.findViewById<TextView>(R.id.tv_shipper_location)
+        val tvCancelOrder = root.findViewById<TextView>(R.id.tv_cancel_order)
+        val tvTrackOrder = root.findViewById<TextView>(R.id.tv_track_order)
+        val tvRateOrder = root.findViewById<TextView>(R.id.tv_rate_order)
+
         tvStatus.text = buildStatusText(order)
         if (AppConfig.TYPE_PAYMENT_ONLINE == order.payment && !order.paymentTransactionId.isNullOrEmpty()) {
             layoutTransaction.visibility = View.VISIBLE
@@ -68,12 +76,29 @@ class OrderAdapter(private var mContext: Context?,
             tvTransaction.text = ""
         }
         tvShipperLocation.text = getShipperLocationText(order)
+
         if (order.isCancelableByUser()) {
             tvCancelOrder.visibility = View.VISIBLE
-            tvCancelOrder.setOnClickListener { mICancelOrderListener.cancelOrder(order) }
+            tvCancelOrder.setOnClickListener { mActionListener.cancelOrder(order) }
         } else {
             tvCancelOrder.visibility = View.GONE
             tvCancelOrder.setOnClickListener(null)
+        }
+
+        if (order.getStatusValue() == Order.STATUS_DELIVERING || order.getStatusValue() == Order.STATUS_PREPARING) {
+            tvTrackOrder.visibility = View.VISIBLE
+            tvTrackOrder.setOnClickListener { mActionListener.trackOrder(order) }
+        } else {
+            tvTrackOrder.visibility = View.GONE
+            tvTrackOrder.setOnClickListener(null)
+        }
+
+        if (order.getStatusValue() == Order.STATUS_SUCCESS) {
+            tvRateOrder.visibility = View.VISIBLE
+            tvRateOrder.setOnClickListener { mActionListener.rateOrder(order) }
+        } else {
+            tvRateOrder.visibility = View.GONE
+            tvRateOrder.setOnClickListener(null)
         }
     }
 

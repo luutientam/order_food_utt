@@ -3,6 +3,7 @@ package com.utt.foodorderapp.activity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.os.BundleCompat
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.utt.foodorderapp.ControllerApplication
@@ -37,14 +38,14 @@ class AddFoodActivity : BaseActivity() {
         val bundleReceived = intent.extras
         if (bundleReceived != null) {
             isUpdate = true
-            mFood = bundleReceived[AppConfig.KEY_INTENT_FOOD_OBJECT] as Food?
+            mFood = BundleCompat.getSerializable(bundleReceived, AppConfig.KEY_INTENT_FOOD_OBJECT, Food::class.java)
         }
     }
 
     private fun initToolbar() {
         mActivityAddFoodBinding!!.toolbar.imgBack.visibility = View.VISIBLE
         mActivityAddFoodBinding!!.toolbar.imgCart.visibility = View.GONE
-        mActivityAddFoodBinding!!.toolbar.imgBack.setOnClickListener { onBackPressed() }
+        mActivityAddFoodBinding!!.toolbar.imgBack.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
     }
 
     private fun initView() {

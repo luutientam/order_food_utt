@@ -16,6 +16,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.DatePicker
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import androidx.core.content.pm.PackageInfoCompat
 import com.utt.foodorderapp.activity.AdminMainActivity
 import com.utt.foodorderapp.activity.MainActivity
 import com.utt.foodorderapp.activity.ShipperMainActivity
@@ -107,8 +108,9 @@ object GlobalFunction {
         try {
             var urlFacebook: String = AppConfig.PAGE_FACEBOOK
             val packageManager = context.packageManager
-            val versionCode = packageManager.getPackageInfo("com.facebook.katana", 0).versionCode
-            if (versionCode >= 3002850) { //newer versions of fb app
+            val versionCode = PackageInfoCompat.getLongVersionCode(
+                    packageManager.getPackageInfo("com.facebook.katana", 0))
+            if (versionCode >= 3002850L) { //newer versions of fb app
                 urlFacebook = "fb://facewebmodal/f?href=" + AppConfig.LINK_FACEBOOK
             }
             intent = Intent(Intent.ACTION_VIEW, Uri.parse(urlFacebook))

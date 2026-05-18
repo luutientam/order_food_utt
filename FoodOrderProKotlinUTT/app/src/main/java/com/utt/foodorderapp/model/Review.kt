@@ -4,6 +4,7 @@ import java.io.Serializable
 
 class Review : Serializable {
     var id: Long = 0
+    var orderId: Long = 0
     var userEmail: String? = null
     var restaurantId: Long = 0
     var foodId: Long = 0

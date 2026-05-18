@@ -26,10 +26,16 @@
       ".read": "auth != null",
       ".write": "auth != null && root.child('users/' + auth.uid + '/role').val() === 'admin'"
     },
-    "users": {
+    "addresses": {
       "$uid": {
         ".read": "auth != null && (auth.uid === $uid || root.child('users/' + auth.uid + '/role').val() === 'admin')",
         ".write": "auth != null && (auth.uid === $uid || root.child('users/' + auth.uid + '/role').val() === 'admin')"
+      }
+    },
+    "users": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('users/' + auth.uid + '/role').val() === 'admin')",
+        ".write": "auth != null && (root.child('users/' + auth.uid + '/role').val() === 'admin' || (auth.uid === $uid && (!data.exists() || (newData.child('role').val() === data.child('role').val() && newData.child('isActive').val() === data.child('isActive').val() && newData.child('isAdmin').val() === data.child('isAdmin').val()))))"
       }
     },
     "booking": {

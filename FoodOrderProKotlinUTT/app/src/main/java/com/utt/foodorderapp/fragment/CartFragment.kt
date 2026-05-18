@@ -1,8 +1,10 @@
 package com.utt.foodorderapp.fragment
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +12,9 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.TextView
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.os.BundleCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,6 +22,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.utt.foodorderapp.ControllerApplication
 import com.utt.foodorderapp.R
+import com.utt.foodorderapp.activity.AddressBookActivity
 import com.utt.foodorderapp.activity.BaseActivity
 import com.utt.foodorderapp.activity.MainActivity
 import com.utt.foodorderapp.adapter.CartAdapter
@@ -26,7 +32,9 @@ import com.utt.foodorderapp.constant.GlobalFunction.hideSoftKeyboard
 import com.utt.foodorderapp.constant.GlobalFunction.showToastMessage
 import com.utt.foodorderapp.databinding.FragmentCartBinding
 import com.utt.foodorderapp.data.remote.FakeBankApiService
+import com.utt.foodorderapp.data.repository.AddressRepository
 import com.utt.foodorderapp.event.ReloadListCartEvent
+import com.utt.foodorderapp.model.Address
 import com.utt.foodorderapp.model.Food
 import com.utt.foodorderapp.model.Order
 import com.utt.foodorderapp.model.Promotion
@@ -50,6 +58,43 @@ class CartFragment : BaseFragment() {
     private var availablePromotions: MutableList<Promotion> = ArrayList()
     private val fakeBankApiService = FakeBankApiService()
     private lateinit var cartViewModel: CartViewModel
+    private val addressRepository = AddressRepository()
+
+    // Tham chiếu form đang mở (để fill khi pick xong địa chỉ)
+    private var activeNameInput: EditText? = null
+    private var activePhoneInput: EditText? = null
+    private var activeAddressInput: EditText? = null
+
+    private val pickAddressLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode != Activity.RESULT_OK) return@registerForActivityResult
+        val data = result.data ?: return@registerForActivityResult
+        val extras = data.extras ?: return@registerForActivityResult
+        val picked = BundleCompat.getSerializable(extras, AddressBookActivity.EXTRA_RESULT_ADDRESS, Address::class.java)
+                ?: return@registerForActivityResult
+        applyPickedAddress(picked)
+    }
+
+    private fun applyPickedAddress(picked: Address) {
+        activeNameInput?.setText(picked.recipientName ?: "")
+        activePhoneInput?.setText(picked.phone ?: "")
+        activeAddressInput?.setText(picked.fullAddress ?: "")
+    }
+
+    private fun autoFillDefaultAddress() {
+        val uid = user?.uid ?: return
+        val nameInput = activeNameInput ?: return
+        val phoneInput = activePhoneInput ?: return
+        val addressInput = activeAddressInput ?: return
+        if (!isEmpty(addressInput.text.toString())) return
+        addressRepository.getDefaultAddress(uid) { def ->
+            if (def == null) return@getDefaultAddress
+            if (isEmpty(nameInput.text.toString())) nameInput.setText(def.recipientName ?: "")
+            if (isEmpty(phoneInput.text.toString())) phoneInput.setText(def.phone ?: "")
+            if (isEmpty(addressInput.text.toString())) addressInput.setText(def.fullAddress ?: "")
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         mFragmentCartBinding = FragmentCartBinding.inflate(inflater, container, false)
@@ -166,6 +211,7 @@ class CartFragment : BaseFragment() {
         val edtNameOrder = viewDialog.findViewById<EditText>(R.id.edt_name_order)
         val edtPhoneOrder = viewDialog.findViewById<EditText>(R.id.edt_phone_order)
         val edtAddressOrder = viewDialog.findViewById<EditText>(R.id.edt_address_order)
+        val tvPickSavedAddress = viewDialog.findViewById<TextView>(R.id.tv_pick_saved_address)
         val edtPromotionCode = viewDialog.findViewById<EditText>(R.id.edt_promotion_code)
         val tvApplyPromotion = viewDialog.findViewById<TextView>(R.id.tv_apply_promotion)
         val tvDiscountValue = viewDialog.findViewById<TextView>(R.id.tv_discount_value)
@@ -178,6 +224,17 @@ class CartFragment : BaseFragment() {
         appliedPromotionCode = null
         availablePromotions.clear()
         tvDiscountValue.text = getString(R.string.promotion_not_applied)
+
+        activeNameInput = edtNameOrder
+        activePhoneInput = edtPhoneOrder
+        activeAddressInput = edtAddressOrder
+        autoFillDefaultAddress()
+        tvPickSavedAddress.setOnClickListener {
+            val ctx = activity ?: return@setOnClickListener
+            val intent = Intent(ctx, AddressBookActivity::class.java)
+            intent.putExtra(AddressBookActivity.EXTRA_PICK_MODE, true)
+            pickAddressLauncher.launch(intent)
+        }
 
         // Set data
         tvFoodsOrder.text = getStringListFoodsOrder()
@@ -195,6 +252,11 @@ class CartFragment : BaseFragment() {
                 return@setOnClickListener
             }
             applyPromotionCode(code, tvDiscountValue, tvPriceOrder)
+        }
+        bottomSheetDialog.setOnDismissListener {
+            activeNameInput = null
+            activePhoneInput = null
+            activeAddressInput = null
         }
         tvCancelOrder.setOnClickListener { bottomSheetDialog.dismiss() }
         tvCreateOrder.setOnClickListener {

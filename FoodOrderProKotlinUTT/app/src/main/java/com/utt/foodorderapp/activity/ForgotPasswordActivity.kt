@@ -17,7 +17,7 @@ class ForgotPasswordActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         mActivityForgotPasswordBinding = ActivityForgotPasswordBinding.inflate(layoutInflater)
         setContentView(mActivityForgotPasswordBinding!!.root)
-        mActivityForgotPasswordBinding!!.imgBack.setOnClickListener { onBackPressed() }
+        mActivityForgotPasswordBinding!!.imgBack.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
         mActivityForgotPasswordBinding!!.btnResetPassword.setOnClickListener { onClickValidateResetPassword() }
     }
 

@@ -285,9 +285,35 @@
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/tv_track_order"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/define_dimen_44"
+            android:layout_marginTop="@dimen/define_dimen_10"
+            android:background="@drawable/bg_primary_button"
+            android:gravity="center"
+            android:text="@string/action_track_order"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_normal"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_rate_order"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/define_dimen_44"
+            android:layout_marginTop="@dimen/define_dimen_10"
+            android:background="@drawable/bg_outlined_button"
+            android:gravity="center"
+            android:text="@string/action_rate_order"
+            android:textColor="@color/brandOrange"
+            android:textSize="@dimen/text_size_normal"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <TextView
             android:id="@+id/tv_cancel_order"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/define_dimen_40"
+            android:layout_height="@dimen/define_dimen_44"
             android:layout_marginTop="@dimen/define_dimen_10"
             android:background="@drawable/bg_red_shape_corner_6"
             android:gravity="center"

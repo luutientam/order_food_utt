@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.utt.foodorderapp.fragment
 
 import android.os.Bundle
@@ -8,11 +10,14 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.utt.foodorderapp.R
+import com.utt.foodorderapp.activity.AddressBookActivity
 import com.utt.foodorderapp.activity.ChangePasswordActivity
 import com.utt.foodorderapp.activity.MainActivity
 import com.utt.foodorderapp.activity.OrderHistoryActivity
+import com.utt.foodorderapp.activity.RestaurantListActivity
 import com.utt.foodorderapp.activity.SignInActivity
 import com.utt.foodorderapp.activity.UpdateProfileActivity
+import com.utt.foodorderapp.activity.VoucherHubActivity
 import com.utt.foodorderapp.constant.GlobalFunction.startActivity
 import com.utt.foodorderapp.databinding.FragmentAccountBinding
 import com.utt.foodorderapp.prefs.DataStoreManager.Companion.user
@@ -26,6 +31,15 @@ class AccountFragment : BaseFragment() {
         fragmentAccountBinding.layoutSignOut.setOnClickListener { onClickSignOut() }
         fragmentAccountBinding.layoutChangePassword.setOnClickListener { onClickChangePassword() }
         fragmentAccountBinding.layoutOrderHistory.setOnClickListener { onClickOrderHistory() }
+        fragmentAccountBinding.layoutRestaurantList.setOnClickListener {
+            startActivity(requireActivity(), RestaurantListActivity::class.java)
+        }
+        fragmentAccountBinding.layoutAddressBook.setOnClickListener {
+            startActivity(requireActivity(), AddressBookActivity::class.java)
+        }
+        fragmentAccountBinding.layoutVoucherHub.setOnClickListener {
+            startActivity(requireActivity(), VoucherHubActivity::class.java)
+        }
         return fragmentAccountBinding.root
     }
 

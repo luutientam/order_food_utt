@@ -24,6 +24,94 @@
     <string name="msg_exit_app">Bạn có muốn thoát ứng dụng?</string>
 
     <string name="category_title">Danh mục</string>
+    <string name="category_all">Tất cả</string>
+
+    <!-- Order tracking -->
+    <string name="order_tracking">Theo dõi đơn</string>
+    <string name="msg_no_tracking">Đơn này chưa có thông tin vị trí</string>
+    <string name="label_delivery_address">Điểm giao hàng</string>
+    <string name="label_shipper_position">Vị trí shipper</string>
+    <string name="action_track_order">Theo dõi đơn</string>
+
+    <!-- Rating -->
+    <string name="action_rate_order">Đánh giá đơn</string>
+    <string name="rating_dialog_title">Đánh giá đơn hàng</string>
+    <string name="rating_dialog_hint">Bạn cảm thấy đơn này thế nào?</string>
+    <string name="rating_comment_hint">Cảm nhận của bạn… (tùy chọn)</string>
+    <string name="action_submit_rating">Gửi đánh giá</string>
+    <string name="msg_rating_success">Cảm ơn bạn đã đánh giá đơn hàng</string>
+    <string name="msg_rating_failed">Gửi đánh giá thất bại, vui lòng thử lại</string>
+    <string name="msg_rating_already">Đơn này đã được đánh giá</string>
+
+    <!-- Address book -->
+    <string name="address_book_title">Sổ địa chỉ</string>
+    <string name="address_book_empty">Chưa có địa chỉ nào. Thêm địa chỉ để đặt hàng nhanh hơn.</string>
+    <string name="action_add_address">Thêm địa chỉ mới</string>
+    <string name="action_pick_saved_address">Chọn từ sổ địa chỉ</string>
+    <string name="action_set_default">Đặt mặc định</string>
+    <string name="address_default_badge">Mặc định</string>
+    <string name="address_set_default">Đặt làm địa chỉ mặc định</string>
+    <string name="hint_address_label">Tên gợi nhớ (Nhà, Công ty…)</string>
+    <string name="hint_recipient_name">Tên người nhận</string>
+    <string name="msg_address_required">Vui lòng nhập đủ tên, SĐT, địa chỉ</string>
+    <string name="msg_address_saved">Đã lưu địa chỉ</string>
+
+    <!-- Voucher hub -->
+    <string name="voucher_hub_title">Khuyến mại</string>
+    <string name="voucher_hub_empty">Hiện chưa có voucher nào</string>
+    <string name="voucher_off">GIẢM</string>
+    <string name="voucher_min_order">Đơn từ %1$s</string>
+    <string name="voucher_max_discount">tối đa %1$s</string>
+    <string name="voucher_no_min">Không giới hạn đơn tối thiểu</string>
+
+    <!-- Shipper earnings -->
+    <string name="earnings_title">Thu nhập</string>
+    <string name="earnings_today">Hôm nay</string>
+    <string name="earnings_week">Tuần này</string>
+    <string name="earnings_month">Tháng này</string>
+    <string name="earnings_history_title">Đơn đã giao</string>
+    <string name="earnings_empty">Chưa có đơn nào hoàn tất</string>
+
+    <!-- Admin dashboard -->
+    <string name="dashboard_today_orders">Đơn hôm nay</string>
+    <string name="dashboard_today_revenue">Doanh thu</string>
+    <string name="dashboard_pending_orders">Chờ xử lý</string>
+
+    <!-- Restaurant browsing -->
+    <string name="restaurant_list_title">Nhà hàng</string>
+    <string name="restaurant_list_empty">Chưa có nhà hàng nào</string>
+    <string name="restaurant_foods_title">Món của nhà hàng</string>
+    <string name="restaurant_foods_empty">Nhà hàng chưa có món</string>
+
+    <!-- Price chips -->
+    <string name="price_chip_all">Tất cả giá</string>
+    <string name="price_chip_low">Dưới 50k</string>
+    <string name="price_chip_mid">50 - 100k</string>
+    <string name="price_chip_high">Trên 100k</string>
+
+    <!-- Reviews + ratings -->
+    <string name="reviews_section_title">Đánh giá</string>
+    <string name="action_rate_food">Đánh giá món</string>
+    <string name="action_rate_restaurant">Đánh giá nhà hàng</string>
+    <string name="action_view_food_reviews">Xem đánh giá món</string>
+    <string name="action_view_restaurant_reviews">Xem đánh giá nhà hàng</string>
+    <string name="reviews_food_title">Đánh giá món</string>
+    <string name="reviews_restaurant_title">Đánh giá nhà hàng</string>
+    <string name="reviews_empty">Chưa có đánh giá nào</string>
+    <string name="reviews_total_count">%1$d đánh giá</string>
+    <string name="msg_no_restaurant_linked">Món này chưa gắn nhà hàng</string>
+
+    <!-- User stats -->
+    <string name="stats_user_title">Thống kê người dùng</string>
+    <string name="stats_total_users">Tổng người dùng</string>
+    <string name="stats_active_users">Đang hoạt động</string>
+    <string name="stats_by_role">Theo vai trò</string>
+
+    <!-- System report -->
+    <string name="system_report_title">Báo cáo hoạt động</string>
+    <string name="system_orders_by_status">Phân bố đơn theo trạng thái</string>
+    <string name="system_total_orders">Tổng đơn</string>
+    <string name="system_success_rate">Tỷ lệ thành công</string>
     <string name="food_suggest">Gợi ý món ăn</string>
     <string name="food_detail_title">Chi tiết món ăn</string>
     <string name="add_to_cart">Thêm vào giỏ hàng</string>
