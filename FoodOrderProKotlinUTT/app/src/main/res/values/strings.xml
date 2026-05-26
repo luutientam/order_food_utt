@@ -336,8 +336,8 @@
     <string name="promotion_best_hint">Voucher tốt nhất: %1$s - giảm %2$s%% tối đa %3$s</string>
     <string name="shipper_location">Vị trí shipper:</string>
     <string name="shipper_location_unknown">Chưa cập nhật</string>
-    <string name="sign_in_google">Đăng nhập với Google</string>
-    <string name="sign_up_google">Đăng ký với Google</string>
+    <string name="sign_in_google">Đăng nhập bằng Google</string>
+    <string name="sign_up_google">Đăng ký bằng Google</string>
     <string name="msg_google_sign_in_error">Đăng nhập Google thất bại</string>
     <string name="msg_google_sign_up_error">Đăng ký Google thất bại</string>
     <string name="msg_google_account_exists">Tài khoản Google đã tồn tại, vui lòng đăng nhập</string>

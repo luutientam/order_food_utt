@@ -1,0 +1,50 @@
+{
+  "WELCOME20": {
+    "code": "WELCOME20",
+    "title": "Giảm 20% cho đơn đầu tiên",
+    "discountPercent": 20,
+    "minOrderAmount": 80,
+    "maxDiscountAmount": 30,
+    "active": true
+  },
+  "UTT10": {
+    "code": "UTT10",
+    "title": "Ưu đãi sinh viên UTT - giảm 10%",
+    "discountPercent": 10,
+    "minOrderAmount": 50,
+    "maxDiscountAmount": 25,
+    "active": true
+  },
+  "LUNCH25": {
+    "code": "LUNCH25",
+    "title": "Giờ vàng ăn trưa - giảm 25%",
+    "discountPercent": 25,
+    "minOrderAmount": 120,
+    "maxDiscountAmount": 50,
+    "active": true
+  },
+  "FREESHIP15": {
+    "code": "FREESHIP15",
+    "title": "Giảm 15% tối đa 20k",
+    "discountPercent": 15,
+    "minOrderAmount": 100,
+    "maxDiscountAmount": 20,
+    "active": true
+  },
+  "HUNGRY30": {
+    "code": "HUNGRY30",
+    "title": "No bụng cuối tuần - giảm 30%",
+    "discountPercent": 30,
+    "minOrderAmount": 200,
+    "maxDiscountAmount": 70,
+    "active": true
+  },
+  "SALE50OFF": {
+    "code": "SALE50OFF",
+    "title": "Flash Sale - giảm 50% (đã kết thúc)",
+    "discountPercent": 50,
+    "minOrderAmount": 150,
+    "maxDiscountAmount": 60,
+    "active": false
+  }
+}

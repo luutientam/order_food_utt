@@ -17,7 +17,7 @@
             android:layout_height="@dimen/define_dimen_150"
             app:civ_border_color="@color/yellow"
             app:civ_border_width="2dp"
-            android:src="@drawable/img_splash" />
+            android:src="@drawable/ic_logo_utt" />
 
         <LinearLayout
             android:layout_width="wrap_content"

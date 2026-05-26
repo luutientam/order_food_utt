@@ -1,0 +1,62 @@
+{
+  "1": {
+    "id": 1,
+    "name": "Cơm",
+    "active": true
+  },
+  "2": {
+    "id": 2,
+    "name": "Phở & Bún",
+    "active": true
+  },
+  "3": {
+    "id": 3,
+    "name": "Mì & Cháo",
+    "active": true
+  },
+  "4": {
+    "id": 4,
+    "name": "Gà rán & Đồ ăn nhanh",
+    "active": true
+  },
+  "5": {
+    "id": 5,
+    "name": "Đồ uống",
+    "active": true
+  },
+  "6": {
+    "id": 6,
+    "name": "Ăn vặt",
+    "active": true
+  },
+  "7": {
+    "id": 7,
+    "name": "Bánh mì",
+    "active": true
+  },
+  "8": {
+    "id": 8,
+    "name": "Tráng miệng",
+    "active": true
+  },
+  "9": {
+    "id": 9,
+    "name": "Lẩu & Nướng",
+    "active": true
+  },
+  "10": {
+    "id": 10,
+    "name": "Hải sản",
+    "active": true
+  },
+  "11": {
+    "id": 11,
+    "name": "Món chay",
+    "active": true
+  },
+  "12": {
+    "id": 12,
+    "name": "Pizza & Mỳ Ý",
+    "active": true
+  }
+}

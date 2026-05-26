@@ -1,0 +1,2040 @@
+{
+  "categories": {
+    "1": {
+      "id": 1,
+      "name": "Cơm",
+      "active": true
+    },
+    "2": {
+      "id": 2,
+      "name": "Phở & Bún",
+      "active": true
+    },
+    "3": {
+      "id": 3,
+      "name": "Mì & Cháo",
+      "active": true
+    },
+    "4": {
+      "id": 4,
+      "name": "Gà rán & Đồ ăn nhanh",
+      "active": true
+    },
+    "5": {
+      "id": 5,
+      "name": "Đồ uống",
+      "active": true
+    },
+    "6": {
+      "id": 6,
+      "name": "Ăn vặt",
+      "active": true
+    },
+    "7": {
+      "id": 7,
+      "name": "Bánh mì",
+      "active": true
+    },
+    "8": {
+      "id": 8,
+      "name": "Tráng miệng",
+      "active": true
+    },
+    "9": {
+      "id": 9,
+      "name": "Lẩu & Nướng",
+      "active": true
+    },
+    "10": {
+      "id": 10,
+      "name": "Hải sản",
+      "active": true
+    },
+    "11": {
+      "id": 11,
+      "name": "Món chay",
+      "active": true
+    },
+    "12": {
+      "id": 12,
+      "name": "Pizza & Mỳ Ý",
+      "active": true
+    }
+  },
+  "restaurants": {
+    "101": {
+      "id": 101,
+      "name": "Cơm Tấm Cô Tư",
+      "address": "Số 12 Triều Khúc, Thanh Xuân, Hà Nội",
+      "phone": "0987654321",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/C%C6%A1m_T%E1%BA%A5m%2C_Da_Nang%2C_Vietnam.jpg?width=800",
+      "active": true
+    },
+    "102": {
+      "id": 102,
+      "name": "Phở & Bún Bò Gốc Đa",
+      "address": "Số 8 Nguyễn Trãi, Thanh Xuân, Hà Nội",
+      "phone": "0978123456",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bowl_of_Meatball_pho.jpg?width=800",
+      "active": true
+    },
+    "103": {
+      "id": 103,
+      "name": "Quán Mì Trộn UTT",
+      "address": "Số 45 Triều Khúc, Thanh Xuân, Hà Nội",
+      "phone": "0911222333",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Mi_Goreng_GM.jpg?width=800",
+      "active": true
+    },
+    "104": {
+      "id": 104,
+      "name": "Gà Rán Chickita",
+      "address": "Số 120 Nguyễn Xiển, Thanh Xuân, Hà Nội",
+      "phone": "0909888777",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Fried-Chicken-Set.jpg?width=800",
+      "active": true
+    },
+    "105": {
+      "id": 105,
+      "name": "Trà Chanh Bụi Phố",
+      "address": "Số 30 Triều Khúc, Thanh Xuân, Hà Nội",
+      "phone": "0966555444",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bubble_Tea.png?width=800",
+      "active": true
+    },
+    "106": {
+      "id": 106,
+      "name": "Bánh Mì & Chè Cô Hoa",
+      "address": "Số 25 Khương Đình, Thanh Xuân, Hà Nội",
+      "phone": "0944333222",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/B%C3%A1nh_m%C3%AC_th%E1%BB%8Bt_n%C6%B0%E1%BB%9Bng.png?width=800",
+      "active": true
+    },
+    "107": {
+      "id": 107,
+      "name": "Lẩu Nướng Hải Sản Biển Đông",
+      "address": "Số 88 Nguyễn Xiển, Thanh Xuân, Hà Nội",
+      "phone": "0933121212",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Hot_Pot.jpg?width=800",
+      "active": true
+    },
+    "108": {
+      "id": 108,
+      "name": "Pizza Góc Phố Ý",
+      "address": "Số 5 Vũ Trọng Phụng, Thanh Xuân, Hà Nội",
+      "phone": "0922343434",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Pizza-3007395.jpg?width=800",
+      "active": true
+    },
+    "109": {
+      "id": 109,
+      "name": "Cơm Chay An Lạc",
+      "address": "Số 60 Khương Trung, Thanh Xuân, Hà Nội",
+      "phone": "0977565656",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Japanese_SilkyTofu_%28Kinugoshi_Tofu%29.JPG?width=800",
+      "active": true
+    },
+    "110": {
+      "id": 110,
+      "name": "Bún Đậu & Bún Riêu Cô Béo",
+      "address": "Ngõ 105 Triều Khúc, Thanh Xuân, Hà Nội",
+      "phone": "0988676767",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/B%C3%BAn_ri%C3%AAu_%C4%91%E1%BA%B7c_bi%E1%BB%87t.jpg?width=800",
+      "active": true
+    }
+  },
+  "food": {
+    "1001": {
+      "id": 1001,
+      "name": "Cơm tấm sườn bì chả",
+      "description": "Cơm tấm dẻo, sườn nướng, bì và chả trứng, chan mắm chua ngọt.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/C%C6%A1m_T%E1%BA%A5m%2C_Da_Nang%2C_Vietnam.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/C%C6%A1m_T%E1%BA%A5m%2C_Da_Nang%2C_Vietnam.jpg?width=1280",
+      "restaurantId": 101,
+      "restaurantName": "Cơm Tấm Cô Tư",
+      "categoryId": 1,
+      "categoryName": "Cơm",
+      "price": 45,
+      "sale": 0,
+      "popular": true,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/C%C6%A1m_T%E1%BA%A5m%2C_Da_Nang%2C_Vietnam.jpg?width=800"
+        }
+      ]
+    },
+    "1002": {
+      "id": 1002,
+      "name": "Cơm tấm sườn trứng ốp la",
+      "description": "Sườn nướng mật ong kèm trứng ốp lòng đào, dưa leo cà chua.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/C%C6%A1m_T%E1%BA%A5m%2C_Da_Nang%2C_Vietnam.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/C%C6%A1m_T%E1%BA%A5m%2C_Da_Nang%2C_Vietnam.jpg?width=1280",
+      "restaurantId": 101,
+      "restaurantName": "Cơm Tấm Cô Tư",
+      "categoryId": 1,
+      "categoryName": "Cơm",
+      "price": 42,
+      "sale": 10,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/C%C6%A1m_T%E1%BA%A5m%2C_Da_Nang%2C_Vietnam.jpg?width=800"
+        }
+      ]
+    },
+    "1003": {
+      "id": 1003,
+      "name": "Cơm gà xối mỡ",
+      "description": "Đùi gà chiên xối mỡ giòn rụm, cơm vàng ươm kèm gỏi.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Hainanese_Chicken_Rice.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Hainanese_Chicken_Rice.jpg?width=1280",
+      "restaurantId": 101,
+      "restaurantName": "Cơm Tấm Cô Tư",
+      "categoryId": 1,
+      "categoryName": "Cơm",
+      "price": 42,
+      "sale": 0,
+      "popular": true,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Hainanese_Chicken_Rice.jpg?width=800"
+        }
+      ]
+    },
+    "1004": {
+      "id": 1004,
+      "name": "Cơm rang dưa bò",
+      "description": "Cơm rang săn hạt cùng thịt bò và dưa chua đậm đà.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Koh_Mak%2C_Thailand%2C_Fried_rice_with_seafood%2C_Thai_fried_rice.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Koh_Mak%2C_Thailand%2C_Fried_rice_with_seafood%2C_Thai_fried_rice.jpg?width=1280",
+      "restaurantId": 101,
+      "restaurantName": "Cơm Tấm Cô Tư",
+      "categoryId": 1,
+      "categoryName": "Cơm",
+      "price": 38,
+      "sale": 5,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Koh_Mak%2C_Thailand%2C_Fried_rice_with_seafood%2C_Thai_fried_rice.jpg?width=800"
+        }
+      ]
+    },
+    "1005": {
+      "id": 1005,
+      "name": "Cơm rang hải sản",
+      "description": "Cơm rang tôm mực, đậu Hà Lan, trứng thơm nức.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Koh_Mak%2C_Thailand%2C_Fried_rice_with_seafood%2C_Thai_fried_rice.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Koh_Mak%2C_Thailand%2C_Fried_rice_with_seafood%2C_Thai_fried_rice.jpg?width=1280",
+      "restaurantId": 101,
+      "restaurantName": "Cơm Tấm Cô Tư",
+      "categoryId": 1,
+      "categoryName": "Cơm",
+      "price": 48,
+      "sale": 0,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Koh_Mak%2C_Thailand%2C_Fried_rice_with_seafood%2C_Thai_fried_rice.jpg?width=800"
+        }
+      ]
+    },
+    "1006": {
+      "id": 1006,
+      "name": "Cơm sườn nướng mật ong",
+      "description": "Miếng sườn cốt lết to ướp mật ong nướng than hoa.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/C%C6%A1m_T%E1%BA%A5m%2C_Da_Nang%2C_Vietnam.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/C%C6%A1m_T%E1%BA%A5m%2C_Da_Nang%2C_Vietnam.jpg?width=1280",
+      "restaurantId": 101,
+      "restaurantName": "Cơm Tấm Cô Tư",
+      "categoryId": 1,
+      "categoryName": "Cơm",
+      "price": 50,
+      "sale": 0,
+      "popular": true,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/C%C6%A1m_T%E1%BA%A5m%2C_Da_Nang%2C_Vietnam.jpg?width=800"
+        }
+      ]
+    },
+    "2001": {
+      "id": 2001,
+      "name": "Phở bò tái lăn",
+      "description": "Nước dùng ninh xương 12 tiếng, bánh phở mềm, bò tái ngọt.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bowl_of_Meatball_pho.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Bowl_of_Meatball_pho.jpg?width=1280",
+      "restaurantId": 102,
+      "restaurantName": "Phở & Bún Bò Gốc Đa",
+      "categoryId": 2,
+      "categoryName": "Phở & Bún",
+      "price": 40,
+      "sale": 0,
+      "popular": true,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Bowl_of_Meatball_pho.jpg?width=800"
+        }
+      ]
+    },
+    "2002": {
+      "id": 2002,
+      "name": "Phở gà ta",
+      "description": "Phở gà ta thả vườn, thịt chắc ngọt, nước trong thanh.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bowl_of_Meatball_pho.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Bowl_of_Meatball_pho.jpg?width=1280",
+      "restaurantId": 102,
+      "restaurantName": "Phở & Bún Bò Gốc Đa",
+      "categoryId": 2,
+      "categoryName": "Phở & Bún",
+      "price": 38,
+      "sale": 0,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Bowl_of_Meatball_pho.jpg?width=800"
+        }
+      ]
+    },
+    "2003": {
+      "id": 2003,
+      "name": "Bún bò Huế đặc biệt",
+      "description": "Bún bò Huế cay nồng sả ớt, giò heo, chả cua, bò bắp.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/B%C3%BAn_b%C3%B2_Hu%E1%BA%BF_-_Ch%E1%BB%A3_%C4%90%C3%B4ng_Ba_%282024%29_-_img_02.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/B%C3%BAn_b%C3%B2_Hu%E1%BA%BF_-_Ch%E1%BB%A3_%C4%90%C3%B4ng_Ba_%282024%29_-_img_02.jpg?width=1280",
+      "restaurantId": 102,
+      "restaurantName": "Phở & Bún Bò Gốc Đa",
+      "categoryId": 2,
+      "categoryName": "Phở & Bún",
+      "price": 42,
+      "sale": 0,
+      "popular": true,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/B%C3%BAn_b%C3%B2_Hu%E1%BA%BF_-_Ch%E1%BB%A3_%C4%90%C3%B4ng_Ba_%282024%29_-_img_02.jpg?width=800"
+        }
+      ]
+    },
+    "2004": {
+      "id": 2004,
+      "name": "Bún chả Hà Nội",
+      "description": "Chả viên và ba chỉ nướng than hoa, nước chấm chua ngọt.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/B%C3%BAn_ch%E1%BA%A3_Vietnamese_food.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/B%C3%BAn_ch%E1%BA%A3_Vietnamese_food.jpg?width=1280",
+      "restaurantId": 102,
+      "restaurantName": "Phở & Bún Bò Gốc Đa",
+      "categoryId": 2,
+      "categoryName": "Phở & Bún",
+      "price": 40,
+      "sale": 10,
+      "popular": true,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/B%C3%BAn_ch%E1%BA%A3_Vietnamese_food.jpg?width=800"
+        }
+      ]
+    },
+    "2005": {
+      "id": 2005,
+      "name": "Hủ tiếu Nam Vang",
+      "description": "Hủ tiếu tôm thịt, gan, trứng cút, nước lèo ngọt thanh.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Hu_Tieu_Nam_Vang.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Hu_Tieu_Nam_Vang.jpg?width=1280",
+      "restaurantId": 102,
+      "restaurantName": "Phở & Bún Bò Gốc Đa",
+      "categoryId": 2,
+      "categoryName": "Phở & Bún",
+      "price": 40,
+      "sale": 0,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Hu_Tieu_Nam_Vang.jpg?width=800"
+        }
+      ]
+    },
+    "2006": {
+      "id": 2006,
+      "name": "Mì Quảng tôm thịt",
+      "description": "Mì Quảng sợi vàng, tôm thịt, đậu phộng và bánh đa.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/M%C3%AC_Qu%E1%BA%A3ng%2C_Da_Nang%2C_Vietnam.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/M%C3%AC_Qu%E1%BA%A3ng%2C_Da_Nang%2C_Vietnam.jpg?width=1280",
+      "restaurantId": 102,
+      "restaurantName": "Phở & Bún Bò Gốc Đa",
+      "categoryId": 2,
+      "categoryName": "Phở & Bún",
+      "price": 42,
+      "sale": 0,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/M%C3%AC_Qu%E1%BA%A3ng%2C_Da_Nang%2C_Vietnam.jpg?width=800"
+        }
+      ]
+    },
+    "3001": {
+      "id": 3001,
+      "name": "Mì trộn Indomie bò khô",
+      "description": "Mì Indomie trộn bò khô, trứng lòng đào và rau xanh.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Mi_Goreng_GM.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Mi_Goreng_GM.jpg?width=1280",
+      "restaurantId": 103,
+      "restaurantName": "Quán Mì Trộn UTT",
+      "categoryId": 3,
+      "categoryName": "Mì & Cháo",
+      "price": 30,
+      "sale": 0,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Mi_Goreng_GM.jpg?width=800"
+        }
+      ]
+    },
+    "3002": {
+      "id": 3002,
+      "name": "Mì cay hải sản cấp độ 3",
+      "description": "Mì cay Hàn Quốc hải sản, phô mai kéo sợi, cay tê.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Jjampong.JPG?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Jjampong.JPG?width=1280",
+      "restaurantId": 103,
+      "restaurantName": "Quán Mì Trộn UTT",
+      "categoryId": 3,
+      "categoryName": "Mì & Cháo",
+      "price": 50,
+      "sale": 0,
+      "popular": true,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Jjampong.JPG?width=800"
+        }
+      ]
+    },
+    "3003": {
+      "id": 3003,
+      "name": "Cháo sườn sụn",
+      "description": "Cháo sườn sánh mịn, sụn giòn, quẩy nóng và ruốc.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Chinese_rice_congee.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Chinese_rice_congee.jpg?width=1280",
+      "restaurantId": 103,
+      "restaurantName": "Quán Mì Trộn UTT",
+      "categoryId": 3,
+      "categoryName": "Mì & Cháo",
+      "price": 25,
+      "sale": 0,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Chinese_rice_congee.jpg?width=800"
+        }
+      ]
+    },
+    "3004": {
+      "id": 3004,
+      "name": "Miến trộn gà xé",
+      "description": "Miến dong trộn gà xé, nấm hương, hành phi thơm.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Cooked_dangmyeon.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Cooked_dangmyeon.jpg?width=1280",
+      "restaurantId": 103,
+      "restaurantName": "Quán Mì Trộn UTT",
+      "categoryId": 3,
+      "categoryName": "Mì & Cháo",
+      "price": 35,
+      "sale": 5,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Cooked_dangmyeon.jpg?width=800"
+        }
+      ]
+    },
+    "3005": {
+      "id": 3005,
+      "name": "Mì xào giòn hải sản",
+      "description": "Mì chiên giòn rưới sốt hải sản sánh đậm.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Mi_Goreng_GM.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Mi_Goreng_GM.jpg?width=1280",
+      "restaurantId": 103,
+      "restaurantName": "Quán Mì Trộn UTT",
+      "categoryId": 3,
+      "categoryName": "Mì & Cháo",
+      "price": 45,
+      "sale": 0,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Mi_Goreng_GM.jpg?width=800"
+        }
+      ]
+    },
+    "3006": {
+      "id": 3006,
+      "name": "Cháo gà ác tần thuốc bắc",
+      "description": "Cháo gà ác hầm thuốc bắc bổ dưỡng, ấm bụng.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Chinese_rice_congee.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Chinese_rice_congee.jpg?width=1280",
+      "restaurantId": 103,
+      "restaurantName": "Quán Mì Trộn UTT",
+      "categoryId": 3,
+      "categoryName": "Mì & Cháo",
+      "price": 40,
+      "sale": 0,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Chinese_rice_congee.jpg?width=800"
+        }
+      ]
+    },
+    "4001": {
+      "id": 4001,
+      "name": "Combo gà rán 2 miếng + nước",
+      "description": "2 miếng gà rán giòn rụm kèm 1 nước ngọt mát lạnh.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Fried-Chicken-Set.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Fried-Chicken-Set.jpg?width=1280",
+      "restaurantId": 104,
+      "restaurantName": "Gà Rán Chickita",
+      "categoryId": 4,
+      "categoryName": "Gà rán & Đồ ăn nhanh",
+      "price": 55,
+      "sale": 0,
+      "popular": true,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Fried-Chicken-Set.jpg?width=800"
+        }
+      ]
+    },
+    "4002": {
+      "id": 4002,
+      "name": "Burger gà giòn",
+      "description": "Burger gà chiên giòn, rau tươi, sốt mayonnaise.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/RedDot_Burger.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/RedDot_Burger.jpg?width=1280",
+      "restaurantId": 104,
+      "restaurantName": "Gà Rán Chickita",
+      "categoryId": 4,
+      "categoryName": "Gà rán & Đồ ăn nhanh",
+      "price": 40,
+      "sale": 10,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/RedDot_Burger.jpg?width=800"
+        }
+      ]
+    },
+    "4003": {
+      "id": 4003,
+      "name": "Khoai tây chiên size L",
+      "description": "Khoai tây chiên giòn vàng, rắc muối phô mai.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/French_Fries.JPG?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/French_Fries.JPG?width=1280",
+      "restaurantId": 104,
+      "restaurantName": "Gà Rán Chickita",
+      "categoryId": 4,
+      "categoryName": "Gà rán & Đồ ăn nhanh",
+      "price": 25,
+      "sale": 0,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/French_Fries.JPG?width=800"
+        }
+      ]
+    },
+    "4004": {
+      "id": 4004,
+      "name": "Gà popcorn xốt phô mai",
+      "description": "Gà viên popcorn chấm xốt phô mai béo ngậy.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/KFC_Popcorn_Chicken_%2812956064765%29.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/KFC_Popcorn_Chicken_%2812956064765%29.jpg?width=1280",
+      "restaurantId": 104,
+      "restaurantName": "Gà Rán Chickita",
+      "categoryId": 4,
+      "categoryName": "Gà rán & Đồ ăn nhanh",
+      "price": 35,
+      "sale": 0,
+      "popular": true,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/KFC_Popcorn_Chicken_%2812956064765%29.jpg?width=800"
+        }
+      ]
+    },
+    "4005": {
+      "id": 4005,
+      "name": "Combo gà rán gia đình 6 miếng",
+      "description": "6 miếng gà, 2 khoai tây, 4 nước - tiệc cho cả nhà.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Fried-Chicken-Set.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Fried-Chicken-Set.jpg?width=1280",
+      "restaurantId": 104,
+      "restaurantName": "Gà Rán Chickita",
+      "categoryId": 4,
+      "categoryName": "Gà rán & Đồ ăn nhanh",
+      "price": 159,
+      "sale": 10,
+      "popular": true,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Fried-Chicken-Set.jpg?width=800"
+        }
+      ]
+    },
+    "4006": {
+      "id": 4006,
+      "name": "Gà sốt cay Hàn Quốc",
+      "description": "Cánh gà chiên phủ sốt cay ngọt kiểu Hàn.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Fried-Chicken-Set.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Fried-Chicken-Set.jpg?width=1280",
+      "restaurantId": 104,
+      "restaurantName": "Gà Rán Chickita",
+      "categoryId": 4,
+      "categoryName": "Gà rán & Đồ ăn nhanh",
+      "price": 60,
+      "sale": 0,
+      "popular": true,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Fried-Chicken-Set.jpg?width=800"
+        }
+      ]
+    },
+    "4007": {
+      "id": 4007,
+      "name": "Hotdog phô mai",
+      "description": "Xúc xích Đức kẹp bánh mì, phô mai chảy, sốt cà.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/RedDot_Burger.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/RedDot_Burger.jpg?width=1280",
+      "restaurantId": 104,
+      "restaurantName": "Gà Rán Chickita",
+      "categoryId": 4,
+      "categoryName": "Gà rán & Đồ ăn nhanh",
+      "price": 30,
+      "sale": 0,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/RedDot_Burger.jpg?width=800"
+        }
+      ]
+    },
+    "5001": {
+      "id": 5001,
+      "name": "Trà chanh giã tay",
+      "description": "Trà chanh giã tay mát lạnh, thơm vị chanh tươi.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Iced_Tea_from_flickr.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Iced_Tea_from_flickr.jpg?width=1280",
+      "restaurantId": 105,
+      "restaurantName": "Trà Chanh Bụi Phố",
+      "categoryId": 5,
+      "categoryName": "Đồ uống",
+      "price": 15,
+      "sale": 0,
+      "popular": true,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Iced_Tea_from_flickr.jpg?width=800"
+        }
+      ]
+    },
+    "5002": {
+      "id": 5002,
+      "name": "Trà sữa trân châu đường đen",
+      "description": "Trà sữa béo thơm, trân châu đường đen dẻo dai.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bubble_Tea.png?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Bubble_Tea.png?width=1280",
+      "restaurantId": 105,
+      "restaurantName": "Trà Chanh Bụi Phố",
+      "categoryId": 5,
+      "categoryName": "Đồ uống",
+      "price": 30,
+      "sale": 0,
+      "popular": true,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Bubble_Tea.png?width=800"
+        }
+      ]
+    },
+    "5003": {
+      "id": 5003,
+      "name": "Cà phê sữa đá",
+      "description": "Cà phê phin đậm đà, sữa đặc béo ngậy.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Viet-coffee.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Viet-coffee.jpg?width=1280",
+      "restaurantId": 105,
+      "restaurantName": "Trà Chanh Bụi Phố",
+      "categoryId": 5,
+      "categoryName": "Đồ uống",
+      "price": 20,
+      "sale": 0,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Viet-coffee.jpg?width=800"
+        }
+      ]
+    },
+    "5004": {
+      "id": 5004,
+      "name": "Trà đào cam sả",
+      "description": "Trà đào cam sả thanh mát, miếng đào giòn ngọt.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Iced_Tea_from_flickr.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Iced_Tea_from_flickr.jpg?width=1280",
+      "restaurantId": 105,
+      "restaurantName": "Trà Chanh Bụi Phố",
+      "categoryId": 5,
+      "categoryName": "Đồ uống",
+      "price": 25,
+      "sale": 10,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Iced_Tea_from_flickr.jpg?width=800"
+        }
+      ]
+    },
+    "5005": {
+      "id": 5005,
+      "name": "Sinh tố xoài",
+      "description": "Sinh tố xoài chín xay sánh mịn, ngọt tự nhiên.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kiwi_Smoothie.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Kiwi_Smoothie.jpg?width=1280",
+      "restaurantId": 105,
+      "restaurantName": "Trà Chanh Bụi Phố",
+      "categoryId": 5,
+      "categoryName": "Đồ uống",
+      "price": 28,
+      "sale": 0,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Kiwi_Smoothie.jpg?width=800"
+        }
+      ]
+    },
+    "5006": {
+      "id": 5006,
+      "name": "Cà phê muối",
+      "description": "Cà phê muối kem mằn mặn béo, trend không lỗi mốt.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Viet-coffee.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Viet-coffee.jpg?width=1280",
+      "restaurantId": 105,
+      "restaurantName": "Trà Chanh Bụi Phố",
+      "categoryId": 5,
+      "categoryName": "Đồ uống",
+      "price": 25,
+      "sale": 0,
+      "popular": true,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Viet-coffee.jpg?width=800"
+        }
+      ]
+    },
+    "7001": {
+      "id": 7001,
+      "name": "Bánh mì pate trứng",
+      "description": "Bánh mì giòn vỏ, pate béo, trứng ốp và rau dưa.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/B%C3%A1nh_m%C3%AC_th%E1%BB%8Bt_n%C6%B0%E1%BB%9Bng.png?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/B%C3%A1nh_m%C3%AC_th%E1%BB%8Bt_n%C6%B0%E1%BB%9Bng.png?width=1280",
+      "restaurantId": 106,
+      "restaurantName": "Bánh Mì & Chè Cô Hoa",
+      "categoryId": 7,
+      "categoryName": "Bánh mì",
+      "price": 20,
+      "sale": 0,
+      "popular": true,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/B%C3%A1nh_m%C3%AC_th%E1%BB%8Bt_n%C6%B0%E1%BB%9Bng.png?width=800"
+        }
+      ]
+    },
+    "7002": {
+      "id": 7002,
+      "name": "Bánh mì thịt nướng",
+      "description": "Bánh mì thịt nướng đậm vị, đồ chua, rau mùi.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/B%C3%A1nh_m%C3%AC_th%E1%BB%8Bt_n%C6%B0%E1%BB%9Bng.png?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/B%C3%A1nh_m%C3%AC_th%E1%BB%8Bt_n%C6%B0%E1%BB%9Bng.png?width=1280",
+      "restaurantId": 106,
+      "restaurantName": "Bánh Mì & Chè Cô Hoa",
+      "categoryId": 7,
+      "categoryName": "Bánh mì",
+      "price": 25,
+      "sale": 0,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/B%C3%A1nh_m%C3%AC_th%E1%BB%8Bt_n%C6%B0%E1%BB%9Bng.png?width=800"
+        }
+      ]
+    },
+    "7003": {
+      "id": 7003,
+      "name": "Bánh mì chả cá nóng",
+      "description": "Chả cá chiên nóng hổi, tương ớt và rau thơm.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/B%C3%A1nh_m%C3%AC_th%E1%BB%8Bt_n%C6%B0%E1%BB%9Bng.png?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/B%C3%A1nh_m%C3%AC_th%E1%BB%8Bt_n%C6%B0%E1%BB%9Bng.png?width=1280",
+      "restaurantId": 106,
+      "restaurantName": "Bánh Mì & Chè Cô Hoa",
+      "categoryId": 7,
+      "categoryName": "Bánh mì",
+      "price": 25,
+      "sale": 0,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/B%C3%A1nh_m%C3%AC_th%E1%BB%8Bt_n%C6%B0%E1%BB%9Bng.png?width=800"
+        }
+      ]
+    },
+    "6001": {
+      "id": 6001,
+      "name": "Xôi xéo hành phi",
+      "description": "Xôi xéo dẻo thơm, đậu xanh, hành phi và ruốc.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/X%C3%B4i_s%E1%BA%AFn.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/X%C3%B4i_s%E1%BA%AFn.jpg?width=1280",
+      "restaurantId": 106,
+      "restaurantName": "Bánh Mì & Chè Cô Hoa",
+      "categoryId": 6,
+      "categoryName": "Ăn vặt",
+      "price": 18,
+      "sale": 0,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/X%C3%B4i_s%E1%BA%AFn.jpg?width=800"
+        }
+      ]
+    },
+    "6002": {
+      "id": 6002,
+      "name": "Bánh bao nhân thịt trứng",
+      "description": "Bánh bao nóng nhân thịt, trứng cút, mộc nhĩ.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Baozi_Chengdu.JPG?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Baozi_Chengdu.JPG?width=1280",
+      "restaurantId": 106,
+      "restaurantName": "Bánh Mì & Chè Cô Hoa",
+      "categoryId": 6,
+      "categoryName": "Ăn vặt",
+      "price": 15,
+      "sale": 0,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Baozi_Chengdu.JPG?width=800"
+        }
+      ]
+    },
+    "8001": {
+      "id": 8001,
+      "name": "Chè khúc bạch hạnh nhân",
+      "description": "Chè khúc bạch mềm mịn, hạnh nhân, nhãn, đá bào.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ice_cream_with_whipped_cream%2C_chocolate_syrup%2C_and_a_wafer_%28cropped%29.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Ice_cream_with_whipped_cream%2C_chocolate_syrup%2C_and_a_wafer_%28cropped%29.jpg?width=1280",
+      "restaurantId": 106,
+      "restaurantName": "Bánh Mì & Chè Cô Hoa",
+      "categoryId": 8,
+      "categoryName": "Tráng miệng",
+      "price": 22,
+      "sale": 0,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Ice_cream_with_whipped_cream%2C_chocolate_syrup%2C_and_a_wafer_%28cropped%29.jpg?width=800"
+        }
+      ]
+    },
+    "8002": {
+      "id": 8002,
+      "name": "Bánh flan caramel",
+      "description": "Bánh flan mềm mịn, lớp caramel đắng nhẹ tan ngay.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Cremecaramel.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Cremecaramel.jpg?width=1280",
+      "restaurantId": 106,
+      "restaurantName": "Bánh Mì & Chè Cô Hoa",
+      "categoryId": 8,
+      "categoryName": "Tráng miệng",
+      "price": 15,
+      "sale": 0,
+      "popular": true,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Cremecaramel.jpg?width=800"
+        }
+      ]
+    },
+    "8003": {
+      "id": 8003,
+      "name": "Sữa chua nếp cẩm",
+      "description": "Sữa chua chua dịu ăn cùng nếp cẩm dẻo bùi.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Joghurt.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Joghurt.jpg?width=1280",
+      "restaurantId": 106,
+      "restaurantName": "Bánh Mì & Chè Cô Hoa",
+      "categoryId": 8,
+      "categoryName": "Tráng miệng",
+      "price": 18,
+      "sale": 0,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Joghurt.jpg?width=800"
+        }
+      ]
+    },
+    "8004": {
+      "id": 8004,
+      "name": "Kem ốc quế socola",
+      "description": "Kem tươi vị socola trên ốc quế giòn.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ice_cream_with_whipped_cream%2C_chocolate_syrup%2C_and_a_wafer_%28cropped%29.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Ice_cream_with_whipped_cream%2C_chocolate_syrup%2C_and_a_wafer_%28cropped%29.jpg?width=1280",
+      "restaurantId": 106,
+      "restaurantName": "Bánh Mì & Chè Cô Hoa",
+      "categoryId": 8,
+      "categoryName": "Tráng miệng",
+      "price": 20,
+      "sale": 0,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Ice_cream_with_whipped_cream%2C_chocolate_syrup%2C_and_a_wafer_%28cropped%29.jpg?width=800"
+        }
+      ]
+    },
+    "9001": {
+      "id": 9001,
+      "name": "Lẩu bò mini 2 người",
+      "description": "Lẩu bò nhúng mini đủ rau nấm, hợp ngày se lạnh.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Hot_Pot.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Hot_Pot.jpg?width=1280",
+      "restaurantId": 107,
+      "restaurantName": "Lẩu Nướng Hải Sản Biển Đông",
+      "categoryId": 9,
+      "categoryName": "Lẩu & Nướng",
+      "price": 135,
+      "sale": 0,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Hot_Pot.jpg?width=800"
+        }
+      ]
+    },
+    "9002": {
+      "id": 9002,
+      "name": "Lẩu Thái tom yum hải sản",
+      "description": "Lẩu Thái chua cay, tôm mực ngao, sả lá chanh.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Tom_yam_kung_maenam.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Tom_yam_kung_maenam.jpg?width=1280",
+      "restaurantId": 107,
+      "restaurantName": "Lẩu Nướng Hải Sản Biển Đông",
+      "categoryId": 9,
+      "categoryName": "Lẩu & Nướng",
+      "price": 159,
+      "sale": 0,
+      "popular": true,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Tom_yam_kung_maenam.jpg?width=800"
+        }
+      ]
+    },
+    "9003": {
+      "id": 9003,
+      "name": "Gà nướng mật ong",
+      "description": "Nửa con gà ướp mật ong nướng than vàng óng.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Chicken_BBQ.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Chicken_BBQ.jpg?width=1280",
+      "restaurantId": 107,
+      "restaurantName": "Lẩu Nướng Hải Sản Biển Đông",
+      "categoryId": 9,
+      "categoryName": "Lẩu & Nướng",
+      "price": 90,
+      "sale": 0,
+      "popular": true,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Chicken_BBQ.jpg?width=800"
+        }
+      ]
+    },
+    "9004": {
+      "id": 9004,
+      "name": "Sườn nướng BBQ",
+      "description": "Sườn heo ướp sốt BBQ nướng mềm, ngọt khói.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Chicken_BBQ.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Chicken_BBQ.jpg?width=1280",
+      "restaurantId": 107,
+      "restaurantName": "Lẩu Nướng Hải Sản Biển Đông",
+      "categoryId": 9,
+      "categoryName": "Lẩu & Nướng",
+      "price": 95,
+      "sale": 10,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Chicken_BBQ.jpg?width=800"
+        }
+      ]
+    },
+    "10001": {
+      "id": 10001,
+      "name": "Tôm sú nướng muối ớt",
+      "description": "Tôm sú to nướng muối ớt cay thơm, chắc thịt.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Spicy_fried_King_Prawns.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Spicy_fried_King_Prawns.jpg?width=1280",
+      "restaurantId": 107,
+      "restaurantName": "Lẩu Nướng Hải Sản Biển Đông",
+      "categoryId": 10,
+      "categoryName": "Hải sản",
+      "price": 120,
+      "sale": 0,
+      "popular": true,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Spicy_fried_King_Prawns.jpg?width=800"
+        }
+      ]
+    },
+    "10002": {
+      "id": 10002,
+      "name": "Mực một nắng nướng sa tế",
+      "description": "Mực một nắng nướng sa tế dai ngọt, đậm đà.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Spicy_fried_King_Prawns.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Spicy_fried_King_Prawns.jpg?width=1280",
+      "restaurantId": 107,
+      "restaurantName": "Lẩu Nướng Hải Sản Biển Đông",
+      "categoryId": 10,
+      "categoryName": "Hải sản",
+      "price": 110,
+      "sale": 0,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Spicy_fried_King_Prawns.jpg?width=800"
+        }
+      ]
+    },
+    "10003": {
+      "id": 10003,
+      "name": "Ngao hấp sả",
+      "description": "Ngao tươi hấp sả gừng, chấm muối tiêu chanh.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Spicy_fried_King_Prawns.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Spicy_fried_King_Prawns.jpg?width=1280",
+      "restaurantId": 107,
+      "restaurantName": "Lẩu Nướng Hải Sản Biển Đông",
+      "categoryId": 10,
+      "categoryName": "Hải sản",
+      "price": 80,
+      "sale": 0,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Spicy_fried_King_Prawns.jpg?width=800"
+        }
+      ]
+    },
+    "10004": {
+      "id": 10004,
+      "name": "Cua rang me",
+      "description": "Cua biển rang sốt me chua ngọt, thịt chắc.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Spicy_fried_King_Prawns.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Spicy_fried_King_Prawns.jpg?width=1280",
+      "restaurantId": 107,
+      "restaurantName": "Lẩu Nướng Hải Sản Biển Đông",
+      "categoryId": 10,
+      "categoryName": "Hải sản",
+      "price": 180,
+      "sale": 0,
+      "popular": true,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Spicy_fried_King_Prawns.jpg?width=800"
+        }
+      ]
+    },
+    "12001": {
+      "id": 12001,
+      "name": "Pizza hải sản viền phô mai",
+      "description": "Pizza hải sản, viền phô mai kéo sợi, sốt cà tươi.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Pizza-3007395.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Pizza-3007395.jpg?width=1280",
+      "restaurantId": 108,
+      "restaurantName": "Pizza Góc Phố Ý",
+      "categoryId": 12,
+      "categoryName": "Pizza & Mỳ Ý",
+      "price": 99,
+      "sale": 0,
+      "popular": true,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Pizza-3007395.jpg?width=800"
+        }
+      ]
+    },
+    "12002": {
+      "id": 12002,
+      "name": "Pizza bò bằm sốt cà",
+      "description": "Pizza bò bằm, hành tây, ớt chuông, phô mai mozzarella.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Pizza-3007395.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Pizza-3007395.jpg?width=1280",
+      "restaurantId": 108,
+      "restaurantName": "Pizza Góc Phố Ý",
+      "categoryId": 12,
+      "categoryName": "Pizza & Mỳ Ý",
+      "price": 89,
+      "sale": 10,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Pizza-3007395.jpg?width=800"
+        }
+      ]
+    },
+    "12003": {
+      "id": 12003,
+      "name": "Mỳ Ý sốt bò bằm",
+      "description": "Spaghetti sốt bolognese bò bằm cà chua đậm đà.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Spaghettoni.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Spaghettoni.jpg?width=1280",
+      "restaurantId": 108,
+      "restaurantName": "Pizza Góc Phố Ý",
+      "categoryId": 12,
+      "categoryName": "Pizza & Mỳ Ý",
+      "price": 65,
+      "sale": 0,
+      "popular": true,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Spaghettoni.jpg?width=800"
+        }
+      ]
+    },
+    "12004": {
+      "id": 12004,
+      "name": "Mỳ Ý mực sốt mực",
+      "description": "Mỳ Ý sốt mực đen kiểu Ý, mực tươi giòn ngọt.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Babbo-_Squid_Ink_pasta_with_green_chilis%2C_rock_shrimp_and_guanciale.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Babbo-_Squid_Ink_pasta_with_green_chilis%2C_rock_shrimp_and_guanciale.jpg?width=1280",
+      "restaurantId": 108,
+      "restaurantName": "Pizza Góc Phố Ý",
+      "categoryId": 12,
+      "categoryName": "Pizza & Mỳ Ý",
+      "price": 75,
+      "sale": 0,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Babbo-_Squid_Ink_pasta_with_green_chilis%2C_rock_shrimp_and_guanciale.jpg?width=800"
+        }
+      ]
+    },
+    "12005": {
+      "id": 12005,
+      "name": "Pizza gà nướng BBQ",
+      "description": "Pizza gà nướng sốt BBQ, hành tây, ngô ngọt.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Pizza-3007395.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Pizza-3007395.jpg?width=1280",
+      "restaurantId": 108,
+      "restaurantName": "Pizza Góc Phố Ý",
+      "categoryId": 12,
+      "categoryName": "Pizza & Mỳ Ý",
+      "price": 95,
+      "sale": 0,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Pizza-3007395.jpg?width=800"
+        }
+      ]
+    },
+    "11001": {
+      "id": 11001,
+      "name": "Cơm chay thập cẩm",
+      "description": "Cơm chay đầy đủ đậu hũ, rau củ kho, canh nấm.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Japanese_SilkyTofu_%28Kinugoshi_Tofu%29.JPG?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Japanese_SilkyTofu_%28Kinugoshi_Tofu%29.JPG?width=1280",
+      "restaurantId": 109,
+      "restaurantName": "Cơm Chay An Lạc",
+      "categoryId": 11,
+      "categoryName": "Món chay",
+      "price": 35,
+      "sale": 0,
+      "popular": true,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Japanese_SilkyTofu_%28Kinugoshi_Tofu%29.JPG?width=800"
+        }
+      ]
+    },
+    "11002": {
+      "id": 11002,
+      "name": "Đậu hũ non sốt nấm",
+      "description": "Đậu hũ non mềm mịn rưới sốt nấm đông cô.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Japanese_SilkyTofu_%28Kinugoshi_Tofu%29.JPG?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Japanese_SilkyTofu_%28Kinugoshi_Tofu%29.JPG?width=1280",
+      "restaurantId": 109,
+      "restaurantName": "Cơm Chay An Lạc",
+      "categoryId": 11,
+      "categoryName": "Món chay",
+      "price": 30,
+      "sale": 0,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Japanese_SilkyTofu_%28Kinugoshi_Tofu%29.JPG?width=800"
+        }
+      ]
+    },
+    "11003": {
+      "id": 11003,
+      "name": "Gỏi cuốn chay",
+      "description": "Gỏi cuốn rau củ, đậu hũ, chấm tương đậu phộng.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Homemade_spring_rolls_%287010969349%29.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Homemade_spring_rolls_%287010969349%29.jpg?width=1280",
+      "restaurantId": 109,
+      "restaurantName": "Cơm Chay An Lạc",
+      "categoryId": 11,
+      "categoryName": "Món chay",
+      "price": 25,
+      "sale": 0,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Homemade_spring_rolls_%287010969349%29.jpg?width=800"
+        }
+      ]
+    },
+    "11004": {
+      "id": 11004,
+      "name": "Nem chay rán giòn",
+      "description": "Nem chay nhân miến, mộc nhĩ, cà rốt chiên giòn.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Cha_gio.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Cha_gio.jpg?width=1280",
+      "restaurantId": 109,
+      "restaurantName": "Cơm Chay An Lạc",
+      "categoryId": 11,
+      "categoryName": "Món chay",
+      "price": 28,
+      "sale": 0,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Cha_gio.jpg?width=800"
+        }
+      ]
+    },
+    "11005": {
+      "id": 11005,
+      "name": "Canh chua chay",
+      "description": "Canh chua chay dứa, đậu bắp, cà chua, me thanh.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Tom_yam_kung_maenam.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Tom_yam_kung_maenam.jpg?width=1280",
+      "restaurantId": 109,
+      "restaurantName": "Cơm Chay An Lạc",
+      "categoryId": 11,
+      "categoryName": "Món chay",
+      "price": 30,
+      "sale": 0,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Tom_yam_kung_maenam.jpg?width=800"
+        }
+      ]
+    },
+    "2007": {
+      "id": 2007,
+      "name": "Bún riêu cua đồng",
+      "description": "Bún riêu cua đồng, đậu rán, cà chua, mắm tôm tuỳ chọn.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/B%C3%BAn_ri%C3%AAu_%C4%91%E1%BA%B7c_bi%E1%BB%87t.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/B%C3%BAn_ri%C3%AAu_%C4%91%E1%BA%B7c_bi%E1%BB%87t.jpg?width=1280",
+      "restaurantId": 110,
+      "restaurantName": "Bún Đậu & Bún Riêu Cô Béo",
+      "categoryId": 2,
+      "categoryName": "Phở & Bún",
+      "price": 38,
+      "sale": 0,
+      "popular": true,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/B%C3%BAn_ri%C3%AAu_%C4%91%E1%BA%B7c_bi%E1%BB%87t.jpg?width=800"
+        }
+      ]
+    },
+    "2008": {
+      "id": 2008,
+      "name": "Bún đậu mắm tôm đầy đủ",
+      "description": "Mẹt bún đậu đầy đủ: đậu rán, chả cốm, nem, lòng.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/B%C3%BAn_ri%C3%AAu_%C4%91%E1%BA%B7c_bi%E1%BB%87t.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/B%C3%BAn_ri%C3%AAu_%C4%91%E1%BA%B7c_bi%E1%BB%87t.jpg?width=1280",
+      "restaurantId": 110,
+      "restaurantName": "Bún Đậu & Bún Riêu Cô Béo",
+      "categoryId": 2,
+      "categoryName": "Phở & Bún",
+      "price": 45,
+      "sale": 0,
+      "popular": true,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/B%C3%BAn_ri%C3%AAu_%C4%91%E1%BA%B7c_bi%E1%BB%87t.jpg?width=800"
+        }
+      ]
+    },
+    "6003": {
+      "id": 6003,
+      "name": "Nem rán (chả giò)",
+      "description": "Nem rán nhân thịt, miến, mộc nhĩ, vỏ giòn rụm.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Cha_gio.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Cha_gio.jpg?width=1280",
+      "restaurantId": 110,
+      "restaurantName": "Bún Đậu & Bún Riêu Cô Béo",
+      "categoryId": 6,
+      "categoryName": "Ăn vặt",
+      "price": 30,
+      "sale": 0,
+      "popular": true,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Cha_gio.jpg?width=800"
+        }
+      ]
+    },
+    "6004": {
+      "id": 6004,
+      "name": "Gỏi cuốn tôm thịt",
+      "description": "Gỏi cuốn tôm thịt, bún, rau sống, chấm tương.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Homemade_spring_rolls_%287010969349%29.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Homemade_spring_rolls_%287010969349%29.jpg?width=1280",
+      "restaurantId": 110,
+      "restaurantName": "Bún Đậu & Bún Riêu Cô Béo",
+      "categoryId": 6,
+      "categoryName": "Ăn vặt",
+      "price": 28,
+      "sale": 0,
+      "popular": true,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Homemade_spring_rolls_%287010969349%29.jpg?width=800"
+        }
+      ]
+    },
+    "6005": {
+      "id": 6005,
+      "name": "Há cảo hấp",
+      "description": "Há cảo tôm thịt hấp nóng, vỏ mỏng dai.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Chinese_DimSum_%289023590541%29.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Chinese_DimSum_%289023590541%29.jpg?width=1280",
+      "restaurantId": 110,
+      "restaurantName": "Bún Đậu & Bún Riêu Cô Béo",
+      "categoryId": 6,
+      "categoryName": "Ăn vặt",
+      "price": 28,
+      "sale": 0,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Chinese_DimSum_%289023590541%29.jpg?width=800"
+        }
+      ]
+    },
+    "6006": {
+      "id": 6006,
+      "name": "Bánh xèo miền Trung",
+      "description": "Bánh xèo giòn nhân tôm thịt giá, cuốn rau chấm mắm.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Banh_Xeo_with_fish_sauce_and_vegetables.jpg?width=640",
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Banh_Xeo_with_fish_sauce_and_vegetables.jpg?width=1280",
+      "restaurantId": 110,
+      "restaurantName": "Bún Đậu & Bún Riêu Cô Béo",
+      "categoryId": 6,
+      "categoryName": "Ăn vặt",
+      "price": 35,
+      "sale": 0,
+      "popular": false,
+      "images": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Banh_Xeo_with_fish_sauce_and_vegetables.jpg?width=800"
+        }
+      ]
+    }
+  },
+  "promotions": {
+    "WELCOME20": {
+      "code": "WELCOME20",
+      "title": "Giảm 20% cho đơn đầu tiên",
+      "discountPercent": 20,
+      "minOrderAmount": 80,
+      "maxDiscountAmount": 30,
+      "active": true
+    },
+    "UTT10": {
+      "code": "UTT10",
+      "title": "Ưu đãi sinh viên UTT - giảm 10%",
+      "discountPercent": 10,
+      "minOrderAmount": 50,
+      "maxDiscountAmount": 25,
+      "active": true
+    },
+    "LUNCH25": {
+      "code": "LUNCH25",
+      "title": "Giờ vàng ăn trưa - giảm 25%",
+      "discountPercent": 25,
+      "minOrderAmount": 120,
+      "maxDiscountAmount": 50,
+      "active": true
+    },
+    "FREESHIP15": {
+      "code": "FREESHIP15",
+      "title": "Giảm 15% tối đa 20k",
+      "discountPercent": 15,
+      "minOrderAmount": 100,
+      "maxDiscountAmount": 20,
+      "active": true
+    },
+    "HUNGRY30": {
+      "code": "HUNGRY30",
+      "title": "No bụng cuối tuần - giảm 30%",
+      "discountPercent": 30,
+      "minOrderAmount": 200,
+      "maxDiscountAmount": 70,
+      "active": true
+    },
+    "SALE50OFF": {
+      "code": "SALE50OFF",
+      "title": "Flash Sale - giảm 50% (đã kết thúc)",
+      "discountPercent": 50,
+      "minOrderAmount": 150,
+      "maxDiscountAmount": 60,
+      "active": false
+    }
+  },
+  "users": {
+    "uid_admin_utt": {
+      "uid": "uid_admin_utt",
+      "email": "admin@admin.com",
+      "name": "Quản trị viên UTT",
+      "phone": "0900000001",
+      "role": "admin",
+      "active": true,
+      "isActive": true,
+      "admin": true,
+      "isAdmin": true
+    },
+    "uid_cust_an": {
+      "uid": "uid_cust_an",
+      "email": "an.nguyen@gmail.com",
+      "name": "Nguyễn Văn An",
+      "phone": "0901111111",
+      "role": "customer",
+      "active": true,
+      "isActive": true,
+      "admin": false,
+      "isAdmin": false
+    },
+    "uid_cust_binh": {
+      "uid": "uid_cust_binh",
+      "email": "binh.tran@gmail.com",
+      "name": "Trần Thị Bình",
+      "phone": "0902222222",
+      "role": "customer",
+      "active": true,
+      "isActive": true,
+      "admin": false,
+      "isAdmin": false
+    },
+    "uid_cust_cuong": {
+      "uid": "uid_cust_cuong",
+      "email": "cuong.le@gmail.com",
+      "name": "Lê Mạnh Cường",
+      "phone": "0903333333",
+      "role": "customer",
+      "active": true,
+      "isActive": true,
+      "admin": false,
+      "isAdmin": false
+    },
+    "uid_cust_dung": {
+      "uid": "uid_cust_dung",
+      "email": "dung.pham@gmail.com",
+      "name": "Phạm Thị Dung",
+      "phone": "0904444444",
+      "role": "customer",
+      "active": true,
+      "isActive": true,
+      "admin": false,
+      "isAdmin": false
+    },
+    "uid_cust_giang": {
+      "uid": "uid_cust_giang",
+      "email": "giang.do@gmail.com",
+      "name": "Đỗ Hương Giang",
+      "phone": "0907777777",
+      "role": "customer",
+      "active": true,
+      "isActive": true,
+      "admin": false,
+      "isAdmin": false
+    },
+    "uid_shipper_hoa": {
+      "uid": "uid_shipper_hoa",
+      "email": "hoa.shipper@gmail.com",
+      "name": "Vũ Văn Hòa",
+      "phone": "0905555555",
+      "role": "shipper",
+      "active": true,
+      "isActive": true,
+      "admin": false,
+      "isAdmin": false
+    },
+    "uid_shipper_khanh": {
+      "uid": "uid_shipper_khanh",
+      "email": "khanh.shipper@gmail.com",
+      "name": "Đỗ Quốc Khánh",
+      "phone": "0906666666",
+      "role": "shipper",
+      "active": true,
+      "isActive": true,
+      "admin": false,
+      "isAdmin": false
+    }
+  },
+  "addresses": {
+    "uid_cust_an": {
+      "5001": {
+        "id": 5001,
+        "label": "Nhà",
+        "recipientName": "Nguyễn Văn An",
+        "phone": "0901111111",
+        "fullAddress": "Số 54 Triều Khúc, Thanh Xuân, Hà Nội",
+        "lat": 21.0008,
+        "lng": 105.8005,
+        "default": true
+      },
+      "5002": {
+        "id": 5002,
+        "label": "Công ty",
+        "recipientName": "Nguyễn Văn An",
+        "phone": "0901111111",
+        "fullAddress": "Keangnam Landmark, Phạm Hùng, Nam Từ Liêm, Hà Nội",
+        "lat": 21.0173,
+        "lng": 105.7838,
+        "default": false
+      }
+    },
+    "uid_cust_binh": {
+      "5003": {
+        "id": 5003,
+        "label": "Ký túc xá",
+        "recipientName": "Trần Thị Bình",
+        "phone": "0902222222",
+        "fullAddress": "KTX Mỹ Đình, Nam Từ Liêm, Hà Nội",
+        "lat": 21.0227,
+        "lng": 105.7642,
+        "default": true
+      }
+    },
+    "uid_cust_cuong": {
+      "5004": {
+        "id": 5004,
+        "label": "Nhà trọ",
+        "recipientName": "Lê Mạnh Cường",
+        "phone": "0903333333",
+        "fullAddress": "Ngõ 178 Khương Đình, Thanh Xuân, Hà Nội",
+        "lat": 20.9939,
+        "lng": 105.8121,
+        "default": true
+      }
+    },
+    "uid_cust_dung": {
+      "5005": {
+        "id": 5005,
+        "label": "Nhà",
+        "recipientName": "Phạm Thị Dung",
+        "phone": "0904444444",
+        "fullAddress": "Số 2 Nguyễn Xiển, Thanh Xuân, Hà Nội",
+        "lat": 20.9905,
+        "lng": 105.8005,
+        "default": true
+      }
+    },
+    "uid_cust_giang": {
+      "5006": {
+        "id": 5006,
+        "label": "Nhà",
+        "recipientName": "Đỗ Hương Giang",
+        "phone": "0907777777",
+        "fullAddress": "Số 15 Vũ Trọng Phụng, Thanh Xuân, Hà Nội",
+        "lat": 20.9959,
+        "lng": 105.8009,
+        "default": true
+      }
+    }
+  },
+  "reviews": {
+    "1779210000000": {
+      "id": 1779210000000,
+      "orderId": 1779120000000,
+      "userEmail": "an.nguyen@gmail.com",
+      "restaurantId": 101,
+      "foodId": 1001,
+      "rating": 5,
+      "comment": "Cơm tấm ngon, sườn nướng thơm, giao nhanh!",
+      "createdAt": 1779210000000
+    },
+    "1779210100000": {
+      "id": 1779210100000,
+      "orderId": 1779120000000,
+      "userEmail": "an.nguyen@gmail.com",
+      "restaurantId": 105,
+      "foodId": 5002,
+      "rating": 4,
+      "comment": "Trà sữa ổn, trân châu hơi ngọt một chút.",
+      "createdAt": 1779210100000
+    },
+    "1779211000000": {
+      "id": 1779211000000,
+      "orderId": 1779150000000,
+      "userEmail": "binh.tran@gmail.com",
+      "restaurantId": 104,
+      "foodId": 4001,
+      "rating": 5,
+      "comment": "Gà rán giòn, combo đáng tiền.",
+      "createdAt": 1779211000000
+    },
+    "1779212000000": {
+      "id": 1779212000000,
+      "orderId": 1779180000000,
+      "userEmail": "cuong.le@gmail.com",
+      "restaurantId": 102,
+      "foodId": 2003,
+      "rating": 5,
+      "comment": "Bún bò Huế đậm đà, cay vừa ăn, rất thích!",
+      "createdAt": 1779212000000
+    },
+    "1779213000000": {
+      "id": 1779213000000,
+      "orderId": 1779180000000,
+      "userEmail": "cuong.le@gmail.com",
+      "restaurantId": 103,
+      "foodId": 3002,
+      "rating": 3,
+      "comment": "Mì cay ổn nhưng hơi ít hải sản.",
+      "createdAt": 1779213000000
+    },
+    "1779214000000": {
+      "id": 1779214000000,
+      "orderId": 1779190000000,
+      "userEmail": "dung.pham@gmail.com",
+      "restaurantId": 106,
+      "foodId": 7001,
+      "rating": 5,
+      "comment": "Bánh mì pate trứng ngon mà rẻ, ủng hộ tiếp.",
+      "createdAt": 1779214000000
+    },
+    "1779215000000": {
+      "id": 1779215000000,
+      "orderId": 1779191000000,
+      "userEmail": "giang.do@gmail.com",
+      "restaurantId": 108,
+      "foodId": 12001,
+      "rating": 5,
+      "comment": "Pizza hải sản viền phô mai cực đỉnh, nóng giòn.",
+      "createdAt": 1779215000000
+    },
+    "1779216000000": {
+      "id": 1779216000000,
+      "orderId": 1779192000000,
+      "userEmail": "giang.do@gmail.com",
+      "restaurantId": 107,
+      "foodId": 9002,
+      "rating": 4,
+      "comment": "Lẩu Thái chua cay chuẩn vị, phần hơi ít so với giá.",
+      "createdAt": 1779216000000
+    },
+    "1779217000000": {
+      "id": 1779217000000,
+      "orderId": 1779193000000,
+      "userEmail": "binh.tran@gmail.com",
+      "restaurantId": 110,
+      "foodId": 6003,
+      "rating": 5,
+      "comment": "Nem rán giòn tan, chấm nước mắm ngon.",
+      "createdAt": 1779217000000
+    },
+    "1779218000000": {
+      "id": 1779218000000,
+      "orderId": 1779194000000,
+      "userEmail": "an.nguyen@gmail.com",
+      "restaurantId": 109,
+      "foodId": 11001,
+      "rating": 5,
+      "comment": "Cơm chay thanh đạm, rau củ tươi, đóng gói đẹp.",
+      "createdAt": 1779218000000
+    }
+  },
+  "booking": {
+    "1779120000000": {
+      "id": 1779120000000,
+      "name": "Nguyễn Văn An",
+      "email": "an.nguyen@gmail.com",
+      "phone": "0901111111",
+      "address": "Số 54 Triều Khúc, Thanh Xuân, Hà Nội",
+      "amount": 96,
+      "originalAmount": 120,
+      "discountAmount": 24,
+      "promotionCode": "WELCOME20",
+      "foods": "- Cơm tấm sườn bì chả (45 000 VNĐ) - Số lượng: 2\n- Trà sữa trân châu đường đen (30 000 VNĐ) - Số lượng: 1",
+      "payment": 1,
+      "paymentStatus": 1,
+      "completed": true,
+      "status": 3,
+      "customerId": "uid_cust_an",
+      "shipperId": "uid_shipper_hoa",
+      "shipperEmail": "hoa.shipper@gmail.com",
+      "issueNote": null,
+      "deliveryLat": 21.0008,
+      "deliveryLng": 105.8005,
+      "shipperLat": 21.0008,
+      "shipperLng": 105.8005,
+      "paymentTransactionId": "TXN1779120000000"
+    },
+    "1779200000000": {
+      "id": 1779200000000,
+      "name": "Trần Thị Bình",
+      "email": "binh.tran@gmail.com",
+      "phone": "0902222222",
+      "address": "KTX Mỹ Đình, Nam Từ Liêm, Hà Nội",
+      "amount": 80,
+      "originalAmount": 80,
+      "discountAmount": 0,
+      "promotionCode": null,
+      "foods": "- Combo gà rán 2 miếng + nước (55 000 VNĐ) - Số lượng: 1\n- Khoai tây chiên size L (25 000 VNĐ) - Số lượng: 1",
+      "payment": 0,
+      "paymentStatus": 0,
+      "completed": false,
+      "status": 0,
+      "customerId": "uid_cust_binh",
+      "shipperId": null,
+      "shipperEmail": null,
+      "issueNote": null,
+      "deliveryLat": 21.0227,
+      "deliveryLng": 105.7642,
+      "shipperLat": 0.0,
+      "shipperLng": 0.0
+    },
+    "1779205000000": {
+      "id": 1779205000000,
+      "name": "Lê Mạnh Cường",
+      "email": "cuong.le@gmail.com",
+      "phone": "0903333333",
+      "address": "Ngõ 178 Khương Đình, Thanh Xuân, Hà Nội",
+      "amount": 92,
+      "originalAmount": 92,
+      "discountAmount": 0,
+      "promotionCode": null,
+      "foods": "- Bún bò Huế đặc biệt (42 000 VNĐ) - Số lượng: 1\n- Mì cay hải sản cấp độ 3 (50 000 VNĐ) - Số lượng: 1",
+      "payment": 0,
+      "paymentStatus": 0,
+      "completed": false,
+      "status": 1,
+      "customerId": "uid_cust_cuong",
+      "shipperId": null,
+      "shipperEmail": null,
+      "issueNote": null,
+      "deliveryLat": 20.9939,
+      "deliveryLng": 105.8121,
+      "shipperLat": 0.0,
+      "shipperLng": 0.0
+    },
+    "1779206000000": {
+      "id": 1779206000000,
+      "name": "Phạm Thị Dung",
+      "email": "dung.pham@gmail.com",
+      "phone": "0904444444",
+      "address": "Số 2 Nguyễn Xiển, Thanh Xuân, Hà Nội",
+      "amount": 70,
+      "originalAmount": 70,
+      "discountAmount": 0,
+      "promotionCode": null,
+      "foods": "- Bánh mì pate trứng (20 000 VNĐ) - Số lượng: 2\n- Trà chanh giã tay (15 000 VNĐ) - Số lượng: 2",
+      "payment": 1,
+      "paymentStatus": 1,
+      "completed": false,
+      "status": 2,
+      "customerId": "uid_cust_dung",
+      "shipperId": "uid_shipper_khanh",
+      "shipperEmail": "khanh.shipper@gmail.com",
+      "issueNote": null,
+      "deliveryLat": 20.9905,
+      "deliveryLng": 105.8005,
+      "shipperLat": 20.995,
+      "shipperLng": 105.805,
+      "paymentTransactionId": "TXN1779206000000"
+    },
+    "1779150000000": {
+      "id": 1779150000000,
+      "name": "Nguyễn Văn An",
+      "email": "an.nguyen@gmail.com",
+      "phone": "0901111111",
+      "address": "Số 54 Triều Khúc, Thanh Xuân, Hà Nội",
+      "amount": 144,
+      "originalAmount": 144,
+      "discountAmount": 0,
+      "promotionCode": null,
+      "foods": "- Combo gà rán gia đình 6 miếng (144 000 VNĐ) - Số lượng: 1",
+      "payment": 0,
+      "paymentStatus": 0,
+      "completed": false,
+      "status": 4,
+      "customerId": "uid_cust_an",
+      "shipperId": null,
+      "shipperEmail": null,
+      "issueNote": null,
+      "deliveryLat": 21.0008,
+      "deliveryLng": 105.8005,
+      "shipperLat": 0.0,
+      "shipperLng": 0.0
+    },
+    "1779180000000": {
+      "id": 1779180000000,
+      "name": "Trần Thị Bình",
+      "email": "binh.tran@gmail.com",
+      "phone": "0902222222",
+      "address": "KTX Mỹ Đình, Nam Từ Liêm, Hà Nội",
+      "amount": 65,
+      "originalAmount": 65,
+      "discountAmount": 0,
+      "promotionCode": null,
+      "foods": "- Cơm gà xối mỡ (42 000 VNĐ) - Số lượng: 1\n- Trà đào cam sả (23 000 VNĐ) - Số lượng: 1",
+      "payment": 0,
+      "paymentStatus": 1,
+      "completed": true,
+      "status": 3,
+      "customerId": "uid_cust_binh",
+      "shipperId": "uid_shipper_hoa",
+      "shipperEmail": "hoa.shipper@gmail.com",
+      "issueNote": null,
+      "deliveryLat": 21.0227,
+      "deliveryLng": 105.7642,
+      "shipperLat": 21.0227,
+      "shipperLng": 105.7642
+    },
+    "1779160000000": {
+      "id": 1779160000000,
+      "name": "Lê Mạnh Cường",
+      "email": "cuong.le@gmail.com",
+      "phone": "0903333333",
+      "address": "Ngõ 178 Khương Đình, Thanh Xuân, Hà Nội",
+      "amount": 40,
+      "originalAmount": 40,
+      "discountAmount": 0,
+      "promotionCode": null,
+      "foods": "- Phở bò tái lăn (40 000 VNĐ) - Số lượng: 1",
+      "payment": 0,
+      "paymentStatus": 0,
+      "completed": false,
+      "status": 5,
+      "customerId": "uid_cust_cuong",
+      "shipperId": "uid_shipper_khanh",
+      "shipperEmail": "khanh.shipper@gmail.com",
+      "issueNote": "Khách không nghe máy, không liên hệ được sau 15 phút.",
+      "deliveryLat": 20.9939,
+      "deliveryLng": 105.8121,
+      "shipperLat": 0.0,
+      "shipperLng": 0.0
+    },
+    "1779208000000": {
+      "id": 1779208000000,
+      "name": "Phạm Thị Dung",
+      "email": "dung.pham@gmail.com",
+      "phone": "0904444444",
+      "address": "Số 2 Nguyễn Xiển, Thanh Xuân, Hà Nội",
+      "amount": 65,
+      "originalAmount": 65,
+      "discountAmount": 0,
+      "promotionCode": null,
+      "foods": "- Mì trộn Indomie bò khô (30 000 VNĐ) - Số lượng: 1\n- Bánh flan caramel (15 000 VNĐ) - Số lượng: 1\n- Cà phê sữa đá (20 000 VNĐ) - Số lượng: 1",
+      "payment": 1,
+      "paymentStatus": 1,
+      "completed": false,
+      "status": 0,
+      "customerId": "uid_cust_dung",
+      "shipperId": null,
+      "shipperEmail": null,
+      "issueNote": null,
+      "deliveryLat": 20.9905,
+      "deliveryLng": 105.8005,
+      "shipperLat": 0.0,
+      "shipperLng": 0.0,
+      "paymentTransactionId": "TXN1779208000000"
+    },
+    "1779191000000": {
+      "id": 1779191000000,
+      "name": "Đỗ Hương Giang",
+      "email": "giang.do@gmail.com",
+      "phone": "0907777777",
+      "address": "Số 15 Vũ Trọng Phụng, Thanh Xuân, Hà Nội",
+      "amount": 209,
+      "originalAmount": 279,
+      "discountAmount": 70,
+      "promotionCode": "HUNGRY30",
+      "foods": "- Lẩu Thái tom yum hải sản (159 000 VNĐ) - Số lượng: 1\n- Tôm sú nướng muối ớt (120 000 VNĐ) - Số lượng: 1",
+      "payment": 1,
+      "paymentStatus": 1,
+      "completed": true,
+      "status": 3,
+      "customerId": "uid_cust_giang",
+      "shipperId": "uid_shipper_hoa",
+      "shipperEmail": "hoa.shipper@gmail.com",
+      "issueNote": null,
+      "deliveryLat": 20.9959,
+      "deliveryLng": 105.8009,
+      "shipperLat": 20.9959,
+      "shipperLng": 105.8009,
+      "paymentTransactionId": "TXN1779191000000"
+    },
+    "1779209000000": {
+      "id": 1779209000000,
+      "name": "Đỗ Hương Giang",
+      "email": "giang.do@gmail.com",
+      "phone": "0907777777",
+      "address": "Số 15 Vũ Trọng Phụng, Thanh Xuân, Hà Nội",
+      "amount": 164,
+      "originalAmount": 164,
+      "discountAmount": 0,
+      "promotionCode": null,
+      "foods": "- Pizza hải sản viền phô mai (99 000 VNĐ) - Số lượng: 1\n- Mỳ Ý sốt bò bằm (65 000 VNĐ) - Số lượng: 1",
+      "payment": 0,
+      "paymentStatus": 0,
+      "completed": false,
+      "status": 1,
+      "customerId": "uid_cust_giang",
+      "shipperId": null,
+      "shipperEmail": null,
+      "issueNote": null,
+      "deliveryLat": 20.9959,
+      "deliveryLng": 105.8009,
+      "shipperLat": 0.0,
+      "shipperLng": 0.0
+    },
+    "1779209500000": {
+      "id": 1779209500000,
+      "name": "Nguyễn Văn An",
+      "email": "an.nguyen@gmail.com",
+      "phone": "0901111111",
+      "address": "Số 54 Triều Khúc, Thanh Xuân, Hà Nội",
+      "amount": 88,
+      "originalAmount": 88,
+      "discountAmount": 0,
+      "promotionCode": null,
+      "foods": "- Cơm chay thập cẩm (35 000 VNĐ) - Số lượng: 2\n- Sữa chua nếp cẩm (18 000 VNĐ) - Số lượng: 1",
+      "payment": 0,
+      "paymentStatus": 0,
+      "completed": false,
+      "status": 2,
+      "customerId": "uid_cust_an",
+      "shipperId": "uid_shipper_khanh",
+      "shipperEmail": "khanh.shipper@gmail.com",
+      "issueNote": null,
+      "deliveryLat": 21.0008,
+      "deliveryLng": 105.8005,
+      "shipperLat": 21.002,
+      "shipperLng": 105.803
+    },
+    "1779209800000": {
+      "id": 1779209800000,
+      "name": "Trần Thị Bình",
+      "email": "binh.tran@gmail.com",
+      "phone": "0902222222",
+      "address": "KTX Mỹ Đình, Nam Từ Liêm, Hà Nội",
+      "amount": 90,
+      "originalAmount": 90,
+      "discountAmount": 0,
+      "promotionCode": null,
+      "foods": "- Bún đậu mắm tôm đầy đủ (45 000 VNĐ) - Số lượng: 1\n- Nem rán (chả giò) (30 000 VNĐ) - Số lượng: 1\n- Trà chanh giã tay (15 000 VNĐ) - Số lượng: 1",
+      "payment": 0,
+      "paymentStatus": 0,
+      "completed": false,
+      "status": 0,
+      "customerId": "uid_cust_binh",
+      "shipperId": null,
+      "shipperEmail": null,
+      "issueNote": null,
+      "deliveryLat": 21.0227,
+      "deliveryLng": 105.7642,
+      "shipperLat": 0.0,
+      "shipperLng": 0.0
+    }
+  },
+  "feedback": {
+    "1779100000000": {
+      "id": 1779100000000,
+      "name": "Nguyễn Văn An",
+      "phone": "0901111111",
+      "email": "an.nguyen@gmail.com",
+      "comment": "App dễ dùng, đặt món nhanh. Mong có thêm nhiều quán gần trường!",
+      "rating": 5,
+      "restaurantId": 0,
+      "foodId": 0,
+      "createdAt": 1779100000000
+    },
+    "1779101000000": {
+      "id": 1779101000000,
+      "name": "Trần Thị Bình",
+      "phone": "0902222222",
+      "email": "binh.tran@gmail.com",
+      "comment": "Giao hàng nhanh, shipper thân thiện.",
+      "rating": 5,
+      "restaurantId": 104,
+      "foodId": 4001,
+      "createdAt": 1779101000000
+    },
+    "1779102000000": {
+      "id": 1779102000000,
+      "name": "Lê Mạnh Cường",
+      "phone": "0903333333",
+      "email": "cuong.le@gmail.com",
+      "comment": "Đôi lúc app load hơi chậm, mong cải thiện thêm.",
+      "rating": 4,
+      "restaurantId": 0,
+      "foodId": 0,
+      "createdAt": 1779102000000
+    },
+    "1779103000000": {
+      "id": 1779103000000,
+      "name": "Phạm Thị Dung",
+      "phone": "0904444444",
+      "email": "dung.pham@gmail.com",
+      "comment": "Đồ ăn ngon, đóng gói cẩn thận. Sẽ ủng hộ tiếp.",
+      "rating": 5,
+      "restaurantId": 102,
+      "foodId": 2003,
+      "createdAt": 1779103000000
+    },
+    "1779104000000": {
+      "id": 1779104000000,
+      "name": "Đỗ Hương Giang",
+      "phone": "0907777777",
+      "email": "giang.do@gmail.com",
+      "comment": "Pizza và lẩu ngon, mong có thêm mã giảm giá cho đơn lớn.",
+      "rating": 5,
+      "restaurantId": 108,
+      "foodId": 12001,
+      "createdAt": 1779104000000
+    },
+    "1779105000000": {
+      "id": 1779105000000,
+      "name": "Vũ Văn Hòa",
+      "phone": "0905555555",
+      "email": "hoa.shipper@gmail.com",
+      "comment": "Là shipper, mong app hiển thị đường đi rõ hơn ở vùng ngõ nhỏ.",
+      "rating": 4,
+      "restaurantId": 0,
+      "foodId": 0,
+      "createdAt": 1779105000000
+    }
+  }
+}

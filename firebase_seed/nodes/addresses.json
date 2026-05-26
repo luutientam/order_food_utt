@@ -1,0 +1,72 @@
+{
+  "uid_cust_an": {
+    "5001": {
+      "id": 5001,
+      "label": "Nhà",
+      "recipientName": "Nguyễn Văn An",
+      "phone": "0901111111",
+      "fullAddress": "Số 54 Triều Khúc, Thanh Xuân, Hà Nội",
+      "lat": 21.0008,
+      "lng": 105.8005,
+      "default": true
+    },
+    "5002": {
+      "id": 5002,
+      "label": "Công ty",
+      "recipientName": "Nguyễn Văn An",
+      "phone": "0901111111",
+      "fullAddress": "Keangnam Landmark, Phạm Hùng, Nam Từ Liêm, Hà Nội",
+      "lat": 21.0173,
+      "lng": 105.7838,
+      "default": false
+    }
+  },
+  "uid_cust_binh": {
+    "5003": {
+      "id": 5003,
+      "label": "Ký túc xá",
+      "recipientName": "Trần Thị Bình",
+      "phone": "0902222222",
+      "fullAddress": "KTX Mỹ Đình, Nam Từ Liêm, Hà Nội",
+      "lat": 21.0227,
+      "lng": 105.7642,
+      "default": true
+    }
+  },
+  "uid_cust_cuong": {
+    "5004": {
+      "id": 5004,
+      "label": "Nhà trọ",
+      "recipientName": "Lê Mạnh Cường",
+      "phone": "0903333333",
+      "fullAddress": "Ngõ 178 Khương Đình, Thanh Xuân, Hà Nội",
+      "lat": 20.9939,
+      "lng": 105.8121,
+      "default": true
+    }
+  },
+  "uid_cust_dung": {
+    "5005": {
+      "id": 5005,
+      "label": "Nhà",
+      "recipientName": "Phạm Thị Dung",
+      "phone": "0904444444",
+      "fullAddress": "Số 2 Nguyễn Xiển, Thanh Xuân, Hà Nội",
+      "lat": 20.9905,
+      "lng": 105.8005,
+      "default": true
+    }
+  },
+  "uid_cust_giang": {
+    "5006": {
+      "id": 5006,
+      "label": "Nhà",
+      "recipientName": "Đỗ Hương Giang",
+      "phone": "0907777777",
+      "fullAddress": "Số 15 Vũ Trọng Phụng, Thanh Xuân, Hà Nội",
+      "lat": 20.9959,
+      "lng": 105.8009,
+      "default": true
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "1779100000000": {
+    "id": 1779100000000,
+    "name": "Nguyễn Văn An",
+    "phone": "0901111111",
+    "email": "an.nguyen@gmail.com",
+    "comment": "App dễ dùng, đặt món nhanh. Mong có thêm nhiều quán gần trường!",
+    "rating": 5,
+    "restaurantId": 0,
+    "foodId": 0,
+    "createdAt": 1779100000000
+  },
+  "1779101000000": {
+    "id": 1779101000000,
+    "name": "Trần Thị Bình",
+    "phone": "0902222222",
+    "email": "binh.tran@gmail.com",
+    "comment": "Giao hàng nhanh, shipper thân thiện.",
+    "rating": 5,
+    "restaurantId": 104,
+    "foodId": 4001,
+    "createdAt": 1779101000000
+  },
+  "1779102000000": {
+    "id": 1779102000000,
+    "name": "Lê Mạnh Cường",
+    "phone": "0903333333",
+    "email": "cuong.le@gmail.com",
+    "comment": "Đôi lúc app load hơi chậm, mong cải thiện thêm.",
+    "rating": 4,
+    "restaurantId": 0,
+    "foodId": 0,
+    "createdAt": 1779102000000
+  },
+  "1779103000000": {
+    "id": 1779103000000,
+    "name": "Phạm Thị Dung",
+    "phone": "0904444444",
+    "email": "dung.pham@gmail.com",
+    "comment": "Đồ ăn ngon, đóng gói cẩn thận. Sẽ ủng hộ tiếp.",
+    "rating": 5,
+    "restaurantId": 102,
+    "foodId": 2003,
+    "createdAt": 1779103000000
+  },
+  "1779104000000": {
+    "id": 1779104000000,
+    "name": "Đỗ Hương Giang",
+    "phone": "0907777777",
+    "email": "giang.do@gmail.com",
+    "comment": "Pizza và lẩu ngon, mong có thêm mã giảm giá cho đơn lớn.",
+    "rating": 5,
+    "restaurantId": 108,
+    "foodId": 12001,
+    "createdAt": 1779104000000
+  },
+  "1779105000000": {
+    "id": 1779105000000,
+    "name": "Vũ Văn Hòa",
+    "phone": "0905555555",
+    "email": "hoa.shipper@gmail.com",
+    "comment": "Là shipper, mong app hiển thị đường đi rõ hơn ở vùng ngõ nhỏ.",
+    "rating": 4,
+    "restaurantId": 0,
+    "foodId": 0,
+    "createdAt": 1779105000000
+  }
+}

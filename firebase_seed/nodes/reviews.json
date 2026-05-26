@@ -1,0 +1,102 @@
+{
+  "1779210000000": {
+    "id": 1779210000000,
+    "orderId": 1779120000000,
+    "userEmail": "an.nguyen@gmail.com",
+    "restaurantId": 101,
+    "foodId": 1001,
+    "rating": 5,
+    "comment": "Cơm tấm ngon, sườn nướng thơm, giao nhanh!",
+    "createdAt": 1779210000000
+  },
+  "1779210100000": {
+    "id": 1779210100000,
+    "orderId": 1779120000000,
+    "userEmail": "an.nguyen@gmail.com",
+    "restaurantId": 105,
+    "foodId": 5002,
+    "rating": 4,
+    "comment": "Trà sữa ổn, trân châu hơi ngọt một chút.",
+    "createdAt": 1779210100000
+  },
+  "1779211000000": {
+    "id": 1779211000000,
+    "orderId": 1779150000000,
+    "userEmail": "binh.tran@gmail.com",
+    "restaurantId": 104,
+    "foodId": 4001,
+    "rating": 5,
+    "comment": "Gà rán giòn, combo đáng tiền.",
+    "createdAt": 1779211000000
+  },
+  "1779212000000": {
+    "id": 1779212000000,
+    "orderId": 1779180000000,
+    "userEmail": "cuong.le@gmail.com",
+    "restaurantId": 102,
+    "foodId": 2003,
+    "rating": 5,
+    "comment": "Bún bò Huế đậm đà, cay vừa ăn, rất thích!",
+    "createdAt": 1779212000000
+  },
+  "1779213000000": {
+    "id": 1779213000000,
+    "orderId": 1779180000000,
+    "userEmail": "cuong.le@gmail.com",
+    "restaurantId": 103,
+    "foodId": 3002,
+    "rating": 3,
+    "comment": "Mì cay ổn nhưng hơi ít hải sản.",
+    "createdAt": 1779213000000
+  },
+  "1779214000000": {
+    "id": 1779214000000,
+    "orderId": 1779190000000,
+    "userEmail": "dung.pham@gmail.com",
+    "restaurantId": 106,
+    "foodId": 7001,
+    "rating": 5,
+    "comment": "Bánh mì pate trứng ngon mà rẻ, ủng hộ tiếp.",
+    "createdAt": 1779214000000
+  },
+  "1779215000000": {
+    "id": 1779215000000,
+    "orderId": 1779191000000,
+    "userEmail": "giang.do@gmail.com",
+    "restaurantId": 108,
+    "foodId": 12001,
+    "rating": 5,
+    "comment": "Pizza hải sản viền phô mai cực đỉnh, nóng giòn.",
+    "createdAt": 1779215000000
+  },
+  "1779216000000": {
+    "id": 1779216000000,
+    "orderId": 1779192000000,
+    "userEmail": "giang.do@gmail.com",
+    "restaurantId": 107,
+    "foodId": 9002,
+    "rating": 4,
+    "comment": "Lẩu Thái chua cay chuẩn vị, phần hơi ít so với giá.",
+    "createdAt": 1779216000000
+  },
+  "1779217000000": {
+    "id": 1779217000000,
+    "orderId": 1779193000000,
+    "userEmail": "binh.tran@gmail.com",
+    "restaurantId": 110,
+    "foodId": 6003,
+    "rating": 5,
+    "comment": "Nem rán giòn tan, chấm nước mắm ngon.",
+    "createdAt": 1779217000000
+  },
+  "1779218000000": {
+    "id": 1779218000000,
+    "orderId": 1779194000000,
+    "userEmail": "an.nguyen@gmail.com",
+    "restaurantId": 109,
+    "foodId": 11001,
+    "rating": 5,
+    "comment": "Cơm chay thanh đạm, rau củ tươi, đóng gói đẹp.",
+    "createdAt": 1779218000000
+  }
+}

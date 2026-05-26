@@ -1,0 +1,90 @@
+{
+  "uid_admin_utt": {
+    "uid": "uid_admin_utt",
+    "email": "admin@admin.com",
+    "name": "Quản trị viên UTT",
+    "phone": "0900000001",
+    "role": "admin",
+    "active": true,
+    "isActive": true,
+    "admin": true,
+    "isAdmin": true
+  },
+  "uid_cust_an": {
+    "uid": "uid_cust_an",
+    "email": "an.nguyen@gmail.com",
+    "name": "Nguyễn Văn An",
+    "phone": "0901111111",
+    "role": "customer",
+    "active": true,
+    "isActive": true,
+    "admin": false,
+    "isAdmin": false
+  },
+  "uid_cust_binh": {
+    "uid": "uid_cust_binh",
+    "email": "binh.tran@gmail.com",
+    "name": "Trần Thị Bình",
+    "phone": "0902222222",
+    "role": "customer",
+    "active": true,
+    "isActive": true,
+    "admin": false,
+    "isAdmin": false
+  },
+  "uid_cust_cuong": {
+    "uid": "uid_cust_cuong",
+    "email": "cuong.le@gmail.com",
+    "name": "Lê Mạnh Cường",
+    "phone": "0903333333",
+    "role": "customer",
+    "active": true,
+    "isActive": true,
+    "admin": false,
+    "isAdmin": false
+  },
+  "uid_cust_dung": {
+    "uid": "uid_cust_dung",
+    "email": "dung.pham@gmail.com",
+    "name": "Phạm Thị Dung",
+    "phone": "0904444444",
+    "role": "customer",
+    "active": true,
+    "isActive": true,
+    "admin": false,
+    "isAdmin": false
+  },
+  "uid_cust_giang": {
+    "uid": "uid_cust_giang",
+    "email": "giang.do@gmail.com",
+    "name": "Đỗ Hương Giang",
+    "phone": "0907777777",
+    "role": "customer",
+    "active": true,
+    "isActive": true,
+    "admin": false,
+    "isAdmin": false
+  },
+  "uid_shipper_hoa": {
+    "uid": "uid_shipper_hoa",
+    "email": "hoa.shipper@gmail.com",
+    "name": "Vũ Văn Hòa",
+    "phone": "0905555555",
+    "role": "shipper",
+    "active": true,
+    "isActive": true,
+    "admin": false,
+    "isAdmin": false
+  },
+  "uid_shipper_khanh": {
+    "uid": "uid_shipper_khanh",
+    "email": "khanh.shipper@gmail.com",
+    "name": "Đỗ Quốc Khánh",
+    "phone": "0906666666",
+    "role": "shipper",
+    "active": true,
+    "isActive": true,
+    "admin": false,
+    "isAdmin": false
+  }
+}

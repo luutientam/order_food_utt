@@ -42,18 +42,10 @@ object AppConfig {
         get() = getString(R.string.config_about_us_slogan)
     val ABOUT_US_WEBSITE_TITLE: String
         get() = getString(R.string.config_about_us_website_title)
-    val PAGE_FACEBOOK: String
-        get() = getString(R.string.config_page_facebook)
-    val LINK_FACEBOOK: String
-        get() = getString(R.string.config_link_facebook)
-    val LINK_YOUTUBE: String
-        get() = getString(R.string.config_link_youtube)
     val PHONE_NUMBER: String
         get() = getString(R.string.config_phone_number)
     val GMAIL: String
         get() = getString(R.string.config_gmail)
-    val SKYPE_ID: String
-        get() = getString(R.string.config_skype_id)
     val ZALO_LINK: String
         get() = getString(R.string.config_zalo_link)
     val WEBSITE: String

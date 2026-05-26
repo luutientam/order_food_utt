@@ -4,8 +4,6 @@ import android.Manifest
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
-import android.content.ActivityNotFoundException
-import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -16,7 +14,6 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.DatePicker
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
-import androidx.core.content.pm.PackageInfoCompat
 import com.utt.foodorderapp.activity.AdminMainActivity
 import com.utt.foodorderapp.activity.MainActivity
 import com.utt.foodorderapp.activity.ShipperMainActivity
@@ -73,56 +70,6 @@ object GlobalFunction {
         val emailIntent = Intent(Intent.ACTION_SENDTO, Uri.fromParts(
                 "mailto", AppConfig.GMAIL, null))
         context.startActivity(Intent.createChooser(emailIntent, "Send Email"))
-    }
-
-    @JvmStatic
-    fun onClickOpenSkype(context: Context) {
-        try {
-            val skypeUri = Uri.parse("skype:" + AppConfig.SKYPE_ID + "?chat")
-            context.packageManager.getPackageInfo("com.skype.raider", 0)
-            val skypeIntent = Intent(Intent.ACTION_VIEW, skypeUri)
-            skypeIntent.component = ComponentName("com.skype.raider", "com.skype.raider.Main")
-            context.startActivity(skypeIntent)
-        } catch (e: Exception) {
-            openSkypeWebview(context)
-        }
-    }
-
-    private fun openSkypeWebview(context: Context) {
-        try {
-            context.startActivity(Intent(Intent.ACTION_VIEW,
-                    Uri.parse("skype:" + AppConfig.SKYPE_ID + "?chat")))
-        } catch (exception: Exception) {
-            val skypePackageName = "com.skype.raider"
-            try {
-                context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$skypePackageName")))
-            } catch (anfe: ActivityNotFoundException) {
-                context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$skypePackageName")))
-            }
-        }
-    }
-
-    @JvmStatic
-    fun onClickOpenFacebook(context: Context) {
-        var intent: Intent
-        try {
-            var urlFacebook: String = AppConfig.PAGE_FACEBOOK
-            val packageManager = context.packageManager
-            val versionCode = PackageInfoCompat.getLongVersionCode(
-                    packageManager.getPackageInfo("com.facebook.katana", 0))
-            if (versionCode >= 3002850L) { //newer versions of fb app
-                urlFacebook = "fb://facewebmodal/f?href=" + AppConfig.LINK_FACEBOOK
-            }
-            intent = Intent(Intent.ACTION_VIEW, Uri.parse(urlFacebook))
-        } catch (e: Exception) {
-            intent = Intent(Intent.ACTION_VIEW, Uri.parse(AppConfig.LINK_FACEBOOK))
-        }
-        context.startActivity(intent)
-    }
-
-    @JvmStatic
-    fun onClickOpenYoutubeChannel(context: Context) {
-        context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(AppConfig.LINK_YOUTUBE)))
     }
 
     @JvmStatic

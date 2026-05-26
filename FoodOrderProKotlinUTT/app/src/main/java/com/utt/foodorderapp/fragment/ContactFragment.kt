@@ -60,11 +60,8 @@ class ContactFragment : BaseFragment() {
 
     private fun getListContact(): List<Contact> {
         val contactArrayList: MutableList<Contact> = ArrayList()
-        contactArrayList.add(Contact(Contact.FACEBOOK, R.drawable.ic_facebook))
         contactArrayList.add(Contact(Contact.HOTLINE, R.drawable.ic_hotline))
         contactArrayList.add(Contact(Contact.GMAIL, R.drawable.ic_gmail))
-        contactArrayList.add(Contact(Contact.SKYPE, R.drawable.ic_skype))
-        contactArrayList.add(Contact(Contact.YOUTUBE, R.drawable.ic_youtube))
         contactArrayList.add(Contact(Contact.ZALO, R.drawable.ic_zalo))
         return contactArrayList
     }
