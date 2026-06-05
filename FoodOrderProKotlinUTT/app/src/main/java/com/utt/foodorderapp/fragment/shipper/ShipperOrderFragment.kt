@@ -21,6 +21,8 @@ import com.google.android.gms.location.Priority
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.MutableData
+import com.google.firebase.database.Transaction
 import com.utt.foodorderapp.ControllerApplication
 import com.utt.foodorderapp.R
 import com.utt.foodorderapp.activity.ShipperMainActivity
@@ -134,18 +136,38 @@ class ShipperOrderFragment : BaseFragment() {
     private fun claimOrder(order: Order) {
         val currentActivity = activity ?: return
         val user = DataStoreManager.user ?: return
-        if (!order.canShipperTake(user.uid)) {
+        val uid = user.uid
+        if (uid.isNullOrEmpty() || !order.canShipperTake(uid)) {
             showToastMessage(currentActivity, getString(R.string.msg_order_cannot_update_status))
             return
         }
-        val map: MutableMap<String, Any> = HashMap()
-        map["shipperId"] = user.uid ?: ""
-        map["shipperEmail"] = user.email ?: ""
-        map["status"] = Order.STATUS_DELIVERING
-        map["completed"] = false
-        map["shipperLat"] = 0.0
-        map["shipperLng"] = 0.0
-        ControllerApplication[currentActivity].bookingDatabaseReference.child(order.id.toString()).updateChildren(map)
+        // Dùng transaction để hai shipper không thể cùng nhận một đơn (kiểm tra atomic trên server)
+        ControllerApplication[currentActivity].bookingDatabaseReference.child(order.id.toString())
+                .runTransaction(object : Transaction.Handler {
+                    override fun doTransaction(currentData: MutableData): Transaction.Result {
+                        val current = currentData.getValue(Order::class.java)
+                                ?: return Transaction.success(currentData)
+                        if (!current.canShipperTake(uid)) {
+                            return Transaction.abort()
+                        }
+                        current.shipperId = uid
+                        current.shipperEmail = user.email
+                        current.status = Order.STATUS_DELIVERING
+                        current.isCompleted = false
+                        current.shipperLat = 0.0
+                        current.shipperLng = 0.0
+                        currentData.value = current
+                        return Transaction.success(currentData)
+                    }
+
+                    override fun onComplete(error: DatabaseError?, committed: Boolean, snapshot: DataSnapshot?) {
+                        if (!isAdded) return
+                        val ctx = activity ?: return
+                        if (error != null || !committed) {
+                            showToastMessage(ctx, getString(R.string.msg_order_cannot_update_status))
+                        }
+                    }
+                })
     }
 
     private fun rejectOrder(order: Order) {
@@ -160,7 +182,7 @@ class ShipperOrderFragment : BaseFragment() {
         map["shipperEmail"] = null
         map["status"] = Order.STATUS_PREPARING
         map["completed"] = false
-        ControllerApplication[currentActivity].bookingDatabaseReference.child(order.id.toString()).updateChildren(map)
+        updateOrderWithFeedback(order.id, map)
     }
 
     private fun finishOrder(order: Order, status: Int) {
@@ -170,10 +192,10 @@ class ShipperOrderFragment : BaseFragment() {
             showToastMessage(currentActivity, getString(R.string.msg_order_cannot_update_status))
             return
         }
-        val map: MutableMap<String, Any> = HashMap()
+        val map: MutableMap<String, Any?> = HashMap()
         map["status"] = status
         map["completed"] = status == Order.STATUS_SUCCESS
-        ControllerApplication[currentActivity].bookingDatabaseReference.child(order.id.toString()).updateChildren(map)
+        updateOrderWithFeedback(order.id, map)
     }
 
     private fun reportIssueAndFail(order: Order) {
@@ -202,11 +224,23 @@ class ShipperOrderFragment : BaseFragment() {
             showToastMessage(currentActivity, getString(R.string.msg_order_cannot_update_status))
             return
         }
-        val map: MutableMap<String, Any> = HashMap()
+        val map: MutableMap<String, Any?> = HashMap()
         map["status"] = status
         map["completed"] = status == Order.STATUS_SUCCESS
         map["issueNote"] = issueNote
-        ControllerApplication[currentActivity].bookingDatabaseReference.child(order.id.toString()).updateChildren(map)
+        updateOrderWithFeedback(order.id, map)
+    }
+
+    private fun updateOrderWithFeedback(orderId: Long, payload: Map<String, Any?>) {
+        val currentActivity = activity ?: return
+        ControllerApplication[currentActivity].bookingDatabaseReference.child(orderId.toString())
+                .updateChildren(payload) { error, _ ->
+                    if (!isAdded) return@updateChildren
+                    val ctx = activity ?: return@updateChildren
+                    if (error != null) {
+                        showToastMessage(ctx, getString(R.string.msg_order_cannot_update_status))
+                    }
+                }
     }
 
     private fun contactCustomer(order: Order) {
@@ -224,7 +258,9 @@ class ShipperOrderFragment : BaseFragment() {
         if (isPickupMode) {
             return order.getStatusValue() == Order.STATUS_PREPARING && order.shipperId.isNullOrEmpty()
         }
-        return order.isAssignedToShipper(userId) && order.getStatusValue() == Order.STATUS_DELIVERING
+        if (!order.isAssignedToShipper(userId)) return false
+        // Giữ đơn đang giao và cả đơn vừa bị huỷ để shipper thấy trạng thái "Đã huỷ"
+        return order.getStatusValue() == Order.STATUS_DELIVERING || order.getStatusValue() == Order.STATUS_CANCEL
     }
 
     @SuppressLint("MissingPermission")

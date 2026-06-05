@@ -44,9 +44,10 @@ class OrderViewModel(
                 onDone(false)
                 return@getOrder
             }
-            val payload: MutableMap<String, Any> = HashMap()
+            val payload: MutableMap<String, Any?> = HashMap()
             payload["status"] = status
             payload["completed"] = status == Order.STATUS_SUCCESS
+            // Giữ nguyên shipperId khi huỷ để shipper đang giao vẫn thấy đơn ở trạng thái "Đã huỷ"
             orderRepository.updateOrder(orderId, payload) { error ->
                 onDone(error == null)
             }

@@ -70,7 +70,7 @@ class OrderRepository {
         ControllerApplication.getInstance().bookingDatabaseReference.removeEventListener(listener)
     }
 
-    fun updateOrder(orderId: Long, payload: Map<String, Any>, callback: (DatabaseError?) -> Unit) {
+    fun updateOrder(orderId: Long, payload: Map<String, Any?>, callback: (DatabaseError?) -> Unit) {
         ControllerApplication.getInstance().bookingDatabaseReference.child(orderId.toString())
                 .updateChildren(payload) { error, _ -> callback(error) }
     }

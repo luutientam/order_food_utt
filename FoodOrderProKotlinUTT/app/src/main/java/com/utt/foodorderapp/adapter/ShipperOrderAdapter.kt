@@ -43,6 +43,12 @@ class ShipperOrderAdapter(
             holder.binding.tvActionSecondary.setOnClickListener { listener.onSecondaryAction(order) }
             return
         }
+        // Đơn đã huỷ: chỉ hiển thị trạng thái "Đã huỷ", ẩn nút thao tác vì shipper không thể xử lý tiếp
+        if (order.getStatusValue() != Order.STATUS_DELIVERING) {
+            holder.binding.tvActionPrimary.visibility = View.GONE
+            holder.binding.tvActionSecondary.visibility = View.GONE
+            return
+        }
         holder.binding.tvActionPrimary.visibility = View.VISIBLE
         holder.binding.tvActionSecondary.visibility = View.VISIBLE
         holder.binding.tvActionPrimary.text = holder.itemView.context.getString(R.string.status_success)

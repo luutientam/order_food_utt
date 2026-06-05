@@ -1,0 +1,248 @@
+' ==============================================================
+' BIỂU ĐỒ HOẠT ĐỘNG — App đặt & giao đồ ăn trực tuyến
+' 2 làn (swimlane): Actor | Hệ thống ; có start/stop, rẽ nhánh, fork/join.
+' Mỗi khối mỗi khối start–end là 1 biểu đồ.
+' ==============================================================
+
+' --------------------------------------------------------------
+' 3.2.6.1 ĐĂNG NHẬP
+' --------------------------------------------------------------
+@startuml
+skinparam linetype polyline
+|Người dùng|
+start
+:Truy cập vào trang đăng nhập;
+repeat
+|Hệ thống|
+:Hiển thị form đăng nhập;
+|Người dùng|
+:Nhập;
+fork
+  :Tên đăng nhập;
+fork again
+  :Mật khẩu;
+end fork
+:Nhấn nút đăng nhập;
+|Hệ thống|
+:Kiểm tra thông tin trong CSDL;
+repeat while (Hợp lệ?) is (sai) not (đúng)
+stop
+@enduml
+
+' --------------------------------------------------------------
+' 3.2.6.2 ĐẶT HÀNG
+' --------------------------------------------------------------
+@startuml
+skinparam linetype polyline
+|Khách hàng|
+start
+:Chọn món và mở giỏ hàng;
+|Hệ thống|
+:Hiển thị giỏ hàng;
+|Khách hàng|
+:Chọn địa chỉ giao;
+:Chọn phương thức thanh toán;
+:Nhấn Đặt hàng;
+|Hệ thống|
+:Tạo và lưu đơn hàng (status = 0);
+if (Tạo đơn thành công?) then (có)
+  :Xoá giỏ hàng & mở màn theo dõi đơn;
+else (không)
+  :Báo lỗi đặt hàng;
+endif
+stop
+@enduml
+
+' --------------------------------------------------------------
+' 3.2.6.3 CẬP NHẬT TRẠNG THÁI ĐƠN
+' --------------------------------------------------------------
+@startuml
+skinparam linetype polyline
+|Quản trị viên / Shipper|
+start
+:Chọn đơn cần cập nhật;
+|Hệ thống|
+:Hiển thị chi tiết đơn;
+|Quản trị viên / Shipper|
+:Chọn trạng thái mới;
+:Xác nhận cập nhật;
+|Hệ thống|
+:Cập nhật trạng thái & đồng bộ realtime;
+if (Cập nhật thành công?) then (có)
+  :Thông báo cập nhật thành công;
+else (không)
+  :Báo lỗi cập nhật;
+endif
+stop
+@enduml
+
+' --------------------------------------------------------------
+' 3.2.6.4 ÁP DỤNG VOUCHER
+' --------------------------------------------------------------
+@startuml
+skinparam linetype polyline
+|Khách hàng|
+start
+:Nhập mã khuyến mại;
+:Nhấn Áp dụng;
+|Hệ thống|
+:Kiểm tra điều kiện voucher;
+if (Mã hợp lệ?) then (hợp lệ)
+  :Tính & áp dụng giảm giá;
+else (không hợp lệ)
+  :Báo mã không hợp lệ;
+endif
+stop
+@enduml
+
+' --------------------------------------------------------------
+' 3.2.6.5 THEO DÕI ĐƠN REALTIME
+' --------------------------------------------------------------
+@startuml
+skinparam linetype polyline
+|Khách hàng|
+start
+:Mở màn hình theo dõi đơn;
+|Hệ thống|
+:Khởi tạo bản đồ & đăng ký lắng nghe đơn;
+repeat
+  :Cập nhật trạng thái & vị trí shipper (realtime);
+repeat while (Đơn đã hoàn tất?) is (chưa) not (rồi)
+|Khách hàng|
+:Xem kết quả giao hàng;
+stop
+@enduml
+
+' --------------------------------------------------------------
+' 3.2.6.6 ĐÁNH GIÁ MÓN ĂN
+' --------------------------------------------------------------
+@startuml
+skinparam linetype polyline
+|Khách hàng|
+start
+:Mở lịch sử đơn đã hoàn tất;
+:Chọn món cần đánh giá;
+|Hệ thống|
+if (Đã đánh giá món này?) then (rồi)
+  :Ẩn nút đánh giá;
+else (chưa)
+  |Khách hàng|
+  :Nhập số sao & bình luận;
+  |Hệ thống|
+  :Lưu đánh giá & cập nhật điểm trung bình;
+endif
+stop
+@enduml
+
+' --------------------------------------------------------------
+' 3.2.6.7 QUẢN LÝ MÓN ĂN (ADMIN)
+' --------------------------------------------------------------
+@startuml
+skinparam linetype polyline
+|Quản trị viên|
+start
+:Chọn thao tác quản lý món;
+if (Thao tác?) then (Thêm)
+  :Nhập thông tin & chọn ảnh;
+elseif (Sửa) then (Sửa)
+  :Cập nhật thông tin món;
+else (Xoá)
+  :Xác nhận xoá món;
+endif
+|Hệ thống|
+:Lưu thay đổi vào CSDL;
+:Thông báo kết quả;
+stop
+@enduml
+
+' --------------------------------------------------------------
+' 3.2.6.8 BÁO CÁO DOANH THU
+' --------------------------------------------------------------
+@startuml
+skinparam linetype polyline
+|Quản trị viên|
+start
+:Chọn mốc thời gian (ngày/tháng/năm);
+|Hệ thống|
+:Tổng hợp dữ liệu đơn hàng;
+:Hiển thị biểu đồ doanh thu;
+stop
+@enduml
+
+' --------------------------------------------------------------
+' 3.2.6.9 SHIPPER NHẬN ĐƠN
+' --------------------------------------------------------------
+@startuml
+skinparam linetype polyline
+|Shipper|
+start
+:Xem danh sách đơn khả dụng;
+:Nhấn Nhận đơn;
+|Hệ thống|
+:Gán shipper cho đơn (transaction);
+if (Nhận được đơn?) then (được)
+  :Cập nhật đơn (status = 2);
+else (không)
+  :Báo đơn đã có người nhận;
+endif
+stop
+@enduml
+
+' --------------------------------------------------------------
+' 3.2.6.10 SHIPPER GIAO ĐƠN
+' --------------------------------------------------------------
+@startuml
+skinparam linetype polyline
+|Shipper|
+start
+:Chọn đơn đang giao;
+:Cập nhật trạng thái giao;
+|Hệ thống|
+:Đồng bộ trạng thái & vị trí;
+if (Giao thành công?) then (thành công)
+  :Hoàn tất đơn (status = 3);
+else (thất bại)
+  :Đánh dấu giao thất bại (status = 5);
+endif
+stop
+@enduml
+
+' --------------------------------------------------------------
+' 3.2.6.11 QUẢN LÝ NGƯỜI DÙNG
+' --------------------------------------------------------------
+@startuml
+skinparam linetype polyline
+|Quản trị viên|
+start
+:Tìm kiếm người dùng;
+:Chọn khoá / mở tài khoản;
+|Hệ thống|
+:Cập nhật trạng thái tài khoản (isActive);
+if (Thành công?) then (có)
+  :Thông báo cập nhật thành công;
+else (không)
+  :Báo lỗi;
+endif
+stop
+@enduml
+
+' --------------------------------------------------------------
+' 3.2.6.12 QUẢN LÝ KHUYẾN MẠI
+' --------------------------------------------------------------
+@startuml
+skinparam linetype polyline
+|Quản trị viên|
+start
+:Chọn thao tác quản lý voucher;
+if (Thao tác?) then (Tạo)
+  :Nhập thông tin voucher;
+elseif (Sửa) then (Sửa)
+  :Cập nhật voucher;
+else (Xoá)
+  :Xác nhận xoá voucher;
+endif
+|Hệ thống|
+:Lưu thay đổi vào /promotions;
+:Thông báo kết quả;
+stop
+@enduml
