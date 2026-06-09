@@ -33,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/define_dimen_4"
-                android:background="@drawable/bg_white_corner_6_border_gray"
+                android:background="@drawable/bg_input_field"
                 android:hint="@string/hint_name"
                 android:imeOptions="actionNext"
                 android:inputType="text"
@@ -54,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/define_dimen_100"
                 android:layout_marginTop="@dimen/define_dimen_4"
-                android:background="@drawable/bg_white_corner_6_border_gray"
+                android:background="@drawable/bg_input_field"
                 android:hint="@string/hint_description"
                 android:imeOptions="actionNext"
                 android:gravity="start"
@@ -76,7 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/define_dimen_4"
-                android:background="@drawable/bg_white_corner_6_border_gray"
+                android:background="@drawable/bg_input_field"
                 android:hint="@string/hint_restaurant_name"
                 android:imeOptions="actionNext"
                 android:inputType="text"
@@ -97,7 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/define_dimen_4"
-                android:background="@drawable/bg_white_corner_6_border_gray"
+                android:background="@drawable/bg_input_field"
                 android:hint="@string/hint_category_name"
                 android:imeOptions="actionNext"
                 android:inputType="text"
@@ -117,7 +117,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/define_dimen_4"
-                android:background="@drawable/bg_white_corner_6_border_gray"
+                android:background="@drawable/bg_input_field"
                 android:padding="@dimen/define_dimen_12">
 
                 <EditText
@@ -131,7 +131,7 @@
                     android:hint="@string/hint_price"
                     android:imeOptions="actionNext"
                     android:inputType="number"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/neutral900"
                     android:textSize="@dimen/text_size_small" />
 
                 <TextView
@@ -141,7 +141,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:text="@string/currency_food"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/neutral900"
                     android:textSize="@dimen/text_size_small" />
             </RelativeLayout>
 
@@ -157,7 +157,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/define_dimen_4"
-                android:background="@drawable/bg_white_corner_6_border_gray"
+                android:background="@drawable/bg_input_field"
                 android:padding="@dimen/define_dimen_12">
 
                 <EditText
@@ -198,7 +198,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/define_dimen_4"
-                android:background="@drawable/bg_white_corner_6_border_gray"
+                android:background="@drawable/bg_input_field"
                 android:hint="@string/hint_image"
                 android:imeOptions="actionNext"
                 android:inputType="text"
@@ -219,7 +219,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/define_dimen_4"
-                android:background="@drawable/bg_white_corner_6_border_gray"
+                android:background="@drawable/bg_input_field"
                 android:hint="@string/hint_image_banner"
                 android:imeOptions="actionNext"
                 android:inputType="text"
@@ -231,7 +231,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/define_dimen_10"
-                android:background="@drawable/bg_white_corner_6_border_gray"
+                android:background="@drawable/bg_input_field"
                 android:padding="@dimen/define_dimen_12">
 
                 <CheckBox
@@ -253,7 +253,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_xsmall"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/neutral900"
                 android:text="@string/food_image_other_note"/>
 
             <EditText
@@ -261,7 +261,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/define_dimen_100"
                 android:layout_marginTop="@dimen/define_dimen_4"
-                android:background="@drawable/bg_white_corner_6_border_gray"
+                android:background="@drawable/bg_input_field"
                 android:hint="@string/hint_image_other"
                 android:imeOptions="actionDone"
                 android:gravity="start"
@@ -273,12 +273,16 @@
             <Button
                 android:id="@+id/btn_add_or_edit"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/define_dimen_20"
-                android:background="@drawable/bg_main_corner_8"
+                android:layout_height="@dimen/define_dimen_50"
+                android:layout_marginTop="@dimen/define_dimen_24"
+                android:layout_marginBottom="@dimen/define_dimen_8"
+                android:background="@drawable/bg_primary_button"
+                android:stateListAnimator="@null"
                 android:text="@string/action_add"
+                android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="@dimen/text_size_small" />
+                android:textSize="@dimen/text_size_normal"
+                android:textStyle="bold" />
 
         </LinearLayout>
     </ScrollView>

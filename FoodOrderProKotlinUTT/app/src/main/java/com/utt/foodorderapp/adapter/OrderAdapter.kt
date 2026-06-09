@@ -13,6 +13,7 @@ import com.utt.foodorderapp.constant.AppConfig
 import com.utt.foodorderapp.databinding.ItemOrderBinding
 import com.utt.foodorderapp.model.Order
 import com.utt.foodorderapp.utils.DateTimeUtils.convertTimeStampToDate
+import com.utt.foodorderapp.utils.MoneyUtils
 
 class OrderAdapter(private var mContext: Context?,
                    private val mListOrder: List<Order>?,
@@ -39,9 +40,9 @@ class OrderAdapter(private var mContext: Context?,
         holder.mItemOrderBinding.tvAddress.text = order.address
         holder.mItemOrderBinding.tvMenu.text = order.foods
         holder.mItemOrderBinding.tvDate.text = convertTimeStampToDate(order.id)
-        val strAmount: String = "" + order.amount + AppConfig.CURRENCY
+        val strAmount: String = MoneyUtils.format(order.amount)
         val amountDisplay = if (order.discountAmount > 0) {
-            "$strAmount (giam ${order.discountAmount}${AppConfig.CURRENCY})"
+            "$strAmount (giảm ${MoneyUtils.format(order.discountAmount)})"
         } else {
             strAmount
         }
@@ -68,6 +69,8 @@ class OrderAdapter(private var mContext: Context?,
         val tvRateOrder = root.findViewById<TextView>(R.id.tv_rate_order)
 
         tvStatus.text = buildStatusText(order)
+        tvStatus.backgroundTintList = android.content.res.ColorStateList.valueOf(
+                ContextCompat.getColor(holder.itemView.context, getStatusColor(order)))
         if (AppConfig.TYPE_PAYMENT_ONLINE == order.payment && !order.paymentTransactionId.isNullOrEmpty()) {
             layoutTransaction.visibility = View.VISIBLE
             tvTransaction.text = order.paymentTransactionId
@@ -120,6 +123,18 @@ class OrderAdapter(private var mContext: Context?,
             Order.STATUS_CANCEL -> context.getString(R.string.status_cancel)
             Order.STATUS_FAIL -> context.getString(R.string.status_fail)
             else -> context.getString(R.string.status_new)
+        }
+    }
+
+    private fun getStatusColor(order: Order): Int {
+        return when (order.getStatusValue()) {
+            Order.STATUS_NEW -> R.color.statusNew
+            Order.STATUS_PREPARING -> R.color.statusPreparing
+            Order.STATUS_DELIVERING -> R.color.statusDelivering
+            Order.STATUS_SUCCESS -> R.color.statusSuccess
+            Order.STATUS_CANCEL -> R.color.statusCancel
+            Order.STATUS_FAIL -> R.color.statusFail
+            else -> R.color.statusNew
         }
     }
 

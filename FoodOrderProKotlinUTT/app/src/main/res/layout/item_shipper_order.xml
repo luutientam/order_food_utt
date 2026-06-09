@@ -1,61 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/define_dimen_10"
-    app:cardCornerRadius="@dimen/define_dimen_6">
+    android:layout_marginStart="@dimen/define_dimen_4"
+    android:layout_marginEnd="@dimen/define_dimen_4"
+    android:layout_marginBottom="@dimen/define_dimen_12"
+    app:cardCornerRadius="@dimen/define_dimen_14"
+    app:cardElevation="@dimen/define_dimen_2">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/define_dimen_12">
+        android:padding="@dimen/define_dimen_14">
 
         <TextView
             android:id="@+id/tv_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/textColorPrimary"
-            android:textSize="@dimen/text_size_small" />
+            android:lineSpacingExtra="2dp"
+            android:textColor="@color/neutral800"
+            android:textSize="@dimen/text_size_small"
+            tools:text="Đơn #123 — Nguyễn Văn A" />
 
         <TextView
             android:id="@+id/tv_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/define_dimen_6"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="@dimen/text_size_small"
-            android:textStyle="bold" />
+            android:layout_marginTop="@dimen/define_dimen_8"
+            android:background="@drawable/bg_pill_soft_orange"
+            android:paddingStart="@dimen/define_dimen_8"
+            android:paddingTop="3dp"
+            android:paddingEnd="@dimen/define_dimen_8"
+            android:paddingBottom="3dp"
+            android:textColor="@color/brandOrange"
+            android:textSize="@dimen/text_size_xsmall"
+            android:textStyle="bold"
+            tools:text="Đang giao" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/define_dimen_10"
+            android:layout_marginTop="@dimen/define_dimen_12"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tv_action_primary"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/define_dimen_38"
+                android:layout_height="@dimen/define_dimen_40"
                 android:layout_weight="1"
-                android:background="@drawable/bg_main_corner_8"
+                android:background="@drawable/bg_primary_button"
                 android:gravity="center"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_small"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:text="Nhận đơn" />
 
             <TextView
                 android:id="@+id/tv_action_secondary"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/define_dimen_38"
+                android:layout_height="@dimen/define_dimen_40"
                 android:layout_marginStart="@dimen/define_dimen_8"
                 android:layout_weight="1"
                 android:background="@drawable/bg_red_shape_corner_6"
                 android:gravity="center"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_small"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:text="Từ chối" />
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

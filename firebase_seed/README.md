@@ -9,7 +9,7 @@ vùng `asia-southeast1`) cho mục đích demo / làm đồ án.
 |------|----------|-------|
 | `/categories` | 12 | Cơm, Phở & Bún, Mì & Cháo, Gà rán, Đồ uống, Ăn vặt, Bánh mì, Tráng miệng, Lẩu & Nướng, Hải sản, Món chay, Pizza & Mỳ Ý |
 | `/restaurants` | 10 | Quán ăn quanh khu vực UTT (Triều Khúc, Thanh Xuân) |
-| `/food` | 64 | Món ăn đa dạng, đã gắn `categoryId` + `restaurantId` để **lọc theo danh mục / theo quán chạy đúng**; có món đủ 3 mức giá |
+| `/food` | 138 | Món ăn đa dạng, đã gắn `categoryId` + `restaurantId` để **lọc theo danh mục / theo quán chạy đúng**; có món đủ 3 mức giá |
 | `/promotions` | 6 | Mã giảm giá (1 mã đang tắt để test) |
 | `/users` | 8 | 1 admin, 5 khách, 2 shipper |
 | `/addresses` | 5 user | Sổ địa chỉ giao hàng kèm toạ độ |

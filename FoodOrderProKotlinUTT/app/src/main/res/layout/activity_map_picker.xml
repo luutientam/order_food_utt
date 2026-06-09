@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/define_dimen_10"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/neutral900"
         android:textSize="@dimen/text_size_small"
         android:textStyle="bold" />
 
@@ -45,7 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/define_dimen_44"
         android:layout_margin="@dimen/define_dimen_10"
-        android:background="@drawable/bg_main_corner_8"
+        android:background="@drawable/bg_primary_button"
         android:gravity="center"
         android:text="@string/confirm_location"
         android:textColor="@color/white"

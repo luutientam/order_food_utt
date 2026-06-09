@@ -8,6 +8,7 @@ import com.utt.foodorderapp.constant.AppConfig
 import com.utt.foodorderapp.databinding.ItemRevenueBinding
 import com.utt.foodorderapp.model.Order
 import com.utt.foodorderapp.utils.DateTimeUtils.convertTimeStampToDate_2
+import com.utt.foodorderapp.utils.MoneyUtils
 
 class RevenueAdapter(private val mListOrder: List<Order>?) : RecyclerView.Adapter<RevenueViewHolder>() {
 
@@ -21,7 +22,7 @@ class RevenueAdapter(private val mListOrder: List<Order>?) : RecyclerView.Adapte
         val order = mListOrder!![position]
         holder.mItemRevenueBinding.tvId.text = order.id.toString()
         holder.mItemRevenueBinding.tvDate.text = convertTimeStampToDate_2(order.id)
-        val strAmount: String = "" + order.amount + AppConfig.CURRENCY
+        val strAmount: String = MoneyUtils.format(order.amount)
         holder.mItemRevenueBinding.tvTotalAmount.text = strAmount
     }
 

@@ -13,10 +13,10 @@
             android:id="@+id/edt_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_white_corner_6_border_gray"
+            android:background="@drawable/bg_input_field"
             android:hint="@string/hint_address_label"
             android:inputType="text"
-            android:padding="@dimen/define_dimen_10"
+            android:padding="@dimen/define_dimen_12"
             android:textSize="@dimen/text_size_small" />
 
         <EditText
@@ -24,10 +24,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/define_dimen_10"
-            android:background="@drawable/bg_white_corner_6_border_gray"
+            android:background="@drawable/bg_input_field"
             android:hint="@string/hint_recipient_name"
             android:inputType="textPersonName"
-            android:padding="@dimen/define_dimen_10"
+            android:padding="@dimen/define_dimen_12"
             android:textSize="@dimen/text_size_small" />
 
         <EditText
@@ -35,10 +35,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/define_dimen_10"
-            android:background="@drawable/bg_white_corner_6_border_gray"
+            android:background="@drawable/bg_input_field"
             android:hint="@string/feedback_phone"
             android:inputType="phone"
-            android:padding="@dimen/define_dimen_10"
+            android:padding="@dimen/define_dimen_12"
             android:textSize="@dimen/text_size_small" />
 
         <EditText
@@ -46,20 +46,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/define_dimen_10"
-            android:background="@drawable/bg_white_corner_6_border_gray"
+            android:background="@drawable/bg_input_field"
             android:hint="@string/address_delivery"
             android:inputType="textMultiLine"
             android:minHeight="60dp"
-            android:padding="@dimen/define_dimen_10"
+            android:padding="@dimen/define_dimen_12"
             android:textSize="@dimen/text_size_small" />
 
         <CheckBox
             android:id="@+id/chk_default"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/define_dimen_10"
+            android:layout_marginTop="@dimen/define_dimen_12"
+            android:buttonTint="@color/brandOrange"
             android:text="@string/address_set_default"
-            android:textColor="@color/textColorPrimary"
+            android:textColor="@color/neutral700"
             android:textSize="@dimen/text_size_small" />
     </LinearLayout>
 </ScrollView>

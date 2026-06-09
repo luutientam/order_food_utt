@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/screenBackground">
 
     <LinearLayout
@@ -107,21 +108,23 @@
         android:layout_marginStart="@dimen/define_dimen_10"
         android:layout_marginTop="@dimen/define_dimen_10"
         android:layout_marginEnd="@dimen/define_dimen_10"
-        android:background="@drawable/bg_white_corner_6_border_gray"
-        android:padding="@dimen/define_dimen_2">
+        android:background="@drawable/bg_input_field"
+        android:paddingStart="@dimen/define_dimen_6"
+        android:paddingEnd="@dimen/define_dimen_6">
 
         <EditText
             android:id="@+id/edt_search_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/define_dimen_44"
             android:layout_centerVertical="true"
             android:layout_toStartOf="@+id/img_search"
-            android:background="@color/white"
+            android:background="@android:color/transparent"
             android:hint="@string/hint_name"
             android:imeOptions="actionSearch"
             android:inputType="text"
-            android:padding="@dimen/define_dimen_6"
-            android:textColor="@color/textColorPrimary"
+            android:paddingStart="@dimen/define_dimen_8"
+            android:textColor="@color/neutral900"
+            android:textColorHint="@color/neutral400"
             android:textSize="@dimen/text_size_small"
             tools:ignore="Autofill" />
 
@@ -151,8 +154,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="@dimen/define_dimen_12"
-        android:layout_marginBottom="@dimen/define_dimen_12"
+        android:layout_marginEnd="@dimen/define_dimen_16"
+        android:layout_marginBottom="@dimen/define_dimen_16"
         android:src="@android:drawable/ic_menu_add"
+        app:backgroundTint="@color/brandOrange"
+        app:tint="@color/white"
         tools:ignore="ContentDescription" />
 </RelativeLayout>

@@ -9,6 +9,7 @@ import com.utt.foodorderapp.R
 import com.utt.foodorderapp.constant.AppConfig
 import com.utt.foodorderapp.model.Order
 import com.utt.foodorderapp.utils.DateTimeUtils.convertTimeStampToDate
+import com.utt.foodorderapp.utils.MoneyUtils
 
 class EarningsAdapter(
         private val items: MutableList<Order>
@@ -31,7 +32,7 @@ class EarningsAdapter(
     override fun onBindViewHolder(holder: VH, position: Int) {
         val order = items[position]
         holder.id.text = "#${order.id}"
-        holder.amount.text = "${order.amount}${AppConfig.CURRENCY}"
+        holder.amount.text = "${MoneyUtils.format(order.amount)}"
         holder.address.text = order.address ?: ""
         holder.date.text = convertTimeStampToDate(order.id)
     }

@@ -3,16 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/define_dimen_10"
-    android:layout_marginEnd="@dimen/define_dimen_10"
-    app:cardCornerRadius="@dimen/define_dimen_6">
+    android:layout_marginStart="@dimen/define_dimen_4"
+    android:layout_marginEnd="@dimen/define_dimen_4"
+    android:layout_marginBottom="@dimen/define_dimen_12"
+    app:cardCornerRadius="@dimen/define_dimen_14"
+    app:cardElevation="@dimen/define_dimen_2">
 
     <LinearLayout
         android:id="@+id/layout_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="@dimen/define_dimen_16">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -177,7 +179,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="@dimen/define_dimen_10"
             android:layout_marginBottom="@dimen/define_dimen_10"
-            android:background="@color/colorPrimaryDark"/>
+            android:background="@color/neutral100"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -198,7 +200,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="@string/total"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:textColor="@color/neutral900"
                         android:textSize="@dimen/text_size_normal"
                         android:textStyle="bold" />
 
@@ -322,7 +324,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/define_dimen_40"
             android:layout_marginTop="@dimen/define_dimen_10"
-            android:background="@drawable/bg_green_shape_corner_6"
+            android:background="@drawable/bg_primary_button"
             android:gravity="center"
             android:text="@string/action_next_status"
             android:textColor="@color/white"

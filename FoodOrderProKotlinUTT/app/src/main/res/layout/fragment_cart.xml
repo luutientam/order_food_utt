@@ -17,19 +17,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:background="@color/surfaceBackground"
+        android:elevation="12dp"
         android:orientation="vertical">
 
         <View
             android:id="@+id/view_divider"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/colorPrimary" />
+            android:background="@color/neutral100" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/surfaceBackground"
-            android:padding="@dimen/define_dimen_10">
+            android:paddingStart="@dimen/define_dimen_16"
+            android:paddingTop="@dimen/define_dimen_10"
+            android:paddingEnd="@dimen/define_dimen_12"
+            android:paddingBottom="@dimen/define_dimen_10">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -37,38 +42,40 @@
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/define_dimen_10"
                 android:layout_toStartOf="@+id/tv_order_cart"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/total"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_normal"
-                    android:textStyle="bold" />
+                    android:textColor="@color/neutral500"
+                    android:textSize="@dimen/text_size_xsmall" />
 
                 <TextView
                     android:id="@+id/tv_total_price"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/define_dimen_10"
+                    android:layout_height="wrap_content"
                     android:text="@string/label_price_0"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/text_size_xnormal"
+                    android:textColor="@color/priceColor"
+                    android:textSize="@dimen/text_size_large"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_order_cart"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/define_dimen_48"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:background="@drawable/bg_green_shape_corner_6"
-                android:padding="@dimen/define_dimen_12"
+                android:background="@drawable/bg_primary_button"
+                android:gravity="center"
+                android:minWidth="@dimen/define_dimen_140"
+                android:paddingStart="@dimen/define_dimen_20"
+                android:paddingEnd="@dimen/define_dimen_20"
                 android:text="@string/order_cart"
                 android:textColor="@color/white"
-                android:textSize="@dimen/text_size_normal" />
+                android:textSize="@dimen/text_size_normal"
+                android:textStyle="bold" />
         </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>

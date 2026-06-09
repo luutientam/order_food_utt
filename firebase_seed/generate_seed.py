@@ -219,6 +219,108 @@ FOODS = [
     (6004, "Gỏi cuốn tôm thịt", 110, 6, 28, 0, True, "goicuon", "Gỏi cuốn tôm thịt, bún, rau sống, chấm tương."),
     (6005, "Há cảo hấp", 110, 6, 28, 0, False, "hacao", "Há cảo tôm thịt hấp nóng, vỏ mỏng dai."),
     (6006, "Bánh xèo miền Trung", 110, 6, 35, 0, False, "banhxeo", "Bánh xèo giòn nhân tôm thịt giá, cuốn rau chấm mắm."),
+
+    # =====================================================================
+    # === BỔ SUNG THÊM MÓN (fake nhiều hơn) ===============================
+    # =====================================================================
+
+    # --- 101 Cơm Tấm Cô Tư (Cơm) ---
+    (1007, "Cơm gà Hải Nam", 101, 1, 45, 0, True, "comga", "Gà luộc da giòn kiểu Hải Nam, cơm nấu nước luộc gà, gừng."),
+    (1008, "Cơm chiên cá mặn", 101, 1, 42, 0, False, "comrang", "Cơm chiên cá mặn Hong Kong, cải xanh, trứng tơi."),
+    (1009, "Cơm tấm sườn que", 101, 1, 48, 5, True, "comtam", "Sườn que nướng đậm vị, bì chả, mỡ hành, mắm chua ngọt."),
+    (1010, "Cơm bò xào hành tây", 101, 1, 50, 0, True, "comtam", "Bò mềm xào hành tây sốt tiêu, cơm nóng ăn cùng dưa góp."),
+    (1011, "Cơm gà teriyaki", 101, 1, 46, 0, False, "comga", "Đùi gà sốt teriyaki bóng đẹp, mè rang, cơm Nhật dẻo."),
+    (1012, "Cơm cá kho tộ", 101, 1, 44, 0, False, "comtam", "Cá kho tộ đậm đà tiêu ớt, ăn kèm canh và rau luộc."),
+
+    # --- 102 / 110 Phở & Bún ---
+    (2009, "Phở bò viên gân", 102, 2, 42, 0, True, "pho", "Phở bò viên gân giòn sần sật, nước dùng ngọt xương."),
+    (2010, "Phở sốt vang", 102, 2, 48, 0, False, "pho", "Bắp bò hầm sốt vang mềm thơm rượu vang, ăn cùng bánh phở."),
+    (2011, "Phở gà trộn", 102, 2, 40, 0, False, "pho", "Phở gà trộn nước sốt chua ngọt, gà xé, hành phi, rau thơm."),
+    (2012, "Bún bò giò heo", 102, 2, 48, 0, True, "bunbohue", "Bún bò Huế giò heo mềm, chả cua, sa tế cay nồng."),
+    (2013, "Bún chả que tre", 102, 2, 45, 0, False, "buncha", "Thịt kẹp que tre nướng than, nước chấm đu đủ chua ngọt."),
+    (2014, "Mì Quảng gà ta", 102, 2, 42, 0, False, "miquang", "Mì Quảng gà ta, trứng cút, đậu phộng, bánh tráng mè."),
+    (2015, "Hủ tiếu sườn non", 102, 2, 45, 0, False, "hutieu", "Hủ tiếu dai, sườn non hầm mềm, tôm tươi, nước trong."),
+    (2016, "Bún riêu giò tai", 110, 2, 42, 0, False, "bunrieu", "Bún riêu cua thêm giò tai giòn, đậu rán, cà chua."),
+    (2017, "Bún mọc sườn", 110, 2, 42, 0, False, "bunrieu", "Bún mọc sườn non, mọc viên dai, nước dùng thanh ngọt."),
+    (2018, "Bún cá rô đồng", 110, 2, 45, 10, True, "bunrieu", "Cá rô đồng chiên giòn, nước dùng nấu rau cải, thì là."),
+
+    # --- 103 Quán Mì Trộn UTT (Mì & Cháo) ---
+    (3007, "Mì cay bò cấp độ 5", 103, 3, 55, 0, True, "micay", "Mì cay bò cấp độ 5 tê lưỡi, phô mai, cải thảo, nấm."),
+    (3008, "Miến gà măng khô", 103, 3, 38, 0, False, "mien", "Miến gà nấu măng khô, mộc nhĩ, hành mùi thơm phức."),
+    (3009, "Cháo lòng đầy đủ", 103, 3, 30, 0, False, "chao", "Cháo lòng nóng hổi, dồi, gan, tim, quẩy giòn."),
+    (3010, "Mì trộn tương đen", 103, 3, 40, 0, False, "mitron", "Mì trộn jjajang tương đen Hàn Quốc, thịt bằm, dưa leo."),
+    (3011, "Cháo sò huyết", 103, 3, 40, 0, False, "chao", "Cháo sò huyết bổ dưỡng, hành tiêu, gừng ấm bụng."),
+    (3012, "Mì xào bò cải chua", 103, 3, 45, 5, False, "mitron", "Mì xào bò mềm với cải chua, giá đỗ, đậm đà vừa miệng."),
+
+    # --- 104 Gà Rán Chickita (Gà rán & Đồ ăn nhanh) ---
+    (4008, "Gà rán phô mai lava", 104, 4, 65, 0, True, "garan", "Gà rán rưới sốt phô mai lava béo ngậy chảy tràn."),
+    (4009, "Combo burger đôi", 104, 4, 79, 10, True, "burger", "2 burger bò, 1 khoai tây lớn, 2 nước - no căng bụng."),
+    (4010, "Khoai lắc phô mai", 104, 4, 28, 0, False, "khoaitay", "Khoai tây lắc phô mai bột, vị mặn ngọt gây nghiện."),
+    (4011, "Gà viên 9 miếng", 104, 4, 45, 0, False, "popcorn", "9 viên gà popcorn vàng giòn, kèm 2 loại sốt chấm."),
+    (4012, "Cánh gà chiên nước mắm", 104, 4, 55, 0, True, "garan", "Cánh gà chiên giòn áo nước mắm tỏi ớt đậm đà."),
+    (4013, "Combo gà rán 4 miếng", 104, 4, 109, 5, True, "garan", "4 miếng gà giòn, 1 khoai tây, 2 nước cho 2 người."),
+    (4014, "Burger bò phô mai đôi", 104, 4, 49, 0, False, "burger", "Burger 2 lớp bò, phô mai cheddar, sốt đặc biệt."),
+
+    # --- 105 Trà Chanh Bụi Phố (Đồ uống) ---
+    (5007, "Sinh tố bơ sáp", 105, 5, 30, 0, True, "sinhto", "Sinh tố bơ sáp béo mịn, thêm sữa đặc thơm ngậy."),
+    (5008, "Nước cam ép nguyên chất", 105, 5, 28, 0, False, "sinhto", "Cam vắt nguyên chất không đường, mát lành vitamin C."),
+    (5009, "Trà sữa khoai môn", 105, 5, 32, 0, False, "trasua", "Trà sữa khoai môn thơm bùi, trân châu trắng dai."),
+    (5010, "Trà vải hạt chia", 105, 5, 28, 0, False, "trada", "Trà vải ngọt thanh, hạt chia, đá mát lạnh."),
+    (5011, "Bạc xỉu đá", 105, 5, 22, 0, False, "caphe", "Bạc xỉu nhiều sữa ít cà phê, béo ngọt dễ uống."),
+    (5012, "Soda việt quất", 105, 5, 30, 0, False, "trada", "Soda việt quất chua ngọt sảng khoái, có ga."),
+    (5013, "Cacao nóng", 105, 5, 28, 0, False, "caphe", "Cacao nóng đậm vị socola, kem sữa béo mịn."),
+    (5014, "Trà sữa matcha", 105, 5, 32, 0, True, "trasua", "Trà sữa matcha Nhật đắng nhẹ thanh tao, trân châu."),
+
+    # --- 106 / 110 Ăn vặt ---
+    (6007, "Khoai môn kén chiên", 106, 6, 22, 0, False, "khoaitay", "Khoai môn kén chiên giòn rụm, ngọt bùi bên trong."),
+    (6008, "Phô mai que", 106, 6, 25, 0, True, "khoaitay", "Phô mai que kéo sợi nóng hổi, chấm tương cà."),
+    (6009, "Xúc xích nướng đá", 110, 6, 22, 0, False, "chagio", "Xúc xích nướng tương ớt, phết bơ thơm lừng."),
+    (6010, "Bánh gối nhân thịt", 110, 6, 25, 0, False, "chagio", "Bánh gối vỏ giòn nhân thịt miến mộc nhĩ, chấm chua ngọt."),
+    (6011, "Nem chua rán", 110, 6, 28, 0, True, "chagio", "Nem chua rán vàng giòn, chấm tương ớt cay."),
+    (6012, "Bánh bột lọc Huế", 110, 6, 25, 0, False, "hacao", "Bánh bột lọc tôm thịt trong veo, nước mắm ngọt."),
+
+    # --- 106 Bánh mì ---
+    (7004, "Bánh mì xíu mại", 106, 7, 22, 0, True, "banhmi", "Bánh mì xíu mại sốt cà chua đậm đà, hành ngò."),
+    (7005, "Bánh mì gà xé", 106, 7, 25, 0, False, "banhmi", "Bánh mì gà xé trộn rau răm, hành phi, sốt mayonnaise."),
+    (7006, "Bánh mì trứng ốp la", 106, 7, 18, 0, False, "banhmi", "Bánh mì chấm trứng ốp la, pate, tương ớt cay."),
+    (7007, "Bánh mì bò kho", 106, 7, 32, 0, False, "banhmi", "Bánh mì chấm bò kho mềm thơm quế hồi, cà rốt."),
+
+    # --- 106 Tráng miệng ---
+    (8005, "Chè Thái sầu riêng", 106, 8, 28, 0, True, "kem", "Chè Thái nước cốt dừa, sầu riêng, thạch, mít thơm."),
+    (8006, "Chè bưởi", 106, 8, 22, 0, False, "kem", "Chè bưởi cùi giòn sần sật, đậu xanh, nước cốt dừa."),
+    (8007, "Bánh tiramisu", 106, 8, 30, 0, False, "flan", "Tiramisu Ý phủ cacao, lớp kem mascarpone và cà phê."),
+    (8008, "Rau câu dừa", 106, 8, 18, 0, False, "flan", "Rau câu nước cốt dừa hai lớp mát lạnh, beo béo."),
+    (8009, "Sữa chua trân châu", 106, 8, 20, 0, False, "suachua", "Sữa chua mát lạnh, trân châu đường đen dẻo dai."),
+
+    # --- 107 Lẩu & Nướng ---
+    (9005, "Lẩu gà lá é", 107, 9, 150, 0, True, "lau", "Lẩu gà lá é đặc sản Phú Yên, cay nồng thơm lá é."),
+    (9006, "Lẩu riêu cua bắp bò", 107, 9, 165, 0, False, "lau", "Lẩu riêu cua chua thanh, bắp bò, sườn sụn, đậu."),
+    (9007, "Ba chỉ bò nướng tảng", 107, 9, 115, 0, True, "ganuong", "Ba chỉ bò Mỹ nướng tảng, cuốn lá mè chấm tương."),
+    (9008, "Nầm bò nướng sa tế", 107, 9, 95, 0, False, "ganuong", "Nầm bò nướng sa tế giòn dai, thơm mùi than hoa."),
+    (9009, "Lẩu Thái gà nấm", 107, 9, 140, 0, False, "lauthai", "Lẩu Thái gà chua cay, nấm các loại, rau tươi."),
+    (9010, "Sườn nướng Hàn Quốc", 107, 9, 120, 10, True, "ganuong", "Sườn bò ướp sốt Hàn galbi, mật ong, mè rang."),
+
+    # --- 107 Hải sản ---
+    (10005, "Ghẹ hấp bia", 107, 10, 160, 0, True, "tom", "Ghẹ tươi hấp bia chắc thịt ngọt, chấm muối tiêu chanh."),
+    (10006, "Sò huyết nướng mỡ hành", 107, 10, 90, 0, False, "tom", "Sò huyết nướng mỡ hành đậu phộng, béo thơm."),
+    (10007, "Tôm hấp nước dừa", 107, 10, 130, 0, False, "tom", "Tôm sú hấp nước dừa ngọt thanh, giữ trọn vị biển."),
+    (10008, "Bạch tuộc nướng sa tế", 107, 10, 120, 0, False, "tom", "Bạch tuộc nướng sa tế giòn dai, cay thơm hấp dẫn."),
+    (10009, "Hàu nướng phô mai", 107, 10, 100, 0, True, "tom", "Hàu sữa nướng phô mai béo ngậy, hành phi vàng."),
+
+    # --- 109 Cơm Chay An Lạc (Món chay) ---
+    (11006, "Phở chay nấm", 109, 11, 32, 0, True, "dauhu", "Phở chay nước dùng rau củ ngọt thanh, nấm, đậu hũ."),
+    (11007, "Bún xào chay", 109, 11, 30, 0, False, "dauhu", "Bún xào chay với nấm, đậu hũ và rau củ thập cẩm."),
+    (11008, "Đậu hũ chiên sả", 109, 11, 28, 0, False, "dauhu", "Đậu hũ chiên sả ớt giòn rụm, chấm tương ớt."),
+    (11009, "Cơm chay sốt nấm đông cô", 109, 11, 35, 0, False, "dauhu", "Cơm chay rưới sốt nấm đông cô, cải thìa, đậu hũ."),
+    (11010, "Nấm kho tiêu", 109, 11, 32, 0, False, "dauhu", "Nấm đùi gà kho tiêu đậm đà, ăn cùng cơm nóng."),
+
+    # --- 108 Pizza Góc Phố Ý (Pizza & Mỳ Ý) ---
+    (12006, "Pizza phô mai 4 loại", 108, 12, 95, 0, True, "pizza", "Pizza 4 loại phô mai mozzarella, cheddar, parmesan, xanh."),
+    (12007, "Pizza xúc xích Ý", 108, 12, 89, 0, False, "pizza", "Pizza pepperoni xúc xích Ý cay nhẹ, phô mai kéo sợi."),
+    (12008, "Mỳ Ý hải sản sốt cà", 108, 12, 79, 0, True, "mucpasta", "Mỳ Ý hải sản tôm mực sốt cà chua tươi, thơm tỏi."),
+    (12009, "Mỳ Ý sốt kem gà nấm", 108, 12, 72, 0, False, "spaghetti", "Mỳ Ý sốt kem carbonara gà nấm béo ngậy, phô mai."),
+    (12010, "Pizza rau củ chay", 108, 12, 85, 0, False, "pizza", "Pizza rau củ ớt chuông, nấm, ngô, cà chua bi."),
+    (12011, "Lasagna bò bằm", 108, 12, 85, 10, False, "spaghetti", "Lasagna nhiều lớp bò bằm sốt cà, phô mai nướng vàng."),
 ]
 
 food = {}

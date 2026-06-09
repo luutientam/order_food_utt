@@ -13,6 +13,7 @@ import com.utt.foodorderapp.constant.AppConfig
 import com.utt.foodorderapp.databinding.ItemAdminOrderBinding
 import com.utt.foodorderapp.model.Order
 import com.utt.foodorderapp.utils.DateTimeUtils.convertTimeStampToDate
+import com.utt.foodorderapp.utils.MoneyUtils
 
 class AdminOrderAdapter(private var mContext: Context?, private val mListOrder: List<Order>?,
                         private val mIUpdateStatusListener: IUpdateStatusListener) : RecyclerView.Adapter<AdminOrderViewHolder>() {
@@ -38,9 +39,9 @@ class AdminOrderAdapter(private var mContext: Context?, private val mListOrder: 
         holder.mItemAdminOrderBinding.tvAddress.text = order.address
         holder.mItemAdminOrderBinding.tvMenu.text = order.foods
         holder.mItemAdminOrderBinding.tvDate.text = convertTimeStampToDate(order.id)
-        val strAmount: String = "" + order.amount + AppConfig.CURRENCY
+        val strAmount: String = MoneyUtils.format(order.amount)
         val amountDisplay = if (order.discountAmount > 0) {
-            "$strAmount (giam ${order.discountAmount}${AppConfig.CURRENCY})"
+            "$strAmount (giam ${MoneyUtils.format(order.discountAmount)})"
         } else {
             strAmount
         }

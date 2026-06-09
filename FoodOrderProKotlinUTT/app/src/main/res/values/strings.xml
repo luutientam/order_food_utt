@@ -342,6 +342,6 @@
     <string name="msg_google_sign_up_error">Đăng ký Google thất bại</string>
     <string name="msg_google_account_exists">Tài khoản Google đã tồn tại, vui lòng đăng nhập</string>
     <string name="msg_google_not_configured">Google Sign-In chưa cấu hình. Hãy thêm Web client ID trong strings.xml</string>
-    <string name="msg_google_admin_not_supported">Không hỗ trợ đăng ký Google cho tài khoản quản trị</string>
+    <string name="msg_google_admin_not_supported">Tài khoản quản trị không hỗ trợ đăng nhập/đăng ký bằng Google</string>
     <string name="google_web_client_id">YOUR_GOOGLE_WEB_CLIENT_ID</string>
 </resources>

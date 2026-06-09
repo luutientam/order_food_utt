@@ -46,6 +46,7 @@ import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import java.util.*
+import com.utt.foodorderapp.utils.MoneyUtils
 
 class CartFragment : BaseFragment() {
 
@@ -162,7 +163,7 @@ class CartFragment : BaseFragment() {
     private fun calculateTotalPrice() {
         val listFoodCart = (cartViewModel.cartState.value as? UiState.Success<List<Food>>)?.data
         if (listFoodCart == null || listFoodCart.isEmpty()) {
-            val strZero: String = "" + 0 + AppConfig.CURRENCY
+            val strZero: String = MoneyUtils.format(0)
             mFragmentCartBinding!!.tvTotalPrice.text = strZero
             mAmount = 0
             return
@@ -171,7 +172,7 @@ class CartFragment : BaseFragment() {
         for (food in listFoodCart) {
             totalPrice += food.totalPrice
         }
-        val strTotalPrice: String = "" + totalPrice + AppConfig.CURRENCY
+        val strTotalPrice: String = MoneyUtils.format(totalPrice)
         mFragmentCartBinding!!.tvTotalPrice.text = strTotalPrice
         mAmount = totalPrice
     }
@@ -324,7 +325,7 @@ class CartFragment : BaseFragment() {
                 selectedDiscount = 0
                 appliedPromotionCode = null
                 tvDiscountValue.text = getString(R.string.msg_promotion_invalid)
-                tvPriceOrder.text = "${mAmount}${AppConfig.CURRENCY}"
+                tvPriceOrder.text = "${MoneyUtils.format(mAmount)}"
                 showToastMessage(activity, getString(R.string.msg_promotion_invalid))
                 submitOrder(name, phone, address, currentUser.email, currentUser.uid, 0, null,
                         bottomSheetDialog, paymentType, paymentStatus, paymentTransactionId)
@@ -338,7 +339,7 @@ class CartFragment : BaseFragment() {
             selectedDiscount = 0
             appliedPromotionCode = null
             tvDiscountValue.text = getString(R.string.msg_promotion_invalid)
-            tvPriceOrder.text = "${mAmount}${AppConfig.CURRENCY}"
+            tvPriceOrder.text = "${MoneyUtils.format(mAmount)}"
             submitOrder(name, phone, address, currentUser.email, currentUser.uid, 0, null,
                     bottomSheetDialog, paymentType, paymentStatus, paymentTransactionId)
         }
@@ -389,7 +390,7 @@ class CartFragment : BaseFragment() {
                         R.string.promotion_best_hint,
                         best.code,
                         best.discountPercent.toString(),
-                        "${best.maxDiscountAmount}${AppConfig.CURRENCY}"
+                        "${MoneyUtils.format(best.maxDiscountAmount)}"
                 )
                 val bestCode = best.code
                 if (!bestCode.isNullOrEmpty() && edtPromotionCode.text.toString().trim().isEmpty()) {
@@ -415,7 +416,7 @@ class CartFragment : BaseFragment() {
         }
         val sortedPromotions = availablePromotions.sortedByDescending { calculateDiscountAmount(it) }
         val labels = sortedPromotions.map {
-            "${it.code} - ${it.title} (${it.discountPercent}%, max ${it.maxDiscountAmount}${AppConfig.CURRENCY})"
+            "${it.code} - ${it.title} (${it.discountPercent}%, max ${MoneyUtils.format(it.maxDiscountAmount)})"
         }.toTypedArray()
         AlertDialog.Builder(requireActivity())
                 .setTitle(getString(R.string.action_select_voucher))
@@ -471,28 +472,28 @@ class CartFragment : BaseFragment() {
                 selectedDiscount = 0
                 appliedPromotionCode = null
                 tvDiscountValue.text = getString(R.string.msg_promotion_invalid)
-                tvPriceOrder.text = "${mAmount}${AppConfig.CURRENCY}"
+                tvPriceOrder.text = "${MoneyUtils.format(mAmount)}"
                 return@addOnSuccessListener
             }
             if (mAmount < promotion.minOrderAmount) {
                 selectedDiscount = 0
                 appliedPromotionCode = null
                 tvDiscountValue.text = getString(R.string.msg_promotion_not_meet_condition)
-                tvPriceOrder.text = "${mAmount}${AppConfig.CURRENCY}"
+                tvPriceOrder.text = "${MoneyUtils.format(mAmount)}"
                 return@addOnSuccessListener
             }
             val discount = calculateDiscountAmount(promotion)
             selectedDiscount = discount
             appliedPromotionCode = code
             val finalAmount = (mAmount - discount).coerceAtLeast(0)
-            tvDiscountValue.text = "${getString(R.string.discount_amount)}: -$discount${AppConfig.CURRENCY}"
-            tvPriceOrder.text = "$finalAmount${AppConfig.CURRENCY}"
+            tvDiscountValue.text = "${getString(R.string.discount_amount)}: -${MoneyUtils.format(discount)}"
+            tvPriceOrder.text = "${MoneyUtils.format(finalAmount)}"
             showToastMessage(activity, getString(R.string.msg_promotion_applied))
         }.addOnFailureListener {
             selectedDiscount = 0
             appliedPromotionCode = null
             tvDiscountValue.text = getString(R.string.msg_promotion_invalid)
-            tvPriceOrder.text = "${mAmount}${AppConfig.CURRENCY}"
+            tvPriceOrder.text = "${MoneyUtils.format(mAmount)}"
         }
     }
 
@@ -503,10 +504,10 @@ class CartFragment : BaseFragment() {
         var result = ""
         for (food in mListFoodCart!!) {
             result = if (isEmpty(result)) {
-                ("- " + food.name + " (" + food.realPrice + AppConfig.CURRENCY + ") "
+                ("- " + food.name + " (" + MoneyUtils.format(food.realPrice) + ") "
                         + "- " + getString(R.string.quantity) + " " + food.count)
             } else {
-                (result + "\n" + ("- " + food.name + " (" + food.realPrice + AppConfig.CURRENCY + ") "
+                (result + "\n" + ("- " + food.name + " (" + MoneyUtils.format(food.realPrice) + ") "
                         + "- " + getString(R.string.quantity) + " " + food.count))
 
             }

@@ -42,18 +42,18 @@ class AuthUseCase(
             if (!isSuccess) {
                 callback(false, null, errorMessage)
             } else {
-                resolveCurrentProfile(callback)
+                resolveCurrentProfile(null, callback)
             }
         }
     }
 
-    fun signInWithGoogle(idToken: String, callback: (Boolean, User?, String?) -> Unit) {
+    fun signInWithGoogle(idToken: String, expectedRole: String, callback: (Boolean, User?, String?) -> Unit) {
         authRepository.signInWithGoogleIdToken(idToken) { isSuccess, errorMessage ->
             if (!isSuccess) {
                 callback(false, null, errorMessage)
                 return@signInWithGoogleIdToken
             }
-            resolveCurrentProfile(callback)
+            resolveCurrentProfile(expectedRole, callback)
         }
     }
 
@@ -96,7 +96,7 @@ class AuthUseCase(
         }
     }
 
-    private fun resolveCurrentProfile(callback: (Boolean, User?, String?) -> Unit) {
+    private fun resolveCurrentProfile(expectedRole: String?, callback: (Boolean, User?, String?) -> Unit) {
         val userId = authRepository.getCurrentUserId()
         val userEmail = authRepository.getCurrentUserEmail()
         if (userId.isNullOrEmpty() || userEmail.isNullOrEmpty()) {
@@ -111,7 +111,11 @@ class AuthUseCase(
             }
             val fallback = User(userEmail)
             fallback.uid = userId
-            fallback.role = if (userEmail.contains("@admin.com")) User.ROLE_ADMIN else User.ROLE_CUSTOMER
+            fallback.role = when {
+                userEmail.contains("@admin.com") -> User.ROLE_ADMIN
+                !expectedRole.isNullOrEmpty() -> expectedRole
+                else -> User.ROLE_CUSTOMER
+            }
             fallback.isAdmin = fallback.role == User.ROLE_ADMIN
             fallback.isActive = true
             userRepository.saveUserProfile(fallback) { dbError ->

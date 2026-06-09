@@ -11,6 +11,7 @@ import com.utt.foodorderapp.databinding.ItemAdminFoodBinding
 import com.utt.foodorderapp.listener.IOnManagerFoodListener
 import com.utt.foodorderapp.model.Food
 import com.utt.foodorderapp.utils.GlideUtils.loadUrl
+import com.utt.foodorderapp.utils.MoneyUtils
 
 class AdminFoodAdapter(private val mListFoods: List<Food>?,
                        val iOnManagerFoodListener: IOnManagerFoodListener) : RecyclerView.Adapter<AdminFoodViewHolder>() {
@@ -27,17 +28,17 @@ class AdminFoodAdapter(private val mListFoods: List<Food>?,
         if (food.sale <= 0) {
             holder.mItemAdminFoodBinding.tvSaleOff.visibility = View.GONE
             holder.mItemAdminFoodBinding.tvPrice.visibility = View.GONE
-            val strPrice: String = "" + food.price + AppConfig.CURRENCY
+            val strPrice: String = MoneyUtils.format(food.price)
             holder.mItemAdminFoodBinding.tvPriceSale.text = strPrice
         } else {
             holder.mItemAdminFoodBinding.tvSaleOff.visibility = View.VISIBLE
             holder.mItemAdminFoodBinding.tvPrice.visibility = View.VISIBLE
             val strSale = "Giảm " + food.sale + "%"
             holder.mItemAdminFoodBinding.tvSaleOff.text = strSale
-            val strOldPrice: String = "" + food.price + AppConfig.CURRENCY
+            val strOldPrice: String = MoneyUtils.format(food.price)
             holder.mItemAdminFoodBinding.tvPrice.text = strOldPrice
             holder.mItemAdminFoodBinding.tvPrice.paintFlags = holder.mItemAdminFoodBinding.tvPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
-            val strRealPrice: String = "" + food.realPrice + AppConfig.CURRENCY
+            val strRealPrice: String = MoneyUtils.format(food.realPrice)
             holder.mItemAdminFoodBinding.tvPriceSale.text = strRealPrice
         }
         holder.mItemAdminFoodBinding.tvFoodName.text = food.name

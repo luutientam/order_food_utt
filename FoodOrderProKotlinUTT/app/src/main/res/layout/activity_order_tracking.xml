@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -22,24 +23,30 @@
             android:id="@+id/tv_status_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/define_dimen_8"
+            android:gravity="center_vertical"
             android:textColor="@color/brandOrange"
+            android:textSize="@dimen/text_size_xnormal"
             android:textStyle="bold"
-            android:textSize="@dimen/text_size_normal" />
+            app:drawableStartCompat="@drawable/ic_nav_order"
+            app:drawableTint="@color/brandOrange" />
 
         <TextView
             android:id="@+id/tv_address_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/define_dimen_5"
-            android:textColor="@color/textColorSecondary"
+            android:layout_marginTop="@dimen/define_dimen_10"
+            android:lineSpacingExtra="2dp"
+            android:textColor="@color/neutral600"
             android:textSize="@dimen/text_size_small" />
 
         <TextView
             android:id="@+id/tv_shipper_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/define_dimen_5"
-            android:textColor="@color/textColorSecondary"
+            android:layout_marginTop="@dimen/define_dimen_6"
+            android:lineSpacingExtra="2dp"
+            android:textColor="@color/neutral600"
             android:textSize="@dimen/text_size_small" />
 
     </LinearLayout>

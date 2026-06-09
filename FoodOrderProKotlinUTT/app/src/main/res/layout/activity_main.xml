@@ -23,6 +23,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/surfaceBackground"
+        android:elevation="16dp"
+        app:elevation="16dp"
         app:itemIconTint="@color/custom_bottom_navigation"
         app:itemTextColor="@color/custom_bottom_navigation"
         app:labelVisibilityMode="labeled"

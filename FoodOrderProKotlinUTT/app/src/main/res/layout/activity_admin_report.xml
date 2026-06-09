@@ -167,7 +167,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/neutral900"
             android:textSize="@dimen/text_size_normal"
             android:text="0 000 VNĐ"
             android:textStyle="bold" />

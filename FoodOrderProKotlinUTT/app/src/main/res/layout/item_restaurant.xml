@@ -1,50 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:background="@drawable/bg_card_surface"
-    android:padding="@dimen/define_dimen_12"
+    android:layout_marginStart="@dimen/define_dimen_12"
+    android:layout_marginEnd="@dimen/define_dimen_12"
     android:layout_marginBottom="@dimen/define_dimen_10"
-    android:gravity="center_vertical">
+    android:background="@drawable/bg_card_surface"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="@dimen/define_dimen_10">
 
-    <ImageView
-        android:id="@+id/img_restaurant"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:scaleType="centerCrop"
-        android:background="@color/dividerColor"
-        android:contentDescription="@null" />
+    <androidx.cardview.widget.CardView
+        android:layout_width="@dimen/define_dimen_80"
+        android:layout_height="@dimen/define_dimen_80"
+        app:cardCornerRadius="@dimen/define_dimen_12"
+        app:cardElevation="0dp">
+
+        <ImageView
+            android:id="@+id/img_restaurant"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/neutral100"
+            android:contentDescription="@null"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/img_no_image" />
+    </androidx.cardview.widget.CardView>
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/define_dimen_12"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:layout_marginStart="@dimen/define_dimen_12">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/tv_restaurant_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/neutral900"
+            android:textSize="@dimen/text_size_normal"
+            android:textStyle="bold"
+            tools:text="Cơm Tấm Sài Gòn" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/textColorPrimary"
-            android:textStyle="bold"
-            android:textSize="@dimen/text_size_normal" />
+            android:layout_marginTop="@dimen/define_dimen_4"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:src="@drawable/ic_star_filled"
+                app:tint="@color/ratingStar"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tv_restaurant_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:textColor="@color/neutral800"
+                android:textSize="@dimen/text_size_xsmall"
+                android:textStyle="bold"
+                tools:text="4.8" />
+
+            <View
+                android:layout_width="3dp"
+                android:layout_height="3dp"
+                android:layout_marginStart="@dimen/define_dimen_6"
+                android:layout_marginEnd="@dimen/define_dimen_6"
+                android:background="@drawable/bg_dot"
+                android:backgroundTint="@color/neutral400" />
+
+            <TextView
+                android:id="@+id/tv_restaurant_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/neutral500"
+                android:textSize="@dimen/text_size_xsmall"
+                tools:text="1.2 km" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tv_restaurant_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/define_dimen_4"
-            android:textColor="@color/textColorSecondary"
-            android:textSize="@dimen/text_size_small" />
+            android:drawablePadding="4dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/neutral500"
+            android:textSize="@dimen/text_size_xsmall"
+            tools:text="123 Đường Cầu Giấy, Hà Nội" />
 
         <TextView
             android:id="@+id/tv_restaurant_phone"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/define_dimen_2"
+            android:layout_marginTop="@dimen/define_dimen_6"
+            android:background="@drawable/bg_pill_soft_orange"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/define_dimen_8"
+            android:paddingTop="3dp"
+            android:paddingEnd="@dimen/define_dimen_8"
+            android:paddingBottom="3dp"
             android:textColor="@color/brandOrange"
-            android:textSize="@dimen/text_size_small" />
+            android:textSize="@dimen/text_size_xsmall"
+            android:textStyle="bold"
+            tools:text="Gọi đặt bàn" />
     </LinearLayout>
+
+    <ImageView
+        android:layout_width="@dimen/define_dimen_20"
+        android:layout_height="@dimen/define_dimen_20"
+        android:rotation="180"
+        android:src="@drawable/ic_back"
+        app:tint="@color/neutral300"
+        tools:ignore="ContentDescription" />
+
 </LinearLayout>

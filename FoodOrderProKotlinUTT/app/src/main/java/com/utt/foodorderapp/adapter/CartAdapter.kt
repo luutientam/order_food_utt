@@ -8,6 +8,7 @@ import com.utt.foodorderapp.constant.AppConfig
 import com.utt.foodorderapp.databinding.ItemCartBinding
 import com.utt.foodorderapp.model.Food
 import com.utt.foodorderapp.utils.GlideUtils.loadUrl
+import com.utt.foodorderapp.utils.MoneyUtils
 
 class CartAdapter(private val mListFoods: MutableList<Food>?,
                   private val iClickListener: IClickListener) : RecyclerView.Adapter<CartViewHolder>() {
@@ -26,9 +27,9 @@ class CartAdapter(private val mListFoods: MutableList<Food>?,
         val food = mListFoods!![position]
         loadUrl(food.image, holder.mItemCartBinding.imgFoodCart)
         holder.mItemCartBinding.tvFoodNameCart.text = food.name
-        var strFoodPriceCart: String? = "" + food.price + AppConfig.CURRENCY
+        var strFoodPriceCart: String? = MoneyUtils.format(food.price)
         if (food.sale > 0) {
-            strFoodPriceCart = "" + food.realPrice + AppConfig.CURRENCY
+            strFoodPriceCart = MoneyUtils.format(food.realPrice)
         }
         holder.mItemCartBinding.tvFoodPriceCart.text = strFoodPriceCart
         holder.mItemCartBinding.tvCount.text = java.lang.String.valueOf(food.count)

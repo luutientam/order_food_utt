@@ -45,9 +45,9 @@ class AuthViewModel(
         }
     }
 
-    fun signInWithGoogle(idToken: String) {
+    fun signInWithGoogle(idToken: String, role: String) {
         _googleSignInState.value = UiState.Loading
-        authUseCase.signInWithGoogle(idToken) { isSuccess, profile, errorMessage ->
+        authUseCase.signInWithGoogle(idToken, role) { isSuccess, profile, errorMessage ->
             if (isSuccess && profile != null) {
                 _googleSignInState.postValue(UiState.Success(profile))
             } else {

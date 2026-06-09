@@ -1,266 +1,207 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical"
-    android:padding="@dimen/define_dimen_16"
-    tools:ignore="ContentDescription, UseCompoundDrawables">
-
-    <ImageView
-        android:layout_width="@dimen/define_dimen_50"
-        android:layout_height="@dimen/define_dimen_50"
-        android:src="@drawable/ic_avatar_default" />
-
-    <TextView
-        android:id="@+id/tv_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/define_dimen_5"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="@dimen/text_size_normal"
-        android:textStyle="bold" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="@dimen/define_dimen_16"
-        android:layout_marginBottom="@dimen/define_dimen_30"
-        android:background="@color/textColorPrimary" />
+    android:background="@color/screenBackground"
+    android:fillViewport="true"
+    tools:ignore="ContentDescription">
 
     <LinearLayout
-        android:id="@+id/layout_update_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingTop="@dimen/define_dimen_10"
-        android:paddingBottom="@dimen/define_dimen_10">
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/define_dimen_20">
 
-        <ImageView
-            android:layout_width="wrap_content"
+        <!-- Profile header -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_nav_account" />
+            android:background="@color/brandOrange"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/define_dimen_18"
+            android:paddingTop="@dimen/define_dimen_22"
+            android:paddingEnd="@dimen/define_dimen_18"
+            android:paddingBottom="@dimen/define_dimen_22">
 
-        <TextView
-            android:layout_width="wrap_content"
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="@dimen/define_dimen_60"
+                android:layout_height="@dimen/define_dimen_60"
+                android:src="@drawable/ic_avatar_default"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="2dp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/define_dimen_14"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textStyle="bold"
+                    tools:text="user@email.com" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/define_dimen_2"
+                    android:alpha="0.9"
+                    android:text="@string/app_name"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_xsmall" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Group 1: actions -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/action_edit"
-            android:layout_marginStart="@dimen/define_dimen_10"
-            android:textColor="@color/textColorPrimary"
-            android:textSize="@dimen/text_size_small" />
+            android:layout_marginStart="@dimen/define_dimen_12"
+            android:layout_marginTop="@dimen/define_dimen_14"
+            android:layout_marginEnd="@dimen/define_dimen_12"
+            app:cardCornerRadius="@dimen/define_dimen_14"
+            app:cardElevation="@dimen/define_dimen_2">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/layout_update_profile"
+                    style="@style/AccountRow">
+
+                    <ImageView style="@style/AccountRowIcon" android:src="@drawable/ic_nav_account" />
+
+                    <TextView style="@style/AccountRowText" android:text="@string/action_edit" />
+
+                    <ImageView style="@style/AccountRowChevron" />
+                </LinearLayout>
+
+                <View style="@style/AccountRowDivider" />
+
+                <LinearLayout
+                    android:id="@+id/layout_order_history"
+                    style="@style/AccountRow">
+
+                    <ImageView style="@style/AccountRowIcon" android:src="@drawable/ic_order_history" />
+
+                    <TextView style="@style/AccountRowText" android:text="@string/order_history" />
+
+                    <ImageView style="@style/AccountRowChevron" />
+                </LinearLayout>
+
+                <View style="@style/AccountRowDivider" />
+
+                <LinearLayout
+                    android:id="@+id/layout_restaurant_list"
+                    style="@style/AccountRow">
+
+                    <ImageView style="@style/AccountRowIcon" android:src="@drawable/ic_nav_home" />
+
+                    <TextView style="@style/AccountRowText" android:text="@string/restaurant_list_title" />
+
+                    <ImageView style="@style/AccountRowChevron" />
+                </LinearLayout>
+
+                <View style="@style/AccountRowDivider" />
+
+                <LinearLayout
+                    android:id="@+id/layout_address_book"
+                    style="@style/AccountRow">
+
+                    <ImageView style="@style/AccountRowIcon" android:src="@drawable/ic_nav_contact" />
+
+                    <TextView style="@style/AccountRowText" android:text="@string/address_book_title" />
+
+                    <ImageView style="@style/AccountRowChevron" />
+                </LinearLayout>
+
+                <View style="@style/AccountRowDivider" />
+
+                <LinearLayout
+                    android:id="@+id/layout_voucher_hub"
+                    style="@style/AccountRow">
+
+                    <ImageView style="@style/AccountRowIcon" android:src="@drawable/ic_nav_feedback" />
+
+                    <TextView style="@style/AccountRowText" android:text="@string/voucher_hub_title" />
+
+                    <ImageView style="@style/AccountRowChevron" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/divider_earnings"
+                    style="@style/AccountRowDivider"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:id="@+id/layout_earnings"
+                    style="@style/AccountRow"
+                    android:visibility="gone">
+
+                    <ImageView style="@style/AccountRowIcon" android:src="@drawable/ic_report" />
+
+                    <TextView style="@style/AccountRowText" android:text="@string/earnings_title" />
+
+                    <ImageView style="@style/AccountRowChevron" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Group 2: security / session -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/define_dimen_12"
+            android:layout_marginTop="@dimen/define_dimen_12"
+            android:layout_marginEnd="@dimen/define_dimen_12"
+            app:cardCornerRadius="@dimen/define_dimen_14"
+            app:cardElevation="@dimen/define_dimen_2">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/layout_change_password"
+                    style="@style/AccountRow">
+
+                    <ImageView style="@style/AccountRowIcon" android:src="@drawable/ic_change_password" />
+
+                    <TextView style="@style/AccountRowText" android:text="@string/change_password" />
+
+                    <ImageView style="@style/AccountRowChevron" />
+                </LinearLayout>
+
+                <View style="@style/AccountRowDivider" />
+
+                <LinearLayout
+                    android:id="@+id/layout_sign_out"
+                    style="@style/AccountRow">
+
+                    <ImageView
+                        style="@style/AccountRowIcon"
+                        android:src="@drawable/ic_sign_out"
+                        android:tint="@color/statusFail" />
+
+                    <TextView
+                        style="@style/AccountRowText"
+                        android:text="@string/sign_out"
+                        android:textColor="@color/statusFail" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="@dimen/define_dimen_5"
-        android:layout_marginBottom="@dimen/define_dimen_5"
-        android:background="@color/dividerColor" />
-
-    <LinearLayout
-        android:id="@+id/layout_order_history"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingTop="@dimen/define_dimen_10"
-        android:paddingBottom="@dimen/define_dimen_10">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_order_history" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/order_history"
-            android:layout_marginStart="@dimen/define_dimen_10"
-            android:textColor="@color/textColorPrimary"
-            android:textSize="@dimen/text_size_small" />
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="@dimen/define_dimen_5"
-        android:layout_marginBottom="@dimen/define_dimen_5"
-        android:background="@color/dividerColor" />
-
-    <LinearLayout
-        android:id="@+id/layout_restaurant_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingTop="@dimen/define_dimen_10"
-        android:paddingBottom="@dimen/define_dimen_10">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_nav_home" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/restaurant_list_title"
-            android:layout_marginStart="@dimen/define_dimen_10"
-            android:textColor="@color/textColorPrimary"
-            android:textSize="@dimen/text_size_small" />
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="@dimen/define_dimen_5"
-        android:layout_marginBottom="@dimen/define_dimen_5"
-        android:background="@color/dividerColor" />
-
-    <LinearLayout
-        android:id="@+id/layout_address_book"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingTop="@dimen/define_dimen_10"
-        android:paddingBottom="@dimen/define_dimen_10">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_nav_contact" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/address_book_title"
-            android:layout_marginStart="@dimen/define_dimen_10"
-            android:textColor="@color/textColorPrimary"
-            android:textSize="@dimen/text_size_small" />
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="@dimen/define_dimen_5"
-        android:layout_marginBottom="@dimen/define_dimen_5"
-        android:background="@color/dividerColor" />
-
-    <LinearLayout
-        android:id="@+id/layout_voucher_hub"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingTop="@dimen/define_dimen_10"
-        android:paddingBottom="@dimen/define_dimen_10">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_nav_feedback" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/voucher_hub_title"
-            android:layout_marginStart="@dimen/define_dimen_10"
-            android:textColor="@color/textColorPrimary"
-            android:textSize="@dimen/text_size_small" />
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="@dimen/define_dimen_5"
-        android:layout_marginBottom="@dimen/define_dimen_5"
-        android:background="@color/dividerColor" />
-
-    <LinearLayout
-        android:id="@+id/layout_earnings"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingTop="@dimen/define_dimen_10"
-        android:paddingBottom="@dimen/define_dimen_10"
-        android:visibility="gone">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_report" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/earnings_title"
-            android:layout_marginStart="@dimen/define_dimen_10"
-            android:textColor="@color/textColorPrimary"
-            android:textSize="@dimen/text_size_small" />
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="@dimen/define_dimen_5"
-        android:layout_marginBottom="@dimen/define_dimen_5"
-        android:background="@color/dividerColor" />
-
-    <LinearLayout
-        android:id="@+id/layout_change_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingTop="@dimen/define_dimen_10"
-        android:paddingBottom="@dimen/define_dimen_10">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_change_password" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/change_password"
-            android:layout_marginStart="@dimen/define_dimen_10"
-            android:textColor="@color/textColorPrimary"
-            android:textSize="@dimen/text_size_small" />
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="@dimen/define_dimen_5"
-        android:layout_marginBottom="@dimen/define_dimen_5"
-        android:background="@color/dividerColor" />
-
-    <LinearLayout
-        android:id="@+id/layout_sign_out"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingTop="@dimen/define_dimen_10"
-        android:paddingBottom="@dimen/define_dimen_10">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_sign_out" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/sign_out"
-            android:layout_marginStart="@dimen/define_dimen_10"
-            android:textColor="@color/textColorPrimary"
-            android:textSize="@dimen/text_size_small" />
-    </LinearLayout>
-
-</LinearLayout>
+</androidx.core.widget.NestedScrollView>

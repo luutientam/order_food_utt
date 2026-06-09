@@ -1,28 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="@dimen/define_dimen_10"
+    android:layout_marginStart="@dimen/define_dimen_4"
+    android:layout_marginEnd="@dimen/define_dimen_4"
     android:layout_marginBottom="@dimen/define_dimen_10"
-    app:cardCornerRadius="@dimen/define_dimen_6">
+    app:cardCornerRadius="@dimen/define_dimen_14"
+    app:cardElevation="@dimen/define_dimen_2"
+    tools:ignore="ContentDescription">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="@dimen/define_dimen_14">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_avatar"
-            android:layout_width="@dimen/define_dimen_40"
-            android:layout_height="@dimen/define_dimen_40"
-            android:src="@drawable/ic_avatar_default" />
+            android:layout_width="@dimen/define_dimen_44"
+            android:layout_height="@dimen/define_dimen_44"
+            android:src="@drawable/ic_avatar_default"
+            app:civ_border_color="@color/neutral100"
+            app:civ_border_width="1dp" />
+
+        <TextView
+            android:id="@+id/tv_delete_review"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/define_dimen_30"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/bg_pill_soft_orange"
+            android:gravity="center"
+            android:paddingStart="@dimen/define_dimen_10"
+            android:paddingEnd="@dimen/define_dimen_10"
+            android:text="@string/delete"
+            android:textColor="@color/statusFail"
+            android:textSize="@dimen/text_size_xsmall"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/define_dimen_10"
+            android:layout_marginStart="@dimen/define_dimen_12"
+            android:layout_marginEnd="@dimen/define_dimen_8"
+            android:layout_toStartOf="@+id/tv_delete_review"
             android:layout_toEndOf="@+id/img_avatar"
             android:orientation="vertical">
 
@@ -30,31 +51,22 @@
                 android:id="@+id/tv_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/app_name"
-                android:textColor="@color/textColorPrimary"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/neutral900"
                 android:textSize="@dimen/text_size_small"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:text="user@email.com" />
 
             <TextView
                 android:id="@+id/tv_feedback"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/app_name"
-                android:textColor="@color/textColorSecondary"
-                android:textSize="@dimen/text_size_xsmall" />
-
-            <TextView
-                android:id="@+id/tv_delete_review"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/define_dimen_30"
-                android:layout_marginTop="@dimen/define_dimen_6"
-                android:background="@drawable/bg_red_shape_corner_6"
-                android:gravity="center"
-                android:paddingStart="@dimen/define_dimen_8"
-                android:paddingEnd="@dimen/define_dimen_8"
-                android:text="@string/delete"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size_xsmall" />
+                android:layout_marginTop="@dimen/define_dimen_2"
+                android:lineSpacingExtra="2dp"
+                android:textColor="@color/neutral600"
+                android:textSize="@dimen/text_size_xsmall"
+                tools:text="Ứng dụng rất tiện lợi, giao hàng nhanh." />
         </LinearLayout>
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

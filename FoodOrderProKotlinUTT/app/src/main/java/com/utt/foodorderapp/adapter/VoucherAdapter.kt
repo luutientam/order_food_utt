@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.utt.foodorderapp.R
 import com.utt.foodorderapp.constant.AppConfig
 import com.utt.foodorderapp.model.Promotion
+import com.utt.foodorderapp.utils.MoneyUtils
 
 class VoucherAdapter(
         private val items: MutableList<Promotion>
@@ -34,10 +35,10 @@ class VoucherAdapter(
         holder.code.text = item.code ?: ""
         holder.title.text = item.title ?: ""
         val minOrder = if (item.minOrderAmount > 0)
-            ctx.getString(R.string.voucher_min_order, "${item.minOrderAmount}${AppConfig.CURRENCY}")
+            ctx.getString(R.string.voucher_min_order, "${MoneyUtils.format(item.minOrderAmount)}")
         else ctx.getString(R.string.voucher_no_min)
         val maxDiscount = if (item.maxDiscountAmount > 0)
-            ctx.getString(R.string.voucher_max_discount, "${item.maxDiscountAmount}${AppConfig.CURRENCY}")
+            ctx.getString(R.string.voucher_max_discount, "${MoneyUtils.format(item.maxDiscountAmount)}")
         else ""
         holder.condition.text = if (maxDiscount.isEmpty()) minOrder else "$minOrder · $maxDiscount"
     }

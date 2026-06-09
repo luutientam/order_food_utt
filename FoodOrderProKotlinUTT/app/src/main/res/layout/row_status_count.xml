@@ -3,39 +3,41 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:paddingTop="@dimen/define_dimen_6"
-    android:paddingBottom="@dimen/define_dimen_6">
+    android:gravity="center_vertical"
+    android:paddingTop="@dimen/define_dimen_8"
+    android:paddingBottom="@dimen/define_dimen_8">
 
     <View
         android:id="@+id/dot_status"
-        android:layout_width="10dp"
-        android:layout_height="10dp"
+        android:layout_width="@dimen/define_dimen_10"
+        android:layout_height="@dimen/define_dimen_10"
         android:layout_gravity="center_vertical"
         android:layout_marginEnd="@dimen/define_dimen_10"
-        android:background="@color/brandOrange" />
+        android:background="@drawable/bg_dot"
+        android:backgroundTint="@color/brandOrange" />
 
     <TextView
         android:id="@+id/tv_label"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:textColor="@color/textColorPrimary"
+        android:textColor="@color/neutral700"
         android:textSize="@dimen/text_size_small" />
 
     <TextView
         android:id="@+id/tv_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/textColorPrimary"
+        android:textColor="@color/neutral900"
         android:textStyle="bold"
         android:textSize="@dimen/text_size_normal" />
 
     <TextView
         android:id="@+id/tv_percent"
-        android:layout_width="60dp"
+        android:layout_width="@dimen/define_dimen_60"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/define_dimen_10"
         android:gravity="end"
-        android:textColor="@color/textColorSecondary"
+        android:textColor="@color/neutral500"
         android:textSize="@dimen/text_size_small" />
 </LinearLayout>

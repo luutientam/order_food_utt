@@ -35,6 +35,7 @@ import com.utt.foodorderapp.model.Food
 import com.utt.foodorderapp.model.Order
 import com.utt.foodorderapp.utils.StringUtil.isEmpty
 import java.util.*
+import com.utt.foodorderapp.utils.MoneyUtils
 
 class AdminHomeFragment : BaseFragment() {
 
@@ -75,7 +76,7 @@ class AdminHomeFragment : BaseFragment() {
                     if (order.getStatusValue() == Order.STATUS_NEW) pending++
                 }
                 binding.tvTodayOrders.text = todayCount.toString()
-                binding.tvTodayRevenue.text = "$todayRevenue${AppConfig.CURRENCY}"
+                binding.tvTodayRevenue.text = "${MoneyUtils.format(todayRevenue)}"
                 binding.tvPendingOrders.text = pending.toString()
             }
             override fun onCancelled(error: com.google.firebase.database.DatabaseError) {}

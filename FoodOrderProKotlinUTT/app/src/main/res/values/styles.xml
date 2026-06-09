@@ -33,6 +33,45 @@
         <item name="android:padding">@dimen/define_dimen_12</item>
     </style>
 
+    <!-- Account / settings list row -->
+    <style name="AccountRow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/define_dimen_56</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:paddingStart">@dimen/define_dimen_16</item>
+        <item name="android:paddingEnd">@dimen/define_dimen_16</item>
+    </style>
+
+    <style name="AccountRowIcon">
+        <item name="android:layout_width">@dimen/define_dimen_22</item>
+        <item name="android:layout_height">@dimen/define_dimen_22</item>
+        <item name="android:tint">@color/neutral600</item>
+    </style>
+
+    <style name="AccountRowText">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginStart">@dimen/define_dimen_14</item>
+        <item name="android:textColor">@color/neutral800</item>
+        <item name="android:textSize">@dimen/text_size_small</item>
+    </style>
+
+    <style name="AccountRowChevron">
+        <item name="android:layout_width">@dimen/define_dimen_18</item>
+        <item name="android:layout_height">@dimen/define_dimen_18</item>
+        <item name="android:src">@drawable/ic_chevron_right</item>
+    </style>
+
+    <style name="AccountRowDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_marginStart">@dimen/define_dimen_50</item>
+        <item name="android:background">@color/neutral100</item>
+    </style>
+
     <declare-styleable name="AspectRatioView">
         <attr name="aspectRatioEnabled" format="boolean" />
         <attr name="dominantMeasurement" format="enum">

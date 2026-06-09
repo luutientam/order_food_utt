@@ -31,9 +31,44 @@
     <color name="bottomTabActive">#EE4D2D</color>
     <color name="bottomTabInActive">#9E9E9E</color>
     <color name="black_overlay">#667C7474</color>
-    <color name="screenBackground">#F5F5F5</color>
+    <color name="screenBackground">#F5F5F7</color>
     <color name="surfaceBackground">#FFFFFF</color>
+    <color name="surfaceVariant">#FAFAFB</color>
     <color name="inputBorder">#E5E7EB</color>
+
+    <!-- Neutral scale (cool gray) for realistic depth & hierarchy -->
+    <color name="neutral50">#FAFAFB</color>
+    <color name="neutral100">#F3F4F6</color>
+    <color name="neutral200">#E5E7EB</color>
+    <color name="neutral300">#D1D5DB</color>
+    <color name="neutral400">#9CA3AF</color>
+    <color name="neutral500">#6B7280</color>
+    <color name="neutral600">#4B5563</color>
+    <color name="neutral700">#374151</color>
+    <color name="neutral800">#1F2937</color>
+    <color name="neutral900">#111827</color>
+
+    <!-- Interaction / feedback -->
+    <color name="ripplePrimary">#33EE4D2D</color>
+    <color name="rippleDark">#1F000000</color>
+    <color name="rippleLight">#33FFFFFF</color>
+    <color name="pressedOverlay">#14000000</color>
+
+    <!-- Soft tonal surfaces (chip / badge backgrounds) -->
+    <color name="brandOrangeSoft">#FFF1EC</color>
+    <color name="greenSoft">#E6F4EA</color>
+    <color name="blueSoft">#E8F1FE</color>
+    <color name="yellowSoft">#FFF7E0</color>
+    <color name="redSoft">#FDECEA</color>
+    <color name="purpleSoft">#F3E8FB</color>
+
+    <!-- Rating / price accents -->
+    <color name="ratingStar">#FFB400</color>
+    <color name="priceColor">#EE4D2D</color>
+    <color name="priceStrikethrough">#9CA3AF</color>
+
+    <!-- Shadow tint for elevated surfaces -->
+    <color name="shadowColor">#1A000000</color>
 
     <!-- Google Sign-In button (official branding) -->
     <color name="google_button_bg">#FFFFFF</color>

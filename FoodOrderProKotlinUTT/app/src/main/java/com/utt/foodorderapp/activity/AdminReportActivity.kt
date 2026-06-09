@@ -22,6 +22,7 @@ import com.utt.foodorderapp.utils.DateTimeUtils.convertDate2ToTimeStamp
 import com.utt.foodorderapp.utils.DateTimeUtils.convertTimeStampToDate_2
 import com.utt.foodorderapp.utils.StringUtil.isEmpty
 import java.util.*
+import com.utt.foodorderapp.utils.MoneyUtils
 
 class AdminReportActivity : AppCompatActivity() {
 
@@ -130,7 +131,7 @@ class AdminReportActivity : AppCompatActivity() {
         mActivityAdminReportBinding!!.rcvOrderHistory.adapter = revenueAdapter
 
         // Calculate total
-        val strTotalValue: String = "" + getTotalValues(list) + AppConfig.CURRENCY
+        val strTotalValue: String = MoneyUtils.format(getTotalValues(list))
         mActivityAdminReportBinding!!.tvTotalValue.text = strTotalValue
     }
 

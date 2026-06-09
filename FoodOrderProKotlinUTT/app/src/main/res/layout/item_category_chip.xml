@@ -9,6 +9,8 @@
     android:paddingTop="@dimen/define_dimen_8"
     android:paddingBottom="@dimen/define_dimen_8"
     android:layout_marginEnd="@dimen/define_dimen_8"
+    android:gravity="center"
     android:textColor="@color/textColorPrimary"
     android:textSize="@dimen/text_size_small"
+    android:textStyle="bold"
     android:singleLine="true" />

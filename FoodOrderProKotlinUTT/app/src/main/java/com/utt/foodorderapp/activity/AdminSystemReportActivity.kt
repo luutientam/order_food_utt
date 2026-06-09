@@ -67,7 +67,8 @@ class AdminSystemReportActivity : BaseActivity() {
     }
 
     private fun bindRow(view: View, label: String, count: Int, total: Int, colorRes: Int) {
-        view.findViewById<View>(R.id.dot_status).setBackgroundColor(ContextCompat.getColor(this, colorRes))
+        view.findViewById<View>(R.id.dot_status).backgroundTintList =
+                android.content.res.ColorStateList.valueOf(ContextCompat.getColor(this, colorRes))
         view.findViewById<TextView>(R.id.tv_label).text = label
         view.findViewById<TextView>(R.id.tv_count).text = count.toString()
         val percent = if (total > 0) count * 100 / total else 0

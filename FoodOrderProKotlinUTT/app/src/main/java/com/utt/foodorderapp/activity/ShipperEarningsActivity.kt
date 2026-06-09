@@ -14,6 +14,7 @@ import com.utt.foodorderapp.databinding.ActivityShipperEarningsBinding
 import com.utt.foodorderapp.model.Order
 import com.utt.foodorderapp.prefs.DataStoreManager
 import java.util.Calendar
+import com.utt.foodorderapp.utils.MoneyUtils
 
 /**
  * Hiển thị thu nhập của shipper hôm nay / tuần này / tháng này
@@ -85,9 +86,9 @@ class ShipperEarningsActivity : BaseActivity() {
             if (o.id >= startOfWeek) week += amount
             if (o.id >= startOfToday) today += amount
         }
-        binding?.tvToday?.text = "$today${AppConfig.CURRENCY}"
-        binding?.tvWeek?.text = "$week${AppConfig.CURRENCY}"
-        binding?.tvMonth?.text = "$month${AppConfig.CURRENCY}"
+        binding?.tvToday?.text = "${MoneyUtils.format(today)}"
+        binding?.tvWeek?.text = "${MoneyUtils.format(week)}"
+        binding?.tvMonth?.text = "${MoneyUtils.format(month)}"
     }
 
     private fun startOfDay(cal: Calendar): Long {

@@ -21,6 +21,8 @@ class RestaurantAdapter(
         val name: TextView = view.findViewById(R.id.tv_restaurant_name)
         val address: TextView = view.findViewById(R.id.tv_restaurant_address)
         val phone: TextView = view.findViewById(R.id.tv_restaurant_phone)
+        val rating: TextView = view.findViewById(R.id.tv_restaurant_rating)
+        val distance: TextView = view.findViewById(R.id.tv_restaurant_distance)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
@@ -35,6 +37,13 @@ class RestaurantAdapter(
         holder.name.text = item.name ?: ""
         holder.address.text = item.address ?: ""
         holder.phone.text = item.phone ?: ""
+
+        // Rating & distance derived from id so each restaurant looks distinct
+        // (no rating/distance field on the model yet).
+        val rating = 4.5 + (item.id % 5) / 10.0
+        holder.rating.text = String.format("%.1f", rating)
+        val distanceKm = 0.4 + (item.id * 13 % 80) / 10.0
+        holder.distance.text = String.format("%.1f km", distanceKm)
         if (!item.image.isNullOrEmpty()) {
             GlideUtils.loadUrl(item.image, holder.image)
         }

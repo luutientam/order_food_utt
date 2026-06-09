@@ -7,36 +7,77 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/define_dimen_10"
     android:layout_marginEnd="@dimen/define_dimen_10"
+    android:background="@drawable/bg_card_surface"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="@dimen/define_dimen_6">
+        app:cardCornerRadius="@dimen/define_dimen_14"
+        app:cardElevation="0dp"
+        app:cardPreventCornerOverlap="false">
 
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/define_dimen_120">
 
             <ImageView
                 android:id="@+id/img_food"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/neutral100"
                 android:scaleType="centerCrop"
-                tools:ignore="ContentDescription" />
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/img_no_image" />
 
+            <!-- gradient scrim for legibility of the badge -->
             <TextView
                 android:id="@+id/tv_sale_off"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="@dimen/define_dimen_10"
-                android:background="@color/colorPrimary"
-                android:padding="@dimen/define_dimen_6"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/bg_badge_sale"
+                android:paddingStart="@dimen/define_dimen_8"
+                android:paddingTop="@dimen/define_dimen_2"
+                android:paddingEnd="@dimen/define_dimen_8"
+                android:paddingBottom="@dimen/define_dimen_2"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_xsmall"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:text="-20%" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="@dimen/define_dimen_6"
+                android:background="@drawable/bg_rating_pill"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/define_dimen_6"
+                android:paddingTop="2dp"
+                android:paddingEnd="@dimen/define_dimen_6"
+                android:paddingBottom="2dp">
+
+                <ImageView
+                    android:layout_width="11dp"
+                    android:layout_height="11dp"
+                    android:src="@drawable/ic_star_filled"
+                    app:tint="@color/ratingStar"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/tv_food_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:textColor="@color/neutral800"
+                    android:textSize="@dimen/text_size_xsmall"
+                    android:textStyle="bold"
+                    tools:text="4.8" />
+            </LinearLayout>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
@@ -44,36 +85,56 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingTop="@dimen/define_dimen_6"
-        android:paddingEnd="@dimen/define_dimen_6"
-        android:paddingBottom="@dimen/define_dimen_6">
+        android:paddingStart="@dimen/define_dimen_10"
+        android:paddingTop="@dimen/define_dimen_8"
+        android:paddingEnd="@dimen/define_dimen_10"
+        android:paddingBottom="@dimen/define_dimen_10">
 
         <TextView
             android:id="@+id/tv_food_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/textColorPrimary"
-            android:textSize="@dimen/text_size_normal"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tv_price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/define_dimen_2"
-            android:textColor="@color/textColorSecondary"
-            android:textSize="@dimen/text_size_xsmall"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tv_price_sale"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/define_dimen_2"
-            android:textColor="@color/colorPrimary"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/neutral900"
             android:textSize="@dimen/text_size_small"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:text="Cơm gà xối mỡ" />
+
+        <TextView
+            android:id="@+id/tv_food_sold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/neutral400"
+            android:textSize="@dimen/text_size_xsmall"
+            tools:text="Đã bán 1.2k" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/define_dimen_6"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_price_sale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/priceColor"
+                android:textSize="@dimen/text_size_normal"
+                android:textStyle="bold"
+                tools:text="₫32.000" />
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/define_dimen_6"
+                android:textColor="@color/priceStrikethrough"
+                android:textSize="@dimen/text_size_xsmall"
+                tools:text="₫40.000" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>
-

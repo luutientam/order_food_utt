@@ -44,7 +44,7 @@ class SignInActivity : BaseActivity() {
                 return@registerForActivityResult
             }
             googleSelectedRole = getSelectedRole()
-            authViewModel.signInWithGoogle(idToken)
+            authViewModel.signInWithGoogle(idToken, googleSelectedRole)
         } catch (exception: ApiException) {
             showGoogleError(exception)
         }
@@ -132,6 +132,11 @@ class SignInActivity : BaseActivity() {
         val client = googleSignInClient
         if (client == null) {
             showGoogleNotConfigured()
+            return
+        }
+        if (getSelectedRole() == com.utt.foodorderapp.model.User.ROLE_ADMIN) {
+            val message = resolveStringByName("msg_google_admin_not_supported").ifEmpty { GOOGLE_ADMIN_NOT_SUPPORTED_MESSAGE }
+            Toast.makeText(this@SignInActivity, message, Toast.LENGTH_SHORT).show()
             return
         }
         launchGoogleChooser(client)
@@ -251,6 +256,7 @@ class SignInActivity : BaseActivity() {
     }
 
     companion object {
+        private const val GOOGLE_ADMIN_NOT_SUPPORTED_MESSAGE = "Khong ho tro dang nhap Google cho tai khoan quan tri"
         private const val GOOGLE_NOT_CONFIGURED_MESSAGE = "Google Sign-In chua cau hinh"
         private const val GOOGLE_SIGN_IN_ERROR_MESSAGE = "Dang nhap Google that bai"
         private const val GOOGLE_DEVELOPER_ERROR_MESSAGE = "Google Sign-In loi cau hinh SHA-1/SHA-256 hoac client ID"

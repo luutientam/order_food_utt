@@ -4,7 +4,7 @@
     <dimen name="define_dimen_2">2dp</dimen>
     <dimen name="define_dimen_4">4dp</dimen>
     <dimen name="define_dimen_5">5dp</dimen>
-    <dimen name="define_dimen_6">6dp</dimen>
+    <dimen name="define_dimen_6">1dp</dimen>
     <dimen name="define_dimen_8">8dp</dimen>
     <dimen name="define_dimen_10">10dp</dimen>
     <dimen name="define_dimen_12">12dp</dimen>
@@ -13,6 +13,7 @@
     <dimen name="define_dimen_18">18dp</dimen>
     <dimen name="define_dimen_20">20dp</dimen>
     <dimen name="define_dimen_22">22dp</dimen>
+    <dimen name="define_dimen_24">24dp</dimen>
     <dimen name="define_dimen_26">26dp</dimen>
     <dimen name="define_dimen_28">28dp</dimen>
     <dimen name="define_dimen_30">30dp</dimen>

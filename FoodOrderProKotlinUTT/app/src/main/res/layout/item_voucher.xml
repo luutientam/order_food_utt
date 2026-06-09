@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
+    android:layout_marginStart="@dimen/define_dimen_12"
+    android:layout_marginEnd="@dimen/define_dimen_12"
+    android:layout_marginBottom="@dimen/define_dimen_10"
     android:background="@drawable/bg_card_surface"
-    android:padding="@dimen/define_dimen_14"
-    android:layout_marginBottom="@dimen/define_dimen_10">
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="@dimen/define_dimen_12">
 
     <LinearLayout
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:orientation="vertical"
+        android:layout_width="@dimen/define_dimen_80"
+        android:layout_height="@dimen/define_dimen_80"
+        android:background="@drawable/bg_voucher_left"
         android:gravity="center"
-        android:background="@drawable/bg_chip_selected">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/tv_percent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
+            android:textSize="@dimen/text_size_xlarge"
             android:textStyle="bold"
-            android:textSize="@dimen/text_size_xlarge" />
+            tools:text="20%" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -30,36 +35,51 @@
             android:textSize="@dimen/text_size_xsmall" />
     </LinearLayout>
 
+    <View
+        android:layout_width="1dp"
+        android:layout_height="@dimen/define_dimen_60"
+        android:layout_marginStart="@dimen/define_dimen_12"
+        android:background="@color/neutral200" />
+
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical"
         android:layout_marginStart="@dimen/define_dimen_12"
-        android:gravity="center_vertical">
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/tv_code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_pill_soft_orange"
+            android:paddingStart="@dimen/define_dimen_8"
+            android:paddingTop="2dp"
+            android:paddingEnd="@dimen/define_dimen_8"
+            android:paddingBottom="2dp"
             android:textColor="@color/brandOrange"
+            android:textSize="@dimen/text_size_small"
             android:textStyle="bold"
-            android:textSize="@dimen/text_size_normal" />
+            tools:text="SALE20" />
 
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/define_dimen_2"
-            android:textColor="@color/textColorPrimary"
-            android:textSize="@dimen/text_size_small" />
+            android:layout_marginTop="@dimen/define_dimen_6"
+            android:textColor="@color/neutral900"
+            android:textSize="@dimen/text_size_small"
+            android:textStyle="bold"
+            tools:text="Giảm 20% cho đơn đầu tiên" />
 
         <TextView
             android:id="@+id/tv_condition"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/define_dimen_4"
-            android:textColor="@color/textColorSecondary"
-            android:textSize="@dimen/text_size_xsmall" />
+            android:textColor="@color/neutral500"
+            android:textSize="@dimen/text_size_xsmall"
+            tools:text="Đơn tối thiểu 50.000đ" />
     </LinearLayout>
 </LinearLayout>

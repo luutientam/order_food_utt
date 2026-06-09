@@ -2,31 +2,36 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/define_dimen_80"
-    android:layout_marginTop="@dimen/define_dimen_14"
-    android:layout_marginEnd="@dimen/define_dimen_14"
+    android:layout_height="@dimen/define_dimen_100"
+    android:layout_marginStart="@dimen/define_dimen_4"
+    android:layout_marginTop="@dimen/define_dimen_12"
+    android:layout_marginEnd="@dimen/define_dimen_4"
     android:layout_marginBottom="1dp"
-    app:cardCornerRadius="@dimen/define_dimen_10">
+    app:cardCornerRadius="@dimen/define_dimen_14"
+    app:cardElevation="@dimen/define_dimen_2">
 
     <LinearLayout
         android:id="@+id/layout_item"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="?android:attr/selectableItemBackground"
+        android:gravity="center"
         android:orientation="vertical"
-        android:gravity="center">
+        android:padding="@dimen/define_dimen_8">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_contact"
-            android:layout_width="@dimen/define_dimen_40"
-            android:layout_height="@dimen/define_dimen_40" />
+            android:layout_width="@dimen/define_dimen_44"
+            android:layout_height="@dimen/define_dimen_44" />
 
         <TextView
             android:id="@+id/tv_contact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/define_dimen_5"
-            android:textSize="@dimen/text_size_small"
-            android:textColor="@color/black"/>
+            android:layout_marginTop="@dimen/define_dimen_8"
+            android:textColor="@color/neutral700"
+            android:textSize="@dimen/text_size_xsmall"
+            android:textStyle="bold" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>
 

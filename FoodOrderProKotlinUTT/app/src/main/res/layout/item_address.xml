@@ -1,39 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:layout_marginStart="@dimen/define_dimen_12"
+    android:layout_marginEnd="@dimen/define_dimen_12"
+    android:layout_marginBottom="@dimen/define_dimen_10"
     android:background="@drawable/bg_card_surface"
-    android:padding="@dimen/define_dimen_12"
-    android:layout_marginBottom="@dimen/define_dimen_10">
+    android:orientation="vertical"
+    android:padding="@dimen/define_dimen_14">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/define_dimen_18"
+            android:layout_height="@dimen/define_dimen_18"
+            android:layout_marginEnd="@dimen/define_dimen_6"
+            android:src="@drawable/ic_nav_contact"
+            app:tint="@color/brandOrange"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/tv_label"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textColor="@color/textColorPrimary"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/neutral900"
             android:textSize="@dimen/text_size_normal"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:text="Nhà riêng" />
 
         <TextView
             android:id="@+id/tv_default_badge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_chip_selected"
-            android:paddingStart="@dimen/define_dimen_10"
-            android:paddingEnd="@dimen/define_dimen_10"
-            android:paddingTop="@dimen/define_dimen_4"
-            android:paddingBottom="@dimen/define_dimen_4"
+            android:background="@drawable/bg_pill_soft_orange"
+            android:paddingStart="@dimen/define_dimen_8"
+            android:paddingTop="3dp"
+            android:paddingEnd="@dimen/define_dimen_8"
+            android:paddingBottom="3dp"
             android:text="@string/address_default_badge"
-            android:textColor="@color/white"
+            android:textColor="@color/brandOrange"
             android:textSize="@dimen/text_size_xsmall"
+            android:textStyle="bold"
             android:visibility="gone" />
     </LinearLayout>
 
@@ -41,40 +57,56 @@
         android:id="@+id/tv_recipient"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/define_dimen_4"
-        android:textColor="@color/textColorPrimary"
-        android:textSize="@dimen/text_size_small" />
+        android:layout_marginTop="@dimen/define_dimen_8"
+        android:textColor="@color/neutral800"
+        android:textSize="@dimen/text_size_small"
+        android:textStyle="bold"
+        tools:text="Nguyễn Văn A · 0901 234 567" />
 
     <TextView
         android:id="@+id/tv_full_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/define_dimen_4"
-        android:textColor="@color/textColorSecondary"
-        android:textSize="@dimen/text_size_small" />
+        android:lineSpacingExtra="2dp"
+        android:textColor="@color/neutral500"
+        android:textSize="@dimen/text_size_small"
+        tools:text="123 Đường Cầu Giấy, P. Dịch Vọng, Q. Cầu Giấy, Hà Nội" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/define_dimen_12"
+        android:background="@color/neutral100" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/define_dimen_10">
+        android:layout_marginTop="@dimen/define_dimen_8"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/tv_set_default"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="@dimen/define_dimen_6"
+            android:text="@string/action_set_default"
             android:textColor="@color/brandOrange"
             android:textSize="@dimen/text_size_small"
-            android:text="@string/action_set_default" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/define_dimen_20"
-            android:textColor="@color/brandOrange"
-            android:textSize="@dimen/text_size_small"
-            android:text="@string/action_edit" />
+            android:layout_marginStart="@dimen/define_dimen_14"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="@dimen/define_dimen_6"
+            android:text="@string/action_edit"
+            android:textColor="@color/neutral700"
+            android:textSize="@dimen/text_size_small" />
 
         <View
             android:layout_width="0dp"
@@ -85,8 +117,10 @@
             android:id="@+id/tv_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/red"
-            android:textSize="@dimen/text_size_small"
-            android:text="@string/delete" />
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="@dimen/define_dimen_6"
+            android:text="@string/delete"
+            android:textColor="@color/statusFail"
+            android:textSize="@dimen/text_size_small" />
     </LinearLayout>
 </LinearLayout>

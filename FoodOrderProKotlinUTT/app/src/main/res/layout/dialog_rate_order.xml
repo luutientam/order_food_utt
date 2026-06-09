@@ -9,16 +9,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/rating_dialog_hint"
-        android:textColor="@color/textColorPrimary"
-        android:textSize="@dimen/text_size_normal" />
+        android:textColor="@color/neutral800"
+        android:textSize="@dimen/text_size_normal"
+        android:textStyle="bold" />
 
     <RatingBar
         android:id="@+id/rating_bar"
         style="?android:attr/ratingBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/define_dimen_10"
+        android:layout_marginTop="@dimen/define_dimen_12"
         android:numStars="5"
+        android:progressTint="@color/ratingStar"
         android:rating="5"
         android:stepSize="1" />
 
@@ -27,10 +29,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/define_dimen_16"
-        android:background="@drawable/bg_white_corner_6_border_gray"
+        android:background="@drawable/bg_input_field"
+        android:gravity="top"
         android:hint="@string/rating_comment_hint"
         android:inputType="textMultiLine|textCapSentences"
-        android:minHeight="80dp"
-        android:padding="@dimen/define_dimen_10"
+        android:minHeight="@dimen/define_dimen_80"
+        android:padding="@dimen/define_dimen_12"
+        android:textColorHint="@color/neutral400"
         android:textSize="@dimen/text_size_small" />
 </LinearLayout>

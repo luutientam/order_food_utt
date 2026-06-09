@@ -8,6 +8,7 @@ import com.utt.foodorderapp.R
 import com.utt.foodorderapp.constant.AppConfig
 import com.utt.foodorderapp.databinding.ItemShipperOrderBinding
 import com.utt.foodorderapp.model.Order
+import com.utt.foodorderapp.utils.MoneyUtils
 
 class ShipperOrderAdapter(
         private val isPickupMode: Boolean,
@@ -71,7 +72,7 @@ class ShipperOrderAdapter(
             Order.STATUS_CANCEL -> context.getString(R.string.status_cancel)
             else -> context.getString(R.string.status_fail)
         }
-        return "$statusText - ${order.amount}${AppConfig.CURRENCY}"
+        return "$statusText - ${MoneyUtils.format(order.amount)}"
     }
 
     class ShipperOrderViewHolder(val binding: ItemShipperOrderBinding) : RecyclerView.ViewHolder(binding.root)

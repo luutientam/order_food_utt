@@ -4,27 +4,28 @@
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:paddingTop="@dimen/define_dimen_6"
-    android:paddingBottom="@dimen/define_dimen_6">
+    android:paddingTop="@dimen/define_dimen_12"
+    android:paddingBottom="@dimen/define_dimen_12">
 
     <TextView
         android:id="@+id/tv_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:textColor="@color/textColorPrimary"
+        android:textColor="@color/neutral800"
         android:textSize="@dimen/text_size_small" />
 
     <TextView
         android:id="@+id/tv_delete"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/define_dimen_30"
-        android:background="@drawable/bg_red_shape_corner_6"
+        android:background="@drawable/bg_pill_soft_orange"
         android:gravity="center"
-        android:paddingStart="@dimen/define_dimen_8"
-        android:paddingEnd="@dimen/define_dimen_8"
+        android:paddingStart="@dimen/define_dimen_12"
+        android:paddingEnd="@dimen/define_dimen_12"
         android:text="@string/delete"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_size_small" />
+        android:textColor="@color/statusFail"
+        android:textSize="@dimen/text_size_xsmall"
+        android:textStyle="bold" />
 
 </LinearLayout>

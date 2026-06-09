@@ -3,16 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/define_dimen_10"
-    android:layout_marginEnd="@dimen/define_dimen_10"
-    app:cardCornerRadius="@dimen/define_dimen_6">
+    android:layout_marginStart="@dimen/define_dimen_4"
+    android:layout_marginEnd="@dimen/define_dimen_4"
+    android:layout_marginBottom="@dimen/define_dimen_12"
+    app:cardCornerRadius="@dimen/define_dimen_14"
+    app:cardElevation="@dimen/define_dimen_2">
 
     <LinearLayout
         android:id="@+id/layout_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="@dimen/define_dimen_16">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -153,8 +155,8 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="@dimen/define_dimen_10"
-            android:background="@color/colorPrimaryDark"/>
+            android:layout_marginTop="@dimen/define_dimen_12"
+            android:background="@color/neutral100"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -167,7 +169,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:text="@string/total"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/neutral900"
                 android:textSize="@dimen/text_size_normal"
                 android:textStyle="bold" />
 
@@ -254,8 +256,14 @@
                 android:layout_centerVertical="true"
                 android:layout_marginStart="@dimen/define_dimen_5"
                 android:layout_toEndOf="@+id/label_status"
-                android:textColor="@color/textColorPrimary"
-                android:textSize="@dimen/text_size_small"
+                android:background="@drawable/bg_status_pill"
+                android:backgroundTint="@color/statusNew"
+                android:paddingStart="@dimen/define_dimen_8"
+                android:paddingTop="3dp"
+                android:paddingEnd="@dimen/define_dimen_8"
+                android:paddingBottom="3dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_xsmall"
                 android:textStyle="bold" />
         </RelativeLayout>
 
