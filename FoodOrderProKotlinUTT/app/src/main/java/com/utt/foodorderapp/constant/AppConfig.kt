@@ -32,6 +32,16 @@ object AppConfig {
     val ADMIN_EMAIL_FORMAT: String
         get() = getString(R.string.config_admin_email_format)
 
+    // ===== SePay (thanh toán online qua VietQR — luồng webhook) =====
+    val SEPAY_ACCOUNT_NUMBER: String
+        get() = getString(R.string.config_sepay_account_number)
+    val SEPAY_BANK_CODE: String
+        get() = getString(R.string.config_sepay_bank_code)
+    val SEPAY_ACCOUNT_HOLDER: String
+        get() = getString(R.string.config_sepay_account_holder)
+    val SEPAY_QR_URL: String
+        get() = getString(R.string.config_sepay_qr_url)
+
     const val KEY_INTENT_FOOD_OBJECT = "food_object"
 
     val ABOUT_US_TITLE: String

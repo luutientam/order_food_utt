@@ -100,6 +100,7 @@
     <string name="reviews_empty">Chưa có đánh giá nào</string>
     <string name="reviews_total_count">%1$d đánh giá</string>
     <string name="msg_no_restaurant_linked">Món này chưa gắn nhà hàng</string>
+    <string name="msg_review_require_purchase">Bạn cần mua món này rồi mới có thể đánh giá</string>
 
     <!-- User stats -->
     <string name="stats_user_title">Thống kê người dùng</string>
@@ -238,6 +239,21 @@
     <string name="payment_status_paid">Đã thanh toán</string>
     <string name="payment_status_unpaid">Chưa thanh toán</string>
 
+    <!-- ===== Thanh toán SePay (VietQR — luồng webhook) ===== -->
+    <string name="sepay_payment_title">Thanh toán qua SePay</string>
+    <string name="sepay_scan_hint">Mở app ngân hàng, quét mã QR và chuyển khoản ĐÚNG số tiền &amp; nội dung bên dưới. Đơn sẽ TỰ ĐỘNG xác nhận khi hệ thống nhận được tiền.</string>
+    <string name="sepay_amount_label">Số tiền</string>
+    <string name="sepay_bank_label">Ngân hàng</string>
+    <string name="sepay_account_label">Số tài khoản</string>
+    <string name="sepay_holder_label">Chủ tài khoản</string>
+    <string name="sepay_content_label">Nội dung chuyển khoản</string>
+    <string name="sepay_qr_content_desc">Mã QR thanh toán SePay</string>
+    <string name="sepay_waiting">Đang chờ xác nhận thanh toán tự động…</string>
+    <string name="sepay_close">Đóng</string>
+    <string name="sepay_cancel_order">Hủy đơn</string>
+    <string name="sepay_keep_pending">Đơn đang chờ thanh toán — xem trong Lịch sử đơn hàng.</string>
+    <string name="sepay_copied">Đã sao chép</string>
+
     <string name="msg_confirm_login_another_device">Bạn có chắc chắn muốn thoát ứng dụng?</string>
     <string name="msg_email_require">Vui lòng nhập địa chỉ email</string>
     <string name="msg_password_require">Vui lòng nhập mật khẩu</string>
@@ -344,4 +360,42 @@
     <string name="msg_google_not_configured">Google Sign-In chưa cấu hình. Hãy thêm Web client ID trong strings.xml</string>
     <string name="msg_google_admin_not_supported">Tài khoản quản trị không hỗ trợ đăng nhập/đăng ký bằng Google</string>
     <string name="google_web_client_id">YOUR_GOOGLE_WEB_CLIENT_ID</string>
+
+    <!-- ===== Extracted dynamic labels (replacing hardcoded strings) ===== -->
+    <string name="food_sale_off">Giảm %1$d%%</string>
+    <string name="food_sold_count">Đã bán %1$s</string>
+    <string name="food_has_discount">Có</string>
+    <string name="food_no_discount">Không</string>
+    <string name="order_discount_inline">(giảm %1$s)</string>
+    <string name="order_issue_prefix">Sự cố: %1$s</string>
+    <string name="review_anonymous">Ẩn danh</string>
+
+    <!-- Empty states -->
+    <string name="order_history_empty">Bạn chưa có đơn hàng nào</string>
+    <string name="shipper_orders_pickup_empty">Hiện chưa có đơn cần lấy</string>
+    <string name="shipper_orders_delivering_empty">Bạn chưa nhận đơn nào đang giao</string>
+    <string name="admin_orders_empty">Chưa có đơn hàng nào</string>
+    <string name="admin_foods_empty">Chưa có món ăn nào</string>
+    <string name="admin_users_empty">Chưa có người dùng nào</string>
+    <string name="admin_feedback_empty">Chưa có phản hồi nào</string>
+    <string name="admin_promotions_empty">Chưa có khuyến mại nào</string>
+    <string name="catalog_empty">Chưa có dữ liệu</string>
+
+    <!-- Shipper -->
+    <string name="shipper_long_press_contact">(Nhấn giữ để liên hệ)</string>
+    <string name="hint_delivery_issue">Nhập nội dung sự cố giao hàng</string>
+    <string name="msg_delivery_issue_required">Vui lòng nhập nội dung sự cố</string>
+
+    <!-- Profile / auth feedback -->
+    <string name="msg_profile_update_success">Cập nhật thông tin thành công</string>
+    <string name="msg_profile_update_failed">Cập nhật thất bại, vui lòng thử lại</string>
+    <string name="msg_reset_password_failed">Gửi email đặt lại mật khẩu thất bại, vui lòng thử lại</string>
+
+    <!-- Admin user management -->
+    <string name="user_role_format">Vai trò: %1$s</string>
+    <string name="role_customer">Người dùng</string>
+    <string name="role_shipper">Shipper</string>
+    <string name="role_admin">Quản trị viên</string>
+    <string name="msg_user_status_updated">Đã cập nhật trạng thái tài khoản</string>
+    <string name="msg_user_status_failed">Cập nhật trạng thái thất bại</string>
 </resources>

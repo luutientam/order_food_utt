@@ -54,4 +54,21 @@ class CartViewModel(
             }
         }
     }
+
+    /**
+     * Tạo đơn ở trạng thái "chờ thanh toán" cho luồng thanh toán online (SePay).
+     * Xoá giỏ khi tạo thành công nhưng KHÔNG đụng tới [orderState] (tránh hiện
+     * thông báo "đặt hàng thành công" chung — việc xác nhận do webhook đảm nhiệm).
+     */
+    fun createPendingOrder(order: Order, onResult: (Boolean) -> Unit) {
+        orderRepository.createOrder(order) { error ->
+            if (error == null) {
+                foodRepository.clearCart(getApplication())
+                loadCart()
+                onResult(true)
+            } else {
+                onResult(false)
+            }
+        }
+    }
 }

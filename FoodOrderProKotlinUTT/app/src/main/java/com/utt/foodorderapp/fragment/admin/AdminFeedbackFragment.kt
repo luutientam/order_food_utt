@@ -63,6 +63,8 @@ class AdminFeedbackFragment : BaseFragment() {
                             deleteFeedback(feedback)
                         }
                     })
+                    mFragmentAdminFeedbackBinding?.tvEmpty?.visibility =
+                            if (state.data.isEmpty()) View.VISIBLE else View.GONE
                 }
             }
         }

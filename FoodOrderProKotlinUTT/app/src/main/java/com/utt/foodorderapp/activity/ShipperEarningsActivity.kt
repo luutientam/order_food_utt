@@ -9,7 +9,6 @@ import com.google.firebase.database.ValueEventListener
 import com.utt.foodorderapp.ControllerApplication
 import com.utt.foodorderapp.R
 import com.utt.foodorderapp.adapter.EarningsAdapter
-import com.utt.foodorderapp.constant.AppConfig
 import com.utt.foodorderapp.databinding.ActivityShipperEarningsBinding
 import com.utt.foodorderapp.model.Order
 import com.utt.foodorderapp.prefs.DataStoreManager

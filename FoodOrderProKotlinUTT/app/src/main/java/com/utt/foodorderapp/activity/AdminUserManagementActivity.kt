@@ -30,16 +30,23 @@ class AdminUserManagementActivity : BaseActivity() {
         adapter = UserManagementAdapter(users, object : UserManagementAdapter.IUserManagementListener {
             override fun toggleUser(user: User) {
                 val userId = user.uid ?: return
-                userRepository.updateUserActive(userId, !user.isActive) {
-                    if (it == null) {
-                        showToastMessage(this@AdminUserManagementActivity, getString(R.string.action_ok))
+                userRepository.updateUserActive(userId, !user.isActive) { error ->
+                    if (error == null) {
+                        showToastMessage(this@AdminUserManagementActivity, getString(R.string.msg_user_status_updated))
+                    } else {
+                        showToastMessage(this@AdminUserManagementActivity, getString(R.string.msg_user_status_failed))
                     }
                 }
             }
         })
         binding!!.rcvUsers.layoutManager = LinearLayoutManager(this)
         binding!!.rcvUsers.adapter = adapter
+        updateEmptyState()
         subscribeUsers()
+    }
+
+    private fun updateEmptyState() {
+        binding?.tvEmpty?.visibility = if (users.isEmpty()) View.VISIBLE else View.GONE
     }
 
     private fun initToolbar() {
@@ -56,6 +63,7 @@ class AdminUserManagementActivity : BaseActivity() {
                 user.uid = snapshot.key
                 users.add(0, user)
                 adapter?.notifyDataSetChanged()
+                updateEmptyState()
             }
 
             override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
@@ -70,7 +78,14 @@ class AdminUserManagementActivity : BaseActivity() {
                 adapter?.notifyDataSetChanged()
             }
 
-            override fun onChildRemoved(snapshot: DataSnapshot) {}
+            override fun onChildRemoved(snapshot: DataSnapshot) {
+                val removed = snapshot.getValue(User::class.java) ?: return
+                removed.uid = snapshot.key
+                users.removeAll { it.uid == removed.uid }
+                adapter?.notifyDataSetChanged()
+                updateEmptyState()
+            }
+
             override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
             override fun onCancelled(error: DatabaseError) {}
         }

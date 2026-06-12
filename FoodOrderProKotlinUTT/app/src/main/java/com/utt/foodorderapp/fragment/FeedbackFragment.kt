@@ -25,7 +25,7 @@ class FeedbackFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         mFragmentFeedbackBinding = FragmentFeedbackBinding.inflate(inflater, container, false)
-        mFragmentFeedbackBinding!!.edtEmail.setText(user!!.email)
+        mFragmentFeedbackBinding!!.edtEmail.setText(user?.email ?: "")
         mFragmentFeedbackBinding!!.rcvFeedback.layoutManager = LinearLayoutManager(activity)
         mFragmentFeedbackBinding!!.tvSendFeedback.setOnClickListener { onClickSendFeedback() }
         observeViewModel()

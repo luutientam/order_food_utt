@@ -38,11 +38,15 @@ class UpdateProfileActivity : BaseActivity() {
         val map: MutableMap<String, Any> = HashMap()
         map["name"] = binding!!.edtName.text.toString().trim()
         map["phone"] = binding!!.edtPhone.text.toString().trim()
-        ControllerApplication[this].userDatabaseReference.child(userId).updateChildren(map) { _: DatabaseError?, _: DatabaseReference? ->
+        ControllerApplication[this].userDatabaseReference.child(userId).updateChildren(map) { error: DatabaseError?, _: DatabaseReference? ->
+            if (error != null) {
+                showToastMessage(this, getString(R.string.msg_profile_update_failed))
+                return@updateChildren
+            }
             user.name = map["name"] as String
             user.phone = map["phone"] as String
             DataStoreManager.user = user
-            showToastMessage(this, getString(R.string.action_edit))
+            showToastMessage(this, getString(R.string.msg_profile_update_success))
             finish()
         }
     }

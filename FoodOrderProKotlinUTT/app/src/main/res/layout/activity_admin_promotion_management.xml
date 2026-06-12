@@ -97,8 +97,21 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcv_promotion"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/define_dimen_420"
-                android:layout_marginTop="@dimen/define_dimen_12" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/define_dimen_12"
+                android:nestedScrollingEnabled="false" />
+
+            <TextView
+                android:id="@+id/tv_empty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/define_dimen_12"
+                android:gravity="center"
+                android:padding="@dimen/define_dimen_16"
+                android:text="@string/admin_promotions_empty"
+                android:textColor="@color/textColorSecondary"
+                android:textSize="@dimen/text_size_small"
+                android:visibility="gone" />
         </LinearLayout>
     </ScrollView>
 

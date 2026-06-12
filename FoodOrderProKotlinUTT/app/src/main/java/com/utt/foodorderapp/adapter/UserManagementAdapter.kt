@@ -3,6 +3,7 @@ package com.utt.foodorderapp.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import android.content.Context
 import com.utt.foodorderapp.R
 import com.utt.foodorderapp.databinding.ItemUserManagementBinding
 import com.utt.foodorderapp.model.User
@@ -25,10 +26,18 @@ class UserManagementAdapter(
         val user = users[position]
         val context = holder.itemView.context
         holder.binding.tvEmail.text = user.email
-        holder.binding.tvRole.text = "${context.getString(R.string.user_role)}: ${user.role}"
+        holder.binding.tvRole.text = context.getString(R.string.user_role_format, localizedRole(context, user.role))
         holder.binding.tvStatus.text = if (user.isActive) context.getString(R.string.status_active) else context.getString(R.string.status_locked)
         holder.binding.tvToggleStatus.text = if (user.isActive) context.getString(R.string.action_lock) else context.getString(R.string.action_unlock)
         holder.binding.tvToggleStatus.setOnClickListener { listener.toggleUser(user) }
+    }
+
+    private fun localizedRole(context: Context, role: String?): String {
+        return when (role) {
+            User.ROLE_ADMIN -> context.getString(R.string.role_admin)
+            User.ROLE_SHIPPER -> context.getString(R.string.role_shipper)
+            else -> context.getString(R.string.role_customer)
+        }
     }
 
     override fun getItemCount(): Int {

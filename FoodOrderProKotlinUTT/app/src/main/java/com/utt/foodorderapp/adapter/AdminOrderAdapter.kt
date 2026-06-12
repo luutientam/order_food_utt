@@ -39,9 +39,10 @@ class AdminOrderAdapter(private var mContext: Context?, private val mListOrder: 
         holder.mItemAdminOrderBinding.tvAddress.text = order.address
         holder.mItemAdminOrderBinding.tvMenu.text = order.foods
         holder.mItemAdminOrderBinding.tvDate.text = convertTimeStampToDate(order.id)
+        val context = holder.itemView.context
         val strAmount: String = MoneyUtils.format(order.amount)
         val amountDisplay = if (order.discountAmount > 0) {
-            "$strAmount (giam ${MoneyUtils.format(order.discountAmount)})"
+            "$strAmount ${context.getString(R.string.order_discount_inline, MoneyUtils.format(order.discountAmount))}"
         } else {
             strAmount
         }
@@ -65,6 +66,9 @@ class AdminOrderAdapter(private var mContext: Context?, private val mListOrder: 
         val tvCancelOrder = holder.mItemAdminOrderBinding.root.findViewById<TextView>(R.id.tv_cancel_order)
         val currentStatus = order.getStatusValue()
         tvStatus.text = buildStatusText(order)
+        tvStatus.backgroundTintList = android.content.res.ColorStateList.valueOf(
+                ContextCompat.getColor(context, getStatusColor(order)))
+        tvStatus.setTextColor(ContextCompat.getColor(context, R.color.white))
         if (AppConfig.TYPE_PAYMENT_ONLINE == order.payment && !order.paymentTransactionId.isNullOrEmpty()) {
             layoutTransaction.visibility = View.VISIBLE
             tvTransaction.text = order.paymentTransactionId
@@ -112,12 +116,25 @@ class AdminOrderAdapter(private var mContext: Context?, private val mListOrder: 
         }
     }
 
+    private fun getStatusColor(order: Order): Int {
+        return when (order.getStatusValue()) {
+            Order.STATUS_NEW -> R.color.statusNew
+            Order.STATUS_PREPARING -> R.color.statusPreparing
+            Order.STATUS_DELIVERING -> R.color.statusDelivering
+            Order.STATUS_SUCCESS -> R.color.statusSuccess
+            Order.STATUS_CANCEL -> R.color.statusCancel
+            Order.STATUS_FAIL -> R.color.statusFail
+            else -> R.color.statusNew
+        }
+    }
+
     private fun buildStatusText(order: Order): String {
         val baseStatus = getStatusText(order)
         if (order.getStatusValue() != Order.STATUS_FAIL || order.issueNote.isNullOrBlank()) {
             return baseStatus
         }
-        return "$baseStatus\nSự cố: ${order.issueNote}"
+        val context = mContext ?: return "$baseStatus\n${order.issueNote}"
+        return "$baseStatus\n${context.getString(R.string.order_issue_prefix, order.issueNote)}"
     }
 
     private fun getShipperLocationText(order: Order): String {

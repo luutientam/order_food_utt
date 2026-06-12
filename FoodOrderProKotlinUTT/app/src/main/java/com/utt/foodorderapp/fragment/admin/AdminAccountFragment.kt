@@ -29,17 +29,19 @@ class AdminAccountFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val fragmentAdminAccountBinding = FragmentAdminAccountBinding.inflate(inflater, container, false)
-        fragmentAdminAccountBinding.tvEmail.text = user!!.email
+        fragmentAdminAccountBinding.tvEmail.text = user?.email ?: ""
         fragmentAdminAccountBinding.layoutUpdateProfile.setOnClickListener { onClickUpdateProfile() }
         fragmentAdminAccountBinding.layoutManageAccounts.setOnClickListener { onClickManageAccounts() }
         fragmentAdminAccountBinding.layoutManageCatalog.setOnClickListener { onClickManageCatalog() }
         fragmentAdminAccountBinding.layoutManagePromotion.setOnClickListener { onClickManagePromotion() }
         fragmentAdminAccountBinding.layoutReport.setOnClickListener { onClickReport() }
         fragmentAdminAccountBinding.layoutUserStats.setOnClickListener {
-            startActivity(activity!!, AdminUserStatsActivity::class.java)
+            val act = activity ?: return@setOnClickListener
+            startActivity(act, AdminUserStatsActivity::class.java)
         }
         fragmentAdminAccountBinding.layoutSystemReport.setOnClickListener {
-            startActivity(activity!!, AdminSystemReportActivity::class.java)
+            val act = activity ?: return@setOnClickListener
+            startActivity(act, AdminSystemReportActivity::class.java)
         }
         fragmentAdminAccountBinding.layoutSignOut.setOnClickListener { onClickSignOut() }
         fragmentAdminAccountBinding.layoutChangePassword.setOnClickListener { onClickChangePassword() }
@@ -53,27 +55,33 @@ class AdminAccountFragment : BaseFragment() {
     }
 
     private fun onClickReport() {
-        startActivity(activity!!, AdminReportActivity::class.java)
+        val act = activity ?: return
+        startActivity(act, AdminReportActivity::class.java)
     }
 
     private fun onClickUpdateProfile() {
-        startActivity(activity!!, UpdateProfileActivity::class.java)
+        val act = activity ?: return
+        startActivity(act, UpdateProfileActivity::class.java)
     }
 
     private fun onClickManageAccounts() {
-        startActivity(activity!!, AdminUserManagementActivity::class.java)
+        val act = activity ?: return
+        startActivity(act, AdminUserManagementActivity::class.java)
     }
 
     private fun onClickManageCatalog() {
-        startActivity(activity!!, CatalogManagementActivity::class.java)
+        val act = activity ?: return
+        startActivity(act, CatalogManagementActivity::class.java)
     }
 
     private fun onClickManagePromotion() {
-        startActivity(activity!!, AdminPromotionManagementActivity::class.java)
+        val act = activity ?: return
+        startActivity(act, AdminPromotionManagementActivity::class.java)
     }
 
     private fun onClickChangePassword() {
-        startActivity(activity!!, ChangePasswordActivity::class.java)
+        val act = activity ?: return
+        startActivity(act, ChangePasswordActivity::class.java)
     }
 
     private fun onClickSignOut() {

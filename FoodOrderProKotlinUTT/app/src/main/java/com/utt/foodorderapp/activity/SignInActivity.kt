@@ -84,9 +84,10 @@ class SignInActivity : BaseActivity() {
     }
 
     private fun signInUser(email: String, password: String) {
-        val selectedRole = getSelectedRole()
+        // Set the role tag BEFORE kicking off the async sign-in — the success observer
+        // reads this tag for role routing, so it must be assigned up front.
+        mActivitySignInBinding!!.btnSignIn.tag = getSelectedRole()
         authViewModel.signIn(email, password)
-        mActivitySignInBinding!!.btnSignIn.tag = selectedRole
     }
 
     private fun getSelectedRole(): String {

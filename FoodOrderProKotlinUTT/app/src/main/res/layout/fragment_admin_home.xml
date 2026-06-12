@@ -148,6 +148,19 @@
         android:layout_marginEnd="@dimen/define_dimen_10"
         android:layout_marginBottom="@dimen/define_dimen_10" />
 
+    <TextView
+        android:id="@+id/tv_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_search"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/define_dimen_40"
+        android:padding="@dimen/define_dimen_16"
+        android:text="@string/admin_foods_empty"
+        android:textColor="@color/textColorSecondary"
+        android:textSize="@dimen/text_size_small"
+        android:visibility="gone" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_add_food"
         android:layout_width="wrap_content"
@@ -156,7 +169,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="@dimen/define_dimen_16"
         android:layout_marginBottom="@dimen/define_dimen_16"
-        android:src="@android:drawable/ic_menu_add"
+        android:src="@drawable/ic_add"
         app:backgroundTint="@color/brandOrange"
         app:tint="@color/white"
         tools:ignore="ContentDescription" />

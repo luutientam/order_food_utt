@@ -8,8 +8,17 @@
     <integer name="config_type_payment_cash">1</integer>
     <integer name="config_type_payment_online">2</integer>
     <string name="config_payment_method_cash">Tiền mặt</string>
-    <string name="config_payment_method_online">Thanh toán online</string>
+    <string name="config_payment_method_online">Thanh toán online (SePay)</string>
     <string name="config_admin_email_format">@admin.com</string>
+
+    <!-- ====== Cấu hình SePay (thanh toán online qua VietQR — luồng webhook) ======
+         App CHỈ cần thông tin tài khoản để sinh mã QR (endpoint qr.sepay.vn là
+         public, không cần token). Việc xác nhận đã thanh toán do WEBHOOK của
+         SePay -> Cloudflare Worker ghi thẳng vào Realtime DB (xem thư mục worker/). -->
+    <string name="config_sepay_account_number">00000930528</string>      <!-- số tài khoản TPBank (đã liên kết SePay) -->
+    <string name="config_sepay_bank_code">TPBank</string>               <!-- mã ngân hàng VietQR (TPBank) -->
+    <string name="config_sepay_account_holder">LUU TIEN TAM</string>    <!-- TODO: tên chủ tài khoản (hiển thị) -->
+    <string name="config_sepay_qr_url">https://qr.sepay.vn/img</string>
 
     <string name="config_about_us_title">UTT Food - Đồ án tốt nghiệp</string>
     <string name="config_about_us_content">Sinh viên: Lưu Tiến Tâm\nMSV: 73DCHT22133 - Lớp: 73DCHT23\nKhoa Công nghệ Thông tin\nTrường Đại học Công nghệ Giao thông Vận tải</string>

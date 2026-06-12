@@ -32,8 +32,8 @@ class FoodGridAdapter(private val mListFoods: List<Food>?,
         } else {
             holder.mItemFoodGridBinding.tvSaleOff.visibility = View.VISIBLE
             holder.mItemFoodGridBinding.tvPrice.visibility = View.VISIBLE
-            val strSale = "Giảm " + food.sale + "%"
-            holder.mItemFoodGridBinding.tvSaleOff.text = strSale
+            val ctx = holder.mItemFoodGridBinding.root.context
+            holder.mItemFoodGridBinding.tvSaleOff.text = ctx.getString(com.utt.foodorderapp.R.string.food_sale_off, food.sale)
             val strOldPrice: String = MoneyUtils.format(food.price)
             holder.mItemFoodGridBinding.tvPrice.text = strOldPrice
             holder.mItemFoodGridBinding.tvPrice.paintFlags = holder.mItemFoodGridBinding.tvPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
@@ -47,9 +47,9 @@ class FoodGridAdapter(private val mListFoods: List<Food>?,
         val rating = 4.5 + (food.id % 5) / 10.0
         holder.mItemFoodGridBinding.tvFoodRating.text = String.format("%.1f", rating)
         val sold = 80 + (food.id * 37 % 1900).toInt()
-        val soldText = if (sold >= 1000) "Đã bán " + String.format("%.1f", sold / 1000.0) + "k"
-        else "Đã bán $sold"
-        holder.mItemFoodGridBinding.tvFoodSold.text = soldText
+        val soldValue = if (sold >= 1000) String.format("%.1f", sold / 1000.0) + "k" else sold.toString()
+        holder.mItemFoodGridBinding.tvFoodSold.text =
+                holder.mItemFoodGridBinding.root.context.getString(com.utt.foodorderapp.R.string.food_sold_count, soldValue)
 
         holder.mItemFoodGridBinding.layoutItem.setOnClickListener { iOnClickFoodItemListener.onClickItemFood(food) }
     }

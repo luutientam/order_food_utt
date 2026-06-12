@@ -1,0 +1,4 @@
+# Dùng cho chạy thử cục bộ:  cp .dev.vars.example .dev.vars  rồi điền giá trị thật.
+# (File .dev.vars KHÔNG được commit — đã nằm trong .gitignore)
+SEPAY_WEBHOOK_API_KEY=OCHS3JR0PC2DESHPCPTEMVRYXUCILX1KU8XBTQQOD8OLDW3QRYAYLMFZOYWMVT1T
+FIREBASE_DB_SECRET=dan_database_secret_cua_ban_vao_day

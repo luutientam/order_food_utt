@@ -45,6 +45,8 @@ class ShipperMainActivity : BaseActivity() {
 
     fun setToolBar(title: String?) {
         binding!!.toolbar.layoutToolbar.visibility = View.VISIBLE
+        binding!!.toolbar.imgBack.visibility = View.GONE
+        binding!!.toolbar.imgCart.visibility = View.GONE
         binding!!.toolbar.tvTitle.text = title
     }
 }

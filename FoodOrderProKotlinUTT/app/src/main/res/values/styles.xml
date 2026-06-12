@@ -6,8 +6,12 @@
         <item name="cornerSize">@dimen/define_dimen_20</item>
     </style>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <!-- Base application theme.
+         Bridge variant: keeps the existing AppCompat widget styling but supplies the
+         Material theme attributes that Material components (e.g. BottomNavigationView
+         BadgeDrawable / cart badge) require — otherwise BadgeDrawable throws
+         "requires Theme.MaterialComponents" at runtime. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>

@@ -149,9 +149,10 @@ class HomeFragment : BaseFragment() {
         var filtered = if (selectedCategoryId == 0L) mAllFoods
         else mAllFoods.filter { it.categoryId == selectedCategoryId }
         filtered = when (selectedPriceBucket) {
-            PRICE_LOW -> filtered.filter { it.realPrice in 0..49 }
-            PRICE_MID -> filtered.filter { it.realPrice in 50..100 }
-            PRICE_HIGH -> filtered.filter { it.realPrice > 100 }
+            // realPrice is in VND, so the "k" chips map to thousands (Dưới 50k / 50-100k / Trên 100k).
+            PRICE_LOW -> filtered.filter { it.realPrice < 50_000 }
+            PRICE_MID -> filtered.filter { it.realPrice in 50_000..100_000 }
+            PRICE_HIGH -> filtered.filter { it.realPrice > 100_000 }
             else -> filtered
         }
         mListFood = filtered.toMutableList()

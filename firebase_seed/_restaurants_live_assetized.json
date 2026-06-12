@@ -1,0 +1,90 @@
+{
+  "101": {
+    "active": true,
+    "address": "Số 12 Triều Khúc, Thanh Xuân, Hà Nội",
+    "id": 101,
+    "image": "file:///android_asset/food_images/1280_C_m_T_m__Da_Nang__Vietnam.jpg",
+    "name": "Cơm Tấm Cô Tư",
+    "phone": "0987654321"
+  },
+  "102": {
+    "active": true,
+    "address": "Số 8 Nguyễn Trãi, Thanh Xuân, Hà Nội",
+    "id": 102,
+    "image": "file:///android_asset/food_images/1280_Bowl_of_Meatball_pho.jpg",
+    "name": "Phở & Bún Bò Gốc Đa",
+    "phone": "0978123456"
+  },
+  "103": {
+    "active": true,
+    "address": "Số 45 Triều Khúc, Thanh Xuân, Hà Nội",
+    "id": 103,
+    "image": "file:///android_asset/food_images/1280_Mi_Goreng_GM.jpg",
+    "name": "Quán Mì Trộn UTT",
+    "phone": "0911222333"
+  },
+  "104": {
+    "active": true,
+    "address": "Số 120 Nguyễn Xiển, Thanh Xuân, Hà Nội",
+    "id": 104,
+    "image": "file:///android_asset/food_images/1280_Fried-Chicken-Set.jpg",
+    "name": "Gà Rán Chickita",
+    "phone": "0909888777"
+  },
+  "105": {
+    "active": true,
+    "address": "Số 30 Triều Khúc, Thanh Xuân, Hà Nội",
+    "id": 105,
+    "image": "file:///android_asset/food_images/1280_Bubble_Tea.png",
+    "name": "Trà Chanh Bụi Phố",
+    "phone": "0966555444"
+  },
+  "106": {
+    "active": true,
+    "address": "Số 25 Khương Đình, Thanh Xuân, Hà Nội",
+    "id": 106,
+    "image": "file:///android_asset/food_images/1280_B_nh_m__th_t_n__ng.png",
+    "name": "Bánh Mì & Chè Cô Hoa",
+    "phone": "0944333222"
+  },
+  "107": {
+    "active": true,
+    "address": "Số 88 Nguyễn Xiển, Thanh Xuân, Hà Nội",
+    "id": 107,
+    "image": "file:///android_asset/food_images/1280_Hot_Pot.jpg",
+    "name": "Lẩu Nướng Hải Sản Biển Đông",
+    "phone": "0933121212"
+  },
+  "108": {
+    "active": true,
+    "address": "Số 5 Vũ Trọng Phụng, Thanh Xuân, Hà Nội",
+    "id": 108,
+    "image": "file:///android_asset/food_images/1280_Pizza-3007395.jpg",
+    "name": "Pizza Góc Phố Ý",
+    "phone": "0922343434"
+  },
+  "109": {
+    "active": true,
+    "address": "Số 60 Khương Trung, Thanh Xuân, Hà Nội",
+    "id": 109,
+    "image": "file:///android_asset/food_images/1280_Japanese_SilkyTofu__Kinugoshi_Tofu_.JPG",
+    "name": "Cơm Chay An Lạc",
+    "phone": "0977565656"
+  },
+  "110": {
+    "active": true,
+    "address": "Ngõ 105 Triều Khúc, Thanh Xuân, Hà Nội",
+    "id": 110,
+    "image": "file:///android_asset/food_images/1280_B_n_ri_u___c_bi_t.jpg",
+    "name": "Bún Đậu & Bún Riêu Cô Béo",
+    "phone": "0988676767"
+  },
+  "1779767760801": {
+    "active": true,
+    "address": "",
+    "id": 1779767760801,
+    "image": "",
+    "name": "lmao",
+    "phone": ""
+  }
+}

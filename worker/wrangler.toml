@@ -1,0 +1,11 @@
+name = "sepay-webhook"
+main = "index.js"
+compatibility_date = "2025-01-01"
+
+# Biến môi trường KHÔNG bí mật có thể để ở đây (URL Realtime DB).
+[vars]
+FIREBASE_DB_URL = "https://order-food-utt-default-rtdb.asia-southeast1.firebasedatabase.app"
+
+# Hai biến BÍ MẬT đặt bằng lệnh (KHÔNG ghi vào file này):
+#   wrangler secret put SEPAY_WEBHOOK_API_KEY
+#   wrangler secret put FIREBASE_DB_SECRET

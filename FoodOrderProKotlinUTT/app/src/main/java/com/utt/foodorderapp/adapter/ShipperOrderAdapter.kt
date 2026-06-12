@@ -1,11 +1,12 @@
 package com.utt.foodorderapp.adapter
 
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.utt.foodorderapp.R
-import com.utt.foodorderapp.constant.AppConfig
 import com.utt.foodorderapp.databinding.ItemShipperOrderBinding
 import com.utt.foodorderapp.model.Order
 import com.utt.foodorderapp.utils.MoneyUtils
@@ -29,8 +30,11 @@ class ShipperOrderAdapter(
 
     override fun onBindViewHolder(holder: ShipperOrderViewHolder, position: Int) {
         val order = orders[position]
-        holder.binding.tvInfo.text = "#${order.id} - ${order.name} - ${order.phone}\n${order.address}\n${order.foods}\n(Nhấn giữ để liên hệ)"
+        val context = holder.itemView.context
+        holder.binding.tvInfo.text = "#${order.id} - ${order.name} - ${order.phone}\n${order.address}\n${order.foods}\n${context.getString(R.string.shipper_long_press_contact)}"
         holder.binding.tvStatus.text = getStatusText(holder, order)
+        holder.binding.tvStatus.backgroundTintList = ColorStateList.valueOf(
+                ContextCompat.getColor(context, getStatusColor(order)))
         holder.binding.tvInfo.setOnLongClickListener {
             listener.onContactCustomer(order)
             true
@@ -73,6 +77,18 @@ class ShipperOrderAdapter(
             else -> context.getString(R.string.status_fail)
         }
         return "$statusText - ${MoneyUtils.format(order.amount)}"
+    }
+
+    private fun getStatusColor(order: Order): Int {
+        return when (order.getStatusValue()) {
+            Order.STATUS_NEW -> R.color.statusNew
+            Order.STATUS_PREPARING -> R.color.statusPreparing
+            Order.STATUS_DELIVERING -> R.color.statusDelivering
+            Order.STATUS_SUCCESS -> R.color.statusSuccess
+            Order.STATUS_CANCEL -> R.color.statusCancel
+            Order.STATUS_FAIL -> R.color.statusFail
+            else -> R.color.statusNew
+        }
     }
 
     class ShipperOrderViewHolder(val binding: ItemShipperOrderBinding) : RecyclerView.ViewHolder(binding.root)

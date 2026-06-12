@@ -113,6 +113,13 @@ class AdminHomeFragment : BaseFragment() {
             }
         })
         mFragmentAdminHomeBinding!!.rcvFood.adapter = mAdminFoodAdapter
+        updateEmptyState()
+    }
+
+    private fun updateEmptyState() {
+        val binding = mFragmentAdminHomeBinding ?: return
+        val isEmpty = mListFood.isNullOrEmpty()
+        binding.tvEmpty.visibility = if (isEmpty) View.VISIBLE else View.GONE
     }
 
     private fun initListener() {
@@ -204,6 +211,7 @@ class AdminHomeFragment : BaseFragment() {
                             }
                         }
                         mAdminFoodAdapter!!.notifyDataSetChanged()
+                        updateEmptyState()
                     }
 
                     @SuppressLint("NotifyDataSetChanged")
@@ -234,6 +242,7 @@ class AdminHomeFragment : BaseFragment() {
                             }
                         }
                         mAdminFoodAdapter!!.notifyDataSetChanged()
+                        updateEmptyState()
                     }
 
                     override fun onChildMoved(dataSnapshot: DataSnapshot, s: String?) {}

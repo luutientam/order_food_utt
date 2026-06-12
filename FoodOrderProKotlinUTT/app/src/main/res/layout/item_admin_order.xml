@@ -287,7 +287,12 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="@dimen/define_dimen_5"
                         android:layout_toEndOf="@+id/label_status"
-                        android:textColor="@color/textColorPrimary"
+                        android:background="@drawable/bg_status_pill"
+                        android:paddingStart="@dimen/define_dimen_8"
+                        android:paddingTop="2dp"
+                        android:paddingEnd="@dimen/define_dimen_8"
+                        android:paddingBottom="2dp"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/text_size_small"
                         android:textStyle="bold" />
                 </RelativeLayout>

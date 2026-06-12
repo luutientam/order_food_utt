@@ -81,7 +81,7 @@ class AdminReportActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val list: MutableList<Order> = ArrayList()
                 for (dataSnapshot in snapshot.children) {
-                    val order = dataSnapshot.getValue(Order::class.java)!!
+                    val order = dataSnapshot.getValue(Order::class.java) ?: continue
                     if (canAddOrder(order)) {
                         list.add(0, order)
                     }
@@ -108,9 +108,12 @@ class AdminReportActivity : AppCompatActivity() {
         }
         val strDateOrder = convertTimeStampToDate_2(order.id)
         val longOrder = convertDate2ToTimeStamp(strDateOrder).toLong()
+        // "to date" is parsed as that day at 00:00:00, so make the end day inclusive
+        // by comparing against the start of the next day.
+        val oneDayMillis = 24L * 60L * 60L * 1000L
         if (isEmpty(strDateFrom) && !isEmpty(strDateTo)) {
             val longDateTo = convertDate2ToTimeStamp(strDateTo).toLong()
-            return longOrder <= longDateTo
+            return longOrder < longDateTo + oneDayMillis
         }
         if (!isEmpty(strDateFrom) && isEmpty(strDateTo)) {
             val longDateFrom = convertDate2ToTimeStamp(strDateFrom).toLong()
@@ -118,7 +121,7 @@ class AdminReportActivity : AppCompatActivity() {
         }
         val longDateTo = convertDate2ToTimeStamp(strDateTo).toLong()
         val longDateFrom = convertDate2ToTimeStamp(strDateFrom).toLong()
-        return longOrder in longDateFrom..longDateTo
+        return longOrder >= longDateFrom && longOrder < longDateTo + oneDayMillis
     }
 
     private fun handleDataHistories(list: List<Order>?) {

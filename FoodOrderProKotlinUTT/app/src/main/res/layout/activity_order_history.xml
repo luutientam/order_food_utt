@@ -9,13 +9,30 @@
         android:id="@+id/toolbar"
         layout="@layout/layout_toolbar" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcv_order_history"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:paddingTop="@dimen/define_dimen_12"
-        android:paddingStart="@dimen/define_dimen_8"
-        android:paddingEnd="@dimen/define_dimen_8"
-        android:paddingBottom="@dimen/define_dimen_12" />
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv_order_history"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingTop="@dimen/define_dimen_12"
+            android:paddingStart="@dimen/define_dimen_8"
+            android:paddingEnd="@dimen/define_dimen_8"
+            android:paddingBottom="@dimen/define_dimen_12" />
+
+        <TextView
+            android:id="@+id/tv_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawablePadding="@dimen/define_dimen_8"
+            android:gravity="center"
+            android:text="@string/order_history_empty"
+            android:textColor="@color/textColorSecondary"
+            android:textSize="@dimen/text_size_normal"
+            android:visibility="gone" />
+    </FrameLayout>
 </LinearLayout>

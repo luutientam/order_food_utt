@@ -25,8 +25,8 @@ class FoodPopularAdapter(private val mListFoods: List<Food>?,
             holder.mItemFoodPopularBinding.tvSaleOff.visibility = View.GONE
         } else {
             holder.mItemFoodPopularBinding.tvSaleOff.visibility = View.VISIBLE
-            val strSale = "Giảm " + food.sale + "%"
-            holder.mItemFoodPopularBinding.tvSaleOff.text = strSale
+            holder.mItemFoodPopularBinding.tvSaleOff.text = holder.mItemFoodPopularBinding.root.context
+                    .getString(com.utt.foodorderapp.R.string.food_sale_off, food.sale)
         }
         holder.mItemFoodPopularBinding.layoutItem.setOnClickListener { iOnClickFoodItemListener.onClickItemFood(food) }
     }

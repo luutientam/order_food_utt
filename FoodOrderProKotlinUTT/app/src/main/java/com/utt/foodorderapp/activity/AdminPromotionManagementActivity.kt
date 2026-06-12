@@ -1,5 +1,7 @@
 package com.utt.foodorderapp.activity
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -48,12 +50,28 @@ class AdminPromotionManagementActivity : BaseActivity() {
             }
 
             override fun onDelete(promotion: Promotion) {
-                val code = promotion.code ?: return
-                ControllerApplication[this@AdminPromotionManagementActivity].promotionDatabaseReference
-                        .child(code).removeValue()
+                confirmDeletePromotion(promotion)
             }
         })
         subscribePromotions()
+        updateEmptyState()
+    }
+
+    private fun confirmDeletePromotion(promotion: Promotion) {
+        val code = promotion.code ?: return
+        AlertDialog.Builder(this)
+                .setTitle(getString(R.string.msg_delete_title))
+                .setMessage(getString(R.string.msg_confirm_delete))
+                .setPositiveButton(getString(R.string.delete)) { _: DialogInterface?, _: Int ->
+                    ControllerApplication[this].promotionDatabaseReference
+                            .child(code).removeValue()
+                }
+                .setNegativeButton(getString(R.string.dialog_cancel), null)
+                .show()
+    }
+
+    private fun updateEmptyState() {
+        binding?.tvEmpty?.visibility = if (listPromotion.isEmpty()) View.VISIBLE else View.GONE
     }
 
     private fun initListener() {
@@ -87,6 +105,7 @@ class AdminPromotionManagementActivity : BaseActivity() {
                 val promotion = snapshot.getValue(Promotion::class.java) ?: return
                 listPromotion.add(0, promotion)
                 binding!!.rcvPromotion.adapter?.notifyDataSetChanged()
+                updateEmptyState()
             }
 
             override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
@@ -104,6 +123,7 @@ class AdminPromotionManagementActivity : BaseActivity() {
                 val promotion = snapshot.getValue(Promotion::class.java) ?: return
                 listPromotion.removeAll { it.code == promotion.code }
                 binding!!.rcvPromotion.adapter?.notifyDataSetChanged()
+                updateEmptyState()
             }
 
             override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}

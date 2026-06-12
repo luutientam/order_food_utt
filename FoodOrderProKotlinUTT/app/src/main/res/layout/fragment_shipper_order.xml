@@ -13,4 +13,13 @@
         android:clipToPadding="false"
         android:paddingBottom="@dimen/define_dimen_12" />
 
+    <TextView
+        android:id="@+id/tv_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textColor="@color/textColorSecondary"
+        android:textSize="@dimen/text_size_small"
+        android:visibility="gone" />
+
 </LinearLayout>

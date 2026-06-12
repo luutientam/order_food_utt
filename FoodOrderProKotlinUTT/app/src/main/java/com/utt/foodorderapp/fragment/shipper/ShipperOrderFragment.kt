@@ -40,6 +40,7 @@ class ShipperOrderFragment : BaseFragment() {
     private var adapter: ShipperOrderAdapter? = null
     private var listener: ChildEventListener? = null
     private var isPickupMode = true
+    private var locationUpdatesStarted = false
     private var locationClient: FusedLocationProviderClient? = null
     private val locationCallback = object : LocationCallback() {
         override fun onLocationResult(result: LocationResult) {
@@ -78,7 +79,16 @@ class ShipperOrderFragment : BaseFragment() {
         if (!isPickupMode) {
             startLocationUpdates()
         }
+        updateEmptyState()
         return binding!!.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Shipper lần đầu có thể cấp quyền vị trí SAU khi fragment đã tạo; khởi động lại khi quay lại tab giao hàng
+        if (!isPickupMode && hasLocationPermission()) {
+            startLocationUpdates()
+        }
     }
 
     override fun initToolbar() {
@@ -99,6 +109,7 @@ class ShipperOrderFragment : BaseFragment() {
                 if (shouldDisplayOrder(order, isPickupMode, userId)) {
                     listOrder.add(0, order)
                     adapter?.notifyDataSetChanged()
+                    updateEmptyState()
                 }
             }
 
@@ -120,17 +131,33 @@ class ShipperOrderFragment : BaseFragment() {
                     listOrder.add(0, order)
                 }
                 adapter?.notifyDataSetChanged()
+                updateEmptyState()
             }
 
             override fun onChildRemoved(snapshot: DataSnapshot) {
                 val order = snapshot.getValue(Order::class.java) ?: return
                 listOrder.removeAll { it.id == order.id }
                 adapter?.notifyDataSetChanged()
+                updateEmptyState()
             }
             override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
             override fun onCancelled(error: DatabaseError) {}
         }
         ControllerApplication[currentActivity].bookingDatabaseReference.addChildEventListener(listener!!)
+    }
+
+    private fun updateEmptyState() {
+        val currentBinding = binding ?: return
+        val isEmpty = listOrder.isEmpty()
+        if (isEmpty) {
+            currentBinding.tvEmpty.text = if (isPickupMode) {
+                getString(R.string.shipper_orders_pickup_empty)
+            } else {
+                getString(R.string.shipper_orders_delivering_empty)
+            }
+        }
+        currentBinding.tvEmpty.visibility = if (isEmpty) View.VISIBLE else View.GONE
+        currentBinding.rcvOrder.visibility = if (isEmpty) View.GONE else View.VISIBLE
     }
 
     private fun claimOrder(order: Order) {
@@ -146,7 +173,7 @@ class ShipperOrderFragment : BaseFragment() {
                 .runTransaction(object : Transaction.Handler {
                     override fun doTransaction(currentData: MutableData): Transaction.Result {
                         val current = currentData.getValue(Order::class.java)
-                                ?: return Transaction.success(currentData)
+                                ?: return Transaction.abort()
                         if (!current.canShipperTake(uid)) {
                             return Transaction.abort()
                         }
@@ -201,14 +228,14 @@ class ShipperOrderFragment : BaseFragment() {
     private fun reportIssueAndFail(order: Order) {
         val currentActivity = activity ?: return
         val input = EditText(currentActivity)
-        input.hint = "Nhập nội dung sự cố giao hàng"
+        input.hint = getString(R.string.hint_delivery_issue)
         AlertDialog.Builder(currentActivity)
                 .setTitle(getString(R.string.status_fail))
                 .setView(input)
                 .setPositiveButton(getString(R.string.action_ok)) { _, _ ->
                     val issue = input.text.toString().trim()
                     if (issue.isEmpty()) {
-                        showToastMessage(currentActivity, "Vui lòng nhập nội dung sự cố")
+                        showToastMessage(currentActivity, getString(R.string.msg_delivery_issue_required))
                         return@setPositiveButton
                     }
                     finishOrderWithIssue(order, Order.STATUS_FAIL, issue)
@@ -267,6 +294,7 @@ class ShipperOrderFragment : BaseFragment() {
     private fun startLocationUpdates() {
         val ctx = activity ?: return
         if (!hasLocationPermission()) return
+        if (locationUpdatesStarted) return
         if (locationClient == null) {
             locationClient = LocationServices.getFusedLocationProviderClient(ctx)
         }
@@ -274,10 +302,12 @@ class ShipperOrderFragment : BaseFragment() {
                 .setMinUpdateDistanceMeters(50f)
                 .build()
         locationClient?.requestLocationUpdates(request, locationCallback, Looper.getMainLooper())
+        locationUpdatesStarted = true
     }
 
     private fun stopLocationUpdates() {
         locationClient?.removeLocationUpdates(locationCallback)
+        locationUpdatesStarted = false
     }
 
     private fun hasLocationPermission(): Boolean {

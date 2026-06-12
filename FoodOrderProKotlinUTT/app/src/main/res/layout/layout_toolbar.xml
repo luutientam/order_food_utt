@@ -42,5 +42,24 @@
         android:src="@drawable/ic_cart_white_36"
         android:visibility="gone" />
 
+    <TextView
+        android:id="@+id/tv_cart_badge"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:layout_alignTop="@+id/img_cart"
+        android:layout_alignEnd="@+id/img_cart"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/bg_cart_badge"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:minWidth="18dp"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        tools:text="3" />
+
 </RelativeLayout>
 

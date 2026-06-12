@@ -26,7 +26,7 @@ class AccountFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val fragmentAccountBinding = FragmentAccountBinding.inflate(inflater, container, false)
-        fragmentAccountBinding.tvEmail.text = user!!.email
+        fragmentAccountBinding.tvEmail.text = user?.email ?: ""
         fragmentAccountBinding.layoutUpdateProfile.setOnClickListener { onClickUpdateProfile() }
         fragmentAccountBinding.layoutSignOut.setOnClickListener { onClickSignOut() }
         fragmentAccountBinding.layoutChangePassword.setOnClickListener { onClickChangePassword() }

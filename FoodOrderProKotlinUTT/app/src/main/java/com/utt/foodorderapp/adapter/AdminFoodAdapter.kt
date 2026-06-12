@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.utt.foodorderapp.R
 import com.utt.foodorderapp.adapter.AdminFoodAdapter.AdminFoodViewHolder
 import com.utt.foodorderapp.constant.AppConfig
 import com.utt.foodorderapp.databinding.ItemAdminFoodBinding
@@ -33,7 +34,8 @@ class AdminFoodAdapter(private val mListFoods: List<Food>?,
         } else {
             holder.mItemAdminFoodBinding.tvSaleOff.visibility = View.VISIBLE
             holder.mItemAdminFoodBinding.tvPrice.visibility = View.VISIBLE
-            val strSale = "Giảm " + food.sale + "%"
+            val context = holder.itemView.context
+            val strSale = context.getString(R.string.food_sale_off, food.sale)
             holder.mItemAdminFoodBinding.tvSaleOff.text = strSale
             val strOldPrice: String = MoneyUtils.format(food.price)
             holder.mItemAdminFoodBinding.tvPrice.text = strOldPrice
@@ -44,9 +46,11 @@ class AdminFoodAdapter(private val mListFoods: List<Food>?,
         holder.mItemAdminFoodBinding.tvFoodName.text = food.name
         holder.mItemAdminFoodBinding.tvFoodDescription.text = food.description
         if (food.isPopular) {
-            holder.mItemAdminFoodBinding.tvPopular.text = "Có"
+            holder.mItemAdminFoodBinding.tvPopular.text =
+                    holder.itemView.context.getString(R.string.food_has_discount)
         } else {
-            holder.mItemAdminFoodBinding.tvPopular.text = "Không"
+            holder.mItemAdminFoodBinding.tvPopular.text =
+                    holder.itemView.context.getString(R.string.food_no_discount)
         }
         holder.mItemAdminFoodBinding.imgEdit.setOnClickListener { iOnManagerFoodListener.onClickUpdateFood(food) }
         holder.mItemAdminFoodBinding.imgDelete.setOnClickListener { iOnManagerFoodListener.onClickDeleteFood(food) }

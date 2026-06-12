@@ -1,5 +1,6 @@
 package com.utt.foodorderapp.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,7 +31,7 @@ class ReviewListAdapter(
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         val review = items[position]
-        holder.user.text = maskEmail(review.userEmail)
+        holder.user.text = maskEmail(holder.itemView.context, review.userEmail)
         holder.rating.rating = review.rating.toFloat()
         if (review.comment.isNullOrBlank()) {
             holder.comment.visibility = View.GONE
@@ -48,8 +49,8 @@ class ReviewListAdapter(
     }
 
     /** Ẩn bớt email cho có vẻ riêng tư: abc***@gmail.com */
-    private fun maskEmail(email: String?): String {
-        if (email.isNullOrEmpty()) return "Ẩn danh"
+    private fun maskEmail(context: Context, email: String?): String {
+        if (email.isNullOrEmpty()) return context.getString(R.string.review_anonymous)
         val at = email.indexOf('@')
         if (at <= 1) return email
         val prefix = email.substring(0, minOf(3, at))

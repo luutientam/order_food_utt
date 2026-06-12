@@ -43,6 +43,10 @@ class ForgotPasswordActivity : BaseActivity() {
                                 getString(R.string.msg_reset_password_successfully),
                                 Toast.LENGTH_SHORT).show()
                         mActivityForgotPasswordBinding!!.edtEmail.setText("")
+                    } else {
+                        Toast.makeText(this@ForgotPasswordActivity,
+                                getString(R.string.msg_reset_password_failed),
+                                Toast.LENGTH_SHORT).show()
                     }
                 }
     }

@@ -45,6 +45,7 @@
             android:layout_height="@dimen/define_dimen_36"
             android:layout_marginTop="@dimen/define_dimen_10"
             android:background="@drawable/bg_primary_button"
+            android:foreground="?attr/selectableItemBackground"
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_small"

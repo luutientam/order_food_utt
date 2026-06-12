@@ -3,6 +3,9 @@ package com.utt.foodorderapp.fragment
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
@@ -10,6 +13,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
@@ -20,10 +24,13 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
 import com.utt.foodorderapp.ControllerApplication
 import com.utt.foodorderapp.R
 import com.utt.foodorderapp.activity.AddressBookActivity
-import com.utt.foodorderapp.activity.BaseActivity
 import com.utt.foodorderapp.activity.MainActivity
 import com.utt.foodorderapp.adapter.CartAdapter
 import com.utt.foodorderapp.adapter.CartAdapter.IClickListener
@@ -31,7 +38,7 @@ import com.utt.foodorderapp.constant.AppConfig
 import com.utt.foodorderapp.constant.GlobalFunction.hideSoftKeyboard
 import com.utt.foodorderapp.constant.GlobalFunction.showToastMessage
 import com.utt.foodorderapp.databinding.FragmentCartBinding
-import com.utt.foodorderapp.data.remote.FakeBankApiService
+import com.utt.foodorderapp.data.remote.SePayApiService
 import com.utt.foodorderapp.data.repository.AddressRepository
 import com.utt.foodorderapp.event.ReloadListCartEvent
 import com.utt.foodorderapp.model.Address
@@ -41,6 +48,7 @@ import com.utt.foodorderapp.model.Promotion
 import com.utt.foodorderapp.prefs.DataStoreManager.Companion.user
 import com.utt.foodorderapp.presentation.cart.CartViewModel
 import com.utt.foodorderapp.presentation.common.UiState
+import com.utt.foodorderapp.utils.GlideUtils
 import com.utt.foodorderapp.utils.StringUtil.isEmpty
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -57,7 +65,16 @@ class CartFragment : BaseFragment() {
     private var selectedDiscount = 0
     private var appliedPromotionCode: String? = null
     private var availablePromotions: MutableList<Promotion> = ArrayList()
-    private val fakeBankApiService = FakeBankApiService()
+    private val sePayApiService by lazy {
+        SePayApiService(
+                accountNumber = AppConfig.SEPAY_ACCOUNT_NUMBER,
+                bankCode = AppConfig.SEPAY_BANK_CODE,
+                qrBaseUrl = AppConfig.SEPAY_QR_URL
+        )
+    }
+    private var sePayDialog: AlertDialog? = null
+    private var sePayOrderRef: DatabaseReference? = null
+    private var sePayOrderListener: ValueEventListener? = null
     private lateinit var cartViewModel: CartViewModel
     private val addressRepository = AddressRepository()
 
@@ -189,6 +206,7 @@ class CartFragment : BaseFragment() {
                         mCartAdapter!!.notifyItemRemoved(position)
                     }
                     calculateTotalPrice()
+                    EventBus.getDefault().post(ReloadListCartEvent())
                 }
                 .setNegativeButton(getString(R.string.dialog_cancel)) { dialog: DialogInterface, _: Int -> dialog.dismiss() }
                 .show()
@@ -267,35 +285,21 @@ class CartFragment : BaseFragment() {
             if (isEmpty(strName) || isEmpty(strPhone) || isEmpty(strAddress)) {
                 showToastMessage(activity, getString(R.string.message_enter_infor_order))
             } else {
+                // Cả tiền mặt lẫn online đều tạo đơn ở trạng thái CHƯA THANH TOÁN.
+                // Với online (SePay), sau khi tạo đơn sẽ mở mã QR và chờ webhook
+                // xác nhận -> cập nhật ĐÃ THANH TOÁN (xử lý trong submitOrder).
                 val paymentType = if (rdbPaymentOnline.isChecked) AppConfig.TYPE_PAYMENT_ONLINE else AppConfig.TYPE_PAYMENT_CASH
-                if (paymentType == AppConfig.TYPE_PAYMENT_ONLINE) {
-                    val expectedAmount = (mAmount - selectedDiscount).coerceAtLeast(0)
-                    confirmOnlinePayment(expectedAmount) { transactionId ->
-                        submitOrderWithPromotionValidation(
-                                strName,
-                                strPhone,
-                                strAddress,
-                                bottomSheetDialog,
-                                tvDiscountValue,
-                                tvPriceOrder,
-                                paymentType,
-                                Order.PAYMENT_STATUS_PAID,
-                                transactionId
-                        )
-                    }
-                } else {
-                    submitOrderWithPromotionValidation(
-                            strName,
-                            strPhone,
-                            strAddress,
-                            bottomSheetDialog,
-                            tvDiscountValue,
-                            tvPriceOrder,
-                            paymentType,
-                            Order.PAYMENT_STATUS_UNPAID,
-                            null
-                    )
-                }
+                submitOrderWithPromotionValidation(
+                        strName,
+                        strPhone,
+                        strAddress,
+                        bottomSheetDialog,
+                        tvDiscountValue,
+                        tvPriceOrder,
+                        paymentType,
+                        Order.PAYMENT_STATUS_UNPAID,
+                        null
+                )
             }
         }
         bottomSheetDialog.show()
@@ -364,9 +368,20 @@ class CartFragment : BaseFragment() {
                 finalAmount, getStringListFoodsOrder(), paymentType, false, Order.STATUS_NEW,
                 0.0, 0.0, mAmount, discount, promotionCode, customerId,
                 0.0, 0.0, paymentStatus, paymentTransactionId)
-        cartViewModel.submitOrder(order)
         hideSoftKeyboard(requireActivity())
         bottomSheetDialog.dismiss()
+        if (paymentType == AppConfig.TYPE_PAYMENT_ONLINE) {
+            // Tạo đơn "chờ thanh toán" rồi mở mã QR SePay; webhook sẽ xác nhận.
+            cartViewModel.createPendingOrder(order) { ok ->
+                if (ok) {
+                    showSePayPaymentDialog(order)
+                } else {
+                    showToastMessage(activity, AppConfig.GENERIC_ERROR)
+                }
+            }
+        } else {
+            cartViewModel.submitOrder(order)
+        }
     }
 
     private fun loadAvailablePromotions(
@@ -437,32 +452,103 @@ class CartFragment : BaseFragment() {
         return discount
     }
 
-    private fun confirmOnlinePayment(amount: Int, onPaid: (String) -> Unit) {
-        AlertDialog.Builder(requireActivity())
-                .setTitle(getString(R.string.payment_method_online))
-                .setMessage(getString(R.string.confirm_online_payment))
-                .setPositiveButton(getString(R.string.action_ok)) { _: DialogInterface?, _: Int ->
-                    executeFakeBankPayment(amount, onPaid)
-                }
-                .setNegativeButton(getString(R.string.action_cancel)) { dialog: DialogInterface, _: Int ->
+    /**
+     * Mở hộp thoại thanh toán SePay (VietQR) cho [order] vừa được tạo ở trạng thái
+     * "chờ thanh toán". Hiển thị mã QR (nội dung CK = mã đơn) và LẮNG NGHE realtime
+     * node /booking/{id}; khi webhook SePay cập nhật paymentStatus = ĐÃ THANH TOÁN,
+     * hộp thoại tự đóng và báo thành công.
+     */
+    private fun showSePayPaymentDialog(order: Order) {
+        val ctx = activity ?: return
+        val amountVnd = order.amount.toLong() * 1000L
+        val content = SePayApiService.contentForOrder(order.id)
+
+        @SuppressLint("InflateParams")
+        val view = layoutInflater.inflate(R.layout.dialog_sepay_payment, null, false)
+        val ivQr = view.findViewById<ImageView>(R.id.iv_sepay_qr)
+        val tvAmount = view.findViewById<TextView>(R.id.tv_sepay_amount)
+        val tvBank = view.findViewById<TextView>(R.id.tv_sepay_bank)
+        val tvAccount = view.findViewById<TextView>(R.id.tv_sepay_account)
+        val tvHolder = view.findViewById<TextView>(R.id.tv_sepay_holder)
+        val tvContent = view.findViewById<TextView>(R.id.tv_sepay_content)
+        val tvStatus = view.findViewById<TextView>(R.id.tv_sepay_status)
+        val tvCancel = view.findViewById<TextView>(R.id.tv_sepay_cancel)
+        val tvClose = view.findViewById<TextView>(R.id.tv_sepay_paid)
+
+        tvAmount.text = MoneyUtils.format(order.amount)
+        tvBank.text = AppConfig.SEPAY_BANK_CODE
+        tvAccount.text = AppConfig.SEPAY_ACCOUNT_NUMBER
+        tvHolder.text = AppConfig.SEPAY_ACCOUNT_HOLDER
+        tvContent.text = content
+        tvStatus.text = getString(R.string.sepay_waiting)
+        tvCancel.text = getString(R.string.sepay_cancel_order)
+        tvClose.text = getString(R.string.sepay_close)
+        GlideUtils.loadUrl(sePayApiService.buildQrUrl(amountVnd, content), ivQr)
+
+        // Chạm để sao chép nhanh số tài khoản / nội dung
+        tvAccount.setOnClickListener { copyToClipboard(AppConfig.SEPAY_ACCOUNT_NUMBER) }
+        tvContent.setOnClickListener { copyToClipboard(content) }
+
+        val dialog = AlertDialog.Builder(ctx)
+                .setView(view)
+                .setCancelable(false)
+                .create()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        sePayDialog = dialog
+
+        // Lắng nghe realtime: webhook SePay sẽ đặt paymentStatus = PAID
+        val orderRef = ControllerApplication.getInstance()
+                .bookingDatabaseReference.child(order.id.toString())
+        val listener = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val current = snapshot.getValue(Order::class.java) ?: return
+                if (current.paymentStatus == Order.PAYMENT_STATUS_PAID) {
+                    stopSePayOrderListener()
+                    showToastMessage(activity, getString(R.string.msg_online_payment_success))
                     dialog.dismiss()
-                    showToastMessage(activity, getString(R.string.msg_online_payment_cancelled))
                 }
-                .show()
+            }
+
+            override fun onCancelled(error: DatabaseError) { /* giữ nguyên trạng thái chờ */ }
+        }
+        orderRef.addValueEventListener(listener)
+        sePayOrderRef = orderRef
+        sePayOrderListener = listener
+
+        // "Hủy đơn": chuyển đơn sang trạng thái ĐÃ HỦY rồi đóng
+        tvCancel.setOnClickListener {
+            orderRef.child("status").setValue(Order.STATUS_CANCEL)
+            stopSePayOrderListener()
+            dialog.dismiss()
+            showToastMessage(activity, getString(R.string.msg_online_payment_cancelled))
+        }
+
+        // "Đóng": để đơn ở trạng thái chờ; webhook vẫn tự xác nhận, xem ở Lịch sử
+        tvClose.setOnClickListener {
+            stopSePayOrderListener()
+            dialog.dismiss()
+            showToastMessage(activity, getString(R.string.sepay_keep_pending))
+        }
+
+        dialog.setOnDismissListener {
+            stopSePayOrderListener()
+            if (sePayDialog === dialog) sePayDialog = null
+        }
+        dialog.show()
     }
 
-    private fun executeFakeBankPayment(amount: Int, onPaid: (String) -> Unit) {
-        (activity as? BaseActivity)?.showProgressDialog(true)
-        val requestId = System.currentTimeMillis()
-        fakeBankApiService.createPayment(requestId, amount) { result ->
-            (activity as? BaseActivity)?.showProgressDialog(false)
-            if (!result.isSuccess || result.transactionId.isNullOrEmpty()) {
-                showToastMessage(activity, getString(R.string.msg_online_payment_failed, result.message))
-                return@createPayment
-            }
-            showToastMessage(activity, getString(R.string.msg_online_payment_success))
-            onPaid(result.transactionId)
-        }
+    private fun stopSePayOrderListener() {
+        val listener = sePayOrderListener ?: return
+        sePayOrderRef?.removeEventListener(listener)
+        sePayOrderListener = null
+        sePayOrderRef = null
+    }
+
+    private fun copyToClipboard(text: String) {
+        val ctx = activity ?: return
+        val clipboard = ctx.getSystemService(Context.CLIPBOARD_SERVICE) as? ClipboardManager ?: return
+        clipboard.setPrimaryClip(ClipData.newPlainText("sepay", text))
+        showToastMessage(activity, getString(R.string.sepay_copied))
     }
 
     private fun applyPromotionCode(code: String, tvDiscountValue: TextView, tvPriceOrder: TextView) {
@@ -536,6 +622,9 @@ class CartFragment : BaseFragment() {
         if (EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this)
         }
+        stopSePayOrderListener()
+        sePayDialog?.dismiss()
+        sePayDialog = null
         mCartAdapter = null
         mFragmentCartBinding = null
     }
@@ -553,6 +642,7 @@ class CartFragment : BaseFragment() {
                 is UiState.Success -> {
                     clearCart()
                     cartViewModel.loadCart()
+                    EventBus.getDefault().post(ReloadListCartEvent())
                     showToastMessage(activity, getString(R.string.msg_order_success))
                 }
                 is UiState.Error -> {

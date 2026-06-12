@@ -63,6 +63,7 @@ class AdminOrderFragment : BaseFragment() {
             }
         })
         mFragmentAdminOrderBinding!!.rcvOrder.adapter = mAdminOrderAdapter
+        updateEmptyState()
     }
 
     private fun getListOrders() {
@@ -80,6 +81,7 @@ class AdminOrderFragment : BaseFragment() {
                         }
                         mListOrder!!.add(0, order)
                         mAdminOrderAdapter!!.notifyDataSetChanged()
+                        updateEmptyState()
                     }
 
                     @SuppressLint("NotifyDataSetChanged")
@@ -110,12 +112,19 @@ class AdminOrderFragment : BaseFragment() {
                             }
                         }
                         mAdminOrderAdapter!!.notifyDataSetChanged()
+                        updateEmptyState()
                     }
 
                     override fun onChildMoved(dataSnapshot: DataSnapshot, s: String?) {}
                     override fun onCancelled(databaseError: DatabaseError) {}
                 }
         mBookingDatabaseReference?.addChildEventListener(mBookingChildEventListener!!)
+    }
+
+    private fun updateEmptyState() {
+        val binding = mFragmentAdminOrderBinding ?: return
+        val isEmpty = mListOrder.isNullOrEmpty()
+        binding.tvEmpty.visibility = if (isEmpty) View.VISIBLE else View.GONE
     }
 
     private fun handleUpdateStatusOrder(order: Order) {

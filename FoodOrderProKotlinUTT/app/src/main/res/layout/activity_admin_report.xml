@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white"
+    android:background="@color/screenBackground"
     android:orientation="vertical">
 
     <include
@@ -147,7 +147,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/black_overlay"
+        android:background="@color/surfaceBackground"
         android:padding="@dimen/define_dimen_10">
 
         <TextView
@@ -158,7 +158,7 @@
             android:layout_marginEnd="@dimen/define_dimen_8"
             android:layout_toStartOf="@+id/tv_total_value"
             android:text="@string/label_total_revenue"
-            android:textColor="@color/black"
+            android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/text_size_normal" />
 
         <TextView
@@ -169,7 +169,7 @@
             android:layout_centerVertical="true"
             android:textColor="@color/neutral900"
             android:textSize="@dimen/text_size_normal"
-            android:text="0 000 VNĐ"
+            android:text="@string/label_price_0"
             android:textStyle="bold" />
     </RelativeLayout>
 

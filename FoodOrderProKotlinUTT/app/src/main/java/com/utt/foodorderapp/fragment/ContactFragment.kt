@@ -68,7 +68,7 @@ class ContactFragment : BaseFragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        mContactAdapter!!.release()
+        mContactAdapter?.release()
     }
 
     override fun initToolbar() {

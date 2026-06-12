@@ -1,0 +1,1213 @@
+{
+  "1001": {
+    "banner": "file:///android_asset/food_images/1280_C_m_T_m__Da_Nang__Vietnam.jpg",
+    "categoryId": 1,
+    "categoryName": "Cơm",
+    "description": "Cơm tấm dẻo, sườn nướng, bì và chả trứng, chan mắm chua ngọt.",
+    "id": 1001,
+    "image": "file:///android_asset/food_images/1280_C_m_T_m__Da_Nang__Vietnam.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_C_m_T_m__Da_Nang__Vietnam.jpg"
+      }
+    ],
+    "name": "Cơm tấm sườn bì chả",
+    "popular": true,
+    "price": 45,
+    "restaurantId": 101,
+    "restaurantName": "Cơm Tấm Cô Tư",
+    "sale": 0
+  },
+  "1002": {
+    "banner": "file:///android_asset/food_images/1280_C_m_T_m__Da_Nang__Vietnam.jpg",
+    "categoryId": 1,
+    "categoryName": "Cơm",
+    "description": "Sườn nướng mật ong kèm trứng ốp lòng đào, dưa leo cà chua.",
+    "id": 1002,
+    "image": "file:///android_asset/food_images/1280_C_m_T_m__Da_Nang__Vietnam.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_C_m_T_m__Da_Nang__Vietnam.jpg"
+      }
+    ],
+    "name": "Cơm tấm sườn trứng ốp la",
+    "popular": false,
+    "price": 42,
+    "restaurantId": 101,
+    "restaurantName": "Cơm Tấm Cô Tư",
+    "sale": 10
+  },
+  "1003": {
+    "banner": "file:///android_asset/food_images/1280_Hainanese_Chicken_Rice.jpg",
+    "categoryId": 1,
+    "categoryName": "Cơm",
+    "description": "Đùi gà chiên xối mỡ giòn rụm, cơm vàng ươm kèm gỏi.",
+    "id": 1003,
+    "image": "file:///android_asset/food_images/1280_Hainanese_Chicken_Rice.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Hainanese_Chicken_Rice.jpg"
+      }
+    ],
+    "name": "Cơm gà xối mỡ",
+    "popular": true,
+    "price": 42,
+    "restaurantId": 101,
+    "restaurantName": "Cơm Tấm Cô Tư",
+    "sale": 0
+  },
+  "1004": {
+    "banner": "file:///android_asset/food_images/1280_Koh_Mak__Thailand__Fried_rice_with_seafood__Thai_fried_rice.jpg",
+    "categoryId": 1,
+    "categoryName": "Cơm",
+    "description": "Cơm rang săn hạt cùng thịt bò và dưa chua đậm đà.",
+    "id": 1004,
+    "image": "file:///android_asset/food_images/1280_Koh_Mak__Thailand__Fried_rice_with_seafood__Thai_fried_rice.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Koh_Mak__Thailand__Fried_rice_with_seafood__Thai_fried_rice.jpg"
+      }
+    ],
+    "name": "Cơm rang dưa bò",
+    "popular": false,
+    "price": 38,
+    "restaurantId": 101,
+    "restaurantName": "Cơm Tấm Cô Tư",
+    "sale": 5
+  },
+  "1005": {
+    "banner": "file:///android_asset/food_images/1280_Koh_Mak__Thailand__Fried_rice_with_seafood__Thai_fried_rice.jpg",
+    "categoryId": 1,
+    "categoryName": "Cơm",
+    "description": "Cơm rang tôm mực, đậu Hà Lan, trứng thơm nức.",
+    "id": 1005,
+    "image": "file:///android_asset/food_images/1280_Koh_Mak__Thailand__Fried_rice_with_seafood__Thai_fried_rice.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Koh_Mak__Thailand__Fried_rice_with_seafood__Thai_fried_rice.jpg"
+      }
+    ],
+    "name": "Cơm rang hải sản",
+    "popular": false,
+    "price": 48,
+    "restaurantId": 101,
+    "restaurantName": "Cơm Tấm Cô Tư",
+    "sale": 0
+  },
+  "1006": {
+    "banner": "file:///android_asset/food_images/1280_C_m_T_m__Da_Nang__Vietnam.jpg",
+    "categoryId": 1,
+    "categoryName": "Cơm",
+    "description": "Miếng sườn cốt lết to ướp mật ong nướng than hoa.",
+    "id": 1006,
+    "image": "file:///android_asset/food_images/1280_C_m_T_m__Da_Nang__Vietnam.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_C_m_T_m__Da_Nang__Vietnam.jpg"
+      }
+    ],
+    "name": "Cơm sườn nướng mật ong",
+    "popular": true,
+    "price": 50,
+    "restaurantId": 101,
+    "restaurantName": "Cơm Tấm Cô Tư",
+    "sale": 0
+  },
+  "2001": {
+    "banner": "file:///android_asset/food_images/1280_Bowl_of_Meatball_pho.jpg",
+    "categoryId": 2,
+    "categoryName": "Phở & Bún",
+    "description": "Nước dùng ninh xương 12 tiếng, bánh phở mềm, bò tái ngọt.",
+    "id": 2001,
+    "image": "file:///android_asset/food_images/1280_Bowl_of_Meatball_pho.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Bowl_of_Meatball_pho.jpg"
+      }
+    ],
+    "name": "Phở bò tái lăn",
+    "popular": true,
+    "price": 40,
+    "restaurantId": 102,
+    "restaurantName": "Phở & Bún Bò Gốc Đa",
+    "sale": 0
+  },
+  "2002": {
+    "banner": "file:///android_asset/food_images/1280_Bowl_of_Meatball_pho.jpg",
+    "categoryId": 2,
+    "categoryName": "Phở & Bún",
+    "description": "Phở gà ta thả vườn, thịt chắc ngọt, nước trong thanh.",
+    "id": 2002,
+    "image": "file:///android_asset/food_images/1280_Bowl_of_Meatball_pho.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Bowl_of_Meatball_pho.jpg"
+      }
+    ],
+    "name": "Phở gà ta",
+    "popular": false,
+    "price": 38,
+    "restaurantId": 102,
+    "restaurantName": "Phở & Bún Bò Gốc Đa",
+    "sale": 0
+  },
+  "2003": {
+    "banner": "file:///android_asset/food_images/1280_B_n_b__Hu__-_Ch____ng_Ba__2024__-_img_02.jpg",
+    "categoryId": 2,
+    "categoryName": "Phở & Bún",
+    "description": "Bún bò Huế cay nồng sả ớt, giò heo, chả cua, bò bắp.",
+    "id": 2003,
+    "image": "file:///android_asset/food_images/1280_B_n_b__Hu__-_Ch____ng_Ba__2024__-_img_02.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_B_n_b__Hu__-_Ch____ng_Ba__2024__-_img_02.jpg"
+      }
+    ],
+    "name": "Bún bò Huế đặc biệt",
+    "popular": true,
+    "price": 42,
+    "restaurantId": 102,
+    "restaurantName": "Phở & Bún Bò Gốc Đa",
+    "sale": 0
+  },
+  "2004": {
+    "banner": "file:///android_asset/food_images/1280_B_n_ch__Vietnamese_food.jpg",
+    "categoryId": 2,
+    "categoryName": "Phở & Bún",
+    "description": "Chả viên và ba chỉ nướng than hoa, nước chấm chua ngọt.",
+    "id": 2004,
+    "image": "file:///android_asset/food_images/1280_B_n_ch__Vietnamese_food.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_B_n_ch__Vietnamese_food.jpg"
+      }
+    ],
+    "name": "Bún chả Hà Nội",
+    "popular": true,
+    "price": 40,
+    "restaurantId": 102,
+    "restaurantName": "Phở & Bún Bò Gốc Đa",
+    "sale": 10
+  },
+  "2005": {
+    "banner": "file:///android_asset/food_images/1280_Hu_Tieu_Nam_Vang.jpg",
+    "categoryId": 2,
+    "categoryName": "Phở & Bún",
+    "description": "Hủ tiếu tôm thịt, gan, trứng cút, nước lèo ngọt thanh.",
+    "id": 2005,
+    "image": "file:///android_asset/food_images/1280_Hu_Tieu_Nam_Vang.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Hu_Tieu_Nam_Vang.jpg"
+      }
+    ],
+    "name": "Hủ tiếu Nam Vang",
+    "popular": false,
+    "price": 40,
+    "restaurantId": 102,
+    "restaurantName": "Phở & Bún Bò Gốc Đa",
+    "sale": 0
+  },
+  "2006": {
+    "banner": "file:///android_asset/food_images/1280_M__Qu_ng__Da_Nang__Vietnam.jpg",
+    "categoryId": 2,
+    "categoryName": "Phở & Bún",
+    "description": "Mì Quảng sợi vàng, tôm thịt, đậu phộng và bánh đa.",
+    "id": 2006,
+    "image": "file:///android_asset/food_images/1280_M__Qu_ng__Da_Nang__Vietnam.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_M__Qu_ng__Da_Nang__Vietnam.jpg"
+      }
+    ],
+    "name": "Mì Quảng tôm thịt",
+    "popular": false,
+    "price": 42,
+    "restaurantId": 102,
+    "restaurantName": "Phở & Bún Bò Gốc Đa",
+    "sale": 0
+  },
+  "2007": {
+    "banner": "file:///android_asset/food_images/1280_B_n_ri_u___c_bi_t.jpg",
+    "categoryId": 2,
+    "categoryName": "Phở & Bún",
+    "description": "Bún riêu cua đồng, đậu rán, cà chua, mắm tôm tuỳ chọn.",
+    "id": 2007,
+    "image": "file:///android_asset/food_images/1280_B_n_ri_u___c_bi_t.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_B_n_ri_u___c_bi_t.jpg"
+      }
+    ],
+    "name": "Bún riêu cua đồng",
+    "popular": true,
+    "price": 38,
+    "restaurantId": 110,
+    "restaurantName": "Bún Đậu & Bún Riêu Cô Béo",
+    "sale": 0
+  },
+  "2008": {
+    "banner": "file:///android_asset/food_images/1280_B_n_ri_u___c_bi_t.jpg",
+    "categoryId": 2,
+    "categoryName": "Phở & Bún",
+    "description": "Mẹt bún đậu đầy đủ: đậu rán, chả cốm, nem, lòng.",
+    "id": 2008,
+    "image": "file:///android_asset/food_images/1280_B_n_ri_u___c_bi_t.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_B_n_ri_u___c_bi_t.jpg"
+      }
+    ],
+    "name": "Bún đậu mắm tôm đầy đủ",
+    "popular": true,
+    "price": 45,
+    "restaurantId": 110,
+    "restaurantName": "Bún Đậu & Bún Riêu Cô Béo",
+    "sale": 0
+  },
+  "3001": {
+    "banner": "file:///android_asset/food_images/1280_Mi_Goreng_GM.jpg",
+    "categoryId": 3,
+    "categoryName": "Mì & Cháo",
+    "description": "Mì Indomie trộn bò khô, trứng lòng đào và rau xanh.",
+    "id": 3001,
+    "image": "file:///android_asset/food_images/1280_Mi_Goreng_GM.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Mi_Goreng_GM.jpg"
+      }
+    ],
+    "name": "Mì trộn Indomie bò khô",
+    "popular": false,
+    "price": 30,
+    "restaurantId": 103,
+    "restaurantName": "Quán Mì Trộn UTT",
+    "sale": 0
+  },
+  "3002": {
+    "banner": "file:///android_asset/food_images/1280_Jjampong.JPG",
+    "categoryId": 3,
+    "categoryName": "Mì & Cháo",
+    "description": "Mì cay Hàn Quốc hải sản, phô mai kéo sợi, cay tê.",
+    "id": 3002,
+    "image": "file:///android_asset/food_images/1280_Jjampong.JPG",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Jjampong.JPG"
+      }
+    ],
+    "name": "Mì cay hải sản cấp độ 3",
+    "popular": true,
+    "price": 50,
+    "restaurantId": 103,
+    "restaurantName": "Quán Mì Trộn UTT",
+    "sale": 0
+  },
+  "3003": {
+    "banner": "file:///android_asset/food_images/1280_Chinese_rice_congee.jpg",
+    "categoryId": 3,
+    "categoryName": "Mì & Cháo",
+    "description": "Cháo sườn sánh mịn, sụn giòn, quẩy nóng và ruốc.",
+    "id": 3003,
+    "image": "file:///android_asset/food_images/1280_Chinese_rice_congee.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Chinese_rice_congee.jpg"
+      }
+    ],
+    "name": "Cháo sườn sụn",
+    "popular": false,
+    "price": 25,
+    "restaurantId": 103,
+    "restaurantName": "Quán Mì Trộn UTT",
+    "sale": 0
+  },
+  "3004": {
+    "banner": "file:///android_asset/food_images/1280_Cooked_dangmyeon.jpg",
+    "categoryId": 3,
+    "categoryName": "Mì & Cháo",
+    "description": "Miến dong trộn gà xé, nấm hương, hành phi thơm.",
+    "id": 3004,
+    "image": "file:///android_asset/food_images/1280_Cooked_dangmyeon.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Cooked_dangmyeon.jpg"
+      }
+    ],
+    "name": "Miến trộn gà xé",
+    "popular": false,
+    "price": 35,
+    "restaurantId": 103,
+    "restaurantName": "Quán Mì Trộn UTT",
+    "sale": 5
+  },
+  "3005": {
+    "banner": "file:///android_asset/food_images/1280_Mi_Goreng_GM.jpg",
+    "categoryId": 3,
+    "categoryName": "Mì & Cháo",
+    "description": "Mì chiên giòn rưới sốt hải sản sánh đậm.",
+    "id": 3005,
+    "image": "file:///android_asset/food_images/1280_Mi_Goreng_GM.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Mi_Goreng_GM.jpg"
+      }
+    ],
+    "name": "Mì xào giòn hải sản",
+    "popular": false,
+    "price": 45,
+    "restaurantId": 103,
+    "restaurantName": "Quán Mì Trộn UTT",
+    "sale": 0
+  },
+  "3006": {
+    "banner": "file:///android_asset/food_images/1280_Chinese_rice_congee.jpg",
+    "categoryId": 3,
+    "categoryName": "Mì & Cháo",
+    "description": "Cháo gà ác hầm thuốc bắc bổ dưỡng, ấm bụng.",
+    "id": 3006,
+    "image": "file:///android_asset/food_images/1280_Chinese_rice_congee.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Chinese_rice_congee.jpg"
+      }
+    ],
+    "name": "Cháo gà ác tần thuốc bắc",
+    "popular": false,
+    "price": 40,
+    "restaurantId": 103,
+    "restaurantName": "Quán Mì Trộn UTT",
+    "sale": 0
+  },
+  "4001": {
+    "banner": "file:///android_asset/food_images/1280_Fried-Chicken-Set.jpg",
+    "categoryId": 4,
+    "categoryName": "Gà rán & Đồ ăn nhanh",
+    "description": "2 miếng gà rán giòn rụm kèm 1 nước ngọt mát lạnh.",
+    "id": 4001,
+    "image": "file:///android_asset/food_images/1280_Fried-Chicken-Set.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Fried-Chicken-Set.jpg"
+      }
+    ],
+    "name": "Combo gà rán 2 miếng + nước",
+    "popular": true,
+    "price": 55,
+    "restaurantId": 104,
+    "restaurantName": "Gà Rán Chickita",
+    "sale": 0
+  },
+  "4002": {
+    "banner": "file:///android_asset/food_images/1280_RedDot_Burger.jpg",
+    "categoryId": 4,
+    "categoryName": "Gà rán & Đồ ăn nhanh",
+    "description": "Burger gà chiên giòn, rau tươi, sốt mayonnaise.",
+    "id": 4002,
+    "image": "file:///android_asset/food_images/1280_RedDot_Burger.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_RedDot_Burger.jpg"
+      }
+    ],
+    "name": "Burger gà giòn",
+    "popular": false,
+    "price": 40,
+    "restaurantId": 104,
+    "restaurantName": "Gà Rán Chickita",
+    "sale": 10
+  },
+  "4003": {
+    "banner": "file:///android_asset/food_images/1280_French_Fries.JPG",
+    "categoryId": 4,
+    "categoryName": "Gà rán & Đồ ăn nhanh",
+    "description": "Khoai tây chiên giòn vàng, rắc muối phô mai.",
+    "id": 4003,
+    "image": "file:///android_asset/food_images/1280_French_Fries.JPG",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_French_Fries.JPG"
+      }
+    ],
+    "name": "Khoai tây chiên size L",
+    "popular": false,
+    "price": 25,
+    "restaurantId": 104,
+    "restaurantName": "Gà Rán Chickita",
+    "sale": 0
+  },
+  "4004": {
+    "banner": "file:///android_asset/food_images/1280_KFC_Popcorn_Chicken__12956064765_.jpg",
+    "categoryId": 4,
+    "categoryName": "Gà rán & Đồ ăn nhanh",
+    "description": "Gà viên popcorn chấm xốt phô mai béo ngậy.",
+    "id": 4004,
+    "image": "file:///android_asset/food_images/1280_KFC_Popcorn_Chicken__12956064765_.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_KFC_Popcorn_Chicken__12956064765_.jpg"
+      }
+    ],
+    "name": "Gà popcorn xốt phô mai",
+    "popular": true,
+    "price": 35,
+    "restaurantId": 104,
+    "restaurantName": "Gà Rán Chickita",
+    "sale": 0
+  },
+  "4005": {
+    "banner": "file:///android_asset/food_images/1280_Fried-Chicken-Set.jpg",
+    "categoryId": 4,
+    "categoryName": "Gà rán & Đồ ăn nhanh",
+    "description": "6 miếng gà, 2 khoai tây, 4 nước - tiệc cho cả nhà.",
+    "id": 4005,
+    "image": "file:///android_asset/food_images/1280_Fried-Chicken-Set.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Fried-Chicken-Set.jpg"
+      }
+    ],
+    "name": "Combo gà rán gia đình 6 miếng",
+    "popular": true,
+    "price": 159,
+    "restaurantId": 104,
+    "restaurantName": "Gà Rán Chickita",
+    "sale": 10
+  },
+  "4006": {
+    "banner": "file:///android_asset/food_images/1280_Fried-Chicken-Set.jpg",
+    "categoryId": 4,
+    "categoryName": "Gà rán & Đồ ăn nhanh",
+    "description": "Cánh gà chiên phủ sốt cay ngọt kiểu Hàn.",
+    "id": 4006,
+    "image": "file:///android_asset/food_images/1280_Fried-Chicken-Set.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Fried-Chicken-Set.jpg"
+      }
+    ],
+    "name": "Gà sốt cay Hàn Quốc",
+    "popular": true,
+    "price": 60,
+    "restaurantId": 104,
+    "restaurantName": "Gà Rán Chickita",
+    "sale": 0
+  },
+  "4007": {
+    "banner": "file:///android_asset/food_images/1280_RedDot_Burger.jpg",
+    "categoryId": 4,
+    "categoryName": "Gà rán & Đồ ăn nhanh",
+    "description": "Xúc xích Đức kẹp bánh mì, phô mai chảy, sốt cà.",
+    "id": 4007,
+    "image": "file:///android_asset/food_images/1280_RedDot_Burger.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_RedDot_Burger.jpg"
+      }
+    ],
+    "name": "Hotdog phô mai",
+    "popular": false,
+    "price": 30,
+    "restaurantId": 104,
+    "restaurantName": "Gà Rán Chickita",
+    "sale": 0
+  },
+  "5001": {
+    "banner": "file:///android_asset/food_images/1280_Iced_Tea_from_flickr.jpg",
+    "categoryId": 5,
+    "categoryName": "Đồ uống",
+    "description": "Trà chanh giã tay mát lạnh, thơm vị chanh tươi.",
+    "id": 5001,
+    "image": "file:///android_asset/food_images/1280_Iced_Tea_from_flickr.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Iced_Tea_from_flickr.jpg"
+      }
+    ],
+    "name": "Trà chanh giã tay",
+    "popular": true,
+    "price": 15,
+    "restaurantId": 105,
+    "restaurantName": "Trà Chanh Bụi Phố",
+    "sale": 0
+  },
+  "5002": {
+    "banner": "file:///android_asset/food_images/1280_Bubble_Tea.png",
+    "categoryId": 5,
+    "categoryName": "Đồ uống",
+    "description": "Trà sữa béo thơm, trân châu đường đen dẻo dai.",
+    "id": 5002,
+    "image": "file:///android_asset/food_images/1280_Bubble_Tea.png",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Bubble_Tea.png"
+      }
+    ],
+    "name": "Trà sữa trân châu đường đen",
+    "popular": true,
+    "price": 30,
+    "restaurantId": 105,
+    "restaurantName": "Trà Chanh Bụi Phố",
+    "sale": 0
+  },
+  "5003": {
+    "banner": "file:///android_asset/food_images/1280_Viet-coffee.jpg",
+    "categoryId": 5,
+    "categoryName": "Đồ uống",
+    "description": "Cà phê phin đậm đà, sữa đặc béo ngậy.",
+    "id": 5003,
+    "image": "file:///android_asset/food_images/1280_Viet-coffee.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Viet-coffee.jpg"
+      }
+    ],
+    "name": "Cà phê sữa đá",
+    "popular": false,
+    "price": 20,
+    "restaurantId": 105,
+    "restaurantName": "Trà Chanh Bụi Phố",
+    "sale": 0
+  },
+  "5004": {
+    "banner": "file:///android_asset/food_images/1280_Iced_Tea_from_flickr.jpg",
+    "categoryId": 5,
+    "categoryName": "Đồ uống",
+    "description": "Trà đào cam sả thanh mát, miếng đào giòn ngọt.",
+    "id": 5004,
+    "image": "file:///android_asset/food_images/1280_Iced_Tea_from_flickr.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Iced_Tea_from_flickr.jpg"
+      }
+    ],
+    "name": "Trà đào cam sả",
+    "popular": false,
+    "price": 25,
+    "restaurantId": 105,
+    "restaurantName": "Trà Chanh Bụi Phố",
+    "sale": 10
+  },
+  "5005": {
+    "banner": "file:///android_asset/food_images/1280_Kiwi_Smoothie.jpg",
+    "categoryId": 5,
+    "categoryName": "Đồ uống",
+    "description": "Sinh tố xoài chín xay sánh mịn, ngọt tự nhiên.",
+    "id": 5005,
+    "image": "file:///android_asset/food_images/1280_Kiwi_Smoothie.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Kiwi_Smoothie.jpg"
+      }
+    ],
+    "name": "Sinh tố xoài",
+    "popular": false,
+    "price": 28,
+    "restaurantId": 105,
+    "restaurantName": "Trà Chanh Bụi Phố",
+    "sale": 0
+  },
+  "5006": {
+    "banner": "file:///android_asset/food_images/1280_Viet-coffee.jpg",
+    "categoryId": 5,
+    "categoryName": "Đồ uống",
+    "description": "Cà phê muối kem mằn mặn béo, trend không lỗi mốt.",
+    "id": 5006,
+    "image": "file:///android_asset/food_images/1280_Viet-coffee.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Viet-coffee.jpg"
+      }
+    ],
+    "name": "Cà phê muối",
+    "popular": true,
+    "price": 25,
+    "restaurantId": 105,
+    "restaurantName": "Trà Chanh Bụi Phố",
+    "sale": 0
+  },
+  "6001": {
+    "banner": "file:///android_asset/food_images/1280_X_i_s_n.jpg",
+    "categoryId": 6,
+    "categoryName": "Ăn vặt",
+    "description": "Xôi xéo dẻo thơm, đậu xanh, hành phi và ruốc.",
+    "id": 6001,
+    "image": "file:///android_asset/food_images/1280_X_i_s_n.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_X_i_s_n.jpg"
+      }
+    ],
+    "name": "Xôi xéo hành phi",
+    "popular": false,
+    "price": 18,
+    "restaurantId": 106,
+    "restaurantName": "Bánh Mì & Chè Cô Hoa",
+    "sale": 0
+  },
+  "6002": {
+    "banner": "file:///android_asset/food_images/1280_Baozi_Chengdu.JPG",
+    "categoryId": 6,
+    "categoryName": "Ăn vặt",
+    "description": "Bánh bao nóng nhân thịt, trứng cút, mộc nhĩ.",
+    "id": 6002,
+    "image": "file:///android_asset/food_images/1280_Baozi_Chengdu.JPG",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Baozi_Chengdu.JPG"
+      }
+    ],
+    "name": "Bánh bao nhân thịt trứng",
+    "popular": false,
+    "price": 15,
+    "restaurantId": 106,
+    "restaurantName": "Bánh Mì & Chè Cô Hoa",
+    "sale": 0
+  },
+  "6003": {
+    "banner": "file:///android_asset/food_images/1280_Cha_gio.jpg",
+    "categoryId": 6,
+    "categoryName": "Ăn vặt",
+    "description": "Nem rán nhân thịt, miến, mộc nhĩ, vỏ giòn rụm.",
+    "id": 6003,
+    "image": "file:///android_asset/food_images/1280_Cha_gio.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Cha_gio.jpg"
+      }
+    ],
+    "name": "Nem rán (chả giò)",
+    "popular": true,
+    "price": 30,
+    "restaurantId": 110,
+    "restaurantName": "Bún Đậu & Bún Riêu Cô Béo",
+    "sale": 0
+  },
+  "6005": {
+    "banner": "file:///android_asset/food_images/1280_Chinese_DimSum__9023590541_.jpg",
+    "categoryId": 6,
+    "categoryName": "Ăn vặt",
+    "description": "Há cảo tôm thịt hấp nóng, vỏ mỏng dai.",
+    "id": 6005,
+    "image": "file:///android_asset/food_images/1280_Chinese_DimSum__9023590541_.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Chinese_DimSum__9023590541_.jpg"
+      }
+    ],
+    "name": "Há cảo hấp",
+    "popular": false,
+    "price": 28,
+    "restaurantId": 110,
+    "restaurantName": "Bún Đậu & Bún Riêu Cô Béo",
+    "sale": 0
+  },
+  "6006": {
+    "banner": "file:///android_asset/food_images/1280_Banh_Xeo_with_fish_sauce_and_vegetables.jpg",
+    "categoryId": 6,
+    "categoryName": "Ăn vặt",
+    "description": "Bánh xèo giòn nhân tôm thịt giá, cuốn rau chấm mắm.",
+    "id": 6006,
+    "image": "file:///android_asset/food_images/1280_Banh_Xeo_with_fish_sauce_and_vegetables.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Banh_Xeo_with_fish_sauce_and_vegetables.jpg"
+      }
+    ],
+    "name": "Bánh xèo miền Trung",
+    "popular": false,
+    "price": 35,
+    "restaurantId": 110,
+    "restaurantName": "Bún Đậu & Bún Riêu Cô Béo",
+    "sale": 0
+  },
+  "7001": {
+    "banner": "file:///android_asset/food_images/1280_B_nh_m__th_t_n__ng.png",
+    "categoryId": 7,
+    "categoryName": "Bánh mì",
+    "description": "Bánh mì giòn vỏ, pate béo, trứng ốp và rau dưa.",
+    "id": 7001,
+    "image": "file:///android_asset/food_images/1280_B_nh_m__th_t_n__ng.png",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_B_nh_m__th_t_n__ng.png"
+      }
+    ],
+    "name": "Bánh mì pate trứng",
+    "popular": true,
+    "price": 20,
+    "restaurantId": 106,
+    "restaurantName": "Bánh Mì & Chè Cô Hoa",
+    "sale": 0
+  },
+  "7002": {
+    "banner": "file:///android_asset/food_images/1280_B_nh_m__th_t_n__ng.png",
+    "categoryId": 7,
+    "categoryName": "Bánh mì",
+    "description": "Bánh mì thịt nướng đậm vị, đồ chua, rau mùi.",
+    "id": 7002,
+    "image": "file:///android_asset/food_images/1280_B_nh_m__th_t_n__ng.png",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_B_nh_m__th_t_n__ng.png"
+      }
+    ],
+    "name": "Bánh mì thịt nướng",
+    "popular": false,
+    "price": 25,
+    "restaurantId": 106,
+    "restaurantName": "Bánh Mì & Chè Cô Hoa",
+    "sale": 0
+  },
+  "7003": {
+    "banner": "file:///android_asset/food_images/1280_B_nh_m__th_t_n__ng.png",
+    "categoryId": 7,
+    "categoryName": "Bánh mì",
+    "description": "Chả cá chiên nóng hổi, tương ớt và rau thơm.",
+    "id": 7003,
+    "image": "file:///android_asset/food_images/1280_B_nh_m__th_t_n__ng.png",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_B_nh_m__th_t_n__ng.png"
+      }
+    ],
+    "name": "Bánh mì chả cá nóng",
+    "popular": false,
+    "price": 25,
+    "restaurantId": 106,
+    "restaurantName": "Bánh Mì & Chè Cô Hoa",
+    "sale": 0
+  },
+  "8001": {
+    "banner": "file:///android_asset/food_images/1280_Ice_cream_with_whipped_cream__chocolate_syrup__and_a_wafer__cropped_.jpg",
+    "categoryId": 8,
+    "categoryName": "Tráng miệng",
+    "description": "Chè khúc bạch mềm mịn, hạnh nhân, nhãn, đá bào.",
+    "id": 8001,
+    "image": "file:///android_asset/food_images/1280_Ice_cream_with_whipped_cream__chocolate_syrup__and_a_wafer__cropped_.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Ice_cream_with_whipped_cream__chocolate_syrup__and_a_wafer__cropped_.jpg"
+      }
+    ],
+    "name": "Chè khúc bạch hạnh nhân",
+    "popular": false,
+    "price": 22,
+    "restaurantId": 106,
+    "restaurantName": "Bánh Mì & Chè Cô Hoa",
+    "sale": 0
+  },
+  "8002": {
+    "banner": "file:///android_asset/food_images/1280_Cremecaramel.jpg",
+    "categoryId": 8,
+    "categoryName": "Tráng miệng",
+    "description": "Bánh flan mềm mịn, lớp caramel đắng nhẹ tan ngay.",
+    "id": 8002,
+    "image": "file:///android_asset/food_images/1280_Cremecaramel.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Cremecaramel.jpg"
+      }
+    ],
+    "name": "Bánh flan caramel",
+    "popular": true,
+    "price": 15,
+    "restaurantId": 106,
+    "restaurantName": "Bánh Mì & Chè Cô Hoa",
+    "sale": 0
+  },
+  "8003": {
+    "banner": "file:///android_asset/food_images/1280_Joghurt.jpg",
+    "categoryId": 8,
+    "categoryName": "Tráng miệng",
+    "description": "Sữa chua chua dịu ăn cùng nếp cẩm dẻo bùi.",
+    "id": 8003,
+    "image": "file:///android_asset/food_images/1280_Joghurt.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Joghurt.jpg"
+      }
+    ],
+    "name": "Sữa chua nếp cẩm",
+    "popular": false,
+    "price": 18,
+    "restaurantId": 106,
+    "restaurantName": "Bánh Mì & Chè Cô Hoa",
+    "sale": 0
+  },
+  "8004": {
+    "banner": "file:///android_asset/food_images/1280_Ice_cream_with_whipped_cream__chocolate_syrup__and_a_wafer__cropped_.jpg",
+    "categoryId": 8,
+    "categoryName": "Tráng miệng",
+    "description": "Kem tươi vị socola trên ốc quế giòn.",
+    "id": 8004,
+    "image": "file:///android_asset/food_images/1280_Ice_cream_with_whipped_cream__chocolate_syrup__and_a_wafer__cropped_.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Ice_cream_with_whipped_cream__chocolate_syrup__and_a_wafer__cropped_.jpg"
+      }
+    ],
+    "name": "Kem ốc quế socola",
+    "popular": false,
+    "price": 20,
+    "restaurantId": 106,
+    "restaurantName": "Bánh Mì & Chè Cô Hoa",
+    "sale": 0
+  },
+  "9001": {
+    "banner": "file:///android_asset/food_images/1280_Hot_Pot.jpg",
+    "categoryId": 9,
+    "categoryName": "Lẩu & Nướng",
+    "description": "Lẩu bò nhúng mini đủ rau nấm, hợp ngày se lạnh.",
+    "id": 9001,
+    "image": "file:///android_asset/food_images/1280_Hot_Pot.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Hot_Pot.jpg"
+      }
+    ],
+    "name": "Lẩu bò mini 2 người",
+    "popular": false,
+    "price": 135,
+    "restaurantId": 107,
+    "restaurantName": "Lẩu Nướng Hải Sản Biển Đông",
+    "sale": 0
+  },
+  "9002": {
+    "banner": "file:///android_asset/food_images/1280_Tom_yam_kung_maenam.jpg",
+    "categoryId": 9,
+    "categoryName": "Lẩu & Nướng",
+    "description": "Lẩu Thái chua cay, tôm mực ngao, sả lá chanh.",
+    "id": 9002,
+    "image": "file:///android_asset/food_images/1280_Tom_yam_kung_maenam.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Tom_yam_kung_maenam.jpg"
+      }
+    ],
+    "name": "Lẩu Thái tom yum hải sản",
+    "popular": true,
+    "price": 159,
+    "restaurantId": 107,
+    "restaurantName": "Lẩu Nướng Hải Sản Biển Đông",
+    "sale": 0
+  },
+  "9003": {
+    "banner": "file:///android_asset/food_images/1280_Chicken_BBQ.jpg",
+    "categoryId": 9,
+    "categoryName": "Lẩu & Nướng",
+    "description": "Nửa con gà ướp mật ong nướng than vàng óng.",
+    "id": 9003,
+    "image": "file:///android_asset/food_images/1280_Chicken_BBQ.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Chicken_BBQ.jpg"
+      }
+    ],
+    "name": "Gà nướng mật ong",
+    "popular": true,
+    "price": 90,
+    "restaurantId": 107,
+    "restaurantName": "Lẩu Nướng Hải Sản Biển Đông",
+    "sale": 0
+  },
+  "9004": {
+    "banner": "file:///android_asset/food_images/1280_Chicken_BBQ.jpg",
+    "categoryId": 9,
+    "categoryName": "Lẩu & Nướng",
+    "description": "Sườn heo ướp sốt BBQ nướng mềm, ngọt khói.",
+    "id": 9004,
+    "image": "file:///android_asset/food_images/1280_Chicken_BBQ.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Chicken_BBQ.jpg"
+      }
+    ],
+    "name": "Sườn nướng BBQ",
+    "popular": false,
+    "price": 95,
+    "restaurantId": 107,
+    "restaurantName": "Lẩu Nướng Hải Sản Biển Đông",
+    "sale": 10
+  },
+  "10001": {
+    "banner": "file:///android_asset/food_images/1280_Spicy_fried_King_Prawns.jpg",
+    "categoryId": 10,
+    "categoryName": "Hải sản",
+    "description": "Tôm sú to nướng muối ớt cay thơm, chắc thịt.",
+    "id": 10001,
+    "image": "file:///android_asset/food_images/1280_Spicy_fried_King_Prawns.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Spicy_fried_King_Prawns.jpg"
+      }
+    ],
+    "name": "Tôm sú nướng muối ớt",
+    "popular": true,
+    "price": 120,
+    "restaurantId": 107,
+    "restaurantName": "Lẩu Nướng Hải Sản Biển Đông",
+    "sale": 0
+  },
+  "10002": {
+    "banner": "file:///android_asset/food_images/1280_Spicy_fried_King_Prawns.jpg",
+    "categoryId": 10,
+    "categoryName": "Hải sản",
+    "description": "Mực một nắng nướng sa tế dai ngọt, đậm đà.",
+    "id": 10002,
+    "image": "file:///android_asset/food_images/1280_Spicy_fried_King_Prawns.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Spicy_fried_King_Prawns.jpg"
+      }
+    ],
+    "name": "Mực một nắng nướng sa tế",
+    "popular": false,
+    "price": 110,
+    "restaurantId": 107,
+    "restaurantName": "Lẩu Nướng Hải Sản Biển Đông",
+    "sale": 0
+  },
+  "10003": {
+    "banner": "file:///android_asset/food_images/1280_Spicy_fried_King_Prawns.jpg",
+    "categoryId": 10,
+    "categoryName": "Hải sản",
+    "description": "Ngao tươi hấp sả gừng, chấm muối tiêu chanh.",
+    "id": 10003,
+    "image": "file:///android_asset/food_images/1280_Spicy_fried_King_Prawns.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Spicy_fried_King_Prawns.jpg"
+      }
+    ],
+    "name": "Ngao hấp sả",
+    "popular": false,
+    "price": 80,
+    "restaurantId": 107,
+    "restaurantName": "Lẩu Nướng Hải Sản Biển Đông",
+    "sale": 0
+  },
+  "10004": {
+    "banner": "file:///android_asset/food_images/1280_Spicy_fried_King_Prawns.jpg",
+    "categoryId": 10,
+    "categoryName": "Hải sản",
+    "description": "Cua biển rang sốt me chua ngọt, thịt chắc.",
+    "id": 10004,
+    "image": "file:///android_asset/food_images/1280_Spicy_fried_King_Prawns.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Spicy_fried_King_Prawns.jpg"
+      }
+    ],
+    "name": "Cua rang me",
+    "popular": true,
+    "price": 180,
+    "restaurantId": 107,
+    "restaurantName": "Lẩu Nướng Hải Sản Biển Đông",
+    "sale": 0
+  },
+  "11001": {
+    "banner": "file:///android_asset/food_images/1280_Japanese_SilkyTofu__Kinugoshi_Tofu_.JPG",
+    "categoryId": 11,
+    "categoryName": "Món chay",
+    "description": "Cơm chay đầy đủ đậu hũ, rau củ kho, canh nấm.",
+    "id": 11001,
+    "image": "file:///android_asset/food_images/1280_Japanese_SilkyTofu__Kinugoshi_Tofu_.JPG",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Japanese_SilkyTofu__Kinugoshi_Tofu_.JPG"
+      }
+    ],
+    "name": "Cơm chay thập cẩm",
+    "popular": true,
+    "price": 35,
+    "restaurantId": 109,
+    "restaurantName": "Cơm Chay An Lạc",
+    "sale": 0
+  },
+  "11002": {
+    "banner": "file:///android_asset/food_images/1280_Japanese_SilkyTofu__Kinugoshi_Tofu_.JPG",
+    "categoryId": 11,
+    "categoryName": "Món chay",
+    "description": "Đậu hũ non mềm mịn rưới sốt nấm đông cô.",
+    "id": 11002,
+    "image": "file:///android_asset/food_images/1280_Japanese_SilkyTofu__Kinugoshi_Tofu_.JPG",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Japanese_SilkyTofu__Kinugoshi_Tofu_.JPG"
+      }
+    ],
+    "name": "Đậu hũ non sốt nấm",
+    "popular": false,
+    "price": 30,
+    "restaurantId": 109,
+    "restaurantName": "Cơm Chay An Lạc",
+    "sale": 0
+  },
+  "11003": {
+    "banner": "file:///android_asset/food_images/1280_Homemade_spring_rolls__7010969349_.jpg",
+    "categoryId": 11,
+    "categoryName": "Món chay",
+    "description": "Gỏi cuốn rau củ, đậu hũ, chấm tương đậu phộng.",
+    "id": 11003,
+    "image": "file:///android_asset/food_images/1280_Homemade_spring_rolls__7010969349_.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Homemade_spring_rolls__7010969349_.jpg"
+      }
+    ],
+    "name": "Gỏi cuốn chay",
+    "popular": false,
+    "price": 25,
+    "restaurantId": 109,
+    "restaurantName": "Cơm Chay An Lạc",
+    "sale": 0
+  },
+  "11004": {
+    "banner": "file:///android_asset/food_images/1280_Cha_gio.jpg",
+    "categoryId": 11,
+    "categoryName": "Món chay",
+    "description": "Nem chay nhân miến, mộc nhĩ, cà rốt chiên giòn.",
+    "id": 11004,
+    "image": "file:///android_asset/food_images/1280_Cha_gio.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Cha_gio.jpg"
+      }
+    ],
+    "name": "Nem chay rán giòn",
+    "popular": false,
+    "price": 28,
+    "restaurantId": 109,
+    "restaurantName": "Cơm Chay An Lạc",
+    "sale": 0
+  },
+  "11005": {
+    "banner": "file:///android_asset/food_images/1280_Tom_yam_kung_maenam.jpg",
+    "categoryId": 11,
+    "categoryName": "Món chay",
+    "description": "Canh chua chay dứa, đậu bắp, cà chua, me thanh.",
+    "id": 11005,
+    "image": "file:///android_asset/food_images/1280_Tom_yam_kung_maenam.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Tom_yam_kung_maenam.jpg"
+      }
+    ],
+    "name": "Canh chua chay",
+    "popular": false,
+    "price": 30,
+    "restaurantId": 109,
+    "restaurantName": "Cơm Chay An Lạc",
+    "sale": 0
+  },
+  "12001": {
+    "banner": "file:///android_asset/food_images/1280_Pizza-3007395.jpg",
+    "categoryId": 12,
+    "categoryName": "Pizza & Mỳ Ý",
+    "description": "Pizza hải sản, viền phô mai kéo sợi, sốt cà tươi.",
+    "id": 12001,
+    "image": "file:///android_asset/food_images/1280_Pizza-3007395.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Pizza-3007395.jpg"
+      }
+    ],
+    "name": "Pizza hải sản viền phô mai",
+    "popular": true,
+    "price": 99,
+    "restaurantId": 108,
+    "restaurantName": "Pizza Góc Phố Ý",
+    "sale": 0
+  },
+  "12002": {
+    "banner": "file:///android_asset/food_images/1280_Pizza-3007395.jpg",
+    "categoryId": 12,
+    "categoryName": "Pizza & Mỳ Ý",
+    "description": "Pizza bò bằm, hành tây, ớt chuông, phô mai mozzarella.",
+    "id": 12002,
+    "image": "file:///android_asset/food_images/1280_Pizza-3007395.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Pizza-3007395.jpg"
+      }
+    ],
+    "name": "Pizza bò bằm sốt cà",
+    "popular": false,
+    "price": 89,
+    "restaurantId": 108,
+    "restaurantName": "Pizza Góc Phố Ý",
+    "sale": 10
+  },
+  "12003": {
+    "banner": "file:///android_asset/food_images/1280_Spaghettoni.jpg",
+    "categoryId": 12,
+    "categoryName": "Pizza & Mỳ Ý",
+    "description": "Spaghetti sốt bolognese bò bằm cà chua đậm đà.",
+    "id": 12003,
+    "image": "file:///android_asset/food_images/1280_Spaghettoni.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Spaghettoni.jpg"
+      }
+    ],
+    "name": "Mỳ Ý sốt bò bằm",
+    "popular": true,
+    "price": 65,
+    "restaurantId": 108,
+    "restaurantName": "Pizza Góc Phố Ý",
+    "sale": 0
+  },
+  "12004": {
+    "banner": "file:///android_asset/food_images/1280_Babbo-_Squid_Ink_pasta_with_green_chilis__rock_shrimp_and_guanciale.jpg",
+    "categoryId": 12,
+    "categoryName": "Pizza & Mỳ Ý",
+    "description": "Mỳ Ý sốt mực đen kiểu Ý, mực tươi giòn ngọt.",
+    "id": 12004,
+    "image": "file:///android_asset/food_images/1280_Babbo-_Squid_Ink_pasta_with_green_chilis__rock_shrimp_and_guanciale.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Babbo-_Squid_Ink_pasta_with_green_chilis__rock_shrimp_and_guanciale.jpg"
+      }
+    ],
+    "name": "Mỳ Ý mực sốt mực",
+    "popular": false,
+    "price": 75,
+    "restaurantId": 108,
+    "restaurantName": "Pizza Góc Phố Ý",
+    "sale": 0
+  },
+  "12005": {
+    "banner": "file:///android_asset/food_images/1280_Pizza-3007395.jpg",
+    "categoryId": 12,
+    "categoryName": "Pizza & Mỳ Ý",
+    "description": "Pizza gà nướng sốt BBQ, hành tây, ngô ngọt.",
+    "id": 12005,
+    "image": "file:///android_asset/food_images/1280_Pizza-3007395.jpg",
+    "images": [
+      {
+        "url": "file:///android_asset/food_images/1280_Pizza-3007395.jpg"
+      }
+    ],
+    "name": "Pizza gà nướng BBQ",
+    "popular": false,
+    "price": 95,
+    "restaurantId": 108,
+    "restaurantName": "Pizza Góc Phố Ý",
+    "sale": 0
+  },
+  "1779767819581": {
+    "banner": "vhh.com",
+    "categoryId": 3325295,
+    "categoryName": "lmao",
+    "description": "chicken",
+    "id": 1779767819581,
+    "image": "bbb.com",
+    "name": "chicken",
+    "popular": true,
+    "price": 30000,
+    "restaurantId": 3325295,
+    "restaurantName": "lmao",
+    "sale": 10
+  }
+}

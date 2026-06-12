@@ -52,8 +52,8 @@ class OrderHistoryActivity : BaseActivity() {
     }
 
     private fun getListOrders() {
+        val strEmail = user?.email ?: return
         orderViewModel.observeOrders { order ->
-            val strEmail = user!!.email
             strEmail.equals(order.email, ignoreCase = true)
         }
     }
@@ -145,6 +145,8 @@ class OrderHistoryActivity : BaseActivity() {
                 is UiState.Error -> Unit
                 is UiState.Success -> {
                     mListOrder = state.data.toMutableList()
+                    mActivityOrderHistoryBinding!!.tvEmpty.visibility =
+                            if (mListOrder.isNullOrEmpty()) View.VISIBLE else View.GONE
                     mOrderAdapter = OrderAdapter(this@OrderHistoryActivity, mListOrder,
                             object : OrderAdapter.IOrderActionListener {
                                 override fun cancelOrder(order: Order) {

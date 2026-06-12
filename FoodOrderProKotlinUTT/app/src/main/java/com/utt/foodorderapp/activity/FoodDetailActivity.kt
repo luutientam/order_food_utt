@@ -22,9 +22,12 @@ import com.utt.foodorderapp.constant.GlobalFunction.showToastMessage
 import com.utt.foodorderapp.data.repository.ReviewRepository
 import com.utt.foodorderapp.database.FoodDatabase.Companion.getInstance
 import com.utt.foodorderapp.databinding.ActivityFoodDetailBinding
+import com.utt.foodorderapp.ControllerApplication
 import com.utt.foodorderapp.event.ReloadListCartEvent
 import com.utt.foodorderapp.model.Food
+import com.utt.foodorderapp.model.Order
 import com.utt.foodorderapp.prefs.DataStoreManager
+import com.utt.foodorderapp.utils.CartAnimationUtils
 import com.utt.foodorderapp.utils.GlideUtils.loadUrl
 import com.utt.foodorderapp.utils.GlideUtils.loadUrlBanner
 import org.greenrobot.eventbus.EventBus
@@ -36,6 +39,9 @@ class FoodDetailActivity : BaseActivity() {
     private var mFood: Food? = null
     private val reviewRepository = ReviewRepository()
 
+    // null = chưa kiểm tra; true/false = đã biết user có mua món này chưa (chỉ ai mua rồi mới được đánh giá).
+    private var purchasedFoodCache: Boolean? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mActivityFoodDetailBinding = ActivityFoodDetailBinding.inflate(layoutInflater)
@@ -44,6 +50,14 @@ class FoodDetailActivity : BaseActivity() {
         initToolbar()
         setDataFoodDetail()
         initListener()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Cart contents may have changed (e.g. user removed this item from the cart).
+        if (mFood != null) {
+            setStatusButtonAddToCart()
+        }
     }
 
     private fun getDataIntent() {
@@ -73,7 +87,7 @@ class FoodDetailActivity : BaseActivity() {
         } else {
             mActivityFoodDetailBinding!!.tvSaleOff.visibility = View.VISIBLE
             mActivityFoodDetailBinding!!.tvPrice.visibility = View.VISIBLE
-            val strSale = "Giảm " + mFood!!.sale + "%"
+            val strSale = getString(R.string.food_sale_off, mFood!!.sale)
             mActivityFoodDetailBinding!!.tvSaleOff.text = strSale
             val strPriceOld: String = MoneyUtils.format(mFood!!.price)
             mActivityFoodDetailBinding!!.tvPrice.text = strPriceOld
@@ -88,9 +102,8 @@ class FoodDetailActivity : BaseActivity() {
         val rating = 4.5 + (mFood!!.id % 5) / 10.0
         mActivityFoodDetailBinding!!.tvFoodRatingDetail.text = String.format("%.1f", rating)
         val sold = 80 + (mFood!!.id * 37 % 1900).toInt()
-        val soldText = if (sold >= 1000) "Đã bán " + String.format("%.1f", sold / 1000.0) + "k"
-        else "Đã bán $sold"
-        mActivityFoodDetailBinding!!.tvFoodSoldDetail.text = soldText
+        val soldValue = if (sold >= 1000) String.format("%.1f", sold / 1000.0) + "k" else sold.toString()
+        mActivityFoodDetailBinding!!.tvFoodSoldDetail.text = getString(R.string.food_sold_count, soldValue)
 
         displayListMoreImages()
         setStatusButtonAddToCart()
@@ -109,17 +122,36 @@ class FoodDetailActivity : BaseActivity() {
     }
 
     private fun setStatusButtonAddToCart() {
+        // The cart icon stays visible at all times so the user can always reach the cart.
+        mActivityFoodDetailBinding!!.toolbar.imgCart.visibility = View.VISIBLE
         if (isFoodInCart()) {
             mActivityFoodDetailBinding!!.tvAddToCart.setBackgroundResource(R.drawable.bg_gray_shape_corner_6)
             mActivityFoodDetailBinding!!.tvAddToCart.text = getString(R.string.added_to_cart)
             mActivityFoodDetailBinding!!.tvAddToCart.setTextColor(ContextCompat.getColor(this, R.color.textColorPrimary))
-            mActivityFoodDetailBinding!!.toolbar.imgCart.visibility = View.GONE
         } else {
             mActivityFoodDetailBinding!!.tvAddToCart.setBackgroundResource(R.drawable.bg_primary_button)
             mActivityFoodDetailBinding!!.tvAddToCart.text = getString(R.string.add_to_cart)
             mActivityFoodDetailBinding!!.tvAddToCart.setTextColor(ContextCompat.getColor(this, R.color.white))
-            mActivityFoodDetailBinding!!.toolbar.imgCart.visibility = View.VISIBLE
         }
+        updateCartBadge()
+    }
+
+    private fun updateCartBadge() {
+        val count = getInstance(this)?.foodDAO()?.listFoodCart?.size ?: 0
+        val badge = mActivityFoodDetailBinding!!.toolbar.tvCartBadge
+        if (count > 0) {
+            badge.visibility = View.VISIBLE
+            badge.text = if (count > 99) "99+" else count.toString()
+        } else {
+            badge.visibility = View.GONE
+        }
+    }
+
+    private fun openCart() {
+        val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra(MainActivity.EXTRA_OPEN_CART, true)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+        startActivity(intent)
     }
 
     private fun isFoodInCart(): Boolean {
@@ -129,8 +161,8 @@ class FoodDetailActivity : BaseActivity() {
 
     private fun initListener() {
         mActivityFoodDetailBinding!!.tvAddToCart.setOnClickListener { onClickAddToCart() }
-        mActivityFoodDetailBinding!!.toolbar.imgCart.setOnClickListener { onClickAddToCart() }
-        mActivityFoodDetailBinding!!.tvRateFood.setOnClickListener { showRatingDialog(forFood = true) }
+        mActivityFoodDetailBinding!!.toolbar.imgCart.setOnClickListener { openCart() }
+        mActivityFoodDetailBinding!!.tvRateFood.setOnClickListener { onClickRateFood() }
         mActivityFoodDetailBinding!!.tvRateRestaurant.setOnClickListener { showRatingDialog(forFood = false) }
         mActivityFoodDetailBinding!!.tvViewFoodReviews.setOnClickListener {
             val food = mFood ?: return@setOnClickListener
@@ -148,6 +180,50 @@ class FoodDetailActivity : BaseActivity() {
             i.putExtra(ReviewsListActivity.EXTRA_RESTAURANT_ID, food.restaurantId)
             startActivity(i)
         }
+    }
+
+    /** Chỉ cho đánh giá món khi user đã mua món đó (có đơn chứa món, chưa bị huỷ). */
+    private fun onClickRateFood() {
+        val food = mFood ?: return
+        val cached = purchasedFoodCache
+        if (cached != null) {
+            if (cached) showRatingDialog(forFood = true)
+            else showToastMessage(this, getString(R.string.msg_review_require_purchase))
+            return
+        }
+        val currentUser = DataStoreManager.user
+        val email = currentUser?.email
+        val uid = currentUser?.uid
+        if (email.isNullOrEmpty() && uid.isNullOrEmpty()) {
+            showToastMessage(this, getString(R.string.msg_review_require_purchase))
+            return
+        }
+        showProgressDialog(true)
+        ControllerApplication[this].bookingDatabaseReference.get()
+                .addOnSuccessListener { snapshot ->
+                    showProgressDialog(false)
+                    val bought = snapshot.children.any { child ->
+                        val order = child.getValue(Order::class.java) ?: return@any false
+                        hasBoughtFood(order, food, email, uid)
+                    }
+                    purchasedFoodCache = bought
+                    if (bought) showRatingDialog(forFood = true)
+                    else showToastMessage(this, getString(R.string.msg_review_require_purchase))
+                }
+                .addOnFailureListener {
+                    showProgressDialog(false)
+                    showToastMessage(this, getString(R.string.msg_get_date_error))
+                }
+    }
+
+    /** Đã mua = có đơn của user (khớp email/uid), chưa huỷ, và danh sách món trong đơn chứa món này. */
+    private fun hasBoughtFood(order: Order, food: Food, email: String?, uid: String?): Boolean {
+        val matchesUser = (!email.isNullOrEmpty() && email.equals(order.email, ignoreCase = true)) ||
+                (!uid.isNullOrEmpty() && uid == order.customerId)
+        if (!matchesUser) return false
+        if (order.getStatusValue() == Order.STATUS_CANCEL) return false
+        val foods = order.foods ?: return false
+        return foods.contains("- ${food.name} (")
     }
 
     private fun showRatingDialog(forFood: Boolean) {
@@ -187,6 +263,8 @@ class FoodDetailActivity : BaseActivity() {
 
     private fun onClickAddToCart() {
         if (isFoodInCart()) {
+            // Already added — the CTA now acts as a shortcut to the cart.
+            openCart()
             return
         }
         @SuppressLint("InflateParams") val viewDialog = layoutInflater.inflate(R.layout.layout_bottom_sheet_cart, null)
@@ -234,8 +312,16 @@ class FoodDetailActivity : BaseActivity() {
             val selectedFood = mFood ?: return@setOnClickListener
             getInstance(this@FoodDetailActivity)!!.foodDAO()!!.insertFood(selectedFood)
             bottomSheetDialog.dismiss()
-            setStatusButtonAddToCart()
             EventBus.getDefault().post(ReloadListCartEvent())
+            // ShopeeFood-style: fly the food image into the cart icon, then refresh state.
+            CartAnimationUtils.flyToCart(
+                    this@FoodDetailActivity,
+                    mActivityFoodDetailBinding!!.imageFood,
+                    mActivityFoodDetailBinding!!.toolbar.imgCart,
+                    mActivityFoodDetailBinding!!.imageFood.drawable
+            ) {
+                setStatusButtonAddToCart()
+            }
         }
         bottomSheetDialog.show()
     }

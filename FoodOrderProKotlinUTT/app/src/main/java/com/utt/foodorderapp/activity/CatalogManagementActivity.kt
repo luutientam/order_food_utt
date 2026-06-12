@@ -1,5 +1,7 @@
 package com.utt.foodorderapp.activity
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -54,6 +56,16 @@ class CatalogManagementActivity : BaseActivity() {
         )
         subscribeRestaurants()
         subscribeCategories()
+        updateRestaurantsEmptyState()
+        updateCategoriesEmptyState()
+    }
+
+    private fun updateRestaurantsEmptyState() {
+        binding?.tvEmptyRestaurants?.visibility = if (restaurants.isEmpty()) View.VISIBLE else View.GONE
+    }
+
+    private fun updateCategoriesEmptyState() {
+        binding?.tvEmptyCategories?.visibility = if (categories.isEmpty()) View.VISIBLE else View.GONE
     }
 
     private fun initListener() {
@@ -81,6 +93,7 @@ class CatalogManagementActivity : BaseActivity() {
                 val data = snapshot.getValue(Restaurant::class.java) ?: return
                 restaurants.add(0, data)
                 binding!!.rcvRestaurants.adapter?.notifyDataSetChanged()
+                updateRestaurantsEmptyState()
             }
 
             override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
@@ -98,6 +111,7 @@ class CatalogManagementActivity : BaseActivity() {
                 val data = snapshot.getValue(Restaurant::class.java) ?: return
                 restaurants.removeAll { it.id == data.id }
                 binding!!.rcvRestaurants.adapter?.notifyDataSetChanged()
+                updateRestaurantsEmptyState()
             }
 
             override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
@@ -112,6 +126,7 @@ class CatalogManagementActivity : BaseActivity() {
                 val data = snapshot.getValue(Category::class.java) ?: return
                 categories.add(0, data)
                 binding!!.rcvCategories.adapter?.notifyDataSetChanged()
+                updateCategoriesEmptyState()
             }
 
             override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
@@ -129,6 +144,7 @@ class CatalogManagementActivity : BaseActivity() {
                 val data = snapshot.getValue(Category::class.java) ?: return
                 categories.removeAll { it.id == data.id }
                 binding!!.rcvCategories.adapter?.notifyDataSetChanged()
+                updateCategoriesEmptyState()
             }
 
             override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
@@ -138,13 +154,27 @@ class CatalogManagementActivity : BaseActivity() {
     }
 
     private fun deleteRestaurant(restaurant: Restaurant) {
-        ControllerApplication[this].restaurantDatabaseReference.child(restaurant.id.toString()).removeValue()
-        showToastMessage(this, getString(R.string.delete))
+        AlertDialog.Builder(this)
+                .setTitle(getString(R.string.msg_delete_title))
+                .setMessage(getString(R.string.msg_confirm_delete))
+                .setPositiveButton(getString(R.string.delete)) { _: DialogInterface?, _: Int ->
+                    ControllerApplication[this].restaurantDatabaseReference.child(restaurant.id.toString()).removeValue()
+                    showToastMessage(this, getString(R.string.delete))
+                }
+                .setNegativeButton(getString(R.string.dialog_cancel), null)
+                .show()
     }
 
     private fun deleteCategory(category: Category) {
-        ControllerApplication[this].categoryDatabaseReference.child(category.id.toString()).removeValue()
-        showToastMessage(this, getString(R.string.delete))
+        AlertDialog.Builder(this)
+                .setTitle(getString(R.string.msg_delete_title))
+                .setMessage(getString(R.string.msg_confirm_delete))
+                .setPositiveButton(getString(R.string.delete)) { _: DialogInterface?, _: Int ->
+                    ControllerApplication[this].categoryDatabaseReference.child(category.id.toString()).removeValue()
+                    showToastMessage(this, getString(R.string.delete))
+                }
+                .setNegativeButton(getString(R.string.dialog_cancel), null)
+                .show()
     }
 
     override fun onDestroy() {

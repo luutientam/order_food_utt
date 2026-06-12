@@ -42,7 +42,8 @@ class OrderAdapter(private var mContext: Context?,
         holder.mItemOrderBinding.tvDate.text = convertTimeStampToDate(order.id)
         val strAmount: String = MoneyUtils.format(order.amount)
         val amountDisplay = if (order.discountAmount > 0) {
-            "$strAmount (giảm ${MoneyUtils.format(order.discountAmount)})"
+            "$strAmount " + holder.itemView.context.getString(
+                    R.string.order_discount_inline, MoneyUtils.format(order.discountAmount))
         } else {
             strAmount
         }
@@ -140,10 +141,11 @@ class OrderAdapter(private var mContext: Context?,
 
     private fun buildStatusText(order: Order): String {
         val baseStatus = getStatusText(order)
-        if (order.getStatusValue() != Order.STATUS_FAIL || order.issueNote.isNullOrBlank()) {
+        val context = mContext
+        if (context == null || order.getStatusValue() != Order.STATUS_FAIL || order.issueNote.isNullOrBlank()) {
             return baseStatus
         }
-        return "$baseStatus\nSự cố: ${order.issueNote}"
+        return "$baseStatus\n" + context.getString(R.string.order_issue_prefix, order.issueNote)
     }
 
     private fun getShipperLocationText(order: Order): String {

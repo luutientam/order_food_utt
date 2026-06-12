@@ -18,11 +18,22 @@
         android:layout_centerHorizontal="true"
         android:background="@drawable/bg_sheet_grabber" />
 
+    <TextView
+        android:id="@+id/tv_sheet_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/grabber"
+        android:layout_marginTop="@dimen/define_dimen_14"
+        android:text="@string/add_to_cart"
+        android:textColor="@color/neutral900"
+        android:textSize="@dimen/text_size_xnormal"
+        android:textStyle="bold" />
+
     <RelativeLayout
         android:id="@+id/layout_infor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/grabber"
+        android:layout_below="@+id/tv_sheet_title"
         android:layout_marginTop="@dimen/define_dimen_16">
 
         <androidx.cardview.widget.CardView
@@ -115,11 +126,19 @@
         </LinearLayout>
     </RelativeLayout>
 
+    <View
+        android:id="@+id/divider_cart_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/layout_infor"
+        android:layout_marginTop="@dimen/define_dimen_16"
+        android:background="@color/neutral100" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/layout_infor"
-        android:layout_marginTop="@dimen/define_dimen_20"
+        android:layout_below="@+id/divider_cart_sheet"
+        android:layout_marginTop="@dimen/define_dimen_16"
         android:orientation="horizontal">
 
         <TextView
