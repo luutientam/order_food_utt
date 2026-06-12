@@ -1124,8 +1124,8 @@
     "id": 2008,
     "name": "Bún đậu mắm tôm đầy đủ",
     "description": "Mẹt bún đậu đầy đủ: đậu rán, chả cốm, nem, lòng.",
-    "image": "file:///android_asset/food_images/dish_2008.jpg",
-    "banner": "file:///android_asset/food_images/dish_2008.jpg",
+    "image": "file:///android_asset/food_images/dish_2008.png",
+    "banner": "file:///android_asset/food_images/dish_2008.png",
     "restaurantId": 110,
     "restaurantName": "Bún Đậu & Bún Riêu Cô Béo",
     "categoryId": 2,
@@ -1135,7 +1135,7 @@
     "popular": true,
     "images": [
       {
-        "url": "file:///android_asset/food_images/dish_2008.jpg"
+        "url": "file:///android_asset/food_images/dish_2008.png"
       }
     ]
   },
@@ -1751,8 +1751,8 @@
     "id": 4014,
     "name": "Burger bò phô mai đôi",
     "description": "Burger 2 lớp bò, phô mai cheddar, sốt đặc biệt.",
-    "image": "file:///android_asset/food_images/dish_4014.jpg",
-    "banner": "file:///android_asset/food_images/dish_4014.jpg",
+    "image": "file:///android_asset/food_images/dish_4014.png",
+    "banner": "file:///android_asset/food_images/dish_4014.png",
     "restaurantId": 104,
     "restaurantName": "Gà Rán Chickita",
     "categoryId": 4,
@@ -1762,7 +1762,7 @@
     "popular": false,
     "images": [
       {
-        "url": "file:///android_asset/food_images/dish_4014.jpg"
+        "url": "file:///android_asset/food_images/dish_4014.png"
       }
     ]
   },
@@ -1884,8 +1884,8 @@
     "id": 5013,
     "name": "Cacao nóng",
     "description": "Cacao nóng đậm vị socola, kem sữa béo mịn.",
-    "image": "file:///android_asset/food_images/dish_5013.jpg",
-    "banner": "file:///android_asset/food_images/dish_5013.jpg",
+    "image": "file:///android_asset/food_images/dish_5013.png",
+    "banner": "file:///android_asset/food_images/dish_5013.png",
     "restaurantId": 105,
     "restaurantName": "Trà Chanh Bụi Phố",
     "categoryId": 5,
@@ -1895,7 +1895,7 @@
     "popular": false,
     "images": [
       {
-        "url": "file:///android_asset/food_images/dish_5013.jpg"
+        "url": "file:///android_asset/food_images/dish_5013.png"
       }
     ]
   },

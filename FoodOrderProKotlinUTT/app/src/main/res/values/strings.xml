@@ -132,6 +132,7 @@
     <string name="message_enter_infor_order">Vui lòng điền đầy đủ thông tin giao hàng</string>
     <string name="message_invalid_phone">Số điện thoại không hợp lệ (10 số, bắt đầu bằng 0)</string>
     <string name="required_mark">*</string>
+    <string name="label_full_name">Họ và Tên</string>
     <string name="hint_search_name">Tên món ăn…</string>
     <string name="price_label">Giá:</string>
     <string name="description_label">Mô tả</string>
