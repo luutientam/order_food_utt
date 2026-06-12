@@ -27,7 +27,8 @@ class SePayApiService(
      */
     fun buildQrUrl(amountVnd: Long, content: String): String {
         val des = URLEncoder.encode(content, "UTF-8")
-        return "$qrBaseUrl?acc=$accountNumber&bank=$bankCode&amount=$amountVnd&des=$des"
+        // template=qronly: QR THUẦN (không logo che giữa) -> app ngân hàng quét ổn định hơn
+        return "$qrBaseUrl?acc=$accountNumber&bank=$bankCode&amount=$amountVnd&des=$des&template=qronly"
     }
 
     companion object {

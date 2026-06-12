@@ -33,13 +33,13 @@
 
         <ImageView
             android:id="@+id/iv_sepay_qr"
-            android:layout_width="@dimen/define_dimen_200"
-            android:layout_height="@dimen/define_dimen_200"
+            android:layout_width="260dp"
+            android:layout_height="260dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/define_dimen_16"
             android:background="@drawable/bg_white_corner_6_border_gray"
             android:contentDescription="@string/sepay_qr_content_desc"
-            android:padding="@dimen/define_dimen_6"
+            android:padding="@dimen/define_dimen_8"
             android:scaleType="fitCenter" />
 
         <TextView
