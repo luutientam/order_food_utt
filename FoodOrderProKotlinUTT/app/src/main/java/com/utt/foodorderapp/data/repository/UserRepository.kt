@@ -30,4 +30,12 @@ class UserRepository {
             callback(error)
         }
     }
+
+    fun updateUserRole(userId: String, role: String, callback: (DatabaseError?) -> Unit) {
+        val map: MutableMap<String, Any> = HashMap()
+        map["role"] = role
+        ControllerApplication.getInstance().userDatabaseReference.child(userId).updateChildren(map) { error, _ ->
+            callback(error)
+        }
+    }
 }

@@ -47,12 +47,14 @@ class CatalogManagementActivity : BaseActivity() {
         binding!!.rcvRestaurants.adapter = SimpleCatalogAdapter(
                 restaurants,
                 { item -> item.name ?: "" },
-                { item -> deleteRestaurant(item) }
+                { item -> deleteRestaurant(item) },
+                { item -> renameRestaurant(item) }
         )
         binding!!.rcvCategories.adapter = SimpleCatalogAdapter(
                 categories,
                 { item -> item.name ?: "" },
-                { item -> deleteCategory(item) }
+                { item -> deleteCategory(item) },
+                { item -> renameCategory(item) }
         )
         subscribeRestaurants()
         subscribeCategories()
@@ -151,6 +153,35 @@ class CatalogManagementActivity : BaseActivity() {
             override fun onCancelled(error: DatabaseError) {}
         }
         ControllerApplication[this].categoryDatabaseReference.addChildEventListener(categoryListener!!)
+    }
+
+    private fun renameRestaurant(restaurant: Restaurant) {
+        showRenameDialog(restaurant.name) { newName ->
+            ControllerApplication[this].restaurantDatabaseReference
+                    .child(restaurant.id.toString()).child("name").setValue(newName)
+        }
+    }
+
+    private fun renameCategory(category: Category) {
+        showRenameDialog(category.name) { newName ->
+            ControllerApplication[this].categoryDatabaseReference
+                    .child(category.id.toString()).child("name").setValue(newName)
+        }
+    }
+
+    private fun showRenameDialog(current: String?, onSave: (String) -> Unit) {
+        val input = android.widget.EditText(this)
+        input.setText(current ?: "")
+        AlertDialog.Builder(this)
+                .setTitle(getString(R.string.action_edit))
+                .setView(input)
+                .setPositiveButton(getString(R.string.action_ok)) { _: DialogInterface?, _: Int ->
+                    val name = input.text.toString().trim()
+                    if (StringUtil.isEmpty(name)) return@setPositiveButton
+                    onSave(name)
+                }
+                .setNegativeButton(getString(R.string.dialog_cancel), null)
+                .show()
     }
 
     private fun deleteRestaurant(restaurant: Restaurant) {

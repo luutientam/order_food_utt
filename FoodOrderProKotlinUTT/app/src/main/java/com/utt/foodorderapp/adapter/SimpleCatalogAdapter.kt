@@ -8,7 +8,8 @@ import com.utt.foodorderapp.databinding.ItemCatalogSimpleBinding
 class SimpleCatalogAdapter<T>(
         private val data: MutableList<T>,
         private val getName: (T) -> String,
-        private val onDelete: (T) -> Unit
+        private val onDelete: (T) -> Unit,
+        private val onEdit: ((T) -> Unit)? = null
 ) : RecyclerView.Adapter<SimpleCatalogAdapter<T>.CatalogViewHolder>() {
 
     inner class CatalogViewHolder(val binding: ItemCatalogSimpleBinding) : RecyclerView.ViewHolder(binding.root)
@@ -22,6 +23,7 @@ class SimpleCatalogAdapter<T>(
         val item = data[position]
         holder.binding.tvName.text = getName(item)
         holder.binding.tvDelete.setOnClickListener { onDelete(item) }
+        onEdit?.let { edit -> holder.itemView.setOnClickListener { edit(item) } }
     }
 
     override fun getItemCount(): Int {

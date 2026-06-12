@@ -27,6 +27,8 @@ class Order : Serializable {
     var originalAmount = 0
     var discountAmount = 0
     var promotionCode: String? = null
+    /** Thời điểm shipper hoàn tất đơn (ms). 0 nếu chưa xong — dùng để thống kê thu nhập theo ngày giao. */
+    var completedAt: Long = 0
 
     constructor() {}
 

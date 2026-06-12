@@ -15,6 +15,7 @@ class UserManagementAdapter(
 
     interface IUserManagementListener {
         fun toggleUser(user: User)
+        fun changeRole(user: User)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserManagementViewHolder {
@@ -30,6 +31,8 @@ class UserManagementAdapter(
         holder.binding.tvStatus.text = if (user.isActive) context.getString(R.string.status_active) else context.getString(R.string.status_locked)
         holder.binding.tvToggleStatus.text = if (user.isActive) context.getString(R.string.action_lock) else context.getString(R.string.action_unlock)
         holder.binding.tvToggleStatus.setOnClickListener { listener.toggleUser(user) }
+        holder.binding.tvRole.setOnClickListener { listener.changeRole(user) }
+        holder.itemView.setOnLongClickListener { listener.changeRole(user); true }
     }
 
     private fun localizedRole(context: Context, role: String?): String {

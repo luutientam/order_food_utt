@@ -222,6 +222,9 @@ class ShipperOrderFragment : BaseFragment() {
         val map: MutableMap<String, Any?> = HashMap()
         map["status"] = status
         map["completed"] = status == Order.STATUS_SUCCESS
+        if (status == Order.STATUS_SUCCESS) {
+            map["completedAt"] = System.currentTimeMillis()
+        }
         updateOrderWithFeedback(order.id, map)
     }
 

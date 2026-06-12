@@ -350,6 +350,12 @@
     <string name="msg_promotion_applied">Áp dụng mã khuyến mại thành công</string>
     <string name="msg_promotion_invalid_percent">Phần trăm giảm phải từ 1 đến 100</string>
     <string name="msg_no_promotion_available">Hiện chưa có voucher phù hợp cho đơn này</string>
+    <string name="msg_promotion_revoked">Mã khuyến mại không còn hợp lệ — đã gỡ khỏi đơn, vui lòng kiểm tra lại giá</string>
+    <string name="msg_promotion_check_failed">Không kiểm tra được mã khuyến mại, vui lòng thử lại</string>
+    <string name="msg_promotion_editing">Đang sửa mã — chỉnh thông tin rồi bấm \"Thêm\" để lưu</string>
+    <string name="sepay_timeout">Đã hết thời gian chờ. Đơn vẫn được lưu trong Lịch sử và sẽ tự xác nhận nếu nhận được tiền.</string>
+    <string name="action_change_role">Đổi vai trò người dùng</string>
+    <string name="msg_user_role_updated">Đã cập nhật vai trò người dùng</string>
     <string name="action_select_voucher">Chọn voucher</string>
     <string name="promotion_best_hint_default">Gợi ý voucher tốt nhất sẽ hiển thị tại đây</string>
     <string name="promotion_best_hint">Voucher tốt nhất: %1$s - giảm %2$s%% tối đa %3$s</string>

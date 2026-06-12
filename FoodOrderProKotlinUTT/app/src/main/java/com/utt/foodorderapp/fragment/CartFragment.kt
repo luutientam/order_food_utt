@@ -75,6 +75,8 @@ class CartFragment : BaseFragment() {
     private var sePayDialog: AlertDialog? = null
     private var sePayOrderRef: DatabaseReference? = null
     private var sePayOrderListener: ValueEventListener? = null
+    private val sePayTimeoutHandler = android.os.Handler(android.os.Looper.getMainLooper())
+    private var sePayTimeoutRunnable: Runnable? = null
     private lateinit var cartViewModel: CartViewModel
     private val addressRepository = AddressRepository()
 
@@ -329,13 +331,13 @@ class CartFragment : BaseFragment() {
         ControllerApplication[requireActivity()].promotionDatabaseReference.child(code).get().addOnSuccessListener { snapshot ->
             val promotion = snapshot.getValue(Promotion::class.java)
             if (promotion == null || !promotion.isActive || mAmount < promotion.minOrderAmount) {
+                // Mã không còn hợp lệ tại thời điểm đặt: KHÔNG âm thầm tính giá đầy đủ.
+                // Bỏ mã, cập nhật lại giá và báo cho người dùng; giữ form để họ xem lại.
                 selectedDiscount = 0
                 appliedPromotionCode = null
                 tvDiscountValue.text = getString(R.string.msg_promotion_invalid)
                 tvPriceOrder.text = "${MoneyUtils.format(mAmount)}"
-                showToastMessage(activity, getString(R.string.msg_promotion_invalid))
-                submitOrder(name, phone, address, currentUser.email, currentUser.uid, 0, null,
-                        bottomSheetDialog, paymentType, paymentStatus, paymentTransactionId)
+                showToastMessage(activity, getString(R.string.msg_promotion_revoked))
                 return@addOnSuccessListener
             }
             val discount = calculateDiscountAmount(promotion)
@@ -343,12 +345,9 @@ class CartFragment : BaseFragment() {
             submitOrder(name, phone, address, currentUser.email, currentUser.uid, discount, code,
                     bottomSheetDialog, paymentType, paymentStatus, paymentTransactionId)
         }.addOnFailureListener {
-            selectedDiscount = 0
-            appliedPromotionCode = null
-            tvDiscountValue.text = getString(R.string.msg_promotion_invalid)
-            tvPriceOrder.text = "${MoneyUtils.format(mAmount)}"
-            submitOrder(name, phone, address, currentUser.email, currentUser.uid, 0, null,
-                    bottomSheetDialog, paymentType, paymentStatus, paymentTransactionId)
+            // Lỗi mạng khi kiểm tra mã: KHÔNG đặt đơn giá đầy đủ. Báo lỗi để người dùng thử lại.
+            tvPriceOrder.text = "${MoneyUtils.format((mAmount - selectedDiscount).coerceAtLeast(0))}"
+            showToastMessage(activity, getString(R.string.msg_promotion_check_failed))
         }
     }
 
@@ -540,9 +539,19 @@ class CartFragment : BaseFragment() {
             if (sePayDialog === dialog) sePayDialog = null
         }
         dialog.show()
+
+        // Hết thời gian chờ: không treo vô hạn. Sau SEPAY_TIMEOUT_MS vẫn chưa thanh toán
+        // thì báo cho người dùng và để nút "Đóng" nổi bật — đơn vẫn ở Lịch sử, webhook
+        // vẫn tự xác nhận sau nếu tiền về.
+        sePayTimeoutRunnable = Runnable {
+            tvStatus.text = getString(R.string.sepay_timeout)
+        }
+        sePayTimeoutHandler.postDelayed(sePayTimeoutRunnable!!, SEPAY_TIMEOUT_MS)
     }
 
     private fun stopSePayOrderListener() {
+        sePayTimeoutRunnable?.let { sePayTimeoutHandler.removeCallbacks(it) }
+        sePayTimeoutRunnable = null
         val listener = sePayOrderListener ?: return
         sePayOrderRef?.removeEventListener(listener)
         sePayOrderListener = null
@@ -656,5 +665,10 @@ class CartFragment : BaseFragment() {
             }
         }
         cartViewModel.loadCart()
+    }
+
+    companion object {
+        /** Thời gian chờ thanh toán SePay trước khi báo hết hạn (3 phút). */
+        private const val SEPAY_TIMEOUT_MS = 3 * 60 * 1000L
     }
 }

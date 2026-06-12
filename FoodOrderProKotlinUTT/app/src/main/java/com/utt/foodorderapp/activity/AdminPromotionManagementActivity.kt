@@ -52,9 +52,27 @@ class AdminPromotionManagementActivity : BaseActivity() {
             override fun onDelete(promotion: Promotion) {
                 confirmDeletePromotion(promotion)
             }
+
+            override fun onEdit(promotion: Promotion) {
+                fillFormForEdit(promotion)
+            }
         })
         subscribePromotions()
         updateEmptyState()
+    }
+
+    /**
+     * Đổ dữ liệu mã đang chọn lên form phía trên để admin sửa. Vì promotion được lưu theo
+     * key = code, khi giữ nguyên code và bấm "Thêm" sẽ ghi đè = cập nhật.
+     */
+    private fun fillFormForEdit(promotion: Promotion) {
+        binding!!.edtCode.setText(promotion.code ?: "")
+        binding!!.edtTitle.setText(promotion.title ?: "")
+        binding!!.edtDiscountPercent.setText(promotion.discountPercent.toString())
+        binding!!.edtMinOrder.setText(promotion.minOrderAmount.toString())
+        binding!!.edtMaxDiscount.setText(promotion.maxDiscountAmount.toString())
+        binding!!.edtTitle.requestFocus()
+        showToastMessage(this, getString(R.string.msg_promotion_editing))
     }
 
     private fun confirmDeletePromotion(promotion: Promotion) {

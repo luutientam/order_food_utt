@@ -38,6 +38,10 @@ class AdminUserManagementActivity : BaseActivity() {
                     }
                 }
             }
+
+            override fun changeRole(user: User) {
+                showChangeRoleDialog(user)
+            }
         })
         binding!!.rcvUsers.layoutManager = LinearLayoutManager(this)
         binding!!.rcvUsers.adapter = adapter
@@ -47,6 +51,31 @@ class AdminUserManagementActivity : BaseActivity() {
 
     private fun updateEmptyState() {
         binding?.tvEmpty?.visibility = if (users.isEmpty()) View.VISIBLE else View.GONE
+    }
+
+    private fun showChangeRoleDialog(user: User) {
+        val userId = user.uid ?: return
+        val roles = arrayOf(User.ROLE_CUSTOMER, User.ROLE_SHIPPER, User.ROLE_ADMIN)
+        val labels = arrayOf(
+                getString(R.string.role_customer),
+                getString(R.string.role_shipper),
+                getString(R.string.role_admin)
+        )
+        val current = roles.indexOf(user.role).coerceAtLeast(0)
+        androidx.appcompat.app.AlertDialog.Builder(this)
+                .setTitle(getString(R.string.action_change_role))
+                .setSingleChoiceItems(labels, current) { dialog, which ->
+                    dialog.dismiss()
+                    val newRole = roles[which]
+                    if (newRole == user.role) return@setSingleChoiceItems
+                    userRepository.updateUserRole(userId, newRole) { error ->
+                        showToastMessage(this,
+                                if (error == null) getString(R.string.msg_user_role_updated)
+                                else getString(R.string.msg_user_status_failed))
+                    }
+                }
+                .setNegativeButton(getString(R.string.action_cancel), null)
+                .show()
     }
 
     private fun initToolbar() {

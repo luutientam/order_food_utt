@@ -113,6 +113,10 @@ class AddressBookActivity : BaseActivity() {
                         showToastMessage(this, getString(R.string.msg_address_required))
                         return@setPositiveButton
                     }
+                    if (!phone.matches(Regex("^0\\d{9}$"))) {
+                        showToastMessage(this, getString(R.string.message_invalid_phone))
+                        return@setPositiveButton
+                    }
                     val toSave = editing ?: Address()
                     toSave.label = label.ifEmpty { "Địa chỉ" }
                     toSave.recipientName = recipient

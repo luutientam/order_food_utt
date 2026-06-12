@@ -15,6 +15,7 @@ class PromotionAdapter(
     interface IPromotionAction {
         fun onToggle(promotion: Promotion)
         fun onDelete(promotion: Promotion)
+        fun onEdit(promotion: Promotion)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PromotionViewHolder {
@@ -29,6 +30,7 @@ class PromotionAdapter(
         holder.binding.tvToggle.text = if (promotion.isActive) holder.itemView.context.getString(R.string.action_disable) else holder.itemView.context.getString(R.string.action_enable)
         holder.binding.tvToggle.setOnClickListener { listener.onToggle(promotion) }
         holder.binding.tvDelete.setOnClickListener { listener.onDelete(promotion) }
+        holder.itemView.setOnClickListener { listener.onEdit(promotion) }
     }
 
     override fun getItemCount(): Int = items.size

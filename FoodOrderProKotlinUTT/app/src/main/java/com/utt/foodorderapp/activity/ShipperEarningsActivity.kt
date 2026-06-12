@@ -81,9 +81,11 @@ class ShipperEarningsActivity : BaseActivity() {
         var month = 0L
         for (o in orders) {
             val amount = o.amount.toLong()
-            if (o.id >= startOfMonth) month += amount
-            if (o.id >= startOfWeek) week += amount
-            if (o.id >= startOfToday) today += amount
+            // Gom theo thời điểm GIAO XONG, không phải lúc tạo đơn. Đơn cũ chưa có completedAt thì fallback về id.
+            val ts = if (o.completedAt > 0) o.completedAt else o.id
+            if (ts >= startOfMonth) month += amount
+            if (ts >= startOfWeek) week += amount
+            if (ts >= startOfToday) today += amount
         }
         binding?.tvToday?.text = "${MoneyUtils.format(today)}"
         binding?.tvWeek?.text = "${MoneyUtils.format(week)}"
