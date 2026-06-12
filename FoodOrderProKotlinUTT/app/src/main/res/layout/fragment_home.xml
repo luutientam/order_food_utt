@@ -64,6 +64,7 @@
         android:layout_marginTop="@dimen/define_dimen_8"
         android:paddingStart="@dimen/define_dimen_12"
         android:paddingEnd="@dimen/define_dimen_12"
+        android:visibility="gone"
         android:scrollbars="none">
 
         <LinearLayout
