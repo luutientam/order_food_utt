@@ -284,6 +284,9 @@ class CartFragment : BaseFragment() {
             val strAddress = edtAddressOrder.text.toString().trim { it <= ' ' }
             if (isEmpty(strName) || isEmpty(strPhone) || isEmpty(strAddress)) {
                 showToastMessage(activity, getString(R.string.message_enter_infor_order))
+            } else if (!strPhone.matches(Regex("^0\\d{9}$"))) {
+                showToastMessage(activity, getString(R.string.message_invalid_phone))
+                edtPhoneOrder.requestFocus()
             } else {
                 // Cả tiền mặt lẫn online đều tạo đơn ở trạng thái CHƯA THANH TOÁN.
                 // Với online (SePay), sau khi tạo đơn sẽ mở mã QR và chờ webhook
@@ -374,6 +377,8 @@ class CartFragment : BaseFragment() {
             // Tạo đơn "chờ thanh toán" rồi mở mã QR SePay; webhook sẽ xác nhận.
             cartViewModel.createPendingOrder(order) { ok ->
                 if (ok) {
+                    // Giỏ đã được xoá khi tạo đơn — cập nhật lại badge giỏ hàng.
+                    EventBus.getDefault().post(ReloadListCartEvent())
                     showSePayPaymentDialog(order)
                 } else {
                     showToastMessage(activity, AppConfig.GENERIC_ERROR)

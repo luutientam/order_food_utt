@@ -25,6 +25,9 @@ export default {
 
     // 1) Xác thực — SePay gửi header "Authorization: Apikey <key>"
     const auth = request.headers.get("authorization") || "";
+    // [DEBUG tạm] log header nhận được vs mong đợi để dò lệch API key
+    console.log("DEBUG auth received =", JSON.stringify(auth));
+    console.log("DEBUG auth expected =", JSON.stringify(`Apikey ${env.SEPAY_WEBHOOK_API_KEY || ""}`));
     if (!env.SEPAY_WEBHOOK_API_KEY || auth !== `Apikey ${env.SEPAY_WEBHOOK_API_KEY}`) {
       return json({ success: false, message: "Unauthorized" }, 401);
     }
